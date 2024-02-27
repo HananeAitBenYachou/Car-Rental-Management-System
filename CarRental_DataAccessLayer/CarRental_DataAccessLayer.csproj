@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCountryData.cs" />
+    <Compile Include="clsCustomerData.cs" />
+    <Compile Include="clsDriveTypeData.cs" />
+    <Compile Include="clsFuelTypeData.cs" />
+    <Compile Include="clsMaintenanceData.cs" />
+    <Compile Include="clsMakeData.cs" />
+    <Compile Include="clsModelData.cs" />
+    <Compile Include="clsPersonData.cs" />
+    <Compile Include="clsRentalBookingData.cs" />
+    <Compile Include="clsRentalTransactionData.cs" />
+    <Compile Include="clsSubModelData.cs" />
+    <Compile Include="clsUserData.cs" />
+    <Compile Include="clsVehicleData.cs" />
+    <Compile Include="clsVehicleReturnData.cs" />
+    <Compile Include="GlobalClasses\clsDataAccessSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarRental_UtilityLayer\CarRental_UtilityLayer.csproj">
+      <Project>{67e26f8f-139f-4dd4-9500-f1b6ce4f8ebd}</Project>
+      <Name>CarRental_UtilityLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

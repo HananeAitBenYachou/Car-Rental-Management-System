@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental_BusinessLayer", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental_DataAccessLayer", "..\CarRental_DataAccessLayer\CarRental_DataAccessLayer.csproj", "{4AB22989-A7D2-41EA-A27D-ED6D5C37AF98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental_UtilityLayer", "..\CarRental_UtilityLayer\CarRental_UtilityLayer.csproj", "{67E26F8F-139F-4DD4-9500-F1B6CE4F8EBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4AB22989-A7D2-41EA-A27D-ED6D5C37AF98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AB22989-A7D2-41EA-A27D-ED6D5C37AF98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AB22989-A7D2-41EA-A27D-ED6D5C37AF98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67E26F8F-139F-4DD4-9500-F1B6CE4F8EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67E26F8F-139F-4DD4-9500-F1B6CE4F8EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67E26F8F-139F-4DD4-9500-F1B6CE4F8EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67E26F8F-139F-4DD4-9500-F1B6CE4F8EBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
