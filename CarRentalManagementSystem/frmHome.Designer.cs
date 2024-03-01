@@ -136,6 +136,7 @@
             this.btnManageUsers.Text = "Users";
             this.btnManageUsers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageUsers.TextOffset = new System.Drawing.Point(8, 0);
+            this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
             // 
             // btnManageCustomers
             // 
@@ -290,9 +291,9 @@
             // 
             // pnlContainer
             // 
-            this.pnlContainer.Location = new System.Drawing.Point(303, 83);
+            this.pnlContainer.Location = new System.Drawing.Point(310, 116);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1275, 840);
+            this.pnlContainer.Size = new System.Drawing.Size(1263, 759);
             this.pnlContainer.TabIndex = 1;
             // 
             // btnCollapse
@@ -333,7 +334,7 @@
             this.btnExit.MouseEnter += new System.EventHandler(this.button_MouseEnter);
             this.btnExit.MouseLeave += new System.EventHandler(this.button_MouseLeave);
             // 
-            // Form1
+            // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,9 +345,10 @@
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "frmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmHome_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();

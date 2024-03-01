@@ -6,14 +6,16 @@ namespace CarRental_BusinessLayer
 {
     public class clsPerson
     {
-        private enum enMode { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        public enum enMode { AddNew = 0, Update = 1 };
+        public enMode Mode;
+
+        public enum enGender { Male = 0 , Female = 1 };
         public int? PersonID { get; private set; }
         public string NationalNo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
-        public byte Gender { get; set; }
+        public enGender Gender { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
@@ -22,7 +24,7 @@ namespace CarRental_BusinessLayer
 
         public clsPerson()
         {
-            _Mode = enMode.AddNew;
+            Mode = enMode.AddNew;
             PersonID = null;
             NationalNo = default;
             FirstName = default;
@@ -35,9 +37,11 @@ namespace CarRental_BusinessLayer
             NationalityCountryID = default;
             ImagePath = null;
         }
-        private clsPerson(int? PersonID, string NationalNo, string FirstName, string LastName, DateTime BirthDate, byte Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
+
+        private clsPerson(int? PersonID, string NationalNo, string FirstName, string LastName, DateTime BirthDate, enGender Gender,
+            string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
-            _Mode = enMode.Update;
+            Mode = enMode.Update;
             this.PersonID = PersonID;
             this.NationalNo = NationalNo;
             this.FirstName = FirstName;
@@ -67,7 +71,7 @@ namespace CarRental_BusinessLayer
             bool isFound = clsPersonData.GetPersonInfoByID(PersonID, ref NationalNo, ref FirstName, ref LastName, ref BirthDate, ref Gender, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath);
 
             if (isFound)
-                return new clsPerson(PersonID, NationalNo, FirstName, LastName, BirthDate, Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+                return new clsPerson(PersonID, NationalNo, FirstName, LastName, BirthDate, (enGender)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
             else
                 return null;
         }
@@ -79,23 +83,23 @@ namespace CarRental_BusinessLayer
 
         private bool _AddNewPerson()
         {
-            PersonID = clsPersonData.AddNewPerson(NationalNo, FirstName, LastName, BirthDate, Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            PersonID = clsPersonData.AddNewPerson(NationalNo, FirstName, LastName, BirthDate, (byte)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
             return PersonID.HasValue;
         }
 
         private bool _UpdatePerson()
         {
-            return clsPersonData.UpdatePersonInfo(PersonID, NationalNo, FirstName, LastName, BirthDate, Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            return clsPersonData.UpdatePersonInfo(PersonID, NationalNo, FirstName, LastName, BirthDate, (byte)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
         }
 
         public bool Save()
         {
-            switch (_Mode)
+            switch (Mode)
             {
                 case enMode.AddNew:
                     if (_AddNewPerson())
                     {
-                        _Mode = enMode.Update;
+                        Mode = enMode.Update;
                         return true;
                     }
                     return false;
@@ -111,11 +115,5 @@ namespace CarRental_BusinessLayer
         {
             return clsPersonData.DeletePerson(PersonID);
         }
-
-        public static DataTable GetAllPeople()
-        {
-            return clsPersonData.GetAllPeople();
-        }
-
     }
 }

@@ -229,5 +229,40 @@ namespace CarRental_DataAccessLayer
             return Datatable;
         }
 
+        public static int? GetUserPersonID(int? UserID)
+        {
+            int? PersonID = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetUserPersonID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@UserID", UserID);
+
+                        SqlParameter outputPersonIDParameter = new SqlParameter("@PersonID", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+
+                        command.Parameters.Add(outputPersonIDParameter);
+
+                        command.ExecuteNonQuery();
+
+                        PersonID = (int)outputPersonIDParameter.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                PersonID = null;
+            }
+            return PersonID;
+        }
     }
 }

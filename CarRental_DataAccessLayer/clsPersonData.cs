@@ -222,36 +222,5 @@ namespace CarRental_DataAccessLayer
             return rowsAffected != 0;
         }
 
-        public static DataTable GetAllPeople()
-        {
-            DataTable Datatable = new DataTable();
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_GetAllPeople", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                Datatable.Load(reader);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-            }
-            return Datatable;
-        }
-
     }
 }
