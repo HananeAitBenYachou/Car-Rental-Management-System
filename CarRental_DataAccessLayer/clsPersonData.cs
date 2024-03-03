@@ -73,6 +73,70 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
+        public static bool GetPersonInfoByNationalNo(string NationalNo, ref int? PersonID, ref string FirstName,
+           ref string LastName, ref DateTime BirthDate, ref byte Gender, ref string Address,
+           ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetPersonInfoByNationalNo", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                                FirstName = (string)reader["FirstName"];
+
+                                LastName = (string)reader["LastName"];
+
+                                BirthDate = (DateTime)reader["BirthDate"];
+
+                                Gender = (byte)reader["Gender"];
+
+                                Address = (reader["Address"] != DBNull.Value) ? (string)reader["Address"] : null;
+
+                                Phone = (string)reader["Phone"];
+
+                                Email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : null;
+
+                                NationalityCountryID = (int)reader["NationalityCountryID"];
+
+                                ImagePath = (reader["ImagePath"] != DBNull.Value) ? (string)reader["ImagePath"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
         public static bool DoesPersonExist(int? PersonID)
         {
             bool isFound = false;

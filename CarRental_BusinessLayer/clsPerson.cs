@@ -80,6 +80,27 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
+        public static clsPerson Find(string NationalNo)
+        {
+            int? PersonID = default;
+            string FirstName = default;
+            string LastName = default;
+            DateTime BirthDate = default;
+            byte Gender = default;
+            string Address = default;
+            string Phone = default;
+            string Email = default;
+            int NationalityCountryID = default;
+            string ImagePath = default;
+
+            bool isFound = clsPersonData.GetPersonInfoByNationalNo(NationalNo, ref PersonID, ref FirstName, ref LastName, ref BirthDate, ref Gender, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath);
+
+            if (isFound)
+                return new clsPerson(PersonID, NationalNo, FirstName, LastName, BirthDate, (enGender)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            else
+                return null;
+        }
+
         public static bool DoesPersonExist(int? PersonID)
         {
             return clsPersonData.DoesPersonExist(PersonID);
