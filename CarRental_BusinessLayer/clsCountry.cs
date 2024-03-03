@@ -23,6 +23,15 @@ namespace CarRental_BusinessLayer
             return isFound ? new clsCountry(CountryID, CountryName) : null;
         }
 
+        public static clsCountry Find(string CountryName)
+        {
+            int? CountryID = default;
+
+            bool isFound = clsCountryData.GetCountryInfoByName(CountryName ,ref CountryID);
+
+            return isFound ? new clsCountry(CountryID, CountryName) : null;
+        }
+
         public static bool DoesCountryExist(int? CountryID)
         {
             return clsCountryData.DoesCountryExist(CountryID);

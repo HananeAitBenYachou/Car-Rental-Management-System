@@ -116,16 +116,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@Cost", Cost);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@MaintenanceID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewMaintenanceID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        MaintenanceID = (int)outputContactIDParameter.Value;
+                        MaintenanceID = (int)outputParameter.Value;
                     }
                 }
             }

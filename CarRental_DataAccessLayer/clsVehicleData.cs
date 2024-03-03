@@ -8,7 +8,10 @@ namespace CarRental_DataAccessLayer
 {
     public class clsVehicleData
     {
-        public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID, ref int SubModelID, ref string VehicleName, ref short Year, ref int DriveTypeID, ref string Engine, ref int FuelTypeID, ref byte NumDoors, ref int Mileage, ref string PlateNumber, ref double RentalPricePerDay, ref bool IsAvailableForRent)
+        public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID, ref int SubModelID, 
+            ref string VehicleName, ref short Year, ref int DriveTypeID, ref string Engine, ref int FuelTypeID,
+            ref byte NumDoors, ref int Mileage, ref string PlateNumber, 
+            ref double RentalPricePerDay, ref bool IsAvailableForRent)
         {
             bool isFound = false;
 
@@ -115,7 +118,9 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+        public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName, 
+            short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, 
+            int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
         {
             int? VehicleID = null;
 
@@ -143,16 +148,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@VehicleID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewVehicleID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        VehicleID = (int)outputContactIDParameter.Value;
+                        VehicleID = (int)outputParameter.Value;
                     }
                 }
             }
@@ -165,7 +170,9 @@ namespace CarRental_DataAccessLayer
             return VehicleID;
         }
 
-        public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID, string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+        public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID,
+            string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, 
+            byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
         {
             int rowsAffected = 0;
 

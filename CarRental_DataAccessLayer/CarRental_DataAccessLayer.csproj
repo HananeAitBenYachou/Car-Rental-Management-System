@@ -56,7 +56,7 @@
     <Compile Include="clsUserData.cs" />
     <Compile Include="clsVehicleData.cs" />
     <Compile Include="clsVehicleReturnData.cs" />
-    <Compile Include="GlobalClasses\clsDataAccessSettings.cs" />
+    <Compile Include="Global\clsDataAccessSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

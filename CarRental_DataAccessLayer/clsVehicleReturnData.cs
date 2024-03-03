@@ -8,7 +8,9 @@ namespace CarRental_DataAccessLayer
 {
     public class clsVehicleReturnData
     {
-        public static bool GetVehicleReturnInfoByID(int? ReturenID, ref DateTime ActualReturnDate, ref byte ActualRentalDays, ref short Mileage, ref short ConsumedMileage, ref string FinalCheckNotes, ref float AdditionalCharges, ref float ActualTotalDueAmount)
+        public static bool GetVehicleReturnInfoByID(int? ReturenID, ref DateTime ActualReturnDate,
+            ref byte ActualRentalDays, ref short Mileage, ref short ConsumedMileage, ref string FinalCheckNotes,
+            ref float AdditionalCharges, ref float ActualTotalDueAmount)
         {
             bool isFound = false;
 
@@ -103,7 +105,9 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewVehicleReturn(DateTime ActualReturnDate, byte ActualRentalDays, short Mileage, short ConsumedMileage, string FinalCheckNotes, float AdditionalCharges, float ActualTotalDueAmount)
+        public static int? AddNewVehicleReturn(DateTime ActualReturnDate, byte ActualRentalDays,
+            short Mileage, short ConsumedMileage, string FinalCheckNotes, float AdditionalCharges,
+            float ActualTotalDueAmount)
         {
             int? ReturenID = null;
 
@@ -125,16 +129,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@ActualTotalDueAmount", ActualTotalDueAmount);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@ReturenID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewReturenID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        ReturenID = (int)outputContactIDParameter.Value;
+                        ReturenID = (int)outputParameter.Value;
                     }
                 }
             }
@@ -147,7 +151,9 @@ namespace CarRental_DataAccessLayer
             return ReturenID;
         }
 
-        public static bool UpdateVehicleReturnInfo(int? ReturenID, DateTime ActualReturnDate, byte ActualRentalDays, short Mileage, short ConsumedMileage, string FinalCheckNotes, float AdditionalCharges, float ActualTotalDueAmount)
+        public static bool UpdateVehicleReturnInfo(int? ReturenID, DateTime ActualReturnDate,
+            byte ActualRentalDays, short Mileage, short ConsumedMileage, string FinalCheckNotes,
+            float AdditionalCharges, float ActualTotalDueAmount)
         {
             int rowsAffected = 0;
 

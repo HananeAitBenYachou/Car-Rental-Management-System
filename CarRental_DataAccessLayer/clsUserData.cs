@@ -3,12 +3,13 @@ using CarRental_UtilityLayer;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
 
 namespace CarRental_DataAccessLayer
 {
     public class clsUserData
     {
-        public static bool GetUserInfoByID(int? UserID, ref int PersonID, ref string UserName, ref string Password, ref bool IsActive)
+        public static bool GetUserInfoByID(int? UserID, ref int? PersonID, ref string UserName, ref string Password, ref bool IsActive)
         {
             bool isFound = false;
 
@@ -31,11 +32,164 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                PersonID = (int)reader["PersonID"];
+                                PersonID =  (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
 
                                 UserName = (string)reader["UserName"];
 
                                 Password = (string)reader["Password"];
+
+                                IsActive = (bool)reader["IsActive"];
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
+        public static bool GetUserInfoByPersonID(int? PersonID ,ref int? UserID,ref string UserName, ref string Password, ref bool IsActive)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetUserInfoByPersonID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                UserID = (reader["UserID"] != DBNull.Value) ? (int?)reader["UserID"] : null;
+
+                                UserName = (string)reader["UserName"];
+
+                                Password = (string)reader["Password"];
+
+                                IsActive = (bool)reader["IsActive"];
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
+        public static bool GetUserInfoByUserName(string UserName , ref int? UserID, ref int? PersonID, ref string Password, ref bool IsActive)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetUserInfoByUserName", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@UserName", UserName);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                                UserID = (reader["UserID"] != DBNull.Value) ? (int?)reader["UserID"] : null;
+
+                                Password = (string)reader["Password"];
+
+                                IsActive = (bool)reader["IsActive"];
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
+        public static bool GetUserInfoByUserNameAndPassword(string UserName, string Password , ref int? UserID, ref int? PersonID, ref bool IsActive)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetUserInfoByUserNameAndPassword", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@UserName", UserName);
+                        command.Parameters.AddWithValue("@Password", Password);
+
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                                UserID = (reader["UserID"] != DBNull.Value) ? (int?)reader["UserID"] : null;
 
                                 IsActive = (bool)reader["IsActive"];
 
@@ -97,7 +251,45 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewUser(int PersonID, string UserName, string Password, bool IsActive)
+        public static bool DoesUserExist(string UserName)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_CheckIfUserExistsByUserName", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@UserName", UserName);
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        isFound = (int)returnValue.Value == 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
+        public static int? AddNewUser(int? PersonID, string UserName, string Password, bool IsActive)
         {
             int? UserID = null;
 
@@ -110,22 +302,22 @@ namespace CarRental_DataAccessLayer
                     using (SqlCommand command = new SqlCommand("SP_AddNewUser", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@PersonID", PersonID);
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@UserName", UserName);
                         command.Parameters.AddWithValue("@Password", Password);
                         command.Parameters.AddWithValue("@IsActive", IsActive);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@UserID", SqlDbType.Int)
+                        SqlParameter outputUserIDParameter = new SqlParameter("@NewUserID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputUserIDParameter);
 
                         command.ExecuteNonQuery();
 
-                        UserID = (int)outputContactIDParameter.Value;
+                        UserID = (int)outputUserIDParameter.Value;
                     }
                 }
             }
@@ -138,7 +330,7 @@ namespace CarRental_DataAccessLayer
             return UserID;
         }
 
-        public static bool UpdateUserInfo(int? UserID, int PersonID, string UserName, string Password, bool IsActive)
+        public static bool UpdateUserInfo(int? UserID, int? PersonID, string UserName, string Password, bool IsActive)
         {
             int rowsAffected = 0;
 
@@ -152,7 +344,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@UserID", UserID);
-                        command.Parameters.AddWithValue("@PersonID", PersonID);
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@UserName", UserName);
                         command.Parameters.AddWithValue("@Password", Password);
                         command.Parameters.AddWithValue("@IsActive", IsActive);

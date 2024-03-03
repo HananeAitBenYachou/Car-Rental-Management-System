@@ -107,16 +107,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@Make", Make);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@MakeID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewMakeID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        MakeID = (int)outputContactIDParameter.Value;
+                        MakeID = (int)outputParameter.Value;
                     }
                 }
             }

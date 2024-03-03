@@ -8,7 +8,9 @@ namespace CarRental_DataAccessLayer
 {
     public class clsPersonData
     {
-        public static bool GetPersonInfoByID(int? PersonID, ref string NationalNo, ref string FirstName, ref string LastName, ref DateTime BirthDate, ref byte Gender, ref string Address, ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
+        public static bool GetPersonInfoByID(int? PersonID, ref string NationalNo, ref string FirstName, 
+            ref string LastName, ref DateTime BirthDate, ref byte Gender, ref string Address, 
+            ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
         {
             bool isFound = false;
 
@@ -109,7 +111,47 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewPerson(string NationalNo, string FirstName, string LastName, DateTime BirthDate, byte Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
+        public static bool DoesPersonExist(string NationalNo)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_CheckIfPersonExistsByNationalNo", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@NationalNo",NationalNo);
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        isFound = (int)returnValue.Value == 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
+        public static int? AddNewPerson(string NationalNo, string FirstName,
+            string LastName, DateTime BirthDate, byte Gender, string Address, string Phone, 
+            string Email, int NationalityCountryID, string ImagePath)
         {
             int? PersonID = null;
 
@@ -134,16 +176,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@ImagePath", (object)ImagePath ?? DBNull.Value);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@PersonID", SqlDbType.Int)
+                        SqlParameter outputPersonIDParameter = new SqlParameter("@NewPersonID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputPersonIDParameter);
 
                         command.ExecuteNonQuery();
 
-                        PersonID = (int)outputContactIDParameter.Value;
+                        PersonID = (int)outputPersonIDParameter.Value;
                     }
                 }
             }
@@ -156,7 +198,9 @@ namespace CarRental_DataAccessLayer
             return PersonID;
         }
 
-        public static bool UpdatePersonInfo(int? PersonID, string NationalNo, string FirstName, string LastName, DateTime BirthDate, byte Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
+        public static bool UpdatePersonInfo(int? PersonID, string NationalNo, string FirstName,
+            string LastName, DateTime BirthDate, byte Gender, string Address, string Phone, 
+            string Email, int NationalityCountryID, string ImagePath)
         {
             int rowsAffected = 0;
 

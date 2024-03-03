@@ -107,16 +107,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@DriveTypeName", DriveTypeName);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@DriveTypeID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewDriveTypeID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        DriveTypeID = (int)outputContactIDParameter.Value;
+                        DriveTypeID = (int)outputParameter.Value;
                     }
                 }
             }

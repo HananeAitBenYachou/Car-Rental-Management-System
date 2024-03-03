@@ -7,7 +7,10 @@ namespace CarRental_DataAccessLayer
 {
     public class clsRentalBookingData
     {
-        public static bool GetRentalBookingInfoByID(int? BookingID, ref int CustomerID, ref int VehicleID, ref DateTime RentalStartDate, ref DateTime RentalEndDate, ref string PickupLocation, ref string DropoffLocation, ref byte InitialRentalDays, ref float RentalPricePerDay, ref float InitialTotalDueAmount, ref string InitialCheckNotes)
+        public static bool GetRentalBookingInfoByID(int? BookingID, ref int CustomerID, ref int VehicleID, 
+            ref DateTime RentalStartDate, ref DateTime RentalEndDate, ref string PickupLocation, 
+            ref string DropoffLocation, ref byte InitialRentalDays, ref float RentalPricePerDay, 
+            ref float InitialTotalDueAmount, ref string InitialCheckNotes)
         {
             bool isFound = false;
 
@@ -108,7 +111,9 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewRentalBooking(int CustomerID, int VehicleID, DateTime RentalStartDate, DateTime RentalEndDate, string PickupLocation, string DropoffLocation, byte InitialRentalDays, float RentalPricePerDay, float InitialTotalDueAmount, string InitialCheckNotes)
+        public static int? AddNewRentalBooking(int CustomerID, int VehicleID, DateTime RentalStartDate,
+            DateTime RentalEndDate, string PickupLocation, string DropoffLocation,
+            byte InitialRentalDays, float RentalPricePerDay, float InitialTotalDueAmount, string InitialCheckNotes)
         {
             int? BookingID = null;
 
@@ -133,16 +138,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@InitialCheckNotes", (object)InitialCheckNotes ?? DBNull.Value);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@BookingID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewBookingID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        BookingID = (int)outputContactIDParameter.Value;
+                        BookingID = (int)outputParameter.Value;
                     }
                 }
             }
@@ -155,7 +160,10 @@ namespace CarRental_DataAccessLayer
             return BookingID;
         }
 
-        public static bool UpdateRentalBookingInfo(int? BookingID, int CustomerID, int VehicleID, DateTime RentalStartDate, DateTime RentalEndDate, string PickupLocation, string DropoffLocation, byte InitialRentalDays, float RentalPricePerDay, float InitialTotalDueAmount, string InitialCheckNotes)
+        public static bool UpdateRentalBookingInfo(int? BookingID, int CustomerID, int VehicleID,
+            DateTime RentalStartDate, DateTime RentalEndDate, string PickupLocation,
+            string DropoffLocation, byte InitialRentalDays, float RentalPricePerDay,
+            float InitialTotalDueAmount, string InitialCheckNotes)
         {
             int rowsAffected = 0;
 

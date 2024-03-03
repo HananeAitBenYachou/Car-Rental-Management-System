@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarRentalManagementSystem.Users;
+using System;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem
@@ -17,7 +18,7 @@ namespace CarRentalManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmHome());
+            Application.Run(new frmAddUpdateUser());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

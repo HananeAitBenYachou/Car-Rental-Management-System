@@ -8,7 +8,10 @@ namespace CarRental_DataAccessLayer
 {
     public class clsRentalTransactionData
     {
-        public static bool GetRentalTransactionInfoByID(int? TransactionID, ref int BookingID, ref int? ReturnID, ref string PaymentDetails, ref float PaidInitialTotalDueAmount, ref float ActualTotalDueAmount, ref float TotalRemaining, ref float TotalRefundedAmount, ref DateTime TransactionDate, ref DateTime? UpdatedTransactionDate)
+        public static bool GetRentalTransactionInfoByID(int? TransactionID, ref int BookingID, ref int? ReturnID, 
+            ref string PaymentDetails, ref float PaidInitialTotalDueAmount, ref float ActualTotalDueAmount, 
+            ref float TotalRemaining, ref float TotalRefundedAmount, 
+            ref DateTime TransactionDate, ref DateTime? UpdatedTransactionDate)
         {
             bool isFound = false;
 
@@ -107,7 +110,9 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewRentalTransaction(int BookingID, int? ReturnID, string PaymentDetails, float PaidInitialTotalDueAmount, float ActualTotalDueAmount, float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+        public static int? AddNewRentalTransaction(int BookingID, int? ReturnID, string PaymentDetails,
+            float PaidInitialTotalDueAmount, float ActualTotalDueAmount, 
+            float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
             int? TransactionID = null;
 
@@ -131,16 +136,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@UpdatedTransactionDate", (object)UpdatedTransactionDate ?? DBNull.Value);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@TransactionID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewTransactionID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        TransactionID = (int)outputContactIDParameter.Value;
+                        TransactionID = (int)outputParameter.Value;
                     }
                 }
             }
@@ -153,7 +158,9 @@ namespace CarRental_DataAccessLayer
             return TransactionID;
         }
 
-        public static bool UpdateRentalTransactionInfo(int? TransactionID, int BookingID, int? ReturnID, string PaymentDetails, float PaidInitialTotalDueAmount, float ActualTotalDueAmount, float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+        public static bool UpdateRentalTransactionInfo(int? TransactionID, int BookingID, int? ReturnID, 
+            string PaymentDetails, float PaidInitialTotalDueAmount, float ActualTotalDueAmount,
+            float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
             int rowsAffected = 0;
 

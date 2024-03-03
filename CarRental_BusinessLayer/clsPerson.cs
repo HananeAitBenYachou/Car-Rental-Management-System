@@ -16,11 +16,13 @@ namespace CarRental_BusinessLayer
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public enGender Gender { get; set; }
+        public string GenderText => Gender.ToString();
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }
+        public clsCountry CountryInfo { get; protected set; }
 
         public clsPerson()
         {
@@ -53,6 +55,8 @@ namespace CarRental_BusinessLayer
             this.Email = Email;
             this.NationalityCountryID = NationalityCountryID;
             this.ImagePath = ImagePath;
+
+            this.CountryInfo = clsCountry.Find(NationalityCountryID);
         }
 
         public static clsPerson Find(int? PersonID)
@@ -79,6 +83,11 @@ namespace CarRental_BusinessLayer
         public static bool DoesPersonExist(int? PersonID)
         {
             return clsPersonData.DoesPersonExist(PersonID);
+        }
+
+        public static bool DoesPersonExist(string NationalNo)
+        {
+            return clsPersonData.DoesPersonExist(NationalNo);
         }
 
         private bool _AddNewPerson()

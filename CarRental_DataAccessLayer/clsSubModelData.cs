@@ -110,16 +110,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@SubModelName", SubModelName);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@SubModelID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewSubModelID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        SubModelID = (int)outputContactIDParameter.Value;
+                        SubModelID = (int)outputParameter.Value;
                     }
                 }
             }

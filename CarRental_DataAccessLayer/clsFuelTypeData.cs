@@ -107,16 +107,16 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@FuelTypeName", FuelTypeName);
 
 
-                        SqlParameter outputContactIDParameter = new SqlParameter("@FuelTypeID", SqlDbType.Int)
+                        SqlParameter outputParameter = new SqlParameter("@NewFuelTypeID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputContactIDParameter);
+                        command.Parameters.Add(outputParameter);
 
                         command.ExecuteNonQuery();
 
-                        FuelTypeID = (int)outputContactIDParameter.Value;
+                        FuelTypeID = (int)outputParameter.Value;
                     }
                 }
             }
