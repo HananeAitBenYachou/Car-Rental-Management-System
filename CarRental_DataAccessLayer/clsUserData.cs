@@ -363,6 +363,35 @@ namespace CarRental_DataAccessLayer
             return rowsAffected != 0;
         }
 
+        public static bool UpdateUserPassword(int? UserID , string Password)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_UpdateUserPassword", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        command.Parameters.AddWithValue("@Password", Password);
+
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                rowsAffected = 0;
+            }
+            return rowsAffected != 0;
+        }
+
         public static bool DeleteUser(int? UserID)
         {
             int rowsAffected = 0;

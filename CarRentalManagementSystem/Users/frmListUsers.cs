@@ -18,7 +18,8 @@ namespace CarRentalManagementSystem.Users
         private _FilterOptions _SelectedOption;
 
         private DataView _UsersDataView;
-        
+
+        private int? _SelectedUserID = null;
         public frmListUsers()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace CarRentalManagementSystem.Users
 
                     cbTemp.SelectedIndex = 0;
 
-                }));        
+                }));
             });
         }
 
@@ -111,9 +112,9 @@ namespace CarRentalManagementSystem.Users
 
         private void cbTemp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(_SelectedOption == _FilterOptions.IsActive)
+            if (_SelectedOption == _FilterOptions.IsActive)
             {
-                switch(cbTemp.Text)
+                switch (cbTemp.Text)
                 {
                     case "Yes":
                         _UsersDataView.RowFilter = string.Format("[{0}] = 1", cbFilterByOptions.Text);
@@ -145,7 +146,65 @@ namespace CarRentalManagementSystem.Users
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
-            //Not implemented yet
+            frmAddUpdateUser form = new frmAddUpdateUser();
+            form.ShowDialog();
+
+            _RefreshUsersList();
+        }
+
+        private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnAddNewUser.PerformClick();
+        }
+
+        private void editUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateUser form = new frmAddUpdateUser(_SelectedUserID);
+            form.ShowDialog();
+
+            _RefreshUsersList();
+        }
+
+        private void showUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowUserDetails form = new frmShowUserDetails(_SelectedUserID);
+            form.ShowDialog();
+        }
+
+        private void deleteUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete the selected user ?", "Verification",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+            return;
+
+            if(!clsUser.DeleteUser(_SelectedUserID))                           
+            MessageBox.Show("Failed to delete The selected user , due to the data connected to it !", "Deletion Failed",
+             MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            else
+            {
+                MessageBox.Show("The selected user has been deleted successfully .", "Deletion Completed",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                _RefreshUsersList();
+            }
+
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangeUserPassword form = new frmChangeUserPassword(_SelectedUserID);    
+            form.ShowDialog();
+        }
+
+        private void dgvUsersList_SelectionChanged(object sender, EventArgs e)
+        {
+            _SelectedUserID = (int)dgvUsersList.CurrentRow.Cells[0].Value;
+        }
+
+        private void dgvUsersList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            showUserInformationToolStripMenuItem.PerformClick();
         }
     }
 }

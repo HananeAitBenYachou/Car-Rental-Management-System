@@ -229,5 +229,9 @@ namespace CarRental_BusinessLayer
             return clsUserData.GetAllUsers();
         }
 
+        public bool UpdateUserPassword(string NewPassword)
+        {
+            return clsUserData.UpdateUserPassword(this.UserID, NewPassword);
+        }
     }
 }

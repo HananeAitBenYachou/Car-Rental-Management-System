@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCryptoUtility.cs" />
     <Compile Include="clsErrorLogger.cs" />
     <Compile Include="clsUtility.cs" />
     <Compile Include="clsValidation.cs" />

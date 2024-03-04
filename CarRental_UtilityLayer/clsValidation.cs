@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarRental_UtilityLayer
 {
-    public class clsValidation
+    public static class clsValidation
     {
         private static bool IsMatch(string pattern, string value)
         {

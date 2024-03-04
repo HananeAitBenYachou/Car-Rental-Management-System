@@ -37,11 +37,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dgvUsersList = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.cbUsers = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.cbTemp = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnAddNewUser = new Guna.UI2.WinForms.Guna2Button();
+            this.addNewUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editUserInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showUserInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.cbTemp = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersList)).BeginInit();
+            this.cbUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -118,6 +125,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUsersList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsersList.ColumnHeadersHeight = 45;
+            this.dgvUsersList.ContextMenuStrip = this.cbUsers;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
@@ -166,6 +174,57 @@
             this.dgvUsersList.ThemeStyle.RowsStyle.Height = 24;
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.dgvUsersList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersList_CellClick);
+            this.dgvUsersList.SelectionChanged += new System.EventHandler(this.dgvUsersList_SelectionChanged);
+            // 
+            // cbUsers
+            // 
+            this.cbUsers.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbUsers.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cbUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewUserToolStripMenuItem,
+            this.editUserInformationToolStripMenuItem,
+            this.showUserInformationToolStripMenuItem,
+            this.deleteUserToolStripMenuItem,
+            this.changePasswordToolStripMenuItem});
+            this.cbUsers.Margin = new System.Windows.Forms.Padding(5);
+            this.cbUsers.Name = "guna2ContextMenuStrip1";
+            this.cbUsers.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.cbUsers.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.cbUsers.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cbUsers.RenderStyle.ColorTable = null;
+            this.cbUsers.RenderStyle.RoundedEdges = true;
+            this.cbUsers.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.cbUsers.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cbUsers.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.cbUsers.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.cbUsers.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.cbUsers.Size = new System.Drawing.Size(271, 184);
+            // 
+            // cbTemp
+            // 
+            this.cbTemp.BackColor = System.Drawing.Color.Transparent;
+            this.cbTemp.BorderRadius = 22;
+            this.cbTemp.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbTemp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTemp.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbTemp.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbTemp.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbTemp.ForeColor = System.Drawing.Color.Black;
+            this.cbTemp.ItemHeight = 35;
+            this.cbTemp.Items.AddRange(new object[] {
+            "User ID",
+            "Full Name",
+            "Gender",
+            "UserName",
+            "Country",
+            "Is Active"});
+            this.cbTemp.Location = new System.Drawing.Point(340, 207);
+            this.cbTemp.Name = "cbTemp";
+            this.cbTemp.Size = new System.Drawing.Size(192, 41);
+            this.cbTemp.TabIndex = 8;
+            this.cbTemp.Visible = false;
+            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.cbTemp_SelectedIndexChanged);
             // 
             // btnAddNewUser
             // 
@@ -186,6 +245,57 @@
             this.btnAddNewUser.TabIndex = 7;
             this.btnAddNewUser.Text = "Add New User";
             this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
+            // 
+            // addNewUserToolStripMenuItem
+            // 
+            this.addNewUserToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.addNewUserToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.addNewUserToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
+            this.addNewUserToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.addNewUserToolStripMenuItem.Name = "addNewUserToolStripMenuItem";
+            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.addNewUserToolStripMenuItem.Text = "Add New User";
+            this.addNewUserToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.addNewUserToolStripMenuItem.Click += new System.EventHandler(this.addNewUserToolStripMenuItem_Click);
+            // 
+            // editUserInformationToolStripMenuItem
+            // 
+            this.editUserInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.editUserInformationToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.editUserInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.edit;
+            this.editUserInformationToolStripMenuItem.Name = "editUserInformationToolStripMenuItem";
+            this.editUserInformationToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.editUserInformationToolStripMenuItem.Text = "Edit User Information";
+            this.editUserInformationToolStripMenuItem.Click += new System.EventHandler(this.editUserInformationToolStripMenuItem_Click);
+            // 
+            // showUserInformationToolStripMenuItem
+            // 
+            this.showUserInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.showUserInformationToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.showUserInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
+            this.showUserInformationToolStripMenuItem.Name = "showUserInformationToolStripMenuItem";
+            this.showUserInformationToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.showUserInformationToolStripMenuItem.Text = "Show User Information";
+            this.showUserInformationToolStripMenuItem.Click += new System.EventHandler(this.showUserInformationToolStripMenuItem_Click);
+            // 
+            // deleteUserToolStripMenuItem
+            // 
+            this.deleteUserToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.deleteUserToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.deleteUserToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.trash_bin;
+            this.deleteUserToolStripMenuItem.Name = "deleteUserToolStripMenuItem";
+            this.deleteUserToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.deleteUserToolStripMenuItem.Text = "Delete User";
+            this.deleteUserToolStripMenuItem.Click += new System.EventHandler(this.deleteUserToolStripMenuItem_Click);
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.changePasswordToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.password;
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // txtFilterValue
             // 
@@ -226,31 +336,6 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.TabIndex = 1;
             // 
-            // cbTemp
-            // 
-            this.cbTemp.BackColor = System.Drawing.Color.Transparent;
-            this.cbTemp.BorderRadius = 22;
-            this.cbTemp.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbTemp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTemp.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbTemp.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbTemp.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.cbTemp.ForeColor = System.Drawing.Color.Black;
-            this.cbTemp.ItemHeight = 35;
-            this.cbTemp.Items.AddRange(new object[] {
-            "User ID",
-            "Full Name",
-            "Gender",
-            "UserName",
-            "Country",
-            "Is Active"});
-            this.cbTemp.Location = new System.Drawing.Point(340, 207);
-            this.cbTemp.Name = "cbTemp";
-            this.cbTemp.Size = new System.Drawing.Size(192, 41);
-            this.cbTemp.TabIndex = 8;
-            this.cbTemp.Visible = false;
-            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.cbTemp_SelectedIndexChanged);
-            // 
             // frmListUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -272,6 +357,7 @@
             this.Text = "frmListUsers";
             this.Load += new System.EventHandler(this.frmListUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersList)).EndInit();
+            this.cbUsers.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,5 +374,11 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvUsersList;
         private Guna.UI2.WinForms.Guna2Button btnAddNewUser;
         private Guna.UI2.WinForms.Guna2ComboBox cbTemp;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip cbUsers;
+        private System.Windows.Forms.ToolStripMenuItem addNewUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editUserInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showUserInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }
