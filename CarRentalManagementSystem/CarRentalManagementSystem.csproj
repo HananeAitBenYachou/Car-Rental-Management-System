@@ -67,6 +67,18 @@
     <Compile Include="Customers\frmListCustomers.Designer.cs">
       <DependentUpon>frmListCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customers\frmShowCustomerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\frmShowCustomerDetails.Designer.cs">
+      <DependentUpon>frmShowCustomerDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\UserControls\ucCustomerCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customers\UserControls\ucCustomerCard.Designer.cs">
+      <DependentUpon>ucCustomerCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\frmListCustomers.resx">
       <DependentUpon>frmListCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\frmShowCustomerDetails.resx">
+      <DependentUpon>frmShowCustomerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\UserControls\ucCustomerCard.resx">
+      <DependentUpon>ucCustomerCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>

@@ -102,6 +102,7 @@
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.TextOffset = new System.Drawing.Point(8, 0);
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // pictureBox1
             // 
@@ -160,6 +161,7 @@
             this.btnManageCustomers.Text = "Customers";
             this.btnManageCustomers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageCustomers.TextOffset = new System.Drawing.Point(8, -1);
+            this.btnManageCustomers.Click += new System.EventHandler(this.btnManageCustomers_Click);
             // 
             // btnManageTransactions
             // 

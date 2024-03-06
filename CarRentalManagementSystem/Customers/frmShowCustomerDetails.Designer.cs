@@ -1,6 +1,6 @@
-﻿namespace CarRentalManagementSystem.Users
+﻿namespace CarRentalManagementSystem.Customers
 {
-    partial class frmShowUserDetails
+    partial class frmShowCustomerDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ucUserCard1 = new CarRentalManagementSystem.Users.UserControls.ucUserCard();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCard();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,46 +45,6 @@
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // guna2GradientPanel1
-            // 
-            this.guna2GradientPanel1.Controls.Add(this.guna2ImageButton1);
-            this.guna2GradientPanel1.Controls.Add(this.lblTitle);
-            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(1058, 73);
-            this.guna2GradientPanel1.TabIndex = 1;
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.user_profile;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(419, 9);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.TabIndex = 3;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(481, 21);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(128, 28);
-            this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "User Details";
             // 
             // btnClose
             // 
@@ -99,33 +59,74 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
             this.btnClose.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnClose.Location = new System.Drawing.Point(864, 705);
+            this.btnClose.Location = new System.Drawing.Point(864, 710);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(171, 58);
-            this.btnClose.TabIndex = 170;
+            this.btnClose.TabIndex = 173;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ucUserCard1
+            // lblTitle
             // 
-            this.ucUserCard1.Location = new System.Drawing.Point(21, 82);
-            this.ucUserCard1.Name = "ucUserCard1";
-            this.ucUserCard1.Size = new System.Drawing.Size(1014, 617);
-            this.ucUserCard1.TabIndex = 169;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(481, 21);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(128, 28);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "User Details";
             // 
-            // frmShowUserDetails
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.driving;
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(419, 9);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.TabIndex = 3;
+            // 
+            // guna2GradientPanel1
+            // 
+            this.guna2GradientPanel1.Controls.Add(this.guna2ImageButton1);
+            this.guna2GradientPanel1.Controls.Add(this.lblTitle);
+            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(1058, 73);
+            this.guna2GradientPanel1.TabIndex = 171;
+            // 
+            // ucCustomerCard1
+            // 
+            this.ucCustomerCard1.BackColor = System.Drawing.Color.White;
+            this.ucCustomerCard1.Location = new System.Drawing.Point(21, 82);
+            this.ucCustomerCard1.Name = "ucCustomerCard1";
+            this.ucCustomerCard1.Size = new System.Drawing.Size(1014, 617);
+            this.ucCustomerCard1.TabIndex = 174;
+            // 
+            // frmShowCustomerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1058, 773);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.ucUserCard1);
+            this.Controls.Add(this.ucCustomerCard1);
             this.Controls.Add(this.guna2GradientPanel1);
+            this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmShowUserDetails";
+            this.Name = "frmShowCustomerDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmShowUserDetails";
+            this.Text = "frmShowCustomerDetails";
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -138,7 +139,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label lblTitle;
-        private UserControls.ucUserCard ucUserCard1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
+        private UserControls.ucCustomerCard ucCustomerCard1;
     }
 }
