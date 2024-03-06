@@ -14,6 +14,7 @@ namespace CarRental_BusinessLayer
         public string NationalNo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName => FirstName + LastName;
         public DateTime BirthDate { get; set; }
         public enGender Gender { get; set; }
         public string GenderText => Gender.ToString();

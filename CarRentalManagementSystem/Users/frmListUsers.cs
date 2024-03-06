@@ -18,8 +18,6 @@ namespace CarRentalManagementSystem.Users
         private _FilterOptions _SelectedOption;
 
         private DataView _UsersDataView;
-
-        private int? _SelectedUserID = null;
         public frmListUsers()
         {
             InitializeComponent();
@@ -49,12 +47,12 @@ namespace CarRentalManagementSystem.Users
             switch (option)
             {
                 case _FilterOptions.Gender:
-                    cbTemp.Items.AddRange(new object[] { "Female", "Male" });
+                    cbTemp.Items.AddRange(new object[] { "All" ,"Female", "Male" });
                     cbTemp.SelectedIndex = 0;
                     break;
 
                 case _FilterOptions.IsActive:
-                    cbTemp.Items.AddRange(new object[] { "Yes", "No" });
+                    cbTemp.Items.AddRange(new object[] { "All" ,"Yes", "No" });
                     cbTemp.SelectedIndex = 0;
                     break;
 
@@ -112,6 +110,12 @@ namespace CarRentalManagementSystem.Users
 
         private void cbTemp_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbTemp.Text == "All")
+            {
+                _UsersDataView.RowFilter = null;
+                return;
+            }
+
             if (_SelectedOption == _FilterOptions.IsActive)
             {
                 switch (cbTemp.Text)
@@ -159,7 +163,8 @@ namespace CarRentalManagementSystem.Users
 
         private void editUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateUser form = new frmAddUpdateUser(_SelectedUserID);
+
+            frmAddUpdateUser form = new frmAddUpdateUser((int)dgvUsersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
 
             _RefreshUsersList();
@@ -167,7 +172,7 @@ namespace CarRentalManagementSystem.Users
 
         private void showUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowUserDetails form = new frmShowUserDetails(_SelectedUserID);
+            frmShowUserDetails form = new frmShowUserDetails((int)dgvUsersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
 
@@ -177,7 +182,7 @@ namespace CarRentalManagementSystem.Users
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
             return;
 
-            if(!clsUser.DeleteUser(_SelectedUserID))                           
+            if(!clsUser.DeleteUser((int)dgvUsersList.CurrentRow.Cells[0].Value))                           
             MessageBox.Show("Failed to delete The selected user , due to the data connected to it !", "Deletion Failed",
              MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -193,16 +198,16 @@ namespace CarRentalManagementSystem.Users
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangeUserPassword form = new frmChangeUserPassword(_SelectedUserID);    
+            frmChangeUserPassword form = new frmChangeUserPassword((int)dgvUsersList.CurrentRow.Cells[0].Value);    
             form.ShowDialog();
         }
 
         private void dgvUsersList_SelectionChanged(object sender, EventArgs e)
         {
-            _SelectedUserID = (int)dgvUsersList.CurrentRow.Cells[0].Value;
+            cbUsers.Enabled = dgvUsersList.SelectedRows.Count > 0 ? true : false;
         }
 
-        private void dgvUsersList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvUsersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             showUserInformationToolStripMenuItem.PerformClick();
         }

@@ -8,7 +8,7 @@ namespace CarRental_DataAccessLayer
 {
     public class clsCustomerData
     {
-        public static bool GetCustomerInfoByID(int? CustomerID, ref string DriverLicenseNumber, ref int PersonID)
+        public static bool GetCustomerInfoByID(int? CustomerID, ref string DriverLicenseNumber, ref int? PersonID)
         {
             bool isFound = false;
 
@@ -33,7 +33,7 @@ namespace CarRental_DataAccessLayer
 
                                 DriverLicenseNumber = (string)reader["DriverLicenseNumber"];
 
-                                PersonID = (int)reader["PersonID"];
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
 
                             }
 
@@ -93,7 +93,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewCustomer(string DriverLicenseNumber, int PersonID)
+        public static int? AddNewCustomer(string DriverLicenseNumber, int? PersonID)
         {
             int? CustomerID = null;
 
@@ -107,7 +107,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
-                        command.Parameters.AddWithValue("@PersonID", PersonID);
+                        command.Parameters.AddWithValue("@PersonID", (object) PersonID ?? DBNull.Value);
 
 
                         SqlParameter outputParameter = new SqlParameter("@NewCustomerID", SqlDbType.Int)
@@ -132,7 +132,7 @@ namespace CarRental_DataAccessLayer
             return CustomerID;
         }
 
-        public static bool UpdateCustomerInfo(int? CustomerID, string DriverLicenseNumber, int PersonID)
+        public static bool UpdateCustomerInfo(int? CustomerID, string DriverLicenseNumber, int? PersonID)
         {
             int rowsAffected = 0;
 
@@ -147,7 +147,7 @@ namespace CarRental_DataAccessLayer
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@CustomerID", CustomerID);
                         command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
-                        command.Parameters.AddWithValue("@PersonID", PersonID);
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
 
 
                         rowsAffected = command.ExecuteNonQuery();
