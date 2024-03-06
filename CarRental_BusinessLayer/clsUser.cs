@@ -27,7 +27,10 @@ namespace CarRental_BusinessLayer
         }
         private clsUser(int? UserID, int? PersonID, string UserName, string Password, bool IsActive,
             string NationalNo, string FirstName, string LastName, DateTime BirthDate, enGender Gender,
-            string Address, string Phone, string Email, int NationalityCountryID, string ImagePath) 
+            string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
+            : base(PersonID, NationalNo, FirstName, LastName, BirthDate, Gender, Address, Phone, Email, 
+                  NationalityCountryID, ImagePath)
+
         {
             _Mode = enMode.Update;
 
@@ -36,18 +39,6 @@ namespace CarRental_BusinessLayer
             this.UserName = UserName;
             this.Password = Password;
             this.IsActive = IsActive;
-
-            base.NationalNo = NationalNo;
-            base.FirstName = FirstName;
-            base.LastName = LastName;
-            base.BirthDate = BirthDate;
-            base.Gender = Gender;
-            base.Address = Address;
-            base.Phone = Phone;
-            base.Email = Email;
-            base.NationalityCountryID = NationalityCountryID;
-            base.ImagePath = ImagePath;
-            base.CountryInfo = clsCountry.Find(NationalityCountryID);
         }
 
         private static clsUser _FindUserByUserID(int? UserID)
@@ -190,12 +181,10 @@ namespace CarRental_BusinessLayer
 
         public new bool Save()
         {
-            base.Mode = this.Mode;
-
             if (!base.Save())
                 return false;
-            else
-                this.PersonID = base.PersonID;
+
+            this.PersonID = base.PersonID;
 
             switch (_Mode)
             {

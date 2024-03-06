@@ -12,40 +12,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CarRental_BusinessLayer.clsUser;
+using static CarRental_BusinessLayer.clsCustomer;
 
-namespace CarRentalManagementSystem.Users
+namespace CarRentalManagementSystem.Customers
 {
-    public partial class frmAddUpdateUser : Form
+    public partial class frmAddUpdateCustomer : Form
     {
-        private enum _enMode { AddNew = 0 , Update = 1 };
-        private _enMode _Mode = _enMode.AddNew; 
+        private enum _enMode { AddNew = 0, Update = 1 };
+        private _enMode _Mode = _enMode.AddNew;
 
-        private int? _UserID  = null;
+        private int? _CustomerID = null;
 
-        private clsUser _User = null;
+        private clsCustomer _Customer = null;
 
-        private bool _PasswordEditEnabled
-        {
-            set
-            {
-                lblPassword.Visible = value;
-                txtPassword.Visible = value;
-            }
-
-            get
-            {
-                return txtPassword.Visible;
-            }
-        }
-
-        public frmAddUpdateUser(int? userID)
+        public frmAddUpdateCustomer(int? customerID)
         {
             InitializeComponent();
             _Mode = _enMode.Update;
-            _UserID = userID;
+            _CustomerID = customerID;
         }
-        public frmAddUpdateUser()
+        public frmAddUpdateCustomer()
         {
             InitializeComponent();
             _Mode = _enMode.AddNew;
@@ -55,17 +41,15 @@ namespace CarRentalManagementSystem.Users
         {
             _FillCountriesInComboBox();
 
-            if (_Mode  == _enMode.AddNew)
+            if (_Mode == _enMode.AddNew)
             {
-                _User = new clsUser();
-                lblTitle.Text = "Add New User";
-                _PasswordEditEnabled = true;
+                _Customer = new clsCustomer();
+                lblTitle.Text = "Add New Customer";
             }
 
             else
             {
-                lblTitle.Text = "Update User";
-                _PasswordEditEnabled = false;
+                lblTitle.Text = "Update Customer";
             }
 
             dtpBirthDate.MinDate = DateTime.Now.AddYears(-100);
@@ -73,7 +57,6 @@ namespace CarRentalManagementSystem.Users
             dtpBirthDate.Value = dtpBirthDate.MaxDate;
 
             rbMale.Checked = true;
-            ckbIsActive.Checked = true;
             llbRemoveImage.Visible = false;
         }
 
@@ -87,67 +70,62 @@ namespace CarRentalManagementSystem.Users
             cbCountries.SelectedIndex = 0;
         }
 
-        private void _LoadUserData()
+        private void _LoadCustomerData()
         {
-            _User = clsUser.Find<int?>(_UserID, enFindUserBy.UserID);
+            _Customer = clsCustomer.Find<int?>(_CustomerID, enFindCustomerBy.CustomerID);
 
-            if(_User == null)
+            if (_Customer == null)
             {
-                MessageBox.Show($"No user with UserID = {_UserID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No user with CustomerID = {_CustomerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-            txtUserID.Text = _UserID.ToString();
-            txtNationalNo.Text = _User.NationalNo;
-            txtFirstName.Text = _User.FirstName;
-            txtLastName.Text = _User.LastName;
-            txtPhone.Text = _User.Phone;
-            txtEmail.Text = _User.Email ?? string.Empty;
-            txtAddress.Text = _User.Address ?? string.Empty;
-            txtUserName.Text = _User.UserName;
-            txtPassword.Text = _User.Password;
+            txtCustomerID.Text = _CustomerID.ToString();
+            txtNationalNo.Text = _Customer.NationalNo;
+            txtFirstName.Text = _Customer.FirstName;
+            txtLastName.Text = _Customer.LastName;
+            txtPhone.Text = _Customer.Phone;
+            txtLicenseNo.Text = _Customer.DriverLicenseNumber;
+            txtAddress.Text = _Customer.Address ?? string.Empty;
+            txtEmail.Text = _Customer.Email ?? string.Empty;
 
-            dtpBirthDate.Value = _User.BirthDate;
-            cbCountries.SelectedIndex = cbCountries.FindString(_User.CountryInfo.CountryName);
+            dtpBirthDate.Value = _Customer.BirthDate;
+            cbCountries.SelectedIndex = cbCountries.FindString(_Customer.CountryInfo.CountryName);
 
-            if (_User.Gender == clsPerson.enGender.Male)
-                rbMale.Checked = true;
-            else
-                rbFemale.Checked = true;
+            rbMale.Checked = (_Customer.Gender == clsPerson.enGender.Male);
+            rbFemale.Checked = !rbMale.Checked;
 
-            ckbIsActive.Checked = _User.IsActive;
-
-            if (_User.ImagePath != null)
-                pbPersonalImage.ImageLocation = _User.ImagePath;
+            if (_Customer.ImagePath != null)
+                pbPersonalImage.ImageLocation = _Customer.ImagePath;
 
             llbRemoveImage.Visible = pbPersonalImage.ImageLocation != null;
         }
 
         private bool _IsPersonImageHandledSuccessfully()
         {
-            if(_User.ImagePath != pbPersonalImage.ImageLocation)
+            if (_Customer.ImagePath != pbPersonalImage.ImageLocation)
             {
-                if(_User.ImagePath != null)
+                if (_Customer.ImagePath != null)
                 {
                     try
                     {
-                        File.Delete(_User.ImagePath);
+                        File.Delete(_Customer.ImagePath);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         clsErrorLogger.LogError(ex);
-                        MessageBox.Show("An error occured while deleting the user's old personal image", "Error",
-                            MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("An error occured while deleting the customer's old personal image", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                 }
 
-                if(pbPersonalImage.ImageLocation != null)
+                if (pbPersonalImage.ImageLocation != null)
                 {
                     try
-                    {       
-                        string FolderPath = @"C:\CarRentalApp-Users-Images";
+                    {
+                        string FolderPath = @"C:\CarRentalApp-Customers-Images";
                         string sourceFilePath = pbPersonalImage.ImageLocation;
 
                         clsUtility.CopyImageToProjectImagesFolder(ref sourceFilePath, FolderPath);
@@ -159,7 +137,7 @@ namespace CarRentalManagementSystem.Users
                     catch (Exception ex)
                     {
                         clsErrorLogger.LogError(ex);
-                        MessageBox.Show("An error occured while saving the user's new personal image", "Error",
+                        MessageBox.Show("An error occured while saving the customer's new personal image", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
@@ -169,28 +147,26 @@ namespace CarRentalManagementSystem.Users
             return true;
         }
 
-        private void _SaveUserData()
+        private void _SaveCustomerData()
         {
             if (!_IsPersonImageHandledSuccessfully())
                 return;
 
-            _User.NationalNo = txtNationalNo.Text.Trim();
-            _User.FirstName = txtFirstName.Text.Trim();
-            _User.LastName = txtLastName.Text.Trim();
-            _User.Phone = txtPhone.Text.Trim();
-            _User.Email = txtEmail.Text.Trim() ?? null;
-            _User.Address = txtAddress.Text.Trim() ?? null;
-            _User.UserName = txtUserName.Text.Trim();
-            _User.Password = _PasswordEditEnabled ? txtPassword.Text.Trim() : _User.Password;
-            _User.BirthDate = dtpBirthDate.Value;
-            _User.NationalityCountryID = clsCountry.Find(cbCountries.Text).CountryID.Value;
-            _User.Gender = rbMale.Checked == true ? clsPerson.enGender.Male : clsPerson.enGender.Female;
-            _User.IsActive = ckbIsActive.Checked == true;
-            _User.ImagePath = pbPersonalImage.ImageLocation ?? null;
+            _Customer.NationalNo = txtNationalNo.Text.Trim();
+            _Customer.FirstName = txtFirstName.Text.Trim();
+            _Customer.LastName = txtLastName.Text.Trim();
+            _Customer.Phone = txtPhone.Text.Trim();
+            _Customer.Email = string.IsNullOrEmpty(txtEmail.Text) ? null : txtEmail.Text.Trim();
+            _Customer.Address = string.IsNullOrEmpty(txtAddress.Text) ? null : txtAddress.Text.Trim();
+            _Customer.DriverLicenseNumber = txtLicenseNo.Text.Trim();
+            _Customer.BirthDate = dtpBirthDate.Value;
+            _Customer.NationalityCountryID = clsCountry.Find(cbCountries.Text).CountryID.Value;
+            _Customer.Gender = rbMale.Checked == true ? clsPerson.enGender.Male : clsPerson.enGender.Female;
+            _Customer.ImagePath = pbPersonalImage.ImageLocation ?? null;
 
-            if(!_User.Save())
+            if (!_Customer.Save())
             {
-                MessageBox.Show("Failed to save the data !","Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to save the data !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -199,17 +175,17 @@ namespace CarRentalManagementSystem.Users
                 MessageBox.Show("Data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 _Mode = _enMode.Update;
-                lblTitle.Text = "Update User";
-                txtUserID.Text = _User.UserID.ToString();
+                lblTitle.Text = "Update Customer";
+                txtCustomerID.Text = _Customer.CustomerID.ToString();
             }
         }
 
-        private void frmAddUpdateUser_Load(object sender, EventArgs e)
+        private void frmAddUpdateCustomer_Load(object sender, EventArgs e)
         {
             _Reset();
 
             if (_Mode == _enMode.Update)
-                _LoadUserData();
+                _LoadCustomerData();
         }
 
         private void txtNationalNo_Validating(object sender, CancelEventArgs e)
@@ -221,7 +197,7 @@ namespace CarRentalManagementSystem.Users
                 errorProvider1.SetError(txtNationalNo, "This field is required !");
             }
 
-            else if (_User.NationalNo != txtNationalNo.Text.Trim() && clsUser.DoesPersonExist(txtNationalNo.Text.Trim()))
+            else if (_Customer.NationalNo != txtNationalNo.Text.Trim() && clsUser.DoesPersonExist(txtNationalNo.Text.Trim()))
             {
                 e.Cancel = true;
                 txtNationalNo.Focus();
@@ -235,26 +211,26 @@ namespace CarRentalManagementSystem.Users
             }
         }
 
-        private void txtUserName_Validating(object sender, CancelEventArgs e)
+        private void txtLicenseNo_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
+            if (string.IsNullOrEmpty(txtLicenseNo.Text.Trim()))
             {
                 e.Cancel = true;
-                txtUserName.Focus();
-                errorProvider1.SetError(txtUserName, "This field is required !");
+                txtLicenseNo.Focus();
+                errorProvider1.SetError(txtLicenseNo, "This field is required !");
             }
 
-            else if (_User.UserName != txtUserName.Text.Trim() && clsUser.DoesUserExist(txtUserName.Text.Trim()))
+            else if (_Customer.DriverLicenseNumber != txtLicenseNo.Text.Trim() && clsCustomer.DoesCustomerExist(txtLicenseNo.Text.Trim()))
             {
                 e.Cancel = true;
-                txtUserName.Focus();
-                errorProvider1.SetError(txtUserName, "The username you entered is already taken !");
+                txtLicenseNo.Focus();
+                errorProvider1.SetError(txtLicenseNo, "The driver license number you entered is already taken by another customer !");
             }
 
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtUserName, null);
+                errorProvider1.SetError(txtLicenseNo, null);
             }
         }
 
@@ -266,7 +242,7 @@ namespace CarRentalManagementSystem.Users
             {
                 e.Cancel = true;
                 txtTemp.Focus();
-                errorProvider1.SetError(txtTemp,"This field is required !");
+                errorProvider1.SetError(txtTemp, "This field is required !");
             }
 
             else
@@ -284,7 +260,7 @@ namespace CarRentalManagementSystem.Users
                 txtEmail.Focus();
                 errorProvider1.SetError(txtEmail, "This email format is not valid !");
             }
-          
+
             else
             {
                 e.Cancel = false;
@@ -333,7 +309,7 @@ namespace CarRentalManagementSystem.Users
                 return;
             }
 
-            _SaveUserData();
+            _SaveCustomerData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -343,7 +319,7 @@ namespace CarRentalManagementSystem.Users
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsControl(e.KeyChar)&& !char.IsDigit(e.KeyChar);
+            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
     }
 }

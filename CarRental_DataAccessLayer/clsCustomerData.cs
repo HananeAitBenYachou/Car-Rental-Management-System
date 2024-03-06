@@ -55,6 +55,100 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
+        public static bool GetCustomerInfoByPersonID(int? PersonID , ref int? CustomerID, ref string DriverLicenseNumber)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetCustomerInfoByPersonID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                DriverLicenseNumber = (string)reader["DriverLicenseNumber"];
+
+                                CustomerID = (reader["CustomerID"] != DBNull.Value) ? (int?)reader["CustomerID"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
+        public static bool GetCustomerInfoByLicenseNo(string DriverLicenseNumber , ref int? CustomerID, ref int? PersonID)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetCustomerInfoByDriverLicenseNo", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                CustomerID = (reader["CustomerID"] != DBNull.Value) ? (int?)reader["CustomerID"] : null;
+
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
         public static bool DoesCustomerExist(int? CustomerID)
         {
             bool isFound = false;
@@ -70,6 +164,44 @@ namespace CarRental_DataAccessLayer
                         command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.AddWithValue("@CustomerID", (object)CustomerID ?? DBNull.Value);
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        isFound = (int)returnValue.Value == 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
+        public static bool DoesCustomerExist(string DriverLicenseNumber)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_CheckIfCustomerExistsByDriverLicenseNo", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -219,6 +351,42 @@ namespace CarRental_DataAccessLayer
                 clsErrorLogger.LogError(ex);
             }
             return Datatable;
+        }
+
+        public static int? GetCustomerPersonID(int? CustomerID)
+        {
+            int? PersonID = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetCustomerPersonID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@CustomerID", CustomerID);
+
+                        SqlParameter outputPersonIDParameter = new SqlParameter("@PersonID", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+
+                        command.Parameters.Add(outputPersonIDParameter);
+
+                        command.ExecuteNonQuery();
+
+                        PersonID = (int)outputPersonIDParameter.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                PersonID = null;
+            }
+            return PersonID;
         }
 
     }

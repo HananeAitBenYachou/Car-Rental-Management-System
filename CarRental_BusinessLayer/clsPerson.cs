@@ -41,7 +41,7 @@ namespace CarRental_BusinessLayer
             ImagePath = null;
         }
 
-        private clsPerson(int? PersonID, string NationalNo, string FirstName, string LastName, DateTime BirthDate, enGender Gender,
+        protected clsPerson(int? PersonID, string NationalNo, string FirstName, string LastName, DateTime BirthDate, enGender Gender,
             string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
             Mode = enMode.Update;
