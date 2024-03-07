@@ -123,6 +123,12 @@
     <Compile Include="Users\UserControls\ucUserCard.Designer.cs">
       <DependentUpon>ucUserCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vehicles\frmListVehicles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehicles\frmListVehicles.Designer.cs">
+      <DependentUpon>frmListVehicles.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Customers\frmAddUpdateCustomer.resx">
       <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\UserControls\ucUserCard.resx">
       <DependentUpon>ucUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\frmListVehicles.resx">
+      <DependentUpon>frmListVehicles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
@@ -274,6 +283,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\driving.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3d-car.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

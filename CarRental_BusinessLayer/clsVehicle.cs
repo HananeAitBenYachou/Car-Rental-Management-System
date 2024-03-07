@@ -32,11 +32,11 @@ namespace CarRental_BusinessLayer
             VehicleName = default;
             Year = default;
             DriveTypeID = default;
-            Engine = default;
+            Engine = null;
             FuelTypeID = default;
             NumDoors = default;
             Mileage = default;
-            PlateNumber = default;
+            PlateNumber = null;
             RentalPricePerDay = default;
             IsAvailableForRent = default;
         }
@@ -127,6 +127,5 @@ namespace CarRental_BusinessLayer
         {
             return clsVehicleData.GetAllVehicles();
         }
-
     }
 }

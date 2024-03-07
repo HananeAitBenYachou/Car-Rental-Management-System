@@ -8,10 +8,7 @@ namespace CarRental_DataAccessLayer
 {
     public class clsVehicleData
     {
-        public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID, ref int SubModelID, 
-            ref string VehicleName, ref short Year, ref int DriveTypeID, ref string Engine, ref int FuelTypeID,
-            ref byte NumDoors, ref int Mileage, ref string PlateNumber, 
-            ref double RentalPricePerDay, ref bool IsAvailableForRent)
+        public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID, ref int SubModelID, ref string VehicleName, ref short Year, ref int DriveTypeID, ref string Engine, ref int FuelTypeID, ref byte NumDoors, ref int Mileage, ref string PlateNumber, ref double RentalPricePerDay, ref bool IsAvailableForRent)
         {
             bool isFound = false;
 
@@ -46,7 +43,7 @@ namespace CarRental_DataAccessLayer
 
                                 DriveTypeID = (int)reader["DriveTypeID"];
 
-                                Engine = (string)reader["Engine"];
+                                Engine = (reader["Engine"] != DBNull.Value) ? (string)reader["Engine"] : null;
 
                                 FuelTypeID = (int)reader["FuelTypeID"];
 
@@ -54,7 +51,7 @@ namespace CarRental_DataAccessLayer
 
                                 Mileage = (int)reader["Mileage"];
 
-                                PlateNumber = (string)reader["PlateNumber"];
+                                PlateNumber = (reader["PlateNumber"] != DBNull.Value) ? (string)reader["PlateNumber"] : null;
 
                                 RentalPricePerDay = (double)reader["RentalPricePerDay"];
 
@@ -118,9 +115,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName, 
-            short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, 
-            int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+        public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
         {
             int? VehicleID = null;
 
@@ -139,25 +134,25 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@VehicleName", VehicleName);
                         command.Parameters.AddWithValue("@Year", Year);
                         command.Parameters.AddWithValue("@DriveTypeID", DriveTypeID);
-                        command.Parameters.AddWithValue("@Engine", Engine);
+                        command.Parameters.AddWithValue("@Engine", (object)Engine ?? DBNull.Value);
                         command.Parameters.AddWithValue("@FuelTypeID", FuelTypeID);
                         command.Parameters.AddWithValue("@NumDoors", NumDoors);
                         command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@PlateNumber", PlateNumber);
+                        command.Parameters.AddWithValue("@PlateNumber", (object)PlateNumber ?? DBNull.Value);
                         command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
                         command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
 
 
-                        SqlParameter outputParameter = new SqlParameter("@NewVehicleID", SqlDbType.Int)
+                        SqlParameter outputVehicleIDParameter = new SqlParameter("@NewVehicleID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputParameter);
+                        command.Parameters.Add(outputVehicleIDParameter);
 
                         command.ExecuteNonQuery();
 
-                        VehicleID = (int)outputParameter.Value;
+                        VehicleID = (int)outputVehicleIDParameter.Value;
                     }
                 }
             }
@@ -170,9 +165,7 @@ namespace CarRental_DataAccessLayer
             return VehicleID;
         }
 
-        public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID,
-            string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, 
-            byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+        public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID, string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
         {
             int rowsAffected = 0;
 
@@ -192,11 +185,11 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@VehicleName", VehicleName);
                         command.Parameters.AddWithValue("@Year", Year);
                         command.Parameters.AddWithValue("@DriveTypeID", DriveTypeID);
-                        command.Parameters.AddWithValue("@Engine", Engine);
+                        command.Parameters.AddWithValue("@Engine", (object)Engine ?? DBNull.Value);
                         command.Parameters.AddWithValue("@FuelTypeID", FuelTypeID);
                         command.Parameters.AddWithValue("@NumDoors", NumDoors);
                         command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@PlateNumber", PlateNumber);
+                        command.Parameters.AddWithValue("@PlateNumber", (object)PlateNumber ?? DBNull.Value);
                         command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
                         command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
 
@@ -273,4 +266,5 @@ namespace CarRental_DataAccessLayer
         }
 
     }
+
 }
