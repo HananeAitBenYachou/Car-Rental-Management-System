@@ -47,6 +47,11 @@
             this.btnAddNewVehicle = new Guna.UI2.WinForms.Guna2Button();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnPreviousPage = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCurrentPage = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNextPage = new Guna.UI2.WinForms.Guna2Button();
+            this.cbPageSizes = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesList)).BeginInit();
             this.cbVehicles.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +85,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvVehiclesList.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvVehiclesList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(235)))), ((int)(((byte)(177)))));
-            this.dgvVehiclesList.Location = new System.Drawing.Point(32, 280);
+            this.dgvVehiclesList.Location = new System.Drawing.Point(32, 246);
             this.dgvVehiclesList.MultiSelect = false;
             this.dgvVehiclesList.Name = "dgvVehiclesList";
             this.dgvVehiclesList.ReadOnly = true;
@@ -195,9 +200,9 @@
             "Doors",
             "Rental Price Per Day",
             "Status"});
-            this.cbFilterByOptions.Location = new System.Drawing.Point(119, 213);
+            this.cbFilterByOptions.Location = new System.Drawing.Point(119, 189);
             this.cbFilterByOptions.Name = "cbFilterByOptions";
-            this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
+            this.cbFilterByOptions.Size = new System.Drawing.Size(236, 41);
             this.cbFilterByOptions.TabIndex = 23;
             this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
             // 
@@ -206,7 +211,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(32, 224);
+            this.label2.Location = new System.Drawing.Point(32, 200);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 21);
             this.label2.TabIndex = 21;
@@ -250,7 +255,7 @@
             "UserName",
             "Country",
             "Is Active"});
-            this.cbTemp.Location = new System.Drawing.Point(341, 212);
+            this.cbTemp.Location = new System.Drawing.Point(374, 188);
             this.cbTemp.Name = "cbTemp";
             this.cbTemp.Size = new System.Drawing.Size(192, 41);
             this.cbTemp.TabIndex = 26;
@@ -270,7 +275,7 @@
             this.btnAddNewVehicle.ForeColor = System.Drawing.Color.White;
             this.btnAddNewVehicle.Image = global::CarRentalManagementSystem.Properties.Resources.plus;
             this.btnAddNewVehicle.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAddNewVehicle.Location = new System.Drawing.Point(1012, 211);
+            this.btnAddNewVehicle.Location = new System.Drawing.Point(1012, 179);
             this.btnAddNewVehicle.Name = "btnAddNewVehicle";
             this.btnAddNewVehicle.Size = new System.Drawing.Size(205, 51);
             this.btnAddNewVehicle.TabIndex = 25;
@@ -292,7 +297,7 @@
             this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFilterValue.IconRight = global::CarRentalManagementSystem.Properties.Resources.search;
             this.txtFilterValue.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtFilterValue.Location = new System.Drawing.Point(341, 211);
+            this.txtFilterValue.Location = new System.Drawing.Point(374, 187);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.PasswordChar = '\0';
@@ -317,12 +322,141 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(91, 80);
             this.guna2ImageButton1.TabIndex = 19;
             // 
+            // btnPreviousPage
+            // 
+            this.btnPreviousPage.BackColor = System.Drawing.Color.Transparent;
+            this.btnPreviousPage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnPreviousPage.BorderRadius = 8;
+            this.btnPreviousPage.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.btnPreviousPage.BorderThickness = 3;
+            this.btnPreviousPage.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnPreviousPage.CheckedState.FillColor = System.Drawing.Color.Tan;
+            this.btnPreviousPage.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnPreviousPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPreviousPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPreviousPage.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnPreviousPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPreviousPage.FillColor = System.Drawing.Color.White;
+            this.btnPreviousPage.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.btnPreviousPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnPreviousPage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnPreviousPage.HoverState.FillColor = System.Drawing.Color.Tan;
+            this.btnPreviousPage.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnPreviousPage.Location = new System.Drawing.Point(513, 695);
+            this.btnPreviousPage.Name = "btnPreviousPage";
+            this.btnPreviousPage.Size = new System.Drawing.Size(78, 45);
+            this.btnPreviousPage.TabIndex = 27;
+            this.btnPreviousPage.Text = "Prev";
+            this.btnPreviousPage.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.btnPreviousPage.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
+            // 
+            // btnCurrentPage
+            // 
+            this.btnCurrentPage.BackColor = System.Drawing.Color.Transparent;
+            this.btnCurrentPage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnCurrentPage.BorderRadius = 8;
+            this.btnCurrentPage.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.btnCurrentPage.BorderThickness = 3;
+            this.btnCurrentPage.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnCurrentPage.CheckedState.FillColor = System.Drawing.Color.Tan;
+            this.btnCurrentPage.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnCurrentPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCurrentPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCurrentPage.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnCurrentPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCurrentPage.FillColor = System.Drawing.Color.White;
+            this.btnCurrentPage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCurrentPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnCurrentPage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnCurrentPage.HoverState.FillColor = System.Drawing.Color.Tan;
+            this.btnCurrentPage.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnCurrentPage.Location = new System.Drawing.Point(591, 695);
+            this.btnCurrentPage.Name = "btnCurrentPage";
+            this.btnCurrentPage.Size = new System.Drawing.Size(78, 45);
+            this.btnCurrentPage.TabIndex = 28;
+            this.btnCurrentPage.Text = "1";
+            this.btnCurrentPage.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.btnCurrentPage.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.BackColor = System.Drawing.Color.Transparent;
+            this.btnNextPage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnNextPage.BorderRadius = 8;
+            this.btnNextPage.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.btnNextPage.BorderThickness = 3;
+            this.btnNextPage.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnNextPage.CheckedState.FillColor = System.Drawing.Color.Tan;
+            this.btnNextPage.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnNextPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNextPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNextPage.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnNextPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNextPage.FillColor = System.Drawing.Color.White;
+            this.btnNextPage.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.btnNextPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnNextPage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnNextPage.HoverState.FillColor = System.Drawing.Color.Tan;
+            this.btnNextPage.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnNextPage.Location = new System.Drawing.Point(669, 695);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(78, 45);
+            this.btnNextPage.TabIndex = 29;
+            this.btnNextPage.Text = "Next";
+            this.btnNextPage.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.btnNextPage.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
+            // 
+            // cbPageSizes
+            // 
+            this.cbPageSizes.BackColor = System.Drawing.Color.Transparent;
+            this.cbPageSizes.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.cbPageSizes.BorderRadius = 22;
+            this.cbPageSizes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbPageSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPageSizes.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.cbPageSizes.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.cbPageSizes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.cbPageSizes.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.cbPageSizes.ForeColor = System.Drawing.Color.White;
+            this.cbPageSizes.ItemHeight = 35;
+            this.cbPageSizes.Items.AddRange(new object[] {
+            "10",
+            "50",
+            "100",
+            "150",
+            "500",
+            "1000"});
+            this.cbPageSizes.Location = new System.Drawing.Point(1114, 690);
+            this.cbPageSizes.Name = "cbPageSizes";
+            this.cbPageSizes.Size = new System.Drawing.Size(103, 41);
+            this.cbPageSizes.StartIndex = 0;
+            this.cbPageSizes.TabIndex = 31;
+            this.cbPageSizes.SelectedIndexChanged += new System.EventHandler(this.cbPageSizes_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(1017, 700);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 23);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Page size :";
+            // 
             // frmListVehicles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1263, 759);
+            this.Controls.Add(this.cbPageSizes);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnNextPage);
+            this.Controls.Add(this.btnCurrentPage);
+            this.Controls.Add(this.btnPreviousPage);
             this.Controls.Add(this.dgvVehiclesList);
             this.Controls.Add(this.cbFilterByOptions);
             this.Controls.Add(this.label2);
@@ -360,5 +494,10 @@
         private Guna.UI2.WinForms.Guna2Button btnAddNewVehicle;
         private Guna.UI2.WinForms.Guna2TextBox txtFilterValue;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2Button btnPreviousPage;
+        private Guna.UI2.WinForms.Guna2Button btnCurrentPage;
+        private Guna.UI2.WinForms.Guna2Button btnNextPage;
+        private Guna.UI2.WinForms.Guna2ComboBox cbPageSizes;
+        private System.Windows.Forms.Label label1;
     }
 }

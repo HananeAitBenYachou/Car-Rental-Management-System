@@ -8,7 +8,10 @@ namespace CarRental_DataAccessLayer
 {
     public class clsVehicleData
     {
-        public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID, ref int SubModelID, ref string VehicleName, ref short Year, ref int DriveTypeID, ref string Engine, ref int FuelTypeID, ref byte NumDoors, ref int Mileage, ref string PlateNumber, ref double RentalPricePerDay, ref bool IsAvailableForRent)
+        public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID, 
+            ref int SubModelID, ref string VehicleName, ref short Year, ref int DriveTypeID,
+            ref string Engine, ref int FuelTypeID, ref byte NumDoors, ref int Mileage, 
+            ref string PlateNumber, ref double RentalPricePerDay, ref bool IsAvailableForRent)
         {
             bool isFound = false;
 
@@ -115,7 +118,9 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+        public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName,
+            short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage,
+            string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
         {
             int? VehicleID = null;
 
@@ -165,7 +170,9 @@ namespace CarRental_DataAccessLayer
             return VehicleID;
         }
 
-        public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID, string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+        public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID,
+            string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID,
+            byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
         {
             int rowsAffected = 0;
 
@@ -192,7 +199,6 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@PlateNumber", (object)PlateNumber ?? DBNull.Value);
                         command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
                         command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
-
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -234,7 +240,7 @@ namespace CarRental_DataAccessLayer
             return rowsAffected != 0;
         }
 
-        public static DataTable GetAllVehicles()
+        public static DataTable GetAllVehicles(int PageNumber , int RowsPerPage)
         {
             DataTable Datatable = new DataTable();
 
@@ -247,6 +253,9 @@ namespace CarRental_DataAccessLayer
                     using (SqlCommand command = new SqlCommand("SP_GetAllVehicles", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@PageNumber", PageNumber);
+                        command.Parameters.AddWithValue("@RowsPerPage", RowsPerPage);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -263,6 +272,42 @@ namespace CarRental_DataAccessLayer
                 clsErrorLogger.LogError(ex);
             }
             return Datatable;
+        }
+
+        public static int GetTotalVehiclesCount()
+        {
+            int TotalCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetTotalVehiclesCount", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        TotalCount = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                TotalCount = 0;
+            }
+            return TotalCount;
         }
 
     }

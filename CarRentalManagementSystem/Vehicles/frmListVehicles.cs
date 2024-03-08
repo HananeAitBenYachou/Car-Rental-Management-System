@@ -26,11 +26,18 @@ namespace CarRentalManagementSystem.Vehicles
 
         private _FilterOptions _SelectedOption;
 
-        private DataView _VehiclesDataView;
+        private DataView _VehiclesDataView = new DataView();
+
+        private int _PageNumber = 1;
+
+        private int _PageSize = 10;
+
+        private int _TotalPages = 0;
 
         public frmListVehicles()
         {
             InitializeComponent();
+            btnPreviousPage.Enabled = false;
         }
 
         private async void _FillMakesInComboBoxAsync()
@@ -153,8 +160,9 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void _RefreshVehiclesList()
         {
-            _VehiclesDataView = clsVehicle.GetAllVehicles().DefaultView;
+            _VehiclesDataView = clsVehicle.GetAllVehicles(_PageNumber, _PageSize).DefaultView;
             dgvVehiclesList.DataSource = _VehiclesDataView;
+
             cbFilterByOptions.SelectedIndex = 0;
         }
 
@@ -174,6 +182,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void frmListVehicles_Load(object sender, EventArgs e)
         {
+            _TotalPages = _GetTotalPages();
             _RefreshVehiclesList();
         }
 
@@ -267,6 +276,43 @@ namespace CarRentalManagementSystem.Vehicles
         private void dgvVehiclesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             showVehicleInformationToolStripMenuItem.PerformClick();
+        }
+
+        private int _GetTotalPages()
+        {
+            return (int)Math.Ceiling((Convert.ToDouble(clsVehicle.GetTotalVehiclesCount()) / _PageSize));
+        }
+
+        private void _UpdateButtonStates()
+        {
+            btnPreviousPage.Enabled = (_PageNumber != 1);
+            btnNextPage.Enabled = (_PageNumber < _TotalPages);
+        }
+
+        private void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (btnPreviousPage.Enabled)
+            {
+                btnCurrentPage.Text = (--_PageNumber).ToString();
+                _RefreshVehiclesList();
+            }
+            _UpdateButtonStates();
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            if (btnNextPage.Enabled)
+            {
+                btnCurrentPage.Text = (++_PageNumber).ToString();
+                _RefreshVehiclesList();
+            }
+            _UpdateButtonStates();
+        }
+
+        private void cbPageSizes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _PageSize = Convert.ToInt16(cbPageSizes.Text);
+            _RefreshVehiclesList();
         }
     }
 }
