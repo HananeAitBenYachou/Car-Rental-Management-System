@@ -31,7 +31,6 @@
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.pbPersonalImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.cbCountries = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
@@ -53,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPersonID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCountry = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalImage)).BeginInit();
             this.SuspendLayout();
@@ -60,9 +60,9 @@
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2GroupBox1.Controls.Add(this.txtCountry);
             this.guna2GroupBox1.Controls.Add(this.pbPersonalImage);
             this.guna2GroupBox1.Controls.Add(this.label12);
-            this.guna2GroupBox1.Controls.Add(this.cbCountries);
             this.guna2GroupBox1.Controls.Add(this.txtEmail);
             this.guna2GroupBox1.Controls.Add(this.label11);
             this.guna2GroupBox1.Controls.Add(this.txtPhone);
@@ -119,23 +119,6 @@
             this.label12.Size = new System.Drawing.Size(79, 21);
             this.label12.TabIndex = 186;
             this.label12.Text = "Country : ";
-            // 
-            // cbCountries
-            // 
-            this.cbCountries.BackColor = System.Drawing.Color.Transparent;
-            this.cbCountries.BorderRadius = 22;
-            this.cbCountries.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbCountries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCountries.Enabled = false;
-            this.cbCountries.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCountries.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCountries.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.cbCountries.ForeColor = System.Drawing.Color.Black;
-            this.cbCountries.ItemHeight = 37;
-            this.cbCountries.Location = new System.Drawing.Point(138, 272);
-            this.cbCountries.Name = "cbCountries";
-            this.cbCountries.Size = new System.Drawing.Size(229, 43);
-            this.cbCountries.TabIndex = 185;
             // 
             // txtEmail
             // 
@@ -497,6 +480,31 @@
             this.label1.TabIndex = 164;
             this.label1.Text = "Person ID :";
             // 
+            // txtCountry
+            // 
+            this.txtCountry.BackColor = System.Drawing.Color.Transparent;
+            this.txtCountry.BorderRadius = 22;
+            this.txtCountry.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCountry.DefaultText = "";
+            this.txtCountry.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCountry.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCountry.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCountry.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCountry.Enabled = false;
+            this.txtCountry.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCountry.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtCountry.ForeColor = System.Drawing.Color.Black;
+            this.txtCountry.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCountry.IconRightSize = new System.Drawing.Size(28, 28);
+            this.txtCountry.Location = new System.Drawing.Point(138, 272);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.PasswordChar = '\0';
+            this.txtCountry.PlaceholderText = "";
+            this.txtCountry.SelectedText = "";
+            this.txtCountry.Size = new System.Drawing.Size(229, 43);
+            this.txtCountry.TabIndex = 191;
+            // 
             // ucPersonCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -515,7 +523,6 @@
 
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private System.Windows.Forms.Label label12;
-        private Guna.UI2.WinForms.Guna2ComboBox cbCountries;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2TextBox txtPhone;
@@ -538,5 +545,6 @@
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2CustomRadioButton rbMale;
         private Guna.UI2.WinForms.Guna2CustomRadioButton rbFemale;
+        private Guna.UI2.WinForms.Guna2TextBox txtCountry;
     }
 }

@@ -193,7 +193,7 @@
             "Vehicle Name",
             "Make",
             "Model",
-            "SubModel",
+            "Sub Model",
             "Drive Type",
             "Fuel Type",
             "Engine",
@@ -337,16 +337,16 @@
             this.btnPreviousPage.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnPreviousPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPreviousPage.FillColor = System.Drawing.Color.White;
-            this.btnPreviousPage.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.btnPreviousPage.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold);
             this.btnPreviousPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnPreviousPage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.btnPreviousPage.HoverState.FillColor = System.Drawing.Color.Tan;
             this.btnPreviousPage.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.btnPreviousPage.Location = new System.Drawing.Point(513, 695);
+            this.btnPreviousPage.Location = new System.Drawing.Point(516, 695);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(78, 45);
             this.btnPreviousPage.TabIndex = 27;
-            this.btnPreviousPage.Text = "Prev";
+            this.btnPreviousPage.Text = "<<";
             this.btnPreviousPage.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.btnPreviousPage.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
             this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
@@ -371,7 +371,7 @@
             this.btnCurrentPage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.btnCurrentPage.HoverState.FillColor = System.Drawing.Color.Tan;
             this.btnCurrentPage.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.btnCurrentPage.Location = new System.Drawing.Point(591, 695);
+            this.btnCurrentPage.Location = new System.Drawing.Point(594, 695);
             this.btnCurrentPage.Name = "btnCurrentPage";
             this.btnCurrentPage.Size = new System.Drawing.Size(78, 45);
             this.btnCurrentPage.TabIndex = 28;
@@ -394,16 +394,16 @@
             this.btnNextPage.DisabledState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnNextPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNextPage.FillColor = System.Drawing.Color.White;
-            this.btnNextPage.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.btnNextPage.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold);
             this.btnNextPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnNextPage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.btnNextPage.HoverState.FillColor = System.Drawing.Color.Tan;
             this.btnNextPage.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.btnNextPage.Location = new System.Drawing.Point(669, 695);
+            this.btnNextPage.Location = new System.Drawing.Point(672, 695);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(78, 45);
             this.btnNextPage.TabIndex = 29;
-            this.btnNextPage.Text = "Next";
+            this.btnNextPage.Text = ">>";
             this.btnNextPage.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.btnNextPage.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
             this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);

@@ -49,32 +49,33 @@ namespace CarRentalManagementSystem.Users.UserControls
             ucPersonCard1.LoadPersonData(User.PersonID);
         }
 
-        public void LoadUserData(int? userID)
+        public bool LoadUserData(int? userID)
         {
             User = clsUser.Find<int?>(userID,enFindUserBy.UserID);
 
             if (User == null)
             {
-                MessageBox.Show($"No user with ID = {userID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Reset();
-                return;
+                MessageBox.Show($"No user with ID = {userID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             _LoadUserData();
+            return true;
         }
 
-        public void LoadUserData(string userName)
+        public bool LoadUserData(string userName)
         {
             User = clsUser.Find<string>(userName, enFindUserBy.UserName);
 
             if (User == null)
             {
-                MessageBox.Show($"No user with username = {userName} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Reset();
-                return;
+                MessageBox.Show($"No user with username = {userName} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-
             _LoadUserData();
+            return true;
         }
 
     }

@@ -59,7 +59,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
             this.btnClose.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnClose.Location = new System.Drawing.Point(864, 710);
+            this.btnClose.Location = new System.Drawing.Point(864, 706);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 173;

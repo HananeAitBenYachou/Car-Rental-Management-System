@@ -16,18 +16,29 @@ namespace CarRentalManagementSystem.Customers
         public frmShowCustomerDetails(int? customerID)
         {
             InitializeComponent();
-            Load += (sender, e) => ucCustomerCard1.LoadCustomerData(customerID);
+
+            Load += (sender, e) =>
+            {
+                if (!ucCustomerCard1.LoadCustomerData(customerID))
+                    btnClose.PerformClick();
+            };
         }
 
         public frmShowCustomerDetails(string driverLicenseNumber)
         {
             InitializeComponent();
-            Load += (sender, e) => ucCustomerCard1.LoadCustomerData(driverLicenseNumber);
+
+            Load += (sender, e) =>
+            {
+                if (!ucCustomerCard1.LoadCustomerData(driverLicenseNumber))
+                    btnClose.PerformClick();
+            };
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

@@ -16,13 +16,23 @@ namespace CarRentalManagementSystem.Users
         public frmShowUserDetails(int? userID)
         {
             InitializeComponent();
-            Load += (sender, e) => ucUserCard1.LoadUserData(userID);
+
+            Load += (sender, e) =>
+            {
+                if(!ucUserCard1.LoadUserData(userID))
+                btnClose.PerformClick();
+            };
         }
 
         public frmShowUserDetails(string userName)
         {
             InitializeComponent();
-            Load += (sender, e) => ucUserCard1.LoadUserData(userName);
+
+            Load += (sender, e) =>
+            {
+                if (!ucUserCard1.LoadUserData(userName))
+                    btnClose.PerformClick();
+            };
         }
 
         private void btnClose_Click(object sender, EventArgs e)

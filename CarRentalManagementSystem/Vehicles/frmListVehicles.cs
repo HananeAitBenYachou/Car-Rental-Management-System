@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,8 +175,13 @@ namespace CarRentalManagementSystem.Vehicles
                 return;
             }
 
-            if (cbFilterByOptions.Text == "Vehicle ID" || cbFilterByOptions.Text == "Doors" || cbFilterByOptions.Text == "Rental Price Per Day")
+            if (cbFilterByOptions.Text == "Vehicle ID" || cbFilterByOptions.Text == "Doors")
                 _VehiclesDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
+
+            else if (cbFilterByOptions.Text == "Rental Price Per Day")
+                _VehiclesDataView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '%{1}%'", cbFilterByOptions.Text, 
+                                                            txtFilterValue.Text.Trim().Replace('.',','));
+
             else
                 _VehiclesDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
         }
@@ -188,7 +194,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enum.TryParse(cbFilterByOptions.Text.Replace(' ','\0'), out _SelectedOption))
+            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ",""), true, out _SelectedOption))
             {
                 txtFilterValue.Visible = false;
                 cbTemp.Visible = true;
@@ -224,8 +230,11 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbFilterByOptions.Text == "Vehicle ID" || cbFilterByOptions.Text == "Doors" || cbFilterByOptions.Text == "Rental Price Per Day")
+            if (cbFilterByOptions.Text == "Vehicle ID" || cbFilterByOptions.Text == "Doors")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            
+            else if(cbFilterByOptions.Text == "Rental Price Per Day")
+                e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',';
         }
 
         private void btnAddNewVehicle_Click(object sender, EventArgs e)
@@ -289,6 +298,12 @@ namespace CarRentalManagementSystem.Vehicles
             btnNextPage.Enabled = (_PageNumber < _TotalPages);
         }
 
+        private void cbPageSizes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _PageSize = Convert.ToInt16(cbPageSizes.Text);
+            _RefreshVehiclesList();
+        }
+
         private void btnPreviousPage_Click(object sender, EventArgs e)
         {
             if (btnPreviousPage.Enabled)
@@ -296,6 +311,7 @@ namespace CarRentalManagementSystem.Vehicles
                 btnCurrentPage.Text = (--_PageNumber).ToString();
                 _RefreshVehiclesList();
             }
+
             _UpdateButtonStates();
         }
 
@@ -307,12 +323,6 @@ namespace CarRentalManagementSystem.Vehicles
                 _RefreshVehiclesList();
             }
             _UpdateButtonStates();
-        }
-
-        private void cbPageSizes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _PageSize = Convert.ToInt16(cbPageSizes.Text);
-            _RefreshVehiclesList();
         }
     }
 }

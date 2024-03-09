@@ -40,26 +40,10 @@ namespace CarRentalManagementSystem.People.UserControls
             dtpBirthDate.Value = DateTime.Now;
 
             pbPersonalImage.Image = Resources.man;
-
-            _FillCountriesInComboBox();
-
-            cbCountries.SelectedIndex = 0;
-        }
-
-        private void _FillCountriesInComboBox()
-        {
-            foreach (DataRow row in clsCountry.GetAllCountries().Rows)
-            {
-                cbCountries.Items.Add((string)row["CountryName"]);
-            }
-
-            cbCountries.SelectedIndex = 0;
         }
 
         private void _LoadPersonData()
         {
-            _FillCountriesInComboBox(); 
-
             PersonID = Person.PersonID;
             
             txtPersonID.Text = PersonID.ToString();
@@ -69,9 +53,9 @@ namespace CarRentalManagementSystem.People.UserControls
             txtPhone.Text = Person.Phone;
             txtEmail.Text = Person.Email ?? string.Empty;
             txtAddress.Text = Person.Address ?? string.Empty;
+            txtCountry.Text = Person.CountryInfo.CountryName;
 
             dtpBirthDate.Value = Person.BirthDate;
-            cbCountries.SelectedIndex = cbCountries.FindString(Person.CountryInfo.CountryName);
 
             rbMale.Checked = (Person.Gender == clsPerson.enGender.Male);
             rbFemale.Checked = !rbMale.Checked;
@@ -82,32 +66,34 @@ namespace CarRentalManagementSystem.People.UserControls
                 pbPersonalImage.ImageLocation = Person.ImagePath;
         }
 
-        public void LoadPersonData(int? personID)
+        public bool LoadPersonData(int? personID)
         {
             Person = clsPerson.Find(personID);
 
             if (Person == null)
             {
-                MessageBox.Show($"No person with ID = {personID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Reset();
-                return;
+                MessageBox.Show($"No person with ID = {personID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             _LoadPersonData();
+            return true;
         }
 
-        public void LoadPersonData(string nationalNo)
+        public bool LoadPersonData(string nationalNo)
         {
             Person = clsPerson.Find(nationalNo);
 
             if (Person == null)
             {
-                MessageBox.Show($"No person with NationalNo = {nationalNo} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Reset();
-                return;
+                MessageBox.Show($"No person with NationalNo = {nationalNo} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             _LoadPersonData();
+            return true;
         }
     }
 }

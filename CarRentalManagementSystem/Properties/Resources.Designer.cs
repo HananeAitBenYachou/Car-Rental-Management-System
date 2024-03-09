@@ -83,6 +83,16 @@ namespace CarRentalManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap car_manufacturing {
+            get {
+                object obj = ResourceManager.GetObject("car-manufacturing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap car_rental {
             get {
                 object obj = ResourceManager.GetObject("car-rental", resourceCulture);

@@ -46,32 +46,34 @@ namespace CarRentalManagementSystem.Customers.UserControls
             ucPersonCard1.LoadPersonData(Customer.PersonID);
         }
 
-        public void LoadCustomerData(int? customerID)
+        public bool LoadCustomerData(int? customerID)
         {
             Customer = clsCustomer.Find<int?>(customerID, enFindCustomerBy.CustomerID);
 
             if (Customer == null)
             {
-                MessageBox.Show($"No customer with ID = {customerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Reset();
-                return;
+                MessageBox.Show($"No customer with ID = {customerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             _LoadCustomerData();
+            return true;
         }
 
-        public void LoadCustomerData(string driverLicenseNumber)
+        public bool LoadCustomerData(string driverLicenseNumber)
         {
             Customer = clsCustomer.Find<string>(driverLicenseNumber, enFindCustomerBy.LicenseNumber);
 
             if (Customer == null)
             {
-                MessageBox.Show($"No customer with License Number = {driverLicenseNumber} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Reset();
-                return;
+                MessageBox.Show($"No customer with License Number = {driverLicenseNumber} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             _LoadCustomerData();
+            return true;
         }
     }
 }
