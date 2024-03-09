@@ -53,7 +53,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool DoesFuelTypeExist(int? FuelTypeID)
+        public static bool GetFuelTypeInfoByName(string FuelTypeName , ref int? FuelTypeID)
         {
             bool isFound = false;
 
@@ -63,22 +63,29 @@ namespace CarRental_DataAccessLayer
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SP_CheckIfFuelTypeExists", connection))
+                    using (SqlCommand command = new SqlCommand("SP_GetFuelTypeInfoByName", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@FuelTypeID", (object)FuelTypeID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@FuelTypeName", FuelTypeName);
 
-                        SqlParameter returnValue = new SqlParameter
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            Direction = ParameterDirection.ReturnValue
-                        };
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
 
-                        command.Parameters.Add(returnValue);
+                                FuelTypeID = (reader["FuelTypeID"] != DBNull.Value) ? (int?)reader["FuelTypeID"] : null;
 
-                        command.ExecuteScalar();
+                            }
 
-                        isFound = (int)returnValue.Value == 1;
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
                     }
                 }
             }
@@ -89,101 +96,6 @@ namespace CarRental_DataAccessLayer
                 isFound = false;
             }
             return isFound;
-        }
-
-        public static int? AddNewFuelType(string FuelTypeName)
-        {
-            int? FuelTypeID = null;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_AddNewFuelType", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@FuelTypeName", FuelTypeName);
-
-
-                        SqlParameter outputParameter = new SqlParameter("@NewFuelTypeID", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-
-                        command.Parameters.Add(outputParameter);
-
-                        command.ExecuteNonQuery();
-
-                        FuelTypeID = (int)outputParameter.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                FuelTypeID = null;
-            }
-            return FuelTypeID;
-        }
-
-        public static bool UpdateFuelTypeInfo(int? FuelTypeID, string FuelTypeName)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_UpdateFuelTypeInfo", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@FuelTypeID", FuelTypeID);
-                        command.Parameters.AddWithValue("@FuelTypeName", FuelTypeName);
-
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                rowsAffected = 0;
-            }
-            return rowsAffected != 0;
-        }
-
-        public static bool DeleteFuelType(int? FuelTypeID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteFuelType", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@FuelTypeID", (object)FuelTypeID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-            }
-            return rowsAffected != 0;
         }
 
         public static DataTable GetAllFuelTypes()

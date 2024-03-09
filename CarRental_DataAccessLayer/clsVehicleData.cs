@@ -11,7 +11,7 @@ namespace CarRental_DataAccessLayer
         public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID, 
             ref int SubModelID, ref string VehicleName, ref short Year, ref int DriveTypeID,
             ref string Engine, ref int FuelTypeID, ref byte NumDoors, ref int Mileage, 
-            ref string PlateNumber, ref double RentalPricePerDay, ref bool IsAvailableForRent)
+            ref double RentalPricePerDay, ref bool IsAvailableForRent)
         {
             bool isFound = false;
 
@@ -54,9 +54,7 @@ namespace CarRental_DataAccessLayer
 
                                 Mileage = (int)reader["Mileage"];
 
-                                PlateNumber = (reader["PlateNumber"] != DBNull.Value) ? (string)reader["PlateNumber"] : null;
-
-                                RentalPricePerDay = (double)reader["RentalPricePerDay"];
+                                RentalPricePerDay = Convert.ToDouble(reader["RentalPricePerDay"]);
 
                                 IsAvailableForRent = (bool)reader["IsAvailableForRent"];
 
@@ -120,7 +118,7 @@ namespace CarRental_DataAccessLayer
 
         public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName,
             short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage,
-            string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+            double RentalPricePerDay, bool IsAvailableForRent)
         {
             int? VehicleID = null;
 
@@ -143,7 +141,6 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@FuelTypeID", FuelTypeID);
                         command.Parameters.AddWithValue("@NumDoors", NumDoors);
                         command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@PlateNumber", (object)PlateNumber ?? DBNull.Value);
                         command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
                         command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
 
@@ -172,7 +169,7 @@ namespace CarRental_DataAccessLayer
 
         public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID,
             string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID,
-            byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+            byte NumDoors, int Mileage,double RentalPricePerDay, bool IsAvailableForRent)
         {
             int rowsAffected = 0;
 
@@ -196,7 +193,6 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@FuelTypeID", FuelTypeID);
                         command.Parameters.AddWithValue("@NumDoors", NumDoors);
                         command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@PlateNumber", (object)PlateNumber ?? DBNull.Value);
                         command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
                         command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
 

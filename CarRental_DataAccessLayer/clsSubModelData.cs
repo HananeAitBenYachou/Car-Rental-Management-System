@@ -55,7 +55,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool DoesSubModelExist(int? SubModelID)
+        public static bool GetSubModelInfoByName(string SubModelName , ref int? SubModelID, ref int ModelID)
         {
             bool isFound = false;
 
@@ -65,22 +65,31 @@ namespace CarRental_DataAccessLayer
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SP_CheckIfSubModelExists", connection))
+                    using (SqlCommand command = new SqlCommand("SP_GetSubModelInfoByName", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@SubModelID", (object)SubModelID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@SubModelName", SubModelName);
 
-                        SqlParameter returnValue = new SqlParameter
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            Direction = ParameterDirection.ReturnValue
-                        };
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
 
-                        command.Parameters.Add(returnValue);
+                                ModelID = (int)reader["ModelID"];
 
-                        command.ExecuteScalar();
+                                SubModelID = (reader["SubModelID"] != DBNull.Value) ? (int?)reader["SubModelID"] : null;
 
-                        isFound = (int)returnValue.Value == 1;
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
                     }
                 }
             }
@@ -91,103 +100,6 @@ namespace CarRental_DataAccessLayer
                 isFound = false;
             }
             return isFound;
-        }
-
-        public static int? AddNewSubModel(int ModelID, string SubModelName)
-        {
-            int? SubModelID = null;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_AddNewSubModel", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@ModelID", ModelID);
-                        command.Parameters.AddWithValue("@SubModelName", SubModelName);
-
-
-                        SqlParameter outputParameter = new SqlParameter("@NewSubModelID", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-
-                        command.Parameters.Add(outputParameter);
-
-                        command.ExecuteNonQuery();
-
-                        SubModelID = (int)outputParameter.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                SubModelID = null;
-            }
-            return SubModelID;
-        }
-
-        public static bool UpdateSubModelInfo(int? SubModelID, int ModelID, string SubModelName)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_UpdateSubModelInfo", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@SubModelID", SubModelID);
-                        command.Parameters.AddWithValue("@ModelID", ModelID);
-                        command.Parameters.AddWithValue("@SubModelName", SubModelName);
-
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                rowsAffected = 0;
-            }
-            return rowsAffected != 0;
-        }
-
-        public static bool DeleteSubModel(int? SubModelID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteSubModel", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@SubModelID", (object)SubModelID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-            }
-            return rowsAffected != 0;
         }
 
         public static DataTable GetAllSubModels()
@@ -203,6 +115,39 @@ namespace CarRental_DataAccessLayer
                     using (SqlCommand command = new SqlCommand("SP_GetAllSubModels", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Datatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return Datatable;
+        }
+
+        public static DataTable GetAllSubModelsPerModel(int ModelID)
+        {
+            DataTable Datatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetAllSubModelsPerModel", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@ModelID", ModelID);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {

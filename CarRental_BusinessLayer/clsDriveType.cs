@@ -26,6 +26,18 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
+        public static clsDriveType Find(string DriveTypeName)
+        {
+            int? DriveTypeID = default;
+
+            bool isFound = clsDriveTypeData.GetDriveTypeInfoByName(DriveTypeName, ref DriveTypeID);
+
+            if (isFound)
+                return new clsDriveType(DriveTypeID, DriveTypeName);
+            else
+                return null;
+        }
+
         public static DataTable GetAllDriveTypes()
         {
             return clsDriveTypeData.GetAllDriveTypes();

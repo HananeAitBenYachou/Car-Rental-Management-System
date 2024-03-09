@@ -76,7 +76,7 @@ namespace CarRentalManagementSystem.Customers
 
             if (_Customer == null)
             {
-                MessageBox.Show($"No user with CustomerID = {_CustomerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No customer with CustomerID = {_CustomerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }

@@ -20,7 +20,7 @@ namespace CarRentalManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListVehicles());
+            Application.Run(new frmAddUpdateVehicle(272871));
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

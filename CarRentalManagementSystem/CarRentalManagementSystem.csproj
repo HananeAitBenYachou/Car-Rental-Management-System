@@ -123,6 +123,12 @@
     <Compile Include="Users\UserControls\ucUserCard.Designer.cs">
       <DependentUpon>ucUserCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vehicles\frmAddUpdateVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehicles\frmAddUpdateVehicle.Designer.cs">
+      <DependentUpon>frmAddUpdateVehicle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vehicles\frmListVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\UserControls\ucUserCard.resx">
       <DependentUpon>ucUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\frmAddUpdateVehicle.resx">
+      <DependentUpon>frmAddUpdateVehicle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vehicles\frmListVehicles.resx">
       <DependentUpon>frmListVehicles.cs</DependentUpon>

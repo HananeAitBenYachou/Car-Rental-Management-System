@@ -53,7 +53,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool DoesMakeExist(int? MakeID)
+        public static bool GetMakeInfoByName(string Make, ref int? MakeID)
         {
             bool isFound = false;
 
@@ -63,22 +63,28 @@ namespace CarRental_DataAccessLayer
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SP_CheckIfMakeExists", connection))
+                    using (SqlCommand command = new SqlCommand("SP_GetMakeInfoByName", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@MakeID", (object)MakeID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Make", Make);
 
-                        SqlParameter returnValue = new SqlParameter
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            Direction = ParameterDirection.ReturnValue
-                        };
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
 
-                        command.Parameters.Add(returnValue);
+                                MakeID = (reader["MakeID"] != DBNull.Value) ? (int?)reader["MakeID"] : null;
+                            }
 
-                        command.ExecuteScalar();
-
-                        isFound = (int)returnValue.Value == 1;
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
                     }
                 }
             }
@@ -89,101 +95,6 @@ namespace CarRental_DataAccessLayer
                 isFound = false;
             }
             return isFound;
-        }
-
-        public static int? AddNewMake(string Make)
-        {
-            int? MakeID = null;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_AddNewMake", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@Make", Make);
-
-
-                        SqlParameter outputParameter = new SqlParameter("@NewMakeID", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-
-                        command.Parameters.Add(outputParameter);
-
-                        command.ExecuteNonQuery();
-
-                        MakeID = (int)outputParameter.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                MakeID = null;
-            }
-            return MakeID;
-        }
-
-        public static bool UpdateMakeInfo(int? MakeID, string Make)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_UpdateMakeInfo", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@MakeID", MakeID);
-                        command.Parameters.AddWithValue("@Make", Make);
-
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                rowsAffected = 0;
-            }
-            return rowsAffected != 0;
-        }
-
-        public static bool DeleteMake(int? MakeID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteMake", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@MakeID", (object)MakeID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-            }
-            return rowsAffected != 0;
         }
 
         public static DataTable GetAllMakes()

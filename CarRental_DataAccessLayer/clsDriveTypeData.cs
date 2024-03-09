@@ -53,7 +53,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool DoesDriveTypeExist(int? DriveTypeID)
+        public static bool GetDriveTypeInfoByName(string DriveTypeName ,ref int? DriveTypeID)
         {
             bool isFound = false;
 
@@ -63,22 +63,28 @@ namespace CarRental_DataAccessLayer
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SP_CheckIfDriveTypeExists", connection))
+                    using (SqlCommand command = new SqlCommand("SP_GetDriveTypeInfoByName", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@DriveTypeID", (object)DriveTypeID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@DriveTypeName", DriveTypeName);
 
-                        SqlParameter returnValue = new SqlParameter
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            Direction = ParameterDirection.ReturnValue
-                        };
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
 
-                        command.Parameters.Add(returnValue);
+                                DriveTypeID = (reader["DriveTypeID"] != DBNull.Value) ? (int?)reader["DriveTypeID"] : null;
+                            }
 
-                        command.ExecuteScalar();
-
-                        isFound = (int)returnValue.Value == 1;
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
                     }
                 }
             }
@@ -89,101 +95,6 @@ namespace CarRental_DataAccessLayer
                 isFound = false;
             }
             return isFound;
-        }
-
-        public static int? AddNewDriveType(string DriveTypeName)
-        {
-            int? DriveTypeID = null;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_AddNewDriveType", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@DriveTypeName", DriveTypeName);
-
-
-                        SqlParameter outputParameter = new SqlParameter("@NewDriveTypeID", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-
-                        command.Parameters.Add(outputParameter);
-
-                        command.ExecuteNonQuery();
-
-                        DriveTypeID = (int)outputParameter.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                DriveTypeID = null;
-            }
-            return DriveTypeID;
-        }
-
-        public static bool UpdateDriveTypeInfo(int? DriveTypeID, string DriveTypeName)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_UpdateDriveTypeInfo", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@DriveTypeID", DriveTypeID);
-                        command.Parameters.AddWithValue("@DriveTypeName", DriveTypeName);
-
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                rowsAffected = 0;
-            }
-            return rowsAffected != 0;
-        }
-
-        public static bool DeleteDriveType(int? DriveTypeID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteDriveType", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@DriveTypeID", (object)DriveTypeID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-            }
-            return rowsAffected != 0;
         }
 
         public static DataTable GetAllDriveTypes()

@@ -9,11 +9,15 @@ namespace CarRental_BusinessLayer
         public int MakeID { get; set; }
         public string ModelName { get; set; }
 
+        public clsMake MakeInfo { get; }
+
         private clsModel(int? ModelID, int MakeID, string ModelName)
         {
             this.ModelID = ModelID;
             this.MakeID = MakeID;
             this.ModelName = ModelName;
+
+            MakeInfo = clsMake.Find(MakeID);
         }
 
         public static clsModel Find(int? ModelID)
@@ -29,9 +33,27 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
+        public static clsModel Find(string ModelName)
+        {
+            int MakeID = default;
+            int? ModelID = default;
+
+            bool isFound = clsModelData.GetModelInfoByName(ModelName , ref ModelID, ref MakeID);
+
+            if (isFound)
+                return new clsModel(ModelID, MakeID, ModelName);
+            else
+                return null;
+        }
+
         public static DataTable GetAllModels()
         {
             return clsModelData.GetAllModels();
+        }
+
+        public static DataTable GetAllModelsPerMake(int MakeID)
+        {
+            return clsModelData.GetAllModelsPerMake(MakeID);
         }
 
     }

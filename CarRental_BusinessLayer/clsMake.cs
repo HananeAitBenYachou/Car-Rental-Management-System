@@ -26,6 +26,18 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
+        public static clsMake Find(string Make)
+        {
+            int? MakeID = default;
+
+            bool isFound = clsMakeData.GetMakeInfoByName(Make , ref MakeID);
+
+            if (isFound)
+                return new clsMake(MakeID, Make);
+            else
+                return null;
+        }
+
         public static DataTable GetAllMakes()
         {
             return clsMakeData.GetAllMakes();

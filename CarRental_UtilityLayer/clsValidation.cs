@@ -40,5 +40,19 @@ namespace CarRental_UtilityLayer
             return IsMatch(pattern, email);
         }
 
+        public static bool IsValidYear(string year)
+        {
+            DateTime temp;
+            
+            if(DateTime.TryParseExact(year, "yyyy", null,
+                System.Globalization.DateTimeStyles.None, out temp))
+            {
+                return temp.Year >= DateTime.Now.AddYears(-150).Year && 
+                    temp.Year <= DateTime.Now.Year;
+            }
+
+            return false;
+        }
+
     }
 }

@@ -9,11 +9,14 @@ namespace CarRental_BusinessLayer
         public int ModelID { get; set; }
         public string SubModelName { get; set; }
    
+        public clsModel ModelInfo { get; }
         private clsSubModel(int? SubModelID, int ModelID, string SubModelName)
         {
             this.SubModelID = SubModelID;
             this.ModelID = ModelID;
             this.SubModelName = SubModelName;
+
+            this.ModelInfo = clsModel.Find(ModelID);
         }
 
         public static clsSubModel Find(int? SubModelID)
@@ -29,9 +32,27 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
+        public static clsSubModel Find(string SubModelName)
+        {
+            int ModelID = default;
+            int? SubModelID = default;
+
+            bool isFound = clsSubModelData.GetSubModelInfoByName(SubModelName , ref SubModelID, ref ModelID);
+
+            if (isFound)
+                return new clsSubModel(SubModelID, ModelID, SubModelName);
+            else
+                return null;
+        }
+
         public static DataTable GetAllSubModels()
         {
             return clsSubModelData.GetAllSubModels();
+        }
+
+        public static DataTable GetAllSubModelsPerModel(int ModelID)
+        {
+            return clsSubModelData.GetAllSubModelsPerModel(ModelID);
         }
 
     }

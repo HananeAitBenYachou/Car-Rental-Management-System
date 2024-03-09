@@ -18,9 +18,12 @@ namespace CarRental_BusinessLayer
         public int FuelTypeID { get; set; }
         public byte NumDoors { get; set; }
         public int Mileage { get; set; }
-        public string PlateNumber { get; set; }
         public double RentalPricePerDay { get; set; }
         public bool IsAvailableForRent { get; set; }
+
+        public clsSubModel SubModelInfo { get; }
+        public clsDriveType DriveTypeInfo { get; }
+        public clsFuelType FuelTypeInfo { get; }
 
         public clsVehicle()
         {
@@ -36,11 +39,12 @@ namespace CarRental_BusinessLayer
             FuelTypeID = default;
             NumDoors = default;
             Mileage = default;
-            PlateNumber = null;
             RentalPricePerDay = default;
             IsAvailableForRent = default;
         }
-        private clsVehicle(int? VehicleID, int MakeID, int ModelID, int SubModelID, string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage, string PlateNumber, double RentalPricePerDay, bool IsAvailableForRent)
+        private clsVehicle(int? VehicleID, int MakeID, int ModelID, int SubModelID, string VehicleName,
+            short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors,
+            int Mileage,double RentalPricePerDay, bool IsAvailableForRent)
         {
             _Mode = enMode.Update;
             this.VehicleID = VehicleID;
@@ -54,9 +58,12 @@ namespace CarRental_BusinessLayer
             this.FuelTypeID = FuelTypeID;
             this.NumDoors = NumDoors;
             this.Mileage = Mileage;
-            this.PlateNumber = PlateNumber;
             this.RentalPricePerDay = RentalPricePerDay;
             this.IsAvailableForRent = IsAvailableForRent;
+
+            this.SubModelInfo = clsSubModel.Find(SubModelID);
+            this.DriveTypeInfo = clsDriveType.Find(DriveTypeID);
+            this.FuelTypeInfo = clsFuelType.Find(FuelTypeID);
         }
 
         public static clsVehicle Find(int? VehicleID)
@@ -71,14 +78,16 @@ namespace CarRental_BusinessLayer
             int FuelTypeID = default;
             byte NumDoors = default;
             int Mileage = default;
-            string PlateNumber = default;
             double RentalPricePerDay = default;
             bool IsAvailableForRent = default;
 
-            bool isFound = clsVehicleData.GetVehicleInfoByID(VehicleID, ref MakeID, ref ModelID, ref SubModelID, ref VehicleName, ref Year, ref DriveTypeID, ref Engine, ref FuelTypeID, ref NumDoors, ref Mileage, ref PlateNumber, ref RentalPricePerDay, ref IsAvailableForRent);
+            bool isFound = clsVehicleData.GetVehicleInfoByID(VehicleID, ref MakeID, ref ModelID, ref SubModelID, 
+                ref VehicleName, ref Year, ref DriveTypeID, ref Engine, ref FuelTypeID, ref NumDoors, ref Mileage, 
+                ref RentalPricePerDay, ref IsAvailableForRent);
 
             if (isFound)
-                return new clsVehicle(VehicleID, MakeID, ModelID, SubModelID, VehicleName, Year, DriveTypeID, Engine, FuelTypeID, NumDoors, Mileage, PlateNumber, RentalPricePerDay, IsAvailableForRent);
+                return new clsVehicle(VehicleID, MakeID, ModelID, SubModelID, VehicleName, Year, DriveTypeID, Engine,
+                    FuelTypeID, NumDoors, Mileage, RentalPricePerDay, IsAvailableForRent);
             else
                 return null;
         }
@@ -90,13 +99,15 @@ namespace CarRental_BusinessLayer
 
         private bool _AddNewVehicle()
         {
-            VehicleID = clsVehicleData.AddNewVehicle(MakeID, ModelID, SubModelID, VehicleName, Year, DriveTypeID, Engine, FuelTypeID, NumDoors, Mileage, PlateNumber, RentalPricePerDay, IsAvailableForRent);
+            VehicleID = clsVehicleData.AddNewVehicle(MakeID, ModelID, SubModelID, VehicleName, Year,
+                DriveTypeID, Engine, FuelTypeID, NumDoors, Mileage, RentalPricePerDay, IsAvailableForRent);
             return VehicleID.HasValue;
         }
 
         private bool _UpdateVehicle()
         {
-            return clsVehicleData.UpdateVehicleInfo(VehicleID, MakeID, ModelID, SubModelID, VehicleName, Year, DriveTypeID, Engine, FuelTypeID, NumDoors, Mileage, PlateNumber, RentalPricePerDay, IsAvailableForRent);
+            return clsVehicleData.UpdateVehicleInfo(VehicleID, MakeID, ModelID, SubModelID, VehicleName, 
+                Year, DriveTypeID, Engine, FuelTypeID, NumDoors, Mileage, RentalPricePerDay, IsAvailableForRent);
         }
 
         public bool Save()

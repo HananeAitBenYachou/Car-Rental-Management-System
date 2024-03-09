@@ -55,7 +55,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool DoesModelExist(int? ModelID)
+        public static bool GetModelInfoByName(string ModelName , ref int? ModelID, ref int MakeID)
         {
             bool isFound = false;
 
@@ -65,22 +65,30 @@ namespace CarRental_DataAccessLayer
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SP_CheckIfModelExists", connection))
+                    using (SqlCommand command = new SqlCommand("SP_GetModelInfoByName", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@ModelID", (object)ModelID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@ModelName", ModelName);
 
-                        SqlParameter returnValue = new SqlParameter
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            Direction = ParameterDirection.ReturnValue
-                        };
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
 
-                        command.Parameters.Add(returnValue);
+                                MakeID = (int)reader["MakeID"];
 
-                        command.ExecuteScalar();
+                                ModelID = (reader["ModelID"] != DBNull.Value) ? (int?)reader["ModelID"] : null;
+                            }
 
-                        isFound = (int)returnValue.Value == 1;
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
                     }
                 }
             }
@@ -91,103 +99,6 @@ namespace CarRental_DataAccessLayer
                 isFound = false;
             }
             return isFound;
-        }
-
-        public static int? AddNewModel(int MakeID, string ModelName)
-        {
-            int? ModelID = null;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_AddNewModel", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@MakeID", MakeID);
-                        command.Parameters.AddWithValue("@ModelName", ModelName);
-
-
-                        SqlParameter outputParameter = new SqlParameter("@NewModelID", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-
-                        command.Parameters.Add(outputParameter);
-
-                        command.ExecuteNonQuery();
-
-                        ModelID = (int)outputParameter.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                ModelID = null;
-            }
-            return ModelID;
-        }
-
-        public static bool UpdateModelInfo(int? ModelID, int MakeID, string ModelName)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_UpdateModelInfo", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@ModelID", ModelID);
-                        command.Parameters.AddWithValue("@MakeID", MakeID);
-                        command.Parameters.AddWithValue("@ModelName", ModelName);
-
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                rowsAffected = 0;
-            }
-            return rowsAffected != 0;
-        }
-
-        public static bool DeleteModel(int? ModelID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteModel", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@ModelID", (object)ModelID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-            }
-            return rowsAffected != 0;
         }
 
         public static DataTable GetAllModels()
@@ -203,6 +114,39 @@ namespace CarRental_DataAccessLayer
                     using (SqlCommand command = new SqlCommand("SP_GetAllModels", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Datatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return Datatable;
+        }
+
+        public static DataTable GetAllModelsPerMake(int MakeID)
+        {
+            DataTable Datatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetAllModelsPerMake", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@MakeID", MakeID);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
