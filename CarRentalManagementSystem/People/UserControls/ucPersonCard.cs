@@ -1,5 +1,8 @@
 ﻿using CarRental_BusinessLayer;
 using CarRentalManagementSystem.Properties;
+using Guna.UI2.WinForms;
+
+//using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,8 +30,7 @@ namespace CarRentalManagementSystem.People.UserControls
             PersonID = null; 
             Person = null;
 
-
-            foreach (TextBox textBox in this.Controls.OfType<TextBox>())
+            foreach (Guna2TextBox textBox in this.groupBox.Controls.OfType<Guna2TextBox>())
             {
                 textBox.ResetText();
             }

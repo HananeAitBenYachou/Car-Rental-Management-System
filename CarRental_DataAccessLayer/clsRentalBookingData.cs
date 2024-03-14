@@ -9,7 +9,7 @@ namespace CarRental_DataAccessLayer
     {
         public static bool GetRentalBookingInfoByID(int? BookingID, ref int CustomerID, ref int VehicleID, 
             ref DateTime RentalStartDate, ref DateTime RentalEndDate, ref string PickupLocation, 
-            ref string DropoffLocation, ref byte InitialRentalDays, ref float RentalPricePerDay, 
+            ref string DropoffLocation, ref int InitialRentalDays, ref float RentalPricePerDay, 
             ref float InitialTotalDueAmount, ref string InitialCheckNotes)
         {
             bool isFound = false;
@@ -45,11 +45,11 @@ namespace CarRental_DataAccessLayer
 
                                 DropoffLocation = (string)reader["DropoffLocation"];
 
-                                InitialRentalDays = (byte)reader["InitialRentalDays"];
+                                InitialRentalDays = (int)reader["InitialRentalDays"];
 
-                                RentalPricePerDay = (float)reader["RentalPricePerDay"];
+                                RentalPricePerDay = Convert.ToSingle(reader["RentalPricePerDay"]);
 
-                                InitialTotalDueAmount = (float)reader["InitialTotalDueAmount"];
+                                InitialTotalDueAmount = Convert.ToSingle(reader["InitialTotalDueAmount"]);
 
                                 InitialCheckNotes = (reader["InitialCheckNotes"] != DBNull.Value) ? (string)reader["InitialCheckNotes"] : null;
 
@@ -113,7 +113,7 @@ namespace CarRental_DataAccessLayer
 
         public static int? AddNewRentalBooking(int CustomerID, int VehicleID, DateTime RentalStartDate,
             DateTime RentalEndDate, string PickupLocation, string DropoffLocation,
-            byte InitialRentalDays, float RentalPricePerDay, float InitialTotalDueAmount, string InitialCheckNotes)
+            float RentalPricePerDay, string InitialCheckNotes)
         {
             int? BookingID = null;
 
@@ -132,9 +132,7 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@RentalEndDate", RentalEndDate);
                         command.Parameters.AddWithValue("@PickupLocation", PickupLocation);
                         command.Parameters.AddWithValue("@DropoffLocation", DropoffLocation);
-                        command.Parameters.AddWithValue("@InitialRentalDays", InitialRentalDays);
                         command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
-                        command.Parameters.AddWithValue("@InitialTotalDueAmount", InitialTotalDueAmount);
                         command.Parameters.AddWithValue("@InitialCheckNotes", (object)InitialCheckNotes ?? DBNull.Value);
 
 
@@ -162,8 +160,8 @@ namespace CarRental_DataAccessLayer
 
         public static bool UpdateRentalBookingInfo(int? BookingID, int CustomerID, int VehicleID,
             DateTime RentalStartDate, DateTime RentalEndDate, string PickupLocation,
-            string DropoffLocation, byte InitialRentalDays, float RentalPricePerDay,
-            float InitialTotalDueAmount, string InitialCheckNotes)
+            string DropoffLocation, float RentalPricePerDay,
+            string InitialCheckNotes)
         {
             int rowsAffected = 0;
 
@@ -183,9 +181,7 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@RentalEndDate", RentalEndDate);
                         command.Parameters.AddWithValue("@PickupLocation", PickupLocation);
                         command.Parameters.AddWithValue("@DropoffLocation", DropoffLocation);
-                        command.Parameters.AddWithValue("@InitialRentalDays", InitialRentalDays);
                         command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
-                        command.Parameters.AddWithValue("@InitialTotalDueAmount", InitialTotalDueAmount);
                         command.Parameters.AddWithValue("@InitialCheckNotes", (object)InitialCheckNotes ?? DBNull.Value);
 
 

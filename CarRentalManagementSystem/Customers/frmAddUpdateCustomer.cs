@@ -21,6 +21,13 @@ namespace CarRentalManagementSystem.Customers
         private enum _enMode { AddNew = 0, Update = 1 };
         private _enMode _Mode = _enMode.AddNew;
 
+        public event EventHandler<int?> NewCustomerAdded;
+        protected virtual void OnNewCustomerAdded()
+        {
+            NewCustomerAdded?.Invoke(this, _CustomerID);
+        }
+        
+
         private int? _CustomerID = null;
 
         private clsCustomer _Customer = null;
@@ -147,10 +154,10 @@ namespace CarRentalManagementSystem.Customers
             return true;
         }
 
-        private void _SaveCustomerData()
+        private bool _SaveCustomerData()
         {
             if (!_IsPersonImageHandledSuccessfully())
-                return;
+                return false;
 
             _Customer.NationalNo = txtNationalNo.Text.Trim();
             _Customer.FirstName = txtFirstName.Text.Trim();
@@ -167,7 +174,7 @@ namespace CarRentalManagementSystem.Customers
             if (!_Customer.Save())
             {
                 MessageBox.Show("Failed to save the data !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             else
@@ -176,8 +183,12 @@ namespace CarRentalManagementSystem.Customers
 
                 _Mode = _enMode.Update;
                 lblTitle.Text = "Update Customer";
-                txtCustomerID.Text = _Customer.CustomerID.ToString();
+
+                _CustomerID = _Customer.CustomerID;
+                txtCustomerID.Text = _CustomerID.ToString();
             }
+
+            return true;
         }
 
         private void frmAddUpdateCustomer_Load(object sender, EventArgs e)
@@ -309,7 +320,8 @@ namespace CarRentalManagementSystem.Customers
                 return;
             }
 
-            _SaveCustomerData();
+            if(_SaveCustomerData())
+                OnNewCustomerAdded();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

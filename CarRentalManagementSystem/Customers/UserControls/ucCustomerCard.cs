@@ -1,4 +1,5 @@
 ﻿using CarRental_BusinessLayer;
+using CarRentalManagementSystem.People.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,9 +29,9 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         public void Reset()
         {
-            txtCustomerID.Text = "N/A";
-            txtLicenseNo.ResetText();
             ucPersonCard1.Reset();
+            txtCustomerID.Text = "N/A";
+            txtLicenseNo.Text = "";
 
             CustomerID = null;
             Customer = null;
@@ -52,8 +53,8 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
             if (Customer == null)
             {
-                Reset();
                 MessageBox.Show($"No customer with ID = {customerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Reset();
                 return false;
             }
 

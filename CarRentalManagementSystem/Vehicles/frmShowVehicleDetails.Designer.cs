@@ -32,9 +32,9 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ucVehicleDetails1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ucVehicleDetails1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleDetails();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(481, 21);
+            this.lblTitle.Location = new System.Drawing.Point(456, 21);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(155, 28);
             this.lblTitle.TabIndex = 2;
@@ -71,20 +71,13 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(989, 73);
             this.guna2GradientPanel1.TabIndex = 175;
             // 
-            // guna2ImageButton1
+            // ucVehicleDetails1
             // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.car_manufacturing;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(423, 9);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.TabIndex = 3;
+            this.ucVehicleDetails1.BackColor = System.Drawing.Color.White;
+            this.ucVehicleDetails1.Location = new System.Drawing.Point(18, 88);
+            this.ucVehicleDetails1.Name = "ucVehicleDetails1";
+            this.ucVehicleDetails1.Size = new System.Drawing.Size(949, 522);
+            this.ucVehicleDetails1.TabIndex = 177;
             // 
             // btnClose
             // 
@@ -106,13 +99,20 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ucVehicleDetails1
+            // guna2ImageButton1
             // 
-            this.ucVehicleDetails1.BackColor = System.Drawing.Color.White;
-            this.ucVehicleDetails1.Location = new System.Drawing.Point(18, 88);
-            this.ucVehicleDetails1.Name = "ucVehicleDetails1";
-            this.ucVehicleDetails1.Size = new System.Drawing.Size(949, 522);
-            this.ucVehicleDetails1.TabIndex = 177;
+            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.car_manufacturing;
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(398, 9);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton1.TabIndex = 3;
             // 
             // frmShowVehicleDetails
             // 
@@ -141,6 +141,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label lblTitle;
-        private UserControls.ucVehicleDetails ucVehicleDetails1;
+        private UserControls.ucVehicleCard ucVehicleDetails1;
     }
 }

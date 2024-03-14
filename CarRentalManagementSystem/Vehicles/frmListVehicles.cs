@@ -244,17 +244,24 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void addNewVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Not Implemented yet !
+            frmAddUpdateVehicle form = new frmAddUpdateVehicle();
+            form.ShowDialog();
+
+            _RefreshVehiclesList();
         }
 
         private void editVehiclesInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Not Implemented yet !
+            frmAddUpdateVehicle form = new frmAddUpdateVehicle((int)dgvVehiclesList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
+
+            _RefreshVehiclesList();
         }
 
         private void showVehiclesInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Not Implemented yet !
+            frmShowVehicleDetails form = new frmShowVehicleDetails((int)dgvVehiclesList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();             
         }
 
         private void deleteVehiclesToolStripMenuItem_Click(object sender, EventArgs e)

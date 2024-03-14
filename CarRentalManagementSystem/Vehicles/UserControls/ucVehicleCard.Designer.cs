@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Vehicles.UserControls
 {
-    partial class ucVehicleDetails
+    partial class ucVehicleCard
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.groupBox = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.nudNumberOfDoors = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.lblVehicleStatus = new System.Windows.Forms.Label();
             this.txtDriveType = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtFuelType = new Guna.UI2.WinForms.Guna2TextBox();
@@ -39,7 +40,6 @@
             this.txtRentalPricePerDay = new Guna.UI2.WinForms.Guna2TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.nudNumberOfDoors = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.txtMileage = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtEngine = new Guna.UI2.WinForms.Guna2TextBox();
@@ -55,48 +55,72 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtVehicleID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2GroupBox1.SuspendLayout();
+            this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumberOfDoors)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2GroupBox1
+            // groupBox
             // 
-            this.guna2GroupBox1.BorderColor = System.Drawing.Color.Silver;
-            this.guna2GroupBox1.Controls.Add(this.nudNumberOfDoors);
-            this.guna2GroupBox1.Controls.Add(this.lblVehicleStatus);
-            this.guna2GroupBox1.Controls.Add(this.txtDriveType);
-            this.guna2GroupBox1.Controls.Add(this.txtFuelType);
-            this.guna2GroupBox1.Controls.Add(this.txtSubModel);
-            this.guna2GroupBox1.Controls.Add(this.txtModel);
-            this.guna2GroupBox1.Controls.Add(this.txtMake);
-            this.guna2GroupBox1.Controls.Add(this.label13);
-            this.guna2GroupBox1.Controls.Add(this.txtRentalPricePerDay);
-            this.guna2GroupBox1.Controls.Add(this.label11);
-            this.guna2GroupBox1.Controls.Add(this.label10);
-            this.guna2GroupBox1.Controls.Add(this.txtMileage);
-            this.guna2GroupBox1.Controls.Add(this.label7);
-            this.guna2GroupBox1.Controls.Add(this.txtEngine);
-            this.guna2GroupBox1.Controls.Add(this.label9);
-            this.guna2GroupBox1.Controls.Add(this.txtYear);
-            this.guna2GroupBox1.Controls.Add(this.label6);
-            this.guna2GroupBox1.Controls.Add(this.label5);
-            this.guna2GroupBox1.Controls.Add(this.label3);
-            this.guna2GroupBox1.Controls.Add(this.label4);
-            this.guna2GroupBox1.Controls.Add(this.label2);
-            this.guna2GroupBox1.Controls.Add(this.label12);
-            this.guna2GroupBox1.Controls.Add(this.txtVehicleName);
-            this.guna2GroupBox1.Controls.Add(this.label8);
-            this.guna2GroupBox1.Controls.Add(this.txtVehicleID);
-            this.guna2GroupBox1.Controls.Add(this.label1);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
-            this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(949, 522);
-            this.guna2GroupBox1.TabIndex = 1;
-            this.guna2GroupBox1.Text = "Vehicle Information";
+            this.groupBox.BorderColor = System.Drawing.Color.Silver;
+            this.groupBox.Controls.Add(this.nudNumberOfDoors);
+            this.groupBox.Controls.Add(this.lblVehicleStatus);
+            this.groupBox.Controls.Add(this.txtDriveType);
+            this.groupBox.Controls.Add(this.txtFuelType);
+            this.groupBox.Controls.Add(this.txtSubModel);
+            this.groupBox.Controls.Add(this.txtModel);
+            this.groupBox.Controls.Add(this.txtMake);
+            this.groupBox.Controls.Add(this.label13);
+            this.groupBox.Controls.Add(this.txtRentalPricePerDay);
+            this.groupBox.Controls.Add(this.label11);
+            this.groupBox.Controls.Add(this.label10);
+            this.groupBox.Controls.Add(this.txtMileage);
+            this.groupBox.Controls.Add(this.label7);
+            this.groupBox.Controls.Add(this.txtEngine);
+            this.groupBox.Controls.Add(this.label9);
+            this.groupBox.Controls.Add(this.txtYear);
+            this.groupBox.Controls.Add(this.label6);
+            this.groupBox.Controls.Add(this.label5);
+            this.groupBox.Controls.Add(this.label3);
+            this.groupBox.Controls.Add(this.label4);
+            this.groupBox.Controls.Add(this.label2);
+            this.groupBox.Controls.Add(this.label12);
+            this.groupBox.Controls.Add(this.txtVehicleName);
+            this.groupBox.Controls.Add(this.label8);
+            this.groupBox.Controls.Add(this.txtVehicleID);
+            this.groupBox.Controls.Add(this.label1);
+            this.groupBox.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.Location = new System.Drawing.Point(0, 0);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(949, 522);
+            this.groupBox.TabIndex = 1;
+            this.groupBox.Text = "Vehicle Information";
+            // 
+            // nudNumberOfDoors
+            // 
+            this.nudNumberOfDoors.BackColor = System.Drawing.Color.Transparent;
+            this.nudNumberOfDoors.BorderRadius = 22;
+            this.nudNumberOfDoors.CausesValidation = false;
+            this.nudNumberOfDoors.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudNumberOfDoors.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.nudNumberOfDoors.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.nudNumberOfDoors.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.nudNumberOfDoors.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.nudNumberOfDoors.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nudNumberOfDoors.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.nudNumberOfDoors.Location = new System.Drawing.Point(650, 321);
+            this.nudNumberOfDoors.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudNumberOfDoors.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.nudNumberOfDoors.Name = "nudNumberOfDoors";
+            this.nudNumberOfDoors.Size = new System.Drawing.Size(265, 43);
+            this.nudNumberOfDoors.TabIndex = 1;
+            this.nudNumberOfDoors.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             // 
             // lblVehicleStatus
             // 
@@ -294,30 +318,6 @@
             this.label10.Size = new System.Drawing.Size(144, 21);
             this.label10.TabIndex = 274;
             this.label10.Text = "Number Of Doors :";
-            // 
-            // nudNumberOfDoors
-            // 
-            this.nudNumberOfDoors.BackColor = System.Drawing.Color.Transparent;
-            this.nudNumberOfDoors.BorderRadius = 22;
-            this.nudNumberOfDoors.CausesValidation = false;
-            this.nudNumberOfDoors.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nudNumberOfDoors.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.nudNumberOfDoors.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.nudNumberOfDoors.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.nudNumberOfDoors.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.nudNumberOfDoors.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.nudNumberOfDoors.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.nudNumberOfDoors.Location = new System.Drawing.Point(650, 321);
-            this.nudNumberOfDoors.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudNumberOfDoors.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.nudNumberOfDoors.Name = "nudNumberOfDoors";
-            this.nudNumberOfDoors.Size = new System.Drawing.Size(265, 43);
-            this.nudNumberOfDoors.TabIndex = 1;
-            this.nudNumberOfDoors.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             // 
             // txtMileage
             // 
@@ -564,16 +564,16 @@
             this.label1.TabIndex = 253;
             this.label1.Text = "Vehicle ID :";
             // 
-            // ucVehicleDetails
+            // ucVehicleCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.guna2GroupBox1);
-            this.Name = "ucVehicleDetails";
+            this.Controls.Add(this.groupBox);
+            this.Name = "ucVehicleCard";
             this.Size = new System.Drawing.Size(949, 522);
-            this.guna2GroupBox1.ResumeLayout(false);
-            this.guna2GroupBox1.PerformLayout();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumberOfDoors)).EndInit();
             this.ResumeLayout(false);
 
@@ -581,7 +581,7 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
+        private Guna.UI2.WinForms.Guna2GroupBox groupBox;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2TextBox txtRentalPricePerDay;
         private System.Windows.Forms.Label label11;

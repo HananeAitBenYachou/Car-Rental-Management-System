@@ -22,8 +22,15 @@ namespace CarRentalManagementSystem.Vehicles
         private enum _enMode { AddNew = 0, Update = 1 };
         private _enMode _Mode = _enMode.AddNew;
 
-        private int? _VehicleID = null;
 
+        public event EventHandler<int?> NewVehicleAdded;
+        protected virtual void OnNewVehicleAdded()
+        {
+            NewVehicleAdded?.Invoke(this, _VehicleID);
+        }
+
+
+        private int? _VehicleID = null;
         private clsVehicle _Vehicle = null;
 
         public frmAddUpdateVehicle(int? vehicleID)
@@ -142,8 +149,9 @@ namespace CarRentalManagementSystem.Vehicles
             ckbIsAvailableForRent.Checked = _Vehicle.IsAvailableForRent;
         }
 
-        private void _SaveVehicleData()
+        private bool _SaveVehicleData()
         {
+
             _Vehicle.VehicleName = txtVehicleName.Text.Trim();
             _Vehicle.Year = Convert.ToInt16(txtYear.Text.Trim());
             _Vehicle.Engine = string.IsNullOrEmpty(txtEngine.Text.Trim()) ? null : txtEngine.Text.Trim();
@@ -160,7 +168,7 @@ namespace CarRentalManagementSystem.Vehicles
             if (!_Vehicle.Save())
             {
                 MessageBox.Show("Failed to save the data !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             else
@@ -173,6 +181,8 @@ namespace CarRentalManagementSystem.Vehicles
                 lblTitle.Text = "Update Vehicle";
                 txtVehicleID.Text = _VehicleID.ToString();
             }
+
+            return true;
         }
 
         private void frmAddUpdateVehicle_Load(object sender, EventArgs e)
@@ -191,7 +201,8 @@ namespace CarRentalManagementSystem.Vehicles
                 return;
             }
 
-            _SaveVehicleData();
+            if (_SaveVehicleData())
+                OnNewVehicleAdded();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

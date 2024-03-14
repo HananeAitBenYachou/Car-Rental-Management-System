@@ -199,8 +199,10 @@ namespace CarRentalManagementSystem.Users
                 MessageBox.Show("Data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 _Mode = _enMode.Update;
+                _UserID = _User.UserID;
+
                 lblTitle.Text = "Update User";
-                txtUserID.Text = _User.UserID.ToString();
+                txtUserID.Text = _UserID.ToString();
             }
         }
 

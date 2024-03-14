@@ -11,7 +11,6 @@ namespace CarRental_BusinessLayer
         public int? TransactionID { get; private set; }
         public int BookingID { get; set; }
         public int? ReturnID { get; set; }
-        public string PaymentDetails { get; set; }
         public float PaidInitialTotalDueAmount { get; set; }
         public float ActualTotalDueAmount { get; set; }
         public float TotalRemaining { get; set; }
@@ -25,7 +24,6 @@ namespace CarRental_BusinessLayer
             TransactionID = null;
             BookingID = default;
             ReturnID = null;
-            PaymentDetails = default;
             PaidInitialTotalDueAmount = default;
             ActualTotalDueAmount = default;
             TotalRemaining = default;
@@ -33,13 +31,14 @@ namespace CarRental_BusinessLayer
             TransactionDate = default;
             UpdatedTransactionDate = null;
         }
-        private clsRentalTransaction(int? TransactionID, int BookingID, int? ReturnID, string PaymentDetails, float PaidInitialTotalDueAmount, float ActualTotalDueAmount, float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+        private clsRentalTransaction(int? TransactionID, int BookingID, int? ReturnID, 
+            float PaidInitialTotalDueAmount, float ActualTotalDueAmount, float TotalRemaining, 
+            float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
             _Mode = enMode.Update;
             this.TransactionID = TransactionID;
             this.BookingID = BookingID;
             this.ReturnID = ReturnID;
-            this.PaymentDetails = PaymentDetails;
             this.PaidInitialTotalDueAmount = PaidInitialTotalDueAmount;
             this.ActualTotalDueAmount = ActualTotalDueAmount;
             this.TotalRemaining = TotalRemaining;
@@ -52,7 +51,6 @@ namespace CarRental_BusinessLayer
         {
             int BookingID = default;
             int? ReturnID = default;
-            string PaymentDetails = default;
             float PaidInitialTotalDueAmount = default;
             float ActualTotalDueAmount = default;
             float TotalRemaining = default;
@@ -60,10 +58,10 @@ namespace CarRental_BusinessLayer
             DateTime TransactionDate = default;
             DateTime? UpdatedTransactionDate = default;
 
-            bool isFound = clsRentalTransactionData.GetRentalTransactionInfoByID(TransactionID, ref BookingID, ref ReturnID, ref PaymentDetails, ref PaidInitialTotalDueAmount, ref ActualTotalDueAmount, ref TotalRemaining, ref TotalRefundedAmount, ref TransactionDate, ref UpdatedTransactionDate);
+            bool isFound = clsRentalTransactionData.GetRentalTransactionInfoByID(TransactionID, ref BookingID, ref ReturnID, ref PaidInitialTotalDueAmount, ref ActualTotalDueAmount, ref TotalRemaining, ref TotalRefundedAmount, ref TransactionDate, ref UpdatedTransactionDate);
 
             if (isFound)
-                return new clsRentalTransaction(TransactionID, BookingID, ReturnID, PaymentDetails, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
+                return new clsRentalTransaction(TransactionID, BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
             else
                 return null;
         }
@@ -75,13 +73,13 @@ namespace CarRental_BusinessLayer
 
         private bool _AddNewRentalTransaction()
         {
-            TransactionID = clsRentalTransactionData.AddNewRentalTransaction(BookingID, ReturnID, PaymentDetails, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
+            TransactionID = clsRentalTransactionData.AddNewRentalTransaction(BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
             return TransactionID.HasValue;
         }
 
         private bool _UpdateRentalTransaction()
         {
-            return clsRentalTransactionData.UpdateRentalTransactionInfo(TransactionID, BookingID, ReturnID, PaymentDetails, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
+            return clsRentalTransactionData.UpdateRentalTransactionInfo(TransactionID, BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
         }
 
         public bool Save()

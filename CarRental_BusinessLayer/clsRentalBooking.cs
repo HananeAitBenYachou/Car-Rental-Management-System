@@ -15,10 +15,14 @@ namespace CarRental_BusinessLayer
         public DateTime RentalEndDate { get; set; }
         public string PickupLocation { get; set; }
         public string DropoffLocation { get; set; }
-        public byte InitialRentalDays { get; set; }
+        public int InitialRentalDays { get; set; }
         public float RentalPricePerDay { get; set; }
         public float InitialTotalDueAmount { get; set; }
         public string InitialCheckNotes { get; set; }
+
+        public clsVehicle VehicleInfo { get; }
+        public clsCustomer CustomerInfo { get; }
+
 
         public clsRentalBooking()
         {
@@ -35,7 +39,9 @@ namespace CarRental_BusinessLayer
             InitialTotalDueAmount = default;
             InitialCheckNotes = null;
         }
-        private clsRentalBooking(int? BookingID, int CustomerID, int VehicleID, DateTime RentalStartDate, DateTime RentalEndDate, string PickupLocation, string DropoffLocation, byte InitialRentalDays, float RentalPricePerDay, float InitialTotalDueAmount, string InitialCheckNotes)
+        private clsRentalBooking(int? BookingID, int CustomerID, int VehicleID, DateTime RentalStartDate, 
+            DateTime RentalEndDate, string PickupLocation, string DropoffLocation,
+            int InitialRentalDays, float RentalPricePerDay, float InitialTotalDueAmount, string InitialCheckNotes)
         {
             _Mode = enMode.Update;
             this.BookingID = BookingID;
@@ -49,6 +55,10 @@ namespace CarRental_BusinessLayer
             this.RentalPricePerDay = RentalPricePerDay;
             this.InitialTotalDueAmount = InitialTotalDueAmount;
             this.InitialCheckNotes = InitialCheckNotes;
+
+            this.VehicleInfo = clsVehicle.Find(VehicleID);
+            this.CustomerInfo = clsCustomer.Find<int?>(CustomerID,clsCustomer.enFindCustomerBy.CustomerID);
+
         }
 
         public static clsRentalBooking Find(int? BookingID)
@@ -59,7 +69,7 @@ namespace CarRental_BusinessLayer
             DateTime RentalEndDate = default;
             string PickupLocation = default;
             string DropoffLocation = default;
-            byte InitialRentalDays = default;
+            int InitialRentalDays = default;
             float RentalPricePerDay = default;
             float InitialTotalDueAmount = default;
             string InitialCheckNotes = default;
@@ -79,13 +89,16 @@ namespace CarRental_BusinessLayer
 
         private bool _AddNewRentalBooking()
         {
-            BookingID = clsRentalBookingData.AddNewRentalBooking(CustomerID, VehicleID, RentalStartDate, RentalEndDate, PickupLocation, DropoffLocation, InitialRentalDays, RentalPricePerDay, InitialTotalDueAmount, InitialCheckNotes);
+            BookingID = clsRentalBookingData.AddNewRentalBooking(CustomerID, VehicleID, RentalStartDate,
+                RentalEndDate, PickupLocation, DropoffLocation, RentalPricePerDay, InitialCheckNotes);
             return BookingID.HasValue;
         }
 
         private bool _UpdateRentalBooking()
         {
-            return clsRentalBookingData.UpdateRentalBookingInfo(BookingID, CustomerID, VehicleID, RentalStartDate, RentalEndDate, PickupLocation, DropoffLocation, InitialRentalDays, RentalPricePerDay, InitialTotalDueAmount, InitialCheckNotes);
+            return clsRentalBookingData.UpdateRentalBookingInfo(BookingID, CustomerID, VehicleID,
+                RentalStartDate, RentalEndDate, PickupLocation, DropoffLocation, 
+                RentalPricePerDay, InitialCheckNotes);
         }
 
         public bool Save()

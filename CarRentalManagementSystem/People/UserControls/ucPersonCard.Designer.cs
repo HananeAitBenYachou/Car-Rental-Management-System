@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.groupBox = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.txtCountry = new Guna.UI2.WinForms.Guna2TextBox();
             this.pbPersonalImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
@@ -52,47 +53,71 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPersonID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCountry = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2GroupBox1.SuspendLayout();
+            this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2GroupBox1
+            // groupBox
             // 
-            this.guna2GroupBox1.BorderColor = System.Drawing.Color.Silver;
-            this.guna2GroupBox1.Controls.Add(this.txtCountry);
-            this.guna2GroupBox1.Controls.Add(this.pbPersonalImage);
-            this.guna2GroupBox1.Controls.Add(this.label12);
-            this.guna2GroupBox1.Controls.Add(this.txtEmail);
-            this.guna2GroupBox1.Controls.Add(this.label11);
-            this.guna2GroupBox1.Controls.Add(this.txtPhone);
-            this.guna2GroupBox1.Controls.Add(this.label10);
-            this.guna2GroupBox1.Controls.Add(this.txtAddress);
-            this.guna2GroupBox1.Controls.Add(this.label9);
-            this.guna2GroupBox1.Controls.Add(this.txtNationalNo);
-            this.guna2GroupBox1.Controls.Add(this.label8);
-            this.guna2GroupBox1.Controls.Add(this.label7);
-            this.guna2GroupBox1.Controls.Add(this.label6);
-            this.guna2GroupBox1.Controls.Add(this.rbMale);
-            this.guna2GroupBox1.Controls.Add(this.rbFemale);
-            this.guna2GroupBox1.Controls.Add(this.label5);
-            this.guna2GroupBox1.Controls.Add(this.label4);
-            this.guna2GroupBox1.Controls.Add(this.dtpBirthDate);
-            this.guna2GroupBox1.Controls.Add(this.txtLastName);
-            this.guna2GroupBox1.Controls.Add(this.label3);
-            this.guna2GroupBox1.Controls.Add(this.txtFirstName);
-            this.guna2GroupBox1.Controls.Add(this.label2);
-            this.guna2GroupBox1.Controls.Add(this.txtPersonID);
-            this.guna2GroupBox1.Controls.Add(this.label1);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
-            this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1014, 460);
-            this.guna2GroupBox1.TabIndex = 0;
-            this.guna2GroupBox1.Text = "Personal Information";
+            this.groupBox.BorderColor = System.Drawing.Color.Silver;
+            this.groupBox.Controls.Add(this.txtCountry);
+            this.groupBox.Controls.Add(this.pbPersonalImage);
+            this.groupBox.Controls.Add(this.label12);
+            this.groupBox.Controls.Add(this.txtEmail);
+            this.groupBox.Controls.Add(this.label11);
+            this.groupBox.Controls.Add(this.txtPhone);
+            this.groupBox.Controls.Add(this.label10);
+            this.groupBox.Controls.Add(this.txtAddress);
+            this.groupBox.Controls.Add(this.label9);
+            this.groupBox.Controls.Add(this.txtNationalNo);
+            this.groupBox.Controls.Add(this.label8);
+            this.groupBox.Controls.Add(this.label7);
+            this.groupBox.Controls.Add(this.label6);
+            this.groupBox.Controls.Add(this.rbMale);
+            this.groupBox.Controls.Add(this.rbFemale);
+            this.groupBox.Controls.Add(this.label5);
+            this.groupBox.Controls.Add(this.label4);
+            this.groupBox.Controls.Add(this.dtpBirthDate);
+            this.groupBox.Controls.Add(this.txtLastName);
+            this.groupBox.Controls.Add(this.label3);
+            this.groupBox.Controls.Add(this.txtFirstName);
+            this.groupBox.Controls.Add(this.label2);
+            this.groupBox.Controls.Add(this.txtPersonID);
+            this.groupBox.Controls.Add(this.label1);
+            this.groupBox.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.groupBox.ForeColor = System.Drawing.Color.White;
+            this.groupBox.Location = new System.Drawing.Point(0, 0);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(1014, 460);
+            this.groupBox.TabIndex = 0;
+            this.groupBox.Text = "Personal Information";
+            // 
+            // txtCountry
+            // 
+            this.txtCountry.BackColor = System.Drawing.Color.Transparent;
+            this.txtCountry.BorderRadius = 22;
+            this.txtCountry.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCountry.DefaultText = "";
+            this.txtCountry.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCountry.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCountry.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCountry.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCountry.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCountry.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtCountry.ForeColor = System.Drawing.Color.Black;
+            this.txtCountry.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCountry.IconRightSize = new System.Drawing.Size(28, 28);
+            this.txtCountry.Location = new System.Drawing.Point(138, 272);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.PasswordChar = '\0';
+            this.txtCountry.PlaceholderText = "";
+            this.txtCountry.ReadOnly = true;
+            this.txtCountry.SelectedText = "";
+            this.txtCountry.Size = new System.Drawing.Size(229, 43);
+            this.txtCountry.TabIndex = 191;
             // 
             // pbPersonalImage
             // 
@@ -130,7 +155,6 @@
             this.txtEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEmail.Enabled = false;
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
@@ -141,6 +165,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(229, 43);
             this.txtEmail.TabIndex = 184;
@@ -167,7 +192,6 @@
             this.txtPhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtPhone.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPhone.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPhone.Enabled = false;
             this.txtPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPhone.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
             this.txtPhone.ForeColor = System.Drawing.Color.Black;
@@ -178,6 +202,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PasswordChar = '\0';
             this.txtPhone.PlaceholderText = "";
+            this.txtPhone.ReadOnly = true;
             this.txtPhone.SelectedText = "";
             this.txtPhone.Size = new System.Drawing.Size(229, 43);
             this.txtPhone.TabIndex = 182;
@@ -204,7 +229,6 @@
             this.txtAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtAddress.Enabled = false;
             this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAddress.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
             this.txtAddress.ForeColor = System.Drawing.Color.Black;
@@ -215,6 +239,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PasswordChar = '\0';
             this.txtAddress.PlaceholderText = "";
+            this.txtAddress.ReadOnly = true;
             this.txtAddress.SelectedText = "";
             this.txtAddress.Size = new System.Drawing.Size(634, 105);
             this.txtAddress.TabIndex = 180;
@@ -241,7 +266,6 @@
             this.txtNationalNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtNationalNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtNationalNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNationalNo.Enabled = false;
             this.txtNationalNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNationalNo.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
             this.txtNationalNo.ForeColor = System.Drawing.Color.Black;
@@ -252,6 +276,7 @@
             this.txtNationalNo.Name = "txtNationalNo";
             this.txtNationalNo.PasswordChar = '\0';
             this.txtNationalNo.PlaceholderText = "";
+            this.txtNationalNo.ReadOnly = true;
             this.txtNationalNo.SelectedText = "";
             this.txtNationalNo.Size = new System.Drawing.Size(229, 43);
             this.txtNationalNo.TabIndex = 178;
@@ -379,7 +404,6 @@
             this.txtLastName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtLastName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtLastName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtLastName.Enabled = false;
             this.txtLastName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtLastName.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
             this.txtLastName.ForeColor = System.Drawing.Color.Black;
@@ -390,6 +414,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.PasswordChar = '\0';
             this.txtLastName.PlaceholderText = "";
+            this.txtLastName.ReadOnly = true;
             this.txtLastName.SelectedText = "";
             this.txtLastName.Size = new System.Drawing.Size(229, 43);
             this.txtLastName.TabIndex = 169;
@@ -416,7 +441,6 @@
             this.txtFirstName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtFirstName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtFirstName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFirstName.Enabled = false;
             this.txtFirstName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFirstName.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
             this.txtFirstName.ForeColor = System.Drawing.Color.Black;
@@ -427,6 +451,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.PasswordChar = '\0';
             this.txtFirstName.PlaceholderText = "";
+            this.txtFirstName.ReadOnly = true;
             this.txtFirstName.SelectedText = "";
             this.txtFirstName.Size = new System.Drawing.Size(229, 43);
             this.txtFirstName.TabIndex = 167;
@@ -453,7 +478,6 @@
             this.txtPersonID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtPersonID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPersonID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPersonID.Enabled = false;
             this.txtPersonID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPersonID.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
             this.txtPersonID.ForeColor = System.Drawing.Color.Red;
@@ -464,6 +488,7 @@
             this.txtPersonID.Name = "txtPersonID";
             this.txtPersonID.PasswordChar = '\0';
             this.txtPersonID.PlaceholderText = "";
+            this.txtPersonID.ReadOnly = true;
             this.txtPersonID.SelectedText = "";
             this.txtPersonID.Size = new System.Drawing.Size(229, 43);
             this.txtPersonID.TabIndex = 165;
@@ -480,40 +505,15 @@
             this.label1.TabIndex = 164;
             this.label1.Text = "Person ID :";
             // 
-            // txtCountry
-            // 
-            this.txtCountry.BackColor = System.Drawing.Color.Transparent;
-            this.txtCountry.BorderRadius = 22;
-            this.txtCountry.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCountry.DefaultText = "";
-            this.txtCountry.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCountry.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCountry.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCountry.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCountry.Enabled = false;
-            this.txtCountry.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCountry.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
-            this.txtCountry.ForeColor = System.Drawing.Color.Black;
-            this.txtCountry.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCountry.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtCountry.Location = new System.Drawing.Point(138, 272);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.PasswordChar = '\0';
-            this.txtCountry.PlaceholderText = "";
-            this.txtCountry.SelectedText = "";
-            this.txtCountry.Size = new System.Drawing.Size(229, 43);
-            this.txtCountry.TabIndex = 191;
-            // 
             // ucPersonCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.guna2GroupBox1);
+            this.Controls.Add(this.groupBox);
             this.Name = "ucPersonCard";
             this.Size = new System.Drawing.Size(1014, 460);
-            this.guna2GroupBox1.ResumeLayout(false);
-            this.guna2GroupBox1.PerformLayout();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalImage)).EndInit();
             this.ResumeLayout(false);
 
@@ -521,7 +521,7 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
+        private Guna.UI2.WinForms.Guna2GroupBox groupBox;
         private System.Windows.Forms.Label label12;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private System.Windows.Forms.Label label11;

@@ -9,7 +9,7 @@ namespace CarRental_DataAccessLayer
     public class clsRentalTransactionData
     {
         public static bool GetRentalTransactionInfoByID(int? TransactionID, ref int BookingID, ref int? ReturnID, 
-            ref string PaymentDetails, ref float PaidInitialTotalDueAmount, ref float ActualTotalDueAmount, 
+            ref float PaidInitialTotalDueAmount, ref float ActualTotalDueAmount, 
             ref float TotalRemaining, ref float TotalRefundedAmount, 
             ref DateTime TransactionDate, ref DateTime? UpdatedTransactionDate)
         {
@@ -37,8 +37,6 @@ namespace CarRental_DataAccessLayer
                                 BookingID = (int)reader["BookingID"];
 
                                 ReturnID = (reader["ReturnID"] != DBNull.Value) ? (int?)reader["ReturnID"] : null;
-
-                                PaymentDetails = (string)reader["PaymentDetails"];
 
                                 PaidInitialTotalDueAmount = (float)reader["PaidInitialTotalDueAmount"];
 
@@ -110,7 +108,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewRentalTransaction(int BookingID, int? ReturnID, string PaymentDetails,
+        public static int? AddNewRentalTransaction(int BookingID, int? ReturnID,
             float PaidInitialTotalDueAmount, float ActualTotalDueAmount, 
             float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
@@ -127,7 +125,6 @@ namespace CarRental_DataAccessLayer
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@BookingID", BookingID);
                         command.Parameters.AddWithValue("@ReturnID", (object)ReturnID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@PaymentDetails", PaymentDetails);
                         command.Parameters.AddWithValue("@PaidInitialTotalDueAmount", PaidInitialTotalDueAmount);
                         command.Parameters.AddWithValue("@ActualTotalDueAmount", ActualTotalDueAmount);
                         command.Parameters.AddWithValue("@TotalRemaining", TotalRemaining);
@@ -159,7 +156,7 @@ namespace CarRental_DataAccessLayer
         }
 
         public static bool UpdateRentalTransactionInfo(int? TransactionID, int BookingID, int? ReturnID, 
-            string PaymentDetails, float PaidInitialTotalDueAmount, float ActualTotalDueAmount,
+            float PaidInitialTotalDueAmount, float ActualTotalDueAmount,
             float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
             int rowsAffected = 0;
@@ -176,7 +173,6 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@TransactionID", TransactionID);
                         command.Parameters.AddWithValue("@BookingID", BookingID);
                         command.Parameters.AddWithValue("@ReturnID", (object)ReturnID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@PaymentDetails", PaymentDetails);
                         command.Parameters.AddWithValue("@PaidInitialTotalDueAmount", PaidInitialTotalDueAmount);
                         command.Parameters.AddWithValue("@ActualTotalDueAmount", ActualTotalDueAmount);
                         command.Parameters.AddWithValue("@TotalRemaining", TotalRemaining);

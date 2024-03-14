@@ -142,7 +142,7 @@ namespace CarRental_BusinessLayer
         public static int GetTotalVehiclesCount()
         {
             return clsVehicleData.GetTotalVehiclesCount();
-        }
+        }     
 
     }
 }

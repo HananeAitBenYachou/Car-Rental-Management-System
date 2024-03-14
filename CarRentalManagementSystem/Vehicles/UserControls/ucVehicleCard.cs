@@ -1,5 +1,6 @@
 ﻿using CarRental_BusinessLayer;
 using CarRentalManagementSystem.Properties;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,12 @@ using TheArtOfDevHtmlRenderer.Adapters;
 
 namespace CarRentalManagementSystem.Vehicles.UserControls
 {
-    public partial class ucVehicleDetails : UserControl
+    public partial class ucVehicleCard : UserControl
     {
         public int? VehicleID { get; private set; } = null;
         public clsVehicle Vehicle { get; private set; } = null;
 
-        public ucVehicleDetails()
+        public ucVehicleCard()
         {
             InitializeComponent();
         }
@@ -28,7 +29,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             VehicleID = null;
             Vehicle = null;
 
-            foreach (TextBox textBox in this.Controls.OfType<TextBox>())
+            foreach (Guna2TextBox textBox in groupBox.Controls.OfType<Guna2TextBox>())
             {
                 textBox.ResetText();
             }
@@ -67,6 +68,5 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             
             return true;
         }
-
     }
 }

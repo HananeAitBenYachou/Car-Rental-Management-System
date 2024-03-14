@@ -55,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bookings\frmAddRentalBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bookings\frmAddRentalBooking.Designer.cs">
+      <DependentUpon>frmAddRentalBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\frmShowBookingDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bookings\frmShowBookingDetails.Designer.cs">
+      <DependentUpon>frmShowBookingDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\frmAddUpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +90,12 @@
     </Compile>
     <Compile Include="Customers\UserControls\ucCustomerCard.Designer.cs">
       <DependentUpon>ucCustomerCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\UserControls\ucCustomerCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customers\UserControls\ucCustomerCardWithFilter.Designer.cs">
+      <DependentUpon>ucCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
@@ -141,12 +159,24 @@
     <Compile Include="Vehicles\frmShowVehicleDetails.Designer.cs">
       <DependentUpon>frmShowVehicleDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vehicles\UserControls\ucVehicleDetails.cs">
+    <Compile Include="Vehicles\UserControls\ucVehicleCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vehicles\UserControls\ucVehicleDetails.Designer.cs">
-      <DependentUpon>ucVehicleDetails.cs</DependentUpon>
+    <Compile Include="Vehicles\UserControls\ucVehicleCard.Designer.cs">
+      <DependentUpon>ucVehicleCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vehicles\UserControls\ucVehicleCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vehicles\UserControls\ucVehicleCardWithFilter.Designer.cs">
+      <DependentUpon>ucVehicleCardWithFilter.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Bookings\frmAddRentalBooking.resx">
+      <DependentUpon>frmAddRentalBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\frmShowBookingDetails.resx">
+      <DependentUpon>frmShowBookingDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers\frmAddUpdateCustomer.resx">
       <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\UserControls\ucCustomerCard.resx">
       <DependentUpon>ucCustomerCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\UserControls\ucCustomerCardWithFilter.resx">
+      <DependentUpon>ucCustomerCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
@@ -199,8 +232,11 @@
     <EmbeddedResource Include="Vehicles\frmShowVehicleDetails.resx">
       <DependentUpon>frmShowVehicleDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vehicles\UserControls\ucVehicleDetails.resx">
-      <DependentUpon>ucVehicleDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Vehicles\UserControls\ucVehicleCard.resx">
+      <DependentUpon>ucVehicleCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\UserControls\ucVehicleCardWithFilter.resx">
+      <DependentUpon>ucVehicleCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
@@ -316,6 +352,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\car-manufacturing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\searching.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rental.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
