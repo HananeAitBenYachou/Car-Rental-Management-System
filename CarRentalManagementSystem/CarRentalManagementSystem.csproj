@@ -61,6 +61,12 @@
     <Compile Include="Bookings\frmAddRentalBooking.Designer.cs">
       <DependentUpon>frmAddRentalBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bookings\frmListBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bookings\frmListBookings.Designer.cs">
+      <DependentUpon>frmListBookings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bookings\frmShowBookingDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </Compile>
     <EmbeddedResource Include="Bookings\frmAddRentalBooking.resx">
       <DependentUpon>frmAddRentalBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\frmListBookings.resx">
+      <DependentUpon>frmListBookings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bookings\frmShowBookingDetails.resx">
       <DependentUpon>frmShowBookingDetails.cs</DependentUpon>

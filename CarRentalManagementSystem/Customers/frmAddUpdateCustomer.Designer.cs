@@ -61,10 +61,10 @@
             this.txtCustomerID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.pbPersonalImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalImage)).BeginInit();
@@ -522,6 +522,7 @@
             this.txtCustomerID.SelectedText = "";
             this.txtCustomerID.Size = new System.Drawing.Size(229, 43);
             this.txtCustomerID.TabIndex = 170;
+            this.txtCustomerID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -546,6 +547,21 @@
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(1102, 88);
             this.guna2GradientPanel1.TabIndex = 168;
+            // 
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(55, 55);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(55, 55);
+            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.driving;
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(55, 55);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(28, 15);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(55, 55);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(55, 55);
+            this.guna2ImageButton1.TabIndex = 3;
             // 
             // btnClose
             // 
@@ -599,21 +615,6 @@
             this.pbPersonalImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonalImage.TabIndex = 192;
             this.pbPersonalImage.TabStop = false;
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(55, 55);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(55, 55);
-            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.driving;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(55, 55);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(28, 15);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(55, 55);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(55, 55);
-            this.guna2ImageButton1.TabIndex = 3;
             // 
             // frmAddUpdateCustomer
             // 

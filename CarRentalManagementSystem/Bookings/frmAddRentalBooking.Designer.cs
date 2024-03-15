@@ -36,10 +36,8 @@
             this.tcRentalBooking = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpCustomerInfo = new System.Windows.Forms.TabPage();
             this.btnToVehicleInfo = new Guna.UI2.WinForms.Guna2Button();
-            this.ucCustomerCardWithFilter1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCardWithFilter();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
             this.btnToBookingInfo = new Guna.UI2.WinForms.Guna2Button();
-            this.ucVehicleCardWithFilter1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.txtInitialCheckNotes = new Guna.UI2.WinForms.Guna2TextBox();
@@ -65,7 +63,9 @@
             this.txtCustomerID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.ucCustomerCardWithFilter1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCardWithFilter();
+            this.ucVehicleCardWithFilter1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter();
             this.guna2GradientPanel1.SuspendLayout();
             this.tcRentalBooking.SuspendLayout();
             this.tpCustomerInfo.SuspendLayout();
@@ -132,7 +132,7 @@
             this.tcRentalBooking.Location = new System.Drawing.Point(0, 88);
             this.tcRentalBooking.Name = "tcRentalBooking";
             this.tcRentalBooking.SelectedIndex = 0;
-            this.tcRentalBooking.Size = new System.Drawing.Size(1061, 887);
+            this.tcRentalBooking.Size = new System.Drawing.Size(1061, 884);
             this.tcRentalBooking.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.tcRentalBooking.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.tcRentalBooking.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -155,12 +155,13 @@
             // 
             // tpCustomerInfo
             // 
+            this.tpCustomerInfo.Controls.Add(this.btnClose);
             this.tpCustomerInfo.Controls.Add(this.btnToVehicleInfo);
             this.tpCustomerInfo.Controls.Add(this.ucCustomerCardWithFilter1);
             this.tpCustomerInfo.Location = new System.Drawing.Point(4, 54);
             this.tpCustomerInfo.Name = "tpCustomerInfo";
             this.tpCustomerInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCustomerInfo.Size = new System.Drawing.Size(1053, 829);
+            this.tpCustomerInfo.Size = new System.Drawing.Size(1053, 826);
             this.tpCustomerInfo.TabIndex = 0;
             this.tpCustomerInfo.Text = "Customer Info";
             this.tpCustomerInfo.UseVisualStyleBackColor = true;
@@ -177,22 +178,13 @@
             this.btnToVehicleInfo.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToVehicleInfo.ForeColor = System.Drawing.Color.White;
             this.btnToVehicleInfo.Image = global::CarRentalManagementSystem.Properties.Resources.next;
-            this.btnToVehicleInfo.Location = new System.Drawing.Point(855, 766);
+            this.btnToVehicleInfo.Location = new System.Drawing.Point(864, 762);
             this.btnToVehicleInfo.Name = "btnToVehicleInfo";
             this.btnToVehicleInfo.Size = new System.Drawing.Size(171, 53);
             this.btnToVehicleInfo.TabIndex = 232;
             this.btnToVehicleInfo.Text = "Next";
             this.btnToVehicleInfo.EnabledChanged += new System.EventHandler(this.btnToVehicleInfo_EnabledChanged);
             this.btnToVehicleInfo.Click += new System.EventHandler(this.btnToVehicleInfo_Click);
-            // 
-            // ucCustomerCardWithFilter1
-            // 
-            this.ucCustomerCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ucCustomerCardWithFilter1.FilterEnabled = true;
-            this.ucCustomerCardWithFilter1.Location = new System.Drawing.Point(12, 7);
-            this.ucCustomerCardWithFilter1.Name = "ucCustomerCardWithFilter1";
-            this.ucCustomerCardWithFilter1.Size = new System.Drawing.Size(1014, 749);
-            this.ucCustomerCardWithFilter1.TabIndex = 0;
             // 
             // tpVehicleInfo
             // 
@@ -201,7 +193,7 @@
             this.tpVehicleInfo.Location = new System.Drawing.Point(4, 54);
             this.tpVehicleInfo.Name = "tpVehicleInfo";
             this.tpVehicleInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpVehicleInfo.Size = new System.Drawing.Size(1053, 829);
+            this.tpVehicleInfo.Size = new System.Drawing.Size(1053, 826);
             this.tpVehicleInfo.TabIndex = 1;
             this.tpVehicleInfo.Text = "Vehicle Info";
             this.tpVehicleInfo.UseVisualStyleBackColor = true;
@@ -226,18 +218,8 @@
             this.btnToBookingInfo.EnabledChanged += new System.EventHandler(this.btnToBookingInfo_EnabledChanged);
             this.btnToBookingInfo.Click += new System.EventHandler(this.btnToBookingInfo_Click);
             // 
-            // ucVehicleCardWithFilter1
-            // 
-            this.ucVehicleCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ucVehicleCardWithFilter1.FilterEnabled = true;
-            this.ucVehicleCardWithFilter1.Location = new System.Drawing.Point(44, 20);
-            this.ucVehicleCardWithFilter1.Name = "ucVehicleCardWithFilter1";
-            this.ucVehicleCardWithFilter1.Size = new System.Drawing.Size(950, 654);
-            this.ucVehicleCardWithFilter1.TabIndex = 0;
-            // 
             // tpBookingInfo
             // 
-            this.tpBookingInfo.Controls.Add(this.guna2Button1);
             this.tpBookingInfo.Controls.Add(this.btnSave);
             this.tpBookingInfo.Controls.Add(this.txtInitialCheckNotes);
             this.tpBookingInfo.Controls.Add(this.label11);
@@ -264,7 +246,7 @@
             this.tpBookingInfo.Location = new System.Drawing.Point(4, 54);
             this.tpBookingInfo.Name = "tpBookingInfo";
             this.tpBookingInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpBookingInfo.Size = new System.Drawing.Size(1053, 829);
+            this.tpBookingInfo.Size = new System.Drawing.Size(1053, 827);
             this.tpBookingInfo.TabIndex = 2;
             this.tpBookingInfo.Text = "Booking Info";
             this.tpBookingInfo.UseVisualStyleBackColor = true;
@@ -281,9 +263,9 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::CarRentalManagementSystem.Properties.Resources.folder;
             this.btnSave.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnSave.Location = new System.Drawing.Point(518, 668);
+            this.btnSave.Location = new System.Drawing.Point(422, 643);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(194, 66);
+            this.btnSave.Size = new System.Drawing.Size(279, 66);
             this.btnSave.TabIndex = 262;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -294,11 +276,11 @@
             this.txtInitialCheckNotes.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtInitialCheckNotes.DefaultText = "";
             this.txtInitialCheckNotes.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtInitialCheckNotes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtInitialCheckNotes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtInitialCheckNotes.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtInitialCheckNotes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtInitialCheckNotes.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtInitialCheckNotes.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtInitialCheckNotes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtInitialCheckNotes.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtInitialCheckNotes.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtInitialCheckNotes.ForeColor = System.Drawing.Color.Black;
             this.txtInitialCheckNotes.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtInitialCheckNotes.IconRightSize = new System.Drawing.Size(28, 28);
@@ -329,11 +311,11 @@
             this.txtPickUpLocation.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPickUpLocation.DefaultText = "";
             this.txtPickUpLocation.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPickUpLocation.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPickUpLocation.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPickUpLocation.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPickUpLocation.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPickUpLocation.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPickUpLocation.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtPickUpLocation.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPickUpLocation.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtPickUpLocation.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtPickUpLocation.ForeColor = System.Drawing.Color.Black;
             this.txtPickUpLocation.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPickUpLocation.IconRightSize = new System.Drawing.Size(28, 28);
@@ -365,11 +347,11 @@
             this.txtDropOffLocation.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDropOffLocation.DefaultText = "";
             this.txtDropOffLocation.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtDropOffLocation.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtDropOffLocation.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDropOffLocation.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDropOffLocation.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDropOffLocation.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtDropOffLocation.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtDropOffLocation.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDropOffLocation.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtDropOffLocation.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtDropOffLocation.ForeColor = System.Drawing.Color.Black;
             this.txtDropOffLocation.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDropOffLocation.IconRightSize = new System.Drawing.Size(28, 28);
@@ -401,11 +383,12 @@
             this.txtRentalPricePerDay.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRentalPricePerDay.DefaultText = "N/A";
             this.txtRentalPricePerDay.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtRentalPricePerDay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtRentalPricePerDay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtRentalPricePerDay.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRentalPricePerDay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRentalPricePerDay.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtRentalPricePerDay.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRentalPricePerDay.Enabled = false;
             this.txtRentalPricePerDay.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtRentalPricePerDay.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtRentalPricePerDay.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRentalPricePerDay.ForeColor = System.Drawing.Color.Black;
             this.txtRentalPricePerDay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRentalPricePerDay.IconRightSize = new System.Drawing.Size(28, 28);
@@ -437,11 +420,12 @@
             this.txtInitialTotalDueAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtInitialTotalDueAmount.DefaultText = "N/A";
             this.txtInitialTotalDueAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtInitialTotalDueAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtInitialTotalDueAmount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtInitialTotalDueAmount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtInitialTotalDueAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtInitialTotalDueAmount.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtInitialTotalDueAmount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtInitialTotalDueAmount.Enabled = false;
             this.txtInitialTotalDueAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtInitialTotalDueAmount.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtInitialTotalDueAmount.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtInitialTotalDueAmount.ForeColor = System.Drawing.Color.Black;
             this.txtInitialTotalDueAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtInitialTotalDueAmount.IconRightSize = new System.Drawing.Size(28, 28);
@@ -484,8 +468,12 @@
             this.nudInitialRentalDays.BackColor = System.Drawing.Color.Transparent;
             this.nudInitialRentalDays.BorderRadius = 22;
             this.nudInitialRentalDays.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudInitialRentalDays.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.nudInitialRentalDays.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.nudInitialRentalDays.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.nudInitialRentalDays.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.nudInitialRentalDays.Enabled = false;
-            this.nudInitialRentalDays.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold);
+            this.nudInitialRentalDays.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudInitialRentalDays.Location = new System.Drawing.Point(212, 425);
             this.nudInitialRentalDays.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudInitialRentalDays.Maximum = new decimal(new int[] {
@@ -569,11 +557,12 @@
             this.txtBookingID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBookingID.DefaultText = "N/A";
             this.txtBookingID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBookingID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBookingID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBookingID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBookingID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBookingID.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtBookingID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBookingID.Enabled = false;
             this.txtBookingID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBookingID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtBookingID.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBookingID.ForeColor = System.Drawing.Color.Red;
             this.txtBookingID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBookingID.IconRightSize = new System.Drawing.Size(28, 28);
@@ -586,6 +575,7 @@
             this.txtBookingID.SelectedText = "";
             this.txtBookingID.Size = new System.Drawing.Size(229, 43);
             this.txtBookingID.TabIndex = 210;
+            this.txtBookingID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -605,11 +595,12 @@
             this.txtVehicleID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtVehicleID.DefaultText = "N/A";
             this.txtVehicleID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtVehicleID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtVehicleID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtVehicleID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtVehicleID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtVehicleID.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtVehicleID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtVehicleID.Enabled = false;
             this.txtVehicleID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVehicleID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtVehicleID.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVehicleID.ForeColor = System.Drawing.Color.Black;
             this.txtVehicleID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtVehicleID.IconRightSize = new System.Drawing.Size(28, 28);
@@ -622,6 +613,7 @@
             this.txtVehicleID.SelectedText = "";
             this.txtVehicleID.Size = new System.Drawing.Size(229, 43);
             this.txtVehicleID.TabIndex = 208;
+            this.txtVehicleID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -641,11 +633,12 @@
             this.txtCustomerID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCustomerID.DefaultText = "N/A";
             this.txtCustomerID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCustomerID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCustomerID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCustomerID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCustomerID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCustomerID.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtCustomerID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCustomerID.Enabled = false;
             this.txtCustomerID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCustomerID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtCustomerID.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtCustomerID.ForeColor = System.Drawing.Color.Black;
             this.txtCustomerID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCustomerID.IconRightSize = new System.Drawing.Size(28, 28);
@@ -658,6 +651,7 @@
             this.txtCustomerID.SelectedText = "";
             this.txtCustomerID.Size = new System.Drawing.Size(229, 43);
             this.txtCustomerID.TabIndex = 206;
+            this.txtCustomerID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -675,30 +669,49 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // guna2Button1
+            // btnClose
             // 
-            this.guna2Button1.BorderRadius = 22;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button1.Location = new System.Drawing.Point(298, 668);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(194, 66);
-            this.guna2Button1.TabIndex = 263;
-            this.guna2Button1.Text = "Save";
+            this.btnClose.BorderRadius = 22;
+            this.btnClose.CustomizableEdges.TopLeft = false;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnClose.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
+            this.btnClose.Location = new System.Drawing.Point(21, 762);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(171, 53);
+            this.btnClose.TabIndex = 233;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // ucCustomerCardWithFilter1
+            // 
+            this.ucCustomerCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ucCustomerCardWithFilter1.FilterEnabled = true;
+            this.ucCustomerCardWithFilter1.Location = new System.Drawing.Point(21, 7);
+            this.ucCustomerCardWithFilter1.Name = "ucCustomerCardWithFilter1";
+            this.ucCustomerCardWithFilter1.Size = new System.Drawing.Size(1014, 749);
+            this.ucCustomerCardWithFilter1.TabIndex = 0;
+            // 
+            // ucVehicleCardWithFilter1
+            // 
+            this.ucVehicleCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ucVehicleCardWithFilter1.FilterEnabled = true;
+            this.ucVehicleCardWithFilter1.Location = new System.Drawing.Point(44, 20);
+            this.ucVehicleCardWithFilter1.Name = "ucVehicleCardWithFilter1";
+            this.ucVehicleCardWithFilter1.Size = new System.Drawing.Size(950, 654);
+            this.ucVehicleCardWithFilter1.TabIndex = 0;
             // 
             // frmAddRentalBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1061, 975);
+            this.ClientSize = new System.Drawing.Size(1061, 972);
             this.Controls.Add(this.tcRentalBooking);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -757,6 +770,6 @@
         private Guna.UI2.WinForms.Guna2Button btnToBookingInfo;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnClose;
     }
 }

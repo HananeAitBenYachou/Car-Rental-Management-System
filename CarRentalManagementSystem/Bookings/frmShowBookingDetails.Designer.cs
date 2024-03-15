@@ -35,7 +35,9 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.tcRentalBooking = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpCustomerInfo = new System.Windows.Forms.TabPage();
+            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCard();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
+            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
             this.txtInitialCheckNotes = new Guna.UI2.WinForms.Guna2TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -60,8 +62,6 @@
             this.txtCustomerID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCard();
-            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
             this.guna2GradientPanel1.SuspendLayout();
             this.tcRentalBooking.SuspendLayout();
             this.tpCustomerInfo.SuspendLayout();
@@ -160,6 +160,15 @@
             this.tpCustomerInfo.Text = "Customer Info";
             this.tpCustomerInfo.UseVisualStyleBackColor = true;
             // 
+            // ucCustomerCard1
+            // 
+            this.ucCustomerCard1.BackColor = System.Drawing.Color.White;
+            this.ucCustomerCard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucCustomerCard1.Location = new System.Drawing.Point(3, 3);
+            this.ucCustomerCard1.Name = "ucCustomerCard1";
+            this.ucCustomerCard1.Size = new System.Drawing.Size(1019, 616);
+            this.ucCustomerCard1.TabIndex = 0;
+            // 
             // tpVehicleInfo
             // 
             this.tpVehicleInfo.Controls.Add(this.ucVehicleCard1);
@@ -170,6 +179,15 @@
             this.tpVehicleInfo.TabIndex = 1;
             this.tpVehicleInfo.Text = "Vehicle Info";
             this.tpVehicleInfo.UseVisualStyleBackColor = true;
+            // 
+            // ucVehicleCard1
+            // 
+            this.ucVehicleCard1.BackColor = System.Drawing.Color.White;
+            this.ucVehicleCard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucVehicleCard1.Location = new System.Drawing.Point(3, 3);
+            this.ucVehicleCard1.Name = "ucVehicleCard1";
+            this.ucVehicleCard1.Size = new System.Drawing.Size(1019, 616);
+            this.ucVehicleCard1.TabIndex = 0;
             // 
             // tpBookingInfo
             // 
@@ -508,6 +526,7 @@
             this.txtBookingID.SelectedText = "";
             this.txtBookingID.Size = new System.Drawing.Size(229, 43);
             this.txtBookingID.TabIndex = 210;
+            this.txtBookingID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -545,6 +564,7 @@
             this.txtVehicleID.SelectedText = "";
             this.txtVehicleID.Size = new System.Drawing.Size(229, 43);
             this.txtVehicleID.TabIndex = 208;
+            this.txtVehicleID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -582,6 +602,7 @@
             this.txtCustomerID.SelectedText = "";
             this.txtCustomerID.Size = new System.Drawing.Size(229, 43);
             this.txtCustomerID.TabIndex = 206;
+            this.txtCustomerID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -614,24 +635,6 @@
             this.btnClose.TabIndex = 206;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // ucCustomerCard1
-            // 
-            this.ucCustomerCard1.BackColor = System.Drawing.Color.White;
-            this.ucCustomerCard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucCustomerCard1.Location = new System.Drawing.Point(3, 3);
-            this.ucCustomerCard1.Name = "ucCustomerCard1";
-            this.ucCustomerCard1.Size = new System.Drawing.Size(1019, 616);
-            this.ucCustomerCard1.TabIndex = 0;
-            // 
-            // ucVehicleCard1
-            // 
-            this.ucVehicleCard1.BackColor = System.Drawing.Color.White;
-            this.ucVehicleCard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucVehicleCard1.Location = new System.Drawing.Point(3, 3);
-            this.ucVehicleCard1.Name = "ucVehicleCard1";
-            this.ucVehicleCard1.Size = new System.Drawing.Size(1019, 616);
-            this.ucVehicleCard1.TabIndex = 0;
             // 
             // frmShowBookingDetails
             // 

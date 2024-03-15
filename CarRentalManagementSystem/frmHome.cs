@@ -1,5 +1,7 @@
-﻿using CarRentalManagementSystem.Customers;
+﻿using CarRentalManagementSystem.Bookings;
+using CarRentalManagementSystem.Customers;
 using CarRentalManagementSystem.Users;
+using CarRentalManagementSystem.Vehicles;
 using Guna.UI2.WinForms;
 using System.Drawing;
 using System.Windows.Forms;
@@ -71,6 +73,17 @@ namespace CarRentalManagementSystem
         private void btnLogout_Click(object sender, System.EventArgs e)
         {
             btnExit.PerformClick();
+        }
+
+        private void btnManageBookings_Click(object sender, System.EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListBookings());
+
+        }
+
+        private void btnManageVehicles_Click(object sender, System.EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListVehicles());
         }
     }
 }

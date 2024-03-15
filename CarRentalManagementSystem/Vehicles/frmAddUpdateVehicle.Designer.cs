@@ -103,11 +103,14 @@
             // 
             this.cbMakes.BackColor = System.Drawing.Color.Transparent;
             this.cbMakes.BorderRadius = 22;
+            this.cbMakes.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbMakes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbMakes.DisabledState.ForeColor = System.Drawing.Color.DimGray;
             this.cbMakes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbMakes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMakes.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbMakes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbMakes.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbMakes.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.cbMakes.ForeColor = System.Drawing.Color.Black;
             this.cbMakes.ItemHeight = 37;
             this.cbMakes.Location = new System.Drawing.Point(172, 268);
@@ -181,7 +184,7 @@
             this.txtVehicleName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtVehicleName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtVehicleName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVehicleName.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtVehicleName.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtVehicleName.ForeColor = System.Drawing.Color.Black;
             this.txtVehicleName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtVehicleName.IconRightSize = new System.Drawing.Size(28, 28);
@@ -217,12 +220,12 @@
             this.txtVehicleID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtVehicleID.DefaultText = "N/A";
             this.txtVehicleID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtVehicleID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtVehicleID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtVehicleID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtVehicleID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtVehicleID.DisabledState.ForeColor = System.Drawing.Color.Red;
+            this.txtVehicleID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtVehicleID.Enabled = false;
             this.txtVehicleID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVehicleID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txtVehicleID.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtVehicleID.ForeColor = System.Drawing.Color.Red;
             this.txtVehicleID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtVehicleID.IconRightSize = new System.Drawing.Size(28, 28);
@@ -234,6 +237,7 @@
             this.txtVehicleID.SelectedText = "";
             this.txtVehicleID.Size = new System.Drawing.Size(342, 43);
             this.txtVehicleID.TabIndex = 204;
+            this.txtVehicleID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -275,11 +279,14 @@
             // 
             this.cbModels.BackColor = System.Drawing.Color.Transparent;
             this.cbModels.BorderRadius = 22;
+            this.cbModels.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbModels.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbModels.DisabledState.ForeColor = System.Drawing.Color.DimGray;
             this.cbModels.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbModels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbModels.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbModels.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbModels.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbModels.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.cbModels.ForeColor = System.Drawing.Color.Black;
             this.cbModels.ItemHeight = 37;
             this.cbModels.Location = new System.Drawing.Point(172, 334);
@@ -304,11 +311,14 @@
             // 
             this.cbFuelTypes.BackColor = System.Drawing.Color.Transparent;
             this.cbFuelTypes.BorderRadius = 22;
+            this.cbFuelTypes.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbFuelTypes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbFuelTypes.DisabledState.ForeColor = System.Drawing.Color.DimGray;
             this.cbFuelTypes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbFuelTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFuelTypes.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbFuelTypes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbFuelTypes.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbFuelTypes.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.cbFuelTypes.ForeColor = System.Drawing.Color.Black;
             this.cbFuelTypes.ItemHeight = 37;
             this.cbFuelTypes.Location = new System.Drawing.Point(172, 466);
@@ -332,11 +342,14 @@
             // 
             this.cbSubModels.BackColor = System.Drawing.Color.Transparent;
             this.cbSubModels.BorderRadius = 22;
+            this.cbSubModels.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbSubModels.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbSubModels.DisabledState.ForeColor = System.Drawing.Color.DimGray;
             this.cbSubModels.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbSubModels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSubModels.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbSubModels.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbSubModels.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbSubModels.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.cbSubModels.ForeColor = System.Drawing.Color.Black;
             this.cbSubModels.ItemHeight = 37;
             this.cbSubModels.Location = new System.Drawing.Point(172, 400);
@@ -360,11 +373,14 @@
             // 
             this.cbDriveTypes.BackColor = System.Drawing.Color.Transparent;
             this.cbDriveTypes.BorderRadius = 22;
+            this.cbDriveTypes.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbDriveTypes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cbDriveTypes.DisabledState.ForeColor = System.Drawing.Color.DimGray;
             this.cbDriveTypes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbDriveTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDriveTypes.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbDriveTypes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbDriveTypes.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbDriveTypes.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.cbDriveTypes.ForeColor = System.Drawing.Color.Black;
             this.cbDriveTypes.ItemHeight = 37;
             this.cbDriveTypes.Location = new System.Drawing.Point(172, 532);
@@ -382,7 +398,7 @@
             this.txtYear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtYear.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtYear.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtYear.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtYear.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtYear.ForeColor = System.Drawing.Color.Black;
             this.txtYear.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtYear.IconRightSize = new System.Drawing.Size(28, 28);
@@ -419,7 +435,7 @@
             this.txtMileage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtMileage.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtMileage.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMileage.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtMileage.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtMileage.ForeColor = System.Drawing.Color.Black;
             this.txtMileage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMileage.IconRightSize = new System.Drawing.Size(28, 28);
@@ -455,7 +471,7 @@
             this.txtEngine.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEngine.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEngine.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEngine.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtEngine.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtEngine.ForeColor = System.Drawing.Color.Black;
             this.txtEngine.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEngine.IconRightSize = new System.Drawing.Size(28, 28);
@@ -487,7 +503,7 @@
             this.nudNumberOfDoors.BackColor = System.Drawing.Color.Transparent;
             this.nudNumberOfDoors.BorderRadius = 22;
             this.nudNumberOfDoors.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nudNumberOfDoors.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold);
+            this.nudNumberOfDoors.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.nudNumberOfDoors.Location = new System.Drawing.Point(828, 400);
             this.nudNumberOfDoors.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudNumberOfDoors.Maximum = new decimal(new int[] {
@@ -522,7 +538,7 @@
             this.txtRentalPricePerDay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtRentalPricePerDay.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtRentalPricePerDay.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtRentalPricePerDay.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtRentalPricePerDay.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.txtRentalPricePerDay.ForeColor = System.Drawing.Color.Black;
             this.txtRentalPricePerDay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRentalPricePerDay.IconRightSize = new System.Drawing.Size(28, 28);

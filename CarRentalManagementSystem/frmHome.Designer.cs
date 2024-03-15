@@ -231,6 +231,7 @@
             this.btnManageBookings.Text = "Bookings";
             this.btnManageBookings.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageBookings.TextOffset = new System.Drawing.Point(8, 0);
+            this.btnManageBookings.Click += new System.EventHandler(this.btnManageBookings_Click);
             // 
             // btnManageVehicles
             // 
@@ -254,6 +255,7 @@
             this.btnManageVehicles.Text = "Vehicles";
             this.btnManageVehicles.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageVehicles.TextOffset = new System.Drawing.Point(8, -6);
+            this.btnManageVehicles.Click += new System.EventHandler(this.btnManageVehicles_Click);
             // 
             // btnDashboard
             // 
