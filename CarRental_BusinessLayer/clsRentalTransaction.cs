@@ -12,9 +12,9 @@ namespace CarRental_BusinessLayer
         public int BookingID { get; set; }
         public int? ReturnID { get; set; }
         public float PaidInitialTotalDueAmount { get; set; }
-        public float ActualTotalDueAmount { get; set; }
-        public float TotalRemaining { get; set; }
-        public float TotalRefundedAmount { get; set; }
+        public float? ActualTotalDueAmount { get; set; }
+        public float? TotalRemaining { get; set; }
+        public float? TotalRefundedAmount { get; set; }
         public DateTime TransactionDate { get; set; }
         public DateTime? UpdatedTransactionDate { get; set; }
 
@@ -25,15 +25,13 @@ namespace CarRental_BusinessLayer
             BookingID = default;
             ReturnID = null;
             PaidInitialTotalDueAmount = default;
-            ActualTotalDueAmount = default;
-            TotalRemaining = default;
-            TotalRefundedAmount = default;
+            ActualTotalDueAmount = null;
+            TotalRemaining = null;
+            TotalRefundedAmount = null;
             TransactionDate = default;
             UpdatedTransactionDate = null;
         }
-        private clsRentalTransaction(int? TransactionID, int BookingID, int? ReturnID, 
-            float PaidInitialTotalDueAmount, float ActualTotalDueAmount, float TotalRemaining, 
-            float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+        private clsRentalTransaction(int? TransactionID, int BookingID, int? ReturnID, float PaidInitialTotalDueAmount, float? ActualTotalDueAmount, float? TotalRemaining, float? TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
             _Mode = enMode.Update;
             this.TransactionID = TransactionID;
@@ -52,9 +50,9 @@ namespace CarRental_BusinessLayer
             int BookingID = default;
             int? ReturnID = default;
             float PaidInitialTotalDueAmount = default;
-            float ActualTotalDueAmount = default;
-            float TotalRemaining = default;
-            float TotalRefundedAmount = default;
+            float? ActualTotalDueAmount = default;
+            float? TotalRemaining = default;
+            float? TotalRefundedAmount = default;
             DateTime TransactionDate = default;
             DateTime? UpdatedTransactionDate = default;
 
@@ -110,6 +108,5 @@ namespace CarRental_BusinessLayer
         {
             return clsRentalTransactionData.GetAllRentalTransactions();
         }
-
     }
 }

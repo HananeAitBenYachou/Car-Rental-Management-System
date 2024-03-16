@@ -22,7 +22,7 @@ namespace CarRentalManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListTransactions());
+            Application.Run(new frmShowBookingDetails(10));
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

@@ -36,19 +36,7 @@ namespace CarRentalManagementSystem.Bookings
 
             ucCustomerCard1.LoadCustomerData(_Booking.CustomerID);
             ucVehicleCard1.LoadVehicleData(_Booking.VehicleID);
-
-            txtBookingID.Text = _BookingID.ToString();
-            txtCustomerID.Text = _Booking.CustomerID.ToString();
-            txtVehicleID.Text = _Booking.VehicleID.ToString();
-            txtRentalPricePerDay.Text = _Booking.VehicleInfo.RentalPricePerDay.ToString();
-            txtInitialTotalDueAmount.Text = _Booking.InitialTotalDueAmount.ToString();
-            txtPickUpLocation.Text = _Booking.PickupLocation;
-            txtDropOffLocation.Text = _Booking.DropoffLocation;
-            txtRentalPricePerDay.Text = _Booking.RentalPricePerDay.ToString();
-            txtInitialCheckNotes.Text = _Booking.InitialCheckNotes ?? string.Empty;
-            dtpStartDate.Value = _Booking.RentalStartDate;
-            dtpEndDate.Value = _Booking.RentalEndDate;
-            nudInitialRentalDays.Value = _Booking.InitialRentalDays;
+            ucBookingDetails1.LoadBookingData(_Booking.BookingID);         
         }
 
         private void frmShowBookingDetails_Load(object sender, EventArgs e)

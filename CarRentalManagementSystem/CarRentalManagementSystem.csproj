@@ -73,6 +73,12 @@
     <Compile Include="Bookings\frmShowBookingDetails.Designer.cs">
       <DependentUpon>frmShowBookingDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bookings\UserControls\ucBookingDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bookings\UserControls\ucBookingDetails.Designer.cs">
+      <DependentUpon>ucBookingDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\frmAddUpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,18 @@
     </Compile>
     <Compile Include="Transactions\frmListTransactions.Designer.cs">
       <DependentUpon>frmListTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\frmShowTransactionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\frmShowTransactionDetails.Designer.cs">
+      <DependentUpon>frmShowTransactionDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\UserControls\ucTransactionDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Transactions\UserControls\ucTransactionDetails.Designer.cs">
+      <DependentUpon>ucTransactionDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\frmAddUpdateUser.cs">
       <SubType>Form</SubType>
@@ -192,6 +210,9 @@
     <EmbeddedResource Include="Bookings\frmShowBookingDetails.resx">
       <DependentUpon>frmShowBookingDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\UserControls\ucBookingDetails.resx">
+      <DependentUpon>ucBookingDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers\frmAddUpdateCustomer.resx">
       <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +246,12 @@
     </Compile>
     <EmbeddedResource Include="Transactions\frmListTransactions.resx">
       <DependentUpon>frmListTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\frmShowTransactionDetails.resx">
+      <DependentUpon>frmShowTransactionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\UserControls\ucTransactionDetails.resx">
+      <DependentUpon>ucTransactionDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmAddUpdateUser.resx">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>

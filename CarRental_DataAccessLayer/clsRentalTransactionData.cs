@@ -8,10 +8,10 @@ namespace CarRental_DataAccessLayer
 {
     public class clsRentalTransactionData
     {
-        public static bool GetRentalTransactionInfoByID(int? TransactionID, ref int BookingID, ref int? ReturnID, 
-            ref float PaidInitialTotalDueAmount, ref float ActualTotalDueAmount, 
-            ref float TotalRemaining, ref float TotalRefundedAmount, 
-            ref DateTime TransactionDate, ref DateTime? UpdatedTransactionDate)
+        public static bool GetRentalTransactionInfoByID(int? TransactionID, ref int BookingID, ref int? ReturnID,
+            ref float PaidInitialTotalDueAmount, ref float? ActualTotalDueAmount,
+            ref float? TotalRemaining, ref float? TotalRefundedAmount, ref DateTime TransactionDate,
+            ref DateTime? UpdatedTransactionDate)
         {
             bool isFound = false;
 
@@ -40,11 +40,11 @@ namespace CarRental_DataAccessLayer
 
                                 PaidInitialTotalDueAmount = (float)reader["PaidInitialTotalDueAmount"];
 
-                                ActualTotalDueAmount = (float)reader["ActualTotalDueAmount"];
+                                ActualTotalDueAmount = (reader["ActualTotalDueAmount"] != DBNull.Value) ? (float?)reader["ActualTotalDueAmount"] : null;
 
-                                TotalRemaining = (float)reader["TotalRemaining"];
+                                TotalRemaining = (reader["TotalRemaining"] != DBNull.Value) ? (float?)reader["TotalRemaining"] : null;
 
-                                TotalRefundedAmount = (float)reader["TotalRefundedAmount"];
+                                TotalRefundedAmount = (reader["TotalRefundedAmount"] != DBNull.Value) ? (float?)reader["TotalRefundedAmount"] : null;
 
                                 TransactionDate = (DateTime)reader["TransactionDate"];
 
@@ -108,9 +108,10 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static int? AddNewRentalTransaction(int BookingID, int? ReturnID,
-            float PaidInitialTotalDueAmount, float ActualTotalDueAmount, 
-            float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+        public static int? AddNewRentalTransaction(int BookingID, int? ReturnID, 
+            float PaidInitialTotalDueAmount, float? ActualTotalDueAmount,
+            float? TotalRemaining, float? TotalRefundedAmount,
+            DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
             int? TransactionID = null;
 
@@ -126,23 +127,23 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@BookingID", BookingID);
                         command.Parameters.AddWithValue("@ReturnID", (object)ReturnID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PaidInitialTotalDueAmount", PaidInitialTotalDueAmount);
-                        command.Parameters.AddWithValue("@ActualTotalDueAmount", ActualTotalDueAmount);
-                        command.Parameters.AddWithValue("@TotalRemaining", TotalRemaining);
-                        command.Parameters.AddWithValue("@TotalRefundedAmount", TotalRefundedAmount);
+                        command.Parameters.AddWithValue("@ActualTotalDueAmount", (object)ActualTotalDueAmount ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@TotalRemaining", (object)TotalRemaining ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@TotalRefundedAmount", (object)TotalRefundedAmount ?? DBNull.Value);
                         command.Parameters.AddWithValue("@TransactionDate", TransactionDate);
                         command.Parameters.AddWithValue("@UpdatedTransactionDate", (object)UpdatedTransactionDate ?? DBNull.Value);
 
 
-                        SqlParameter outputParameter = new SqlParameter("@NewTransactionID", SqlDbType.Int)
+                        SqlParameter outputTransactionIDParameter = new SqlParameter("@NewTransactionID", SqlDbType.Int)
                         {
                             Direction = ParameterDirection.Output
                         };
 
-                        command.Parameters.Add(outputParameter);
+                        command.Parameters.Add(outputTransactionIDParameter);
 
                         command.ExecuteNonQuery();
 
-                        TransactionID = (int)outputParameter.Value;
+                        TransactionID = (int)outputTransactionIDParameter.Value;
                     }
                 }
             }
@@ -155,9 +156,10 @@ namespace CarRental_DataAccessLayer
             return TransactionID;
         }
 
-        public static bool UpdateRentalTransactionInfo(int? TransactionID, int BookingID, int? ReturnID, 
-            float PaidInitialTotalDueAmount, float ActualTotalDueAmount,
-            float TotalRemaining, float TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+        public static bool UpdateRentalTransactionInfo(int? TransactionID, int BookingID,
+            int? ReturnID, float PaidInitialTotalDueAmount, float? ActualTotalDueAmount,
+            float? TotalRemaining, float? TotalRefundedAmount, DateTime TransactionDate,
+            DateTime? UpdatedTransactionDate)
         {
             int rowsAffected = 0;
 
@@ -174,9 +176,9 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@BookingID", BookingID);
                         command.Parameters.AddWithValue("@ReturnID", (object)ReturnID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PaidInitialTotalDueAmount", PaidInitialTotalDueAmount);
-                        command.Parameters.AddWithValue("@ActualTotalDueAmount", ActualTotalDueAmount);
-                        command.Parameters.AddWithValue("@TotalRemaining", TotalRemaining);
-                        command.Parameters.AddWithValue("@TotalRefundedAmount", TotalRefundedAmount);
+                        command.Parameters.AddWithValue("@ActualTotalDueAmount", (object)ActualTotalDueAmount ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@TotalRemaining", (object)TotalRemaining ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@TotalRefundedAmount", (object)TotalRefundedAmount ?? DBNull.Value);
                         command.Parameters.AddWithValue("@TransactionDate", TransactionDate);
                         command.Parameters.AddWithValue("@UpdatedTransactionDate", (object)UpdatedTransactionDate ?? DBNull.Value);
 

@@ -85,7 +85,8 @@ namespace CarRentalManagementSystem.Transactions
 
         private void showTransactionInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Not Implemented yet ! 
+            frmShowTransactionDetails form = new frmShowTransactionDetails((int)dgvTransactionsList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
         }
 
         private void dgvTransactionsList_SelectionChanged(object sender, EventArgs e)
