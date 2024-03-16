@@ -1,5 +1,6 @@
 ﻿using CarRentalManagementSystem.Bookings;
 using CarRentalManagementSystem.Customers;
+using CarRentalManagementSystem.Transactions;
 using CarRentalManagementSystem.Users;
 using CarRentalManagementSystem.Vehicles;
 using System;
@@ -21,7 +22,7 @@ namespace CarRentalManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAddRentalBooking());
+            Application.Run(new frmListTransactions());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

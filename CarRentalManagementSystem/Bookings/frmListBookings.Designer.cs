@@ -253,7 +253,7 @@
             // 
             this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.user;
+            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.rental_car;
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
             this.guna2ImageButton1.Location = new System.Drawing.Point(25, 11);
@@ -278,6 +278,7 @@
             this.Controls.Add(this.guna2ImageButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmListBookings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListBookings";
             this.Load += new System.EventHandler(this.frmListBookings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingsList)).EndInit();

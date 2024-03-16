@@ -63,6 +63,7 @@ namespace CarRentalManagementSystem
 
         private void frmHome_Load(object sender, System.EventArgs e)
         {
+           
         }
 
         private void btnManageCustomers_Click(object sender, System.EventArgs e)
