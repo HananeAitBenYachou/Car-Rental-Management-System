@@ -1,6 +1,6 @@
-﻿namespace CarRentalManagementSystem.Vehicles.UserControls
+﻿namespace CarRentalManagementSystem.Bookings.UserControls
 {
-    partial class ucVehicleCardWithFilter
+    partial class ucBookingDetailsWithFilter
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,23 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.ucBookingDetails1 = new CarRentalManagementSystem.Bookings.UserControls.ucBookingDetails();
             this.gbFilter = new Guna.UI2.WinForms.Guna2GroupBox();
             this.btnAddVehicle = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnSearchVehicle = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.txtVehicleID = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtBookingID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ucBookingDetails1
+            // 
+            this.ucBookingDetails1.BackColor = System.Drawing.Color.White;
+            this.ucBookingDetails1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucBookingDetails1.Location = new System.Drawing.Point(0, 135);
+            this.ucBookingDetails1.Name = "ucBookingDetails1";
+            this.ucBookingDetails1.Size = new System.Drawing.Size(1003, 481);
+            this.ucBookingDetails1.TabIndex = 0;
             // 
             // gbFilter
             // 
             this.gbFilter.BorderColor = System.Drawing.Color.Silver;
             this.gbFilter.Controls.Add(this.btnAddVehicle);
             this.gbFilter.Controls.Add(this.btnSearchVehicle);
-            this.gbFilter.Controls.Add(this.txtVehicleID);
+            this.gbFilter.Controls.Add(this.txtBookingID);
             this.gbFilter.Controls.Add(this.label2);
             this.gbFilter.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.gbFilter.Dock = System.Windows.Forms.DockStyle.Top;
@@ -53,9 +62,9 @@
             this.gbFilter.ForeColor = System.Drawing.Color.White;
             this.gbFilter.Location = new System.Drawing.Point(0, 0);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(950, 119);
-            this.gbFilter.TabIndex = 5;
-            this.gbFilter.Text = "Search Vehicle";
+            this.gbFilter.Size = new System.Drawing.Size(1003, 119);
+            this.gbFilter.TabIndex = 6;
+            this.gbFilter.Text = "Search Booking";
             // 
             // btnAddVehicle
             // 
@@ -70,7 +79,7 @@
             this.btnAddVehicle.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnAddVehicle.Size = new System.Drawing.Size(50, 50);
             this.btnAddVehicle.TabIndex = 174;
-            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
+            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddBooking_Click);
             // 
             // btnSearchVehicle
             // 
@@ -85,34 +94,34 @@
             this.btnSearchVehicle.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnSearchVehicle.Size = new System.Drawing.Size(50, 50);
             this.btnSearchVehicle.TabIndex = 173;
-            this.btnSearchVehicle.Click += new System.EventHandler(this.btnSearchVehicle_Click);
+            this.btnSearchVehicle.Click += new System.EventHandler(this.btnSearchBooking_Click);
             // 
-            // txtVehicleID
+            // txtBookingID
             // 
-            this.txtVehicleID.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.txtVehicleID.BackColor = System.Drawing.Color.Transparent;
-            this.txtVehicleID.BorderRadius = 22;
-            this.txtVehicleID.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtVehicleID.DefaultText = "";
-            this.txtVehicleID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtVehicleID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtVehicleID.DisabledState.ForeColor = System.Drawing.Color.DimGray;
-            this.txtVehicleID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtVehicleID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVehicleID.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
-            this.txtVehicleID.ForeColor = System.Drawing.Color.Black;
-            this.txtVehicleID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVehicleID.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtVehicleID.Location = new System.Drawing.Point(169, 59);
-            this.txtVehicleID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtVehicleID.Name = "txtVehicleID";
-            this.txtVehicleID.PasswordChar = '\0';
-            this.txtVehicleID.PlaceholderText = "";
-            this.txtVehicleID.SelectedText = "";
-            this.txtVehicleID.Size = new System.Drawing.Size(340, 43);
-            this.txtVehicleID.TabIndex = 0;
-            this.txtVehicleID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVehicleID_KeyPress);
-            this.txtVehicleID.Validating += new System.ComponentModel.CancelEventHandler(this.txtVehicleID_Validating);
+            this.txtBookingID.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.txtBookingID.BackColor = System.Drawing.Color.Transparent;
+            this.txtBookingID.BorderRadius = 22;
+            this.txtBookingID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBookingID.DefaultText = "";
+            this.txtBookingID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBookingID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBookingID.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtBookingID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBookingID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBookingID.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtBookingID.ForeColor = System.Drawing.Color.Black;
+            this.txtBookingID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBookingID.IconRightSize = new System.Drawing.Size(28, 28);
+            this.txtBookingID.Location = new System.Drawing.Point(169, 59);
+            this.txtBookingID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBookingID.Name = "txtBookingID";
+            this.txtBookingID.PasswordChar = '\0';
+            this.txtBookingID.PlaceholderText = "";
+            this.txtBookingID.SelectedText = "";
+            this.txtBookingID.Size = new System.Drawing.Size(340, 43);
+            this.txtBookingID.TabIndex = 0;
+            this.txtBookingID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBookingID_KeyPress);
+            this.txtBookingID.Validating += new System.ComponentModel.CancelEventHandler(this.txtBookingID_Validating);
             // 
             // label2
             // 
@@ -122,32 +131,23 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.label2.Location = new System.Drawing.Point(24, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 21);
+            this.label2.Size = new System.Drawing.Size(96, 21);
             this.label2.TabIndex = 168;
-            this.label2.Text = "Vehicle ID :";
+            this.label2.Text = "Booking ID :";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ucVehicleCard1
-            // 
-            this.ucVehicleCard1.BackColor = System.Drawing.Color.White;
-            this.ucVehicleCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucVehicleCard1.Location = new System.Drawing.Point(0, 132);
-            this.ucVehicleCard1.Name = "ucVehicleCard1";
-            this.ucVehicleCard1.Size = new System.Drawing.Size(950, 522);
-            this.ucVehicleCard1.TabIndex = 0;
-            // 
-            // ucVehicleCardWithFilter
+            // ucBookingDetailsWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.gbFilter);
-            this.Controls.Add(this.ucVehicleCard1);
-            this.Name = "ucVehicleCardWithFilter";
-            this.Size = new System.Drawing.Size(950, 654);
+            this.Controls.Add(this.ucBookingDetails1);
+            this.Name = "ucBookingDetailsWithFilter";
+            this.Size = new System.Drawing.Size(1003, 616);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -157,11 +157,11 @@
 
         #endregion
 
-        private ucVehicleCard ucVehicleCard1;
+        private ucBookingDetails ucBookingDetails1;
         private Guna.UI2.WinForms.Guna2GroupBox gbFilter;
         private Guna.UI2.WinForms.Guna2ImageButton btnAddVehicle;
         private Guna.UI2.WinForms.Guna2ImageButton btnSearchVehicle;
-        private Guna.UI2.WinForms.Guna2TextBox txtVehicleID;
+        private Guna.UI2.WinForms.Guna2TextBox txtBookingID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }

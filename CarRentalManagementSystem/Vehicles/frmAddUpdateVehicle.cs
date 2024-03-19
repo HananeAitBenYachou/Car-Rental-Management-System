@@ -19,7 +19,7 @@ namespace CarRentalManagementSystem.Vehicles
 {
     public partial class frmAddUpdateVehicle : Form
     {
-        private enum _enMode { AddNew = 0, Update = 1 };
+        private enum _enMode : byte { AddNew = 0, Update = 1 };
         private _enMode _Mode = _enMode.AddNew;
 
 
@@ -95,8 +95,6 @@ namespace CarRentalManagementSystem.Vehicles
             {
                 cbSubModels.Items.Add((string)row["SubModelName"]);
             }
-
-          //  Console.WriteLine(cbSubModels.Items.Count);
 
             cbSubModels.SelectedIndex = 0;
         }

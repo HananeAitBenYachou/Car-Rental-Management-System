@@ -86,7 +86,7 @@
             this.groupBox.ForeColor = System.Drawing.Color.White;
             this.groupBox.Location = new System.Drawing.Point(0, 0);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(1003, 508);
+            this.groupBox.Size = new System.Drawing.Size(1003, 481);
             this.groupBox.TabIndex = 2;
             this.groupBox.Text = "Booking Information";
             // 
@@ -487,7 +487,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.groupBox);
             this.Name = "ucBookingDetails";
-            this.Size = new System.Drawing.Size(1003, 508);
+            this.Size = new System.Drawing.Size(1003, 481);
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudInitialRentalDays)).EndInit();

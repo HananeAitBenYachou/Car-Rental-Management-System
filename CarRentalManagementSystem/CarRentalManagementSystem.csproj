@@ -79,6 +79,12 @@
     <Compile Include="Bookings\UserControls\ucBookingDetails.Designer.cs">
       <DependentUpon>ucBookingDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bookings\UserControls\ucBookingDetailsWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bookings\UserControls\ucBookingDetailsWithFilter.Designer.cs">
+      <DependentUpon>ucBookingDetailsWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\frmAddUpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Returns\frmReturnRentedVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returns\frmReturnRentedVehicle.Designer.cs">
+      <DependentUpon>frmReturnRentedVehicle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions\frmListTransactions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +225,9 @@
     <EmbeddedResource Include="Bookings\UserControls\ucBookingDetails.resx">
       <DependentUpon>ucBookingDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\UserControls\ucBookingDetailsWithFilter.resx">
+      <DependentUpon>ucBookingDetailsWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers\frmAddUpdateCustomer.resx">
       <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +259,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Returns\frmReturnRentedVehicle.resx">
+      <DependentUpon>frmReturnRentedVehicle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transactions\frmListTransactions.resx">
       <DependentUpon>frmListTransactions.cs</DependentUpon>
     </EmbeddedResource>
@@ -421,6 +439,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rental-car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transaction %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rental1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

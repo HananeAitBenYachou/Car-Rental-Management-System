@@ -70,6 +70,89 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
+        public static bool GetRentalTransactionInfoByBookingID(int BookingID , ref int? TransactionID, ref int? ReturnID,
+            ref float PaidInitialTotalDueAmount, ref float? ActualTotalDueAmount,
+            ref float? TotalRemaining, ref float? TotalRefundedAmount, ref DateTime TransactionDate,
+            ref DateTime? UpdatedTransactionDate)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_CheckIfRentalTransactionExistsByBookingID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@BookingID", BookingID);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                ReturnID = (reader["ReturnID"] != DBNull.Value) ? (int?)reader["ReturnID"] : null;
+
+                                TransactionID = (reader["TransactionID"] != DBNull.Value) ? (int?)reader["TransactionID"] : null;
+
+                                PaidInitialTotalDueAmount = Convert.ToSingle(reader["PaidInitialTotalDueAmount"]);
+
+                                if ((reader["ActualTotalDueAmount"] != DBNull.Value))
+                                {
+                                    ActualTotalDueAmount = Convert.ToSingle(reader["ActualTotalDueAmount"]);
+                                }
+                                else
+                                {
+                                    ActualTotalDueAmount = null;
+                                }
+
+                                if ((reader["TotalRemaining"] != DBNull.Value))
+                                {
+                                    TotalRemaining = Convert.ToSingle(reader["TotalRemaining"]);
+                                }
+                                else
+                                {
+                                    TotalRemaining = null;
+                                }
+
+                                if ((reader["TotalRefundedAmount"] != DBNull.Value))
+                                {
+                                    TotalRefundedAmount = Convert.ToSingle(reader["TotalRefundedAmount"]);
+                                }
+                                else
+                                {
+                                    TotalRefundedAmount = null;
+                                }
+
+                                TransactionDate = (DateTime)reader["TransactionDate"];
+
+                                UpdatedTransactionDate = (reader["UpdatedTransactionDate"] != DBNull.Value) ? (DateTime?)reader["UpdatedTransactionDate"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
         public static bool DoesRentalTransactionExist(int? TransactionID)
         {
             bool isFound = false;
@@ -106,121 +189,6 @@ namespace CarRental_DataAccessLayer
                 isFound = false;
             }
             return isFound;
-        }
-
-        public static int? AddNewRentalTransaction(int BookingID, int? ReturnID, 
-            float PaidInitialTotalDueAmount, float? ActualTotalDueAmount,
-            float? TotalRemaining, float? TotalRefundedAmount,
-            DateTime TransactionDate, DateTime? UpdatedTransactionDate)
-        {
-            int? TransactionID = null;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_AddNewRentalTransaction", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@BookingID", BookingID);
-                        command.Parameters.AddWithValue("@ReturnID", (object)ReturnID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@PaidInitialTotalDueAmount", PaidInitialTotalDueAmount);
-                        command.Parameters.AddWithValue("@ActualTotalDueAmount", (object)ActualTotalDueAmount ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@TotalRemaining", (object)TotalRemaining ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@TotalRefundedAmount", (object)TotalRefundedAmount ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@TransactionDate", TransactionDate);
-                        command.Parameters.AddWithValue("@UpdatedTransactionDate", (object)UpdatedTransactionDate ?? DBNull.Value);
-
-
-                        SqlParameter outputTransactionIDParameter = new SqlParameter("@NewTransactionID", SqlDbType.Int)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-
-                        command.Parameters.Add(outputTransactionIDParameter);
-
-                        command.ExecuteNonQuery();
-
-                        TransactionID = (int)outputTransactionIDParameter.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                TransactionID = null;
-            }
-            return TransactionID;
-        }
-
-        public static bool UpdateRentalTransactionInfo(int? TransactionID, int BookingID,
-            int? ReturnID, float PaidInitialTotalDueAmount, float? ActualTotalDueAmount,
-            float? TotalRemaining, float? TotalRefundedAmount, DateTime TransactionDate,
-            DateTime? UpdatedTransactionDate)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_UpdateRentalTransactionInfo", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@TransactionID", TransactionID);
-                        command.Parameters.AddWithValue("@BookingID", BookingID);
-                        command.Parameters.AddWithValue("@ReturnID", (object)ReturnID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@PaidInitialTotalDueAmount", PaidInitialTotalDueAmount);
-                        command.Parameters.AddWithValue("@ActualTotalDueAmount", (object)ActualTotalDueAmount ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@TotalRemaining", (object)TotalRemaining ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@TotalRefundedAmount", (object)TotalRefundedAmount ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@TransactionDate", TransactionDate);
-                        command.Parameters.AddWithValue("@UpdatedTransactionDate", (object)UpdatedTransactionDate ?? DBNull.Value);
-
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                rowsAffected = 0;
-            }
-            return rowsAffected != 0;
-        }
-
-        public static bool DeleteRentalTransaction(int? TransactionID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteRentalTransaction", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@TransactionID", (object)TransactionID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-            }
-            return rowsAffected != 0;
         }
 
         public static DataTable GetAllRentalTransactions()

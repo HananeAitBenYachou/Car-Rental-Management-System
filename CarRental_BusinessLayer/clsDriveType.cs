@@ -20,10 +20,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsDriveTypeData.GetDriveTypeInfoByID(DriveTypeID, ref DriveTypeName);
 
-            if (isFound)
-                return new clsDriveType(DriveTypeID, DriveTypeName);
-            else
-                return null;
+            return isFound ? new clsDriveType(DriveTypeID, DriveTypeName) : null;           
         }
 
         public static clsDriveType Find(string DriveTypeName)
@@ -32,10 +29,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsDriveTypeData.GetDriveTypeInfoByName(DriveTypeName, ref DriveTypeID);
 
-            if (isFound)
-                return new clsDriveType(DriveTypeID, DriveTypeName);
-            else
-                return null;
+            return isFound ? new clsDriveType(DriveTypeID, DriveTypeName): null;
         }
 
         public static DataTable GetAllDriveTypes()

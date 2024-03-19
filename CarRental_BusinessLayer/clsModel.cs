@@ -27,10 +27,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsModelData.GetModelInfoByID(ModelID, ref MakeID, ref ModelName);
 
-            if (isFound)
-                return new clsModel(ModelID, MakeID, ModelName);
-            else
-                return null;
+            return isFound ? new clsModel(ModelID, MakeID, ModelName) : null;
         }
 
         public static clsModel Find(string ModelName)
@@ -40,10 +37,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsModelData.GetModelInfoByName(ModelName , ref ModelID, ref MakeID);
 
-            if (isFound)
-                return new clsModel(ModelID, MakeID, ModelName);
-            else
-                return null;
+            return isFound ? new clsModel(ModelID, MakeID, ModelName) : null;
         }
 
         public static DataTable GetAllModels()

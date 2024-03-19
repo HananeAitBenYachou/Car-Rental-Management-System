@@ -18,9 +18,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
         public class VehicleFoundEventArgs : EventArgs
         {
             public int? VehicleID { get; }
-
             public bool IsAvailableForRent { get; }
-
             public double RentalPricePerDay { get; }
 
             public VehicleFoundEventArgs(int? vehicleID , bool isAvailableForRent , double rentalPricePerDay)
@@ -29,7 +27,6 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
                 IsAvailableForRent = isAvailableForRent;
                 RentalPricePerDay = rentalPricePerDay;
             }
-
         }
 
         private int? _VehicleID => ucVehicleCard1.VehicleID;
@@ -47,10 +44,9 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
                 gbFilter.Enabled = value;
 
                 if (gbFilter.Enabled)
-                    txtFilterValue.Focus();
+                    txtVehicleID.Focus();
             }
         }
-
 
         public event EventHandler<VehicleFoundEventArgs> VehicleFound;
         private void _RaiseOnVehicleFoundEvent()
@@ -67,27 +63,20 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             InitializeComponent();
         }
 
-        public void Reset()
-        {
-            txtFilterValue.ResetText();
-            ucVehicleCard1.Reset();
-            FilterEnabled = true;
-        }
-
         public void LoadVehicleData(int? vehicleID)
         {
-            txtFilterValue.Text = vehicleID.ToString();
+            txtVehicleID.Text = vehicleID.ToString();
             _FindVehicle();
         }
 
         private void _ClearErrorProvider()
         {
-            errorProvider1.SetError(txtFilterValue, null);
+            errorProvider1.SetError(txtVehicleID, null);
         }
 
         private bool _FindVehicle()
         {
-            return ucVehicleCard1.LoadVehicleData(Convert.ToInt16(txtFilterValue.Text.Trim()));
+            return ucVehicleCard1.LoadVehicleData(Convert.ToInt16(txtVehicleID.Text.Trim()));
         }
 
         private void btnSearchVehicle_Click(object sender, EventArgs e)
@@ -118,23 +107,23 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             _RaiseOnVehicleFoundEvent();
         }
 
-        private void txtFilterValue_Validating(object sender, CancelEventArgs e)
+        private void txtVehicleID_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFilterValue.Text))
+            if (string.IsNullOrEmpty(txtVehicleID.Text))
             {
                 e.Cancel = true;
-                txtFilterValue.Focus();
-                errorProvider1.SetError(txtFilterValue,"Please enter the vehicle'ID you want to search !");
+                txtVehicleID.Focus();
+                errorProvider1.SetError(txtVehicleID,"Please enter the vehicle'ID you want to search !");
             }
 
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtFilterValue, null);
+                errorProvider1.SetError(txtVehicleID, null);
             }
         }
 
-        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtVehicleID_KeyPress(object sender, KeyPressEventArgs e)
         {
            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }

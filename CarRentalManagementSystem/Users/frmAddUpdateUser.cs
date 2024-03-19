@@ -18,7 +18,7 @@ namespace CarRentalManagementSystem.Users
 {
     public partial class frmAddUpdateUser : Form
     {
-        private enum _enMode { AddNew = 0 , Update = 1 };
+        private enum _enMode : byte { AddNew = 0 , Update = 1 };
         private _enMode _Mode = _enMode.AddNew; 
 
         private int? _UserID  = null;
@@ -190,13 +190,13 @@ namespace CarRentalManagementSystem.Users
 
             if(!_User.Save())
             {
-                MessageBox.Show("Failed to save the data !","Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to save the user data !","Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             else
             {
-                MessageBox.Show("Data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 _Mode = _enMode.Update;
                 _UserID = _User.UserID;

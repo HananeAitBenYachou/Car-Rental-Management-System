@@ -26,10 +26,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsSubModelData.GetSubModelInfoByID(SubModelID, ref ModelID, ref SubModelName);
 
-            if (isFound)
-                return new clsSubModel(SubModelID, ModelID, SubModelName);
-            else
-                return null;
+            return isFound ? new clsSubModel(SubModelID, ModelID, SubModelName) : null;
         }
 
         public static clsSubModel Find(string SubModelName)
@@ -39,10 +36,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsSubModelData.GetSubModelInfoByName(SubModelName , ref SubModelID, ref ModelID);
 
-            if (isFound)
-                return new clsSubModel(SubModelID, ModelID, SubModelName);
-            else
-                return null;
+            return isFound ? new clsSubModel(SubModelID, ModelID, SubModelName) : null;
         }
 
         public static DataTable GetAllSubModels()

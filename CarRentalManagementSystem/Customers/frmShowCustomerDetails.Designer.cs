@@ -59,7 +59,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
             this.btnClose.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnClose.Location = new System.Drawing.Point(864, 706);
+            this.btnClose.Location = new System.Drawing.Point(879, 702);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 173;
@@ -87,7 +87,7 @@
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
             this.guna2ImageButton1.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(419, 9);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(432, 10);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(45, 45);
             this.guna2ImageButton1.Size = new System.Drawing.Size(45, 45);
@@ -109,9 +109,10 @@
             // ucCustomerCard1
             // 
             this.ucCustomerCard1.BackColor = System.Drawing.Color.White;
-            this.ucCustomerCard1.Location = new System.Drawing.Point(21, 82);
+            this.ucCustomerCard1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucCustomerCard1.Location = new System.Drawing.Point(0, 73);
             this.ucCustomerCard1.Name = "ucCustomerCard1";
-            this.ucCustomerCard1.Size = new System.Drawing.Size(1014, 617);
+            this.ucCustomerCard1.Size = new System.Drawing.Size(1058, 617);
             this.ucCustomerCard1.TabIndex = 174;
             // 
             // frmShowCustomerDetails

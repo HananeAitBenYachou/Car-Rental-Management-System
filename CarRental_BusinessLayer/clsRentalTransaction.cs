@@ -6,8 +6,7 @@ namespace CarRental_BusinessLayer
 {
     public class clsRentalTransaction
     {
-        private enum enMode { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        public enum enFindTransactionBy : byte { TransactionID , BookingID }
         public int? TransactionID { get; private set; }
         public int BookingID { get; set; }
         public int? ReturnID { get; set; }
@@ -18,9 +17,11 @@ namespace CarRental_BusinessLayer
         public DateTime TransactionDate { get; set; }
         public DateTime? UpdatedTransactionDate { get; set; }
 
+        public clsRentalBooking RentalBookingInfo { get; }
+        public clsVehicleReturn ReturnInfo { get; }
+
         public clsRentalTransaction()
         {
-            _Mode = enMode.AddNew;
             TransactionID = null;
             BookingID = default;
             ReturnID = null;
@@ -31,9 +32,11 @@ namespace CarRental_BusinessLayer
             TransactionDate = default;
             UpdatedTransactionDate = null;
         }
-        private clsRentalTransaction(int? TransactionID, int BookingID, int? ReturnID, float PaidInitialTotalDueAmount, float? ActualTotalDueAmount, float? TotalRemaining, float? TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+
+        private clsRentalTransaction(int? TransactionID, int BookingID, int? ReturnID, 
+            float PaidInitialTotalDueAmount, float? ActualTotalDueAmount, float? TotalRemaining, 
+            float? TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
         {
-            _Mode = enMode.Update;
             this.TransactionID = TransactionID;
             this.BookingID = BookingID;
             this.ReturnID = ReturnID;
@@ -43,9 +46,28 @@ namespace CarRental_BusinessLayer
             this.TotalRefundedAmount = TotalRefundedAmount;
             this.TransactionDate = TransactionDate;
             this.UpdatedTransactionDate = UpdatedTransactionDate;
+
+            this.RentalBookingInfo = clsRentalBooking.Find(BookingID);
+            this.ReturnInfo = clsVehicleReturn.Find(ReturnID);
         }
 
-        public static clsRentalTransaction Find(int? TransactionID)
+        public static clsRentalTransaction Find<T>(T searchValue , enFindTransactionBy findTransactionBy)
+        {
+            switch(findTransactionBy)
+            {
+                case enFindTransactionBy.TransactionID:
+                    FindByTransactionID(Convert.ToInt16(searchValue));
+                    break;
+
+                case enFindTransactionBy.BookingID:
+                    FindByBookingID(Convert.ToInt16(searchValue));
+                    break;
+            }
+
+            return null;
+        }
+
+        private static clsRentalTransaction FindByTransactionID(int? TransactionID)
         {
             int BookingID = default;
             int? ReturnID = default;
@@ -64,44 +86,28 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
+        private static clsRentalTransaction FindByBookingID(int BookingID)
+        {
+            int? TransactionID = default;
+            int? ReturnID = default;
+            float PaidInitialTotalDueAmount = default;
+            float? ActualTotalDueAmount = default;
+            float? TotalRemaining = default;
+            float? TotalRefundedAmount = default;
+            DateTime TransactionDate = default;
+            DateTime? UpdatedTransactionDate = default;
+
+            bool isFound = clsRentalTransactionData.GetRentalTransactionInfoByBookingID(BookingID , ref TransactionID, ref ReturnID, ref PaidInitialTotalDueAmount, ref ActualTotalDueAmount, ref TotalRemaining, ref TotalRefundedAmount, ref TransactionDate, ref UpdatedTransactionDate);
+
+            if (isFound)
+                return new clsRentalTransaction(TransactionID, BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
+            else
+                return null;
+        }
+
         public static bool DoesRentalTransactionExist(int? TransactionID)
         {
             return clsRentalTransactionData.DoesRentalTransactionExist(TransactionID);
-        }
-
-        private bool _AddNewRentalTransaction()
-        {
-            TransactionID = clsRentalTransactionData.AddNewRentalTransaction(BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
-            return TransactionID.HasValue;
-        }
-
-        private bool _UpdateRentalTransaction()
-        {
-            return clsRentalTransactionData.UpdateRentalTransactionInfo(TransactionID, BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
-        }
-
-        public bool Save()
-        {
-            switch (_Mode)
-            {
-                case enMode.AddNew:
-                    if (_AddNewRentalTransaction())
-                    {
-                        _Mode = enMode.Update;
-                        return true;
-                    }
-                    return false;
-
-                case enMode.Update:
-                    return _UpdateRentalTransaction();
-
-            }
-            return false;
-        }
-
-        public static bool DeleteRentalTransaction(int? TransactionID)
-        {
-            return clsRentalTransactionData.DeleteRentalTransaction(TransactionID);
         }
 
         public static DataTable GetAllRentalTransactions()

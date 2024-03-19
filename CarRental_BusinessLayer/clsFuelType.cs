@@ -20,10 +20,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsFuelTypeData.GetFuelTypeInfoByID(FuelTypeID, ref FuelTypeName);
 
-            if (isFound)
-                return new clsFuelType(FuelTypeID, FuelTypeName);
-            else
-                return null;
+            return isFound ? new clsFuelType(FuelTypeID, FuelTypeName) : null;
         }
 
         public static clsFuelType Find(string FuelTypeName)
@@ -32,10 +29,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsFuelTypeData.GetFuelTypeInfoByName(FuelTypeName ,ref FuelTypeID);
 
-            if (isFound)
-                return new clsFuelType(FuelTypeID, FuelTypeName);
-            else
-                return null;
+            return isFound ? new clsFuelType(FuelTypeID, FuelTypeName) : null;
         }
 
         public static DataTable GetAllFuelTypes()

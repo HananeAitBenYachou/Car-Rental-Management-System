@@ -6,10 +6,11 @@ namespace CarRental_BusinessLayer
 {
     public class clsUser : clsPerson
     {
-        private new enum enMode { AddNew = 0, Update = 1 };
+        private new enum enMode : byte { AddNew = 0, Update = 1 };
         private enMode _Mode;
 
-        public enum enFindUserBy { PersonID = 0, UserID = 1, UserName = 3}
+        public enum enFindUserBy : byte { PersonID = 0, UserID = 1, UserName = 3}
+
         public int? UserID { get; private set; }
         public new int? PersonID { get; private set; }
         public string UserName { get; set; }

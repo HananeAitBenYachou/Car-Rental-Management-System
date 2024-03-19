@@ -14,7 +14,6 @@ namespace CarRentalManagementSystem.Transactions.UserControls
     public partial class ucTransactionDetails : UserControl
     {
         public int? TransactionID { get; private set; } = null;
-
         public clsRentalTransaction Transaction { get; private set; } = null;
 
         public ucTransactionDetails()
@@ -24,7 +23,7 @@ namespace CarRentalManagementSystem.Transactions.UserControls
 
         public bool LoadTransactionData(int? transactionID)
         {
-            Transaction = clsRentalTransaction.Find(transactionID);
+            Transaction = clsRentalTransaction.Find<int?>(transactionID, clsRentalTransaction.enFindTransactionBy.TransactionID);
 
             if (Transaction == null)
             {

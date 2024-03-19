@@ -99,7 +99,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
             this.btnClose.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnClose.Location = new System.Drawing.Point(864, 705);
+            this.btnClose.Location = new System.Drawing.Point(881, 699);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 170;
@@ -108,9 +108,11 @@
             // 
             // ucUserCard1
             // 
-            this.ucUserCard1.Location = new System.Drawing.Point(21, 82);
+            this.ucUserCard1.BackColor = System.Drawing.Color.White;
+            this.ucUserCard1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucUserCard1.Location = new System.Drawing.Point(0, 73);
             this.ucUserCard1.Name = "ucUserCard1";
-            this.ucUserCard1.Size = new System.Drawing.Size(1014, 617);
+            this.ucUserCard1.Size = new System.Drawing.Size(1058, 617);
             this.ucUserCard1.TabIndex = 169;
             // 
             // frmShowUserDetails
@@ -118,7 +120,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1058, 773);
+            this.ClientSize = new System.Drawing.Size(1058, 769);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ucUserCard1);
             this.Controls.Add(this.guna2GradientPanel1);

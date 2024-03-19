@@ -35,9 +35,12 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.tcRentalBooking = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpCustomerInfo = new System.Windows.Forms.TabPage();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnToVehicleInfo = new Guna.UI2.WinForms.Guna2Button();
+            this.ucCustomerCardWithFilter1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCardWithFilter();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
             this.btnToBookingInfo = new Guna.UI2.WinForms.Guna2Button();
+            this.ucVehicleCardWithFilter1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.txtInitialCheckNotes = new Guna.UI2.WinForms.Guna2TextBox();
@@ -63,9 +66,6 @@
             this.txtCustomerID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ucCustomerCardWithFilter1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCardWithFilter();
-            this.ucVehicleCardWithFilter1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter();
             this.guna2GradientPanel1.SuspendLayout();
             this.tcRentalBooking.SuspendLayout();
             this.tpCustomerInfo.SuspendLayout();
@@ -166,6 +166,25 @@
             this.tpCustomerInfo.Text = "Customer Info";
             this.tpCustomerInfo.UseVisualStyleBackColor = true;
             // 
+            // btnClose
+            // 
+            this.btnClose.BorderRadius = 22;
+            this.btnClose.CustomizableEdges.TopLeft = false;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnClose.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
+            this.btnClose.Location = new System.Drawing.Point(3, 758);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(171, 53);
+            this.btnClose.TabIndex = 233;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // btnToVehicleInfo
             // 
             this.btnToVehicleInfo.BorderRadius = 22;
@@ -178,13 +197,23 @@
             this.btnToVehicleInfo.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToVehicleInfo.ForeColor = System.Drawing.Color.White;
             this.btnToVehicleInfo.Image = global::CarRentalManagementSystem.Properties.Resources.next;
-            this.btnToVehicleInfo.Location = new System.Drawing.Point(864, 762);
+            this.btnToVehicleInfo.Location = new System.Drawing.Point(879, 758);
             this.btnToVehicleInfo.Name = "btnToVehicleInfo";
             this.btnToVehicleInfo.Size = new System.Drawing.Size(171, 53);
             this.btnToVehicleInfo.TabIndex = 232;
             this.btnToVehicleInfo.Text = "Next";
             this.btnToVehicleInfo.EnabledChanged += new System.EventHandler(this.btnToVehicleInfo_EnabledChanged);
             this.btnToVehicleInfo.Click += new System.EventHandler(this.btnToVehicleInfo_Click);
+            // 
+            // ucCustomerCardWithFilter1
+            // 
+            this.ucCustomerCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ucCustomerCardWithFilter1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucCustomerCardWithFilter1.FilterEnabled = true;
+            this.ucCustomerCardWithFilter1.Location = new System.Drawing.Point(3, 3);
+            this.ucCustomerCardWithFilter1.Name = "ucCustomerCardWithFilter1";
+            this.ucCustomerCardWithFilter1.Size = new System.Drawing.Size(1047, 749);
+            this.ucCustomerCardWithFilter1.TabIndex = 0;
             // 
             // tpVehicleInfo
             // 
@@ -210,13 +239,23 @@
             this.btnToBookingInfo.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToBookingInfo.ForeColor = System.Drawing.Color.White;
             this.btnToBookingInfo.Image = global::CarRentalManagementSystem.Properties.Resources.next;
-            this.btnToBookingInfo.Location = new System.Drawing.Point(823, 680);
+            this.btnToBookingInfo.Location = new System.Drawing.Point(876, 666);
             this.btnToBookingInfo.Name = "btnToBookingInfo";
             this.btnToBookingInfo.Size = new System.Drawing.Size(171, 53);
             this.btnToBookingInfo.TabIndex = 233;
             this.btnToBookingInfo.Text = "Next";
             this.btnToBookingInfo.EnabledChanged += new System.EventHandler(this.btnToBookingInfo_EnabledChanged);
             this.btnToBookingInfo.Click += new System.EventHandler(this.btnToBookingInfo_Click);
+            // 
+            // ucVehicleCardWithFilter1
+            // 
+            this.ucVehicleCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ucVehicleCardWithFilter1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucVehicleCardWithFilter1.FilterEnabled = true;
+            this.ucVehicleCardWithFilter1.Location = new System.Drawing.Point(3, 3);
+            this.ucVehicleCardWithFilter1.Name = "ucVehicleCardWithFilter1";
+            this.ucVehicleCardWithFilter1.Size = new System.Drawing.Size(1047, 654);
+            this.ucVehicleCardWithFilter1.TabIndex = 0;
             // 
             // tpBookingInfo
             // 
@@ -246,7 +285,7 @@
             this.tpBookingInfo.Location = new System.Drawing.Point(4, 54);
             this.tpBookingInfo.Name = "tpBookingInfo";
             this.tpBookingInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpBookingInfo.Size = new System.Drawing.Size(1053, 827);
+            this.tpBookingInfo.Size = new System.Drawing.Size(1053, 826);
             this.tpBookingInfo.TabIndex = 2;
             this.tpBookingInfo.Text = "Booking Info";
             this.tpBookingInfo.UseVisualStyleBackColor = true;
@@ -327,7 +366,7 @@
             this.txtPickUpLocation.SelectedText = "";
             this.txtPickUpLocation.Size = new System.Drawing.Size(229, 43);
             this.txtPickUpLocation.TabIndex = 257;
-            this.txtPickUpLocation.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
+            this.txtPickUpLocation.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // label9
             // 
@@ -363,7 +402,7 @@
             this.txtDropOffLocation.SelectedText = "";
             this.txtDropOffLocation.Size = new System.Drawing.Size(229, 43);
             this.txtDropOffLocation.TabIndex = 255;
-            this.txtDropOffLocation.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
+            this.txtDropOffLocation.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // label10
             // 
@@ -668,43 +707,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BorderRadius = 22;
-            this.btnClose.CustomizableEdges.TopLeft = false;
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.btnClose.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
-            this.btnClose.Location = new System.Drawing.Point(21, 762);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(171, 53);
-            this.btnClose.TabIndex = 233;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // ucCustomerCardWithFilter1
-            // 
-            this.ucCustomerCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ucCustomerCardWithFilter1.FilterEnabled = true;
-            this.ucCustomerCardWithFilter1.Location = new System.Drawing.Point(21, 7);
-            this.ucCustomerCardWithFilter1.Name = "ucCustomerCardWithFilter1";
-            this.ucCustomerCardWithFilter1.Size = new System.Drawing.Size(1014, 749);
-            this.ucCustomerCardWithFilter1.TabIndex = 0;
-            // 
-            // ucVehicleCardWithFilter1
-            // 
-            this.ucVehicleCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ucVehicleCardWithFilter1.FilterEnabled = true;
-            this.ucVehicleCardWithFilter1.Location = new System.Drawing.Point(44, 20);
-            this.ucVehicleCardWithFilter1.Name = "ucVehicleCardWithFilter1";
-            this.ucVehicleCardWithFilter1.Size = new System.Drawing.Size(950, 654);
-            this.ucVehicleCardWithFilter1.TabIndex = 0;
             // 
             // frmAddRentalBooking
             // 

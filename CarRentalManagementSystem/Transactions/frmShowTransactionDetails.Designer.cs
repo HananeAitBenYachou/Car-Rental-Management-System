@@ -89,9 +89,10 @@
             // ucTransactionDetails1
             // 
             this.ucTransactionDetails1.BackColor = System.Drawing.Color.White;
-            this.ucTransactionDetails1.Location = new System.Drawing.Point(12, 84);
+            this.ucTransactionDetails1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucTransactionDetails1.Location = new System.Drawing.Point(0, 73);
             this.ucTransactionDetails1.Name = "ucTransactionDetails1";
-            this.ucTransactionDetails1.Size = new System.Drawing.Size(1017, 419);
+            this.ucTransactionDetails1.Size = new System.Drawing.Size(1043, 419);
             this.ucTransactionDetails1.TabIndex = 179;
             // 
             // btnClose
@@ -107,7 +108,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
             this.btnClose.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnClose.Location = new System.Drawing.Point(858, 509);
+            this.btnClose.Location = new System.Drawing.Point(863, 498);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 180;

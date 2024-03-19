@@ -6,7 +6,7 @@ namespace CarRental_BusinessLayer
 {
     public class clsRentalBooking
     {
-        private enum enMode { AddNew = 0, Update = 1 };
+        private enum enMode : byte { AddNew = 0, Update = 1 };
         private enMode _Mode;
         public int? BookingID { get; private set; }
         public int CustomerID { get; set; }
@@ -19,10 +19,11 @@ namespace CarRental_BusinessLayer
         public float RentalPricePerDay { get; set; }
         public float InitialTotalDueAmount { get; set; }
         public string InitialCheckNotes { get; set; }
+        public bool IsBookingActive => IsRentalBookingActive();
 
+        public clsRentalTransaction TransactionInfo => clsRentalTransaction.Find<int>(BookingID.Value, clsRentalTransaction.enFindTransactionBy.BookingID);
         public clsVehicle VehicleInfo { get; }
         public clsCustomer CustomerInfo { get; }
-
 
         public clsRentalBooking()
         {
@@ -74,10 +75,14 @@ namespace CarRental_BusinessLayer
             float InitialTotalDueAmount = default;
             string InitialCheckNotes = default;
 
-            bool isFound = clsRentalBookingData.GetRentalBookingInfoByID(BookingID, ref CustomerID, ref VehicleID, ref RentalStartDate, ref RentalEndDate, ref PickupLocation, ref DropoffLocation, ref InitialRentalDays, ref RentalPricePerDay, ref InitialTotalDueAmount, ref InitialCheckNotes);
+            bool isFound = clsRentalBookingData.GetRentalBookingInfoByID(BookingID, ref CustomerID, ref VehicleID, ref RentalStartDate, 
+                ref RentalEndDate, ref PickupLocation, ref DropoffLocation, ref InitialRentalDays, 
+                ref RentalPricePerDay, ref InitialTotalDueAmount, ref InitialCheckNotes);
 
             if (isFound)
-                return new clsRentalBooking(BookingID, CustomerID, VehicleID, RentalStartDate, RentalEndDate, PickupLocation, DropoffLocation, InitialRentalDays, RentalPricePerDay, InitialTotalDueAmount, InitialCheckNotes);
+                return new clsRentalBooking(BookingID, CustomerID, VehicleID, RentalStartDate, 
+                    RentalEndDate, PickupLocation, DropoffLocation, InitialRentalDays, RentalPricePerDay,
+                    InitialTotalDueAmount, InitialCheckNotes);
             else
                 return null;
         }
@@ -85,6 +90,11 @@ namespace CarRental_BusinessLayer
         public static bool DoesRentalBookingExist(int? BookingID)
         {
             return clsRentalBookingData.DoesRentalBookingExist(BookingID);
+        }
+
+        private bool IsRentalBookingActive()
+        {
+            return clsRentalBookingData.IsRentalBookingActive(BookingID);
         }
 
         private bool _AddNewRentalBooking()
@@ -120,15 +130,9 @@ namespace CarRental_BusinessLayer
             return false;
         }
 
-        public static bool DeleteRentalBooking(int? BookingID)
-        {
-            return clsRentalBookingData.DeleteRentalBooking(BookingID);
-        }
-
         public static DataTable GetAllRentalBookings()
         {
             return clsRentalBookingData.GetAllRentalBookings();
         }
-
     }
 }

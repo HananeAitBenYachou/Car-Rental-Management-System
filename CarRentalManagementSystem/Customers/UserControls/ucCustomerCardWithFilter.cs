@@ -49,13 +49,6 @@ namespace CarRentalManagementSystem.Customers.UserControls
             InitializeComponent();
         }
 
-        public void Reset()
-        {
-            txtFilterValue.ResetText();
-            ucCustomerCard1.Reset();
-            FilterEnabled = true;
-        }
-
         public void LoadCustomerData(int? customerID)
         {
             cbFilterByOptions.SelectedIndex = 0;

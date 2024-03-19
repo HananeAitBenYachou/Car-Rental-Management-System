@@ -111,6 +111,44 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
+        public static bool IsRentalBookingActive(int? BookingID)
+        {
+            bool isActive = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_CheckIfRentalBookingIsActive", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@BookingID", (object)BookingID ?? DBNull.Value);
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        isActive = (int)returnValue.Value == 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+
+                isActive = false;
+            }
+            return isActive;
+        }
+
         public static int? AddNewRentalBooking(int CustomerID, int VehicleID, DateTime RentalStartDate,
             DateTime RentalEndDate, string PickupLocation, string DropoffLocation,
             float RentalPricePerDay, string InitialCheckNotes)
@@ -194,33 +232,6 @@ namespace CarRental_DataAccessLayer
                 clsErrorLogger.LogError(ex);
 
                 rowsAffected = 0;
-            }
-            return rowsAffected != 0;
-        }
-
-        public static bool DeleteRentalBooking(int? BookingID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteRentalBooking", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@BookingID", (object)BookingID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
             }
             return rowsAffected != 0;
         }

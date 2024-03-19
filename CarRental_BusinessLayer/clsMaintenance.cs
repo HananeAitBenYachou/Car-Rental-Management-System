@@ -6,7 +6,7 @@ namespace CarRental_BusinessLayer
 {
     public class clsMaintenance
     {
-        private enum enMode { AddNew = 0, Update = 1 };
+        private enum enMode : byte { AddNew = 0, Update = 1 };
         private enMode _Mode;
         public int? MaintenanceID { get; private set; }
         public int VehicleID { get; set; }

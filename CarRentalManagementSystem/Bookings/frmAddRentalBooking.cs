@@ -21,7 +21,13 @@ namespace CarRentalManagementSystem.Bookings
 
         private int? _BookingID = null;
         private clsRentalBooking _Booking = null;
-      
+
+        public event EventHandler<int?> NewBookingAdded;
+        protected virtual void OnNewBookingAdded()
+        {
+            NewBookingAdded?.Invoke(this, _BookingID);
+        }
+
         public frmAddRentalBooking()
         {
             InitializeComponent();
@@ -101,7 +107,7 @@ namespace CarRentalManagementSystem.Bookings
             tpBookingInfo.Enabled = btnToBookingInfo.Enabled;
         }
 
-        private void _SaveRentalBookingInfo()
+        private bool _SaveRentalBookingInfo()
         {
             _Booking = new clsRentalBooking();
 
@@ -116,21 +122,23 @@ namespace CarRentalManagementSystem.Bookings
 
             if (!_Booking.Save())
             {
-                MessageBox.Show("Failed to save the data !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Failed to book the vehicle. Please try again.", "Booking Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             else
             {
-                MessageBox.Show("Data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _BookingID = _Booking.BookingID;
+                MessageBox.Show("Vehicle booked successfully from " + dtpStartDate.Value.ToShortDateString() + " to " + dtpEndDate.Value.ToShortDateString() + ".", 
+                                "Booking Successful", MessageBoxButtons.OK, MessageBoxIcon.Information); _BookingID = _Booking.BookingID;
+                
                 txtBookingID.Text = _BookingID.ToString();
 
                 btnSave.Enabled = false;
                 ucCustomerCardWithFilter1.FilterEnabled = false;
                 ucVehicleCardWithFilter1.FilterEnabled = false;
-            }
 
+                return true;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -141,7 +149,8 @@ namespace CarRentalManagementSystem.Bookings
                 return;
             }
 
-            _SaveRentalBookingInfo();
+            if (_SaveRentalBookingInfo())
+                OnNewBookingAdded();
         }
 
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
@@ -154,7 +163,7 @@ namespace CarRentalManagementSystem.Bookings
             txtInitialTotalDueAmount.Text = (RentalPricePerDay * InitialRentalDays).ToString();
         }
 
-        private void TextBox_Validating(object sender, CancelEventArgs e)
+        private void textBox_Validating(object sender, CancelEventArgs e)
         {
             Guna2TextBox txtTemp = (Guna2TextBox)sender;
 

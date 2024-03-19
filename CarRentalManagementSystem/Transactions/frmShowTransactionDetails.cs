@@ -13,6 +13,7 @@ namespace CarRentalManagementSystem.Transactions
     public partial class frmShowTransactionDetails : Form
     {
         private int? _TransactionID = null;
+
         public frmShowTransactionDetails(int? transactionID)
         {
             InitializeComponent();

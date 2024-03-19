@@ -32,8 +32,8 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.txtCurrentPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtNewPassword = new Guna.UI2.WinForms.Guna2TextBox();
@@ -70,18 +70,6 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(727, 88);
             this.guna2GradientPanel1.TabIndex = 1;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(90, 27);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(177, 28);
-            this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "Change Password";
-            // 
             // guna2ImageButton1
             // 
             this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
@@ -97,6 +85,18 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(45, 45);
             this.guna2ImageButton1.TabIndex = 3;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(90, 27);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(177, 28);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "Change Password";
+            // 
             // txtCurrentPassword
             // 
             this.txtCurrentPassword.BorderRadius = 22;
@@ -111,7 +111,7 @@
             this.txtCurrentPassword.ForeColor = System.Drawing.Color.Black;
             this.txtCurrentPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCurrentPassword.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtCurrentPassword.Location = new System.Drawing.Point(270, 123);
+            this.txtCurrentPassword.Location = new System.Drawing.Point(302, 123);
             this.txtCurrentPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCurrentPassword.Name = "txtCurrentPassword";
             this.txtCurrentPassword.PasswordChar = '\0';
@@ -127,7 +127,7 @@
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.lblPassword.Location = new System.Drawing.Point(105, 135);
+            this.lblPassword.Location = new System.Drawing.Point(137, 135);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(145, 21);
             this.lblPassword.TabIndex = 165;
@@ -147,7 +147,7 @@
             this.txtNewPassword.ForeColor = System.Drawing.Color.Black;
             this.txtNewPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNewPassword.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtNewPassword.Location = new System.Drawing.Point(270, 197);
+            this.txtNewPassword.Location = new System.Drawing.Point(302, 197);
             this.txtNewPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '\0';
@@ -163,7 +163,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.label1.Location = new System.Drawing.Point(105, 205);
+            this.label1.Location = new System.Drawing.Point(137, 205);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 21);
             this.label1.TabIndex = 167;
@@ -183,7 +183,7 @@
             this.txtConfirmPassword.ForeColor = System.Drawing.Color.Black;
             this.txtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtConfirmPassword.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtConfirmPassword.Location = new System.Drawing.Point(270, 271);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(302, 271);
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '\0';
@@ -199,7 +199,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.label2.Location = new System.Drawing.Point(105, 283);
+            this.label2.Location = new System.Drawing.Point(137, 283);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 21);
             this.label2.TabIndex = 169;

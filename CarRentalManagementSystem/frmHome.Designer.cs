@@ -185,6 +185,7 @@
             this.btnManageTransactions.Text = "Transactions";
             this.btnManageTransactions.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageTransactions.TextOffset = new System.Drawing.Point(8, -3);
+            this.btnManageTransactions.Click += new System.EventHandler(this.btnManageTransactions_Click);
             // 
             // btnManageReturns
             // 
@@ -208,6 +209,7 @@
             this.btnManageReturns.Text = "Returns";
             this.btnManageReturns.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageReturns.TextOffset = new System.Drawing.Point(8, 0);
+            this.btnManageReturns.Click += new System.EventHandler(this.btnManageReturns_Click);
             // 
             // btnManageBookings
             // 
@@ -279,6 +281,7 @@
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDashboard.TextOffset = new System.Drawing.Point(8, -1);
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // guna2PictureBox1
             // 

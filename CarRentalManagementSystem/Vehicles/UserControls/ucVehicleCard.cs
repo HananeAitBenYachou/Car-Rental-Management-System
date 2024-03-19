@@ -24,28 +24,12 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             InitializeComponent();
         }
 
-        public void Reset()
-        {
-            VehicleID = null;
-            Vehicle = null;
-
-            foreach (Guna2TextBox textBox in groupBox.Controls.OfType<Guna2TextBox>())
-            {
-                textBox.ResetText();
-            }
-
-            txtVehicleID.Text = "N/A";
-            lblVehicleStatus.Text = "????";
-            nudNumberOfDoors.Value = 0;
-        }
-
         public bool LoadVehicleData(int? vehicleID)
         {
             Vehicle = clsVehicle.Find(vehicleID);
 
             if (Vehicle == null)
             {
-                Reset();
                 MessageBox.Show($"No vehicle with VehicleID = {vehicleID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

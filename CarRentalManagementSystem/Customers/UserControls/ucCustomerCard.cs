@@ -27,16 +27,6 @@ namespace CarRentalManagementSystem.Customers.UserControls
             InitializeComponent();
         }
 
-        public void Reset()
-        {
-            ucPersonCard1.Reset();
-            txtCustomerID.Text = "N/A";
-            txtLicenseNo.Text = "";
-
-            CustomerID = null;
-            Customer = null;
-        }
-
         private void _LoadCustomerData()
         {
             CustomerID = Customer.CustomerID;
@@ -54,7 +44,6 @@ namespace CarRentalManagementSystem.Customers.UserControls
             if (Customer == null)
             {
                 MessageBox.Show($"No customer with ID = {customerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Reset();
                 return false;
             }
 
@@ -68,7 +57,6 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
             if (Customer == null)
             {
-                Reset();
                 MessageBox.Show($"No customer with License Number = {driverLicenseNumber} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

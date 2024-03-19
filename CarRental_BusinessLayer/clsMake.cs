@@ -20,10 +20,7 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsMakeData.GetMakeInfoByID(MakeID, ref Make);
 
-            if (isFound)
-                return new clsMake(MakeID, Make);
-            else
-                return null;
+            return isFound ? new clsMake(MakeID, Make) : null;
         }
 
         public static clsMake Find(string Make)
@@ -32,16 +29,12 @@ namespace CarRental_BusinessLayer
 
             bool isFound = clsMakeData.GetMakeInfoByName(Make , ref MakeID);
 
-            if (isFound)
-                return new clsMake(MakeID, Make);
-            else
-                return null;
+            return isFound ? new clsMake(MakeID, Make) : null;
         }
 
         public static DataTable GetAllMakes()
         {
             return clsMakeData.GetAllMakes();
         }
-
     }
 }

@@ -97,44 +97,6 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool DoesCountryExist(int? CountryID)
-        {
-            bool isFound = false;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_CheckIfCountryExists", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@CountryID", (object)CountryID ?? DBNull.Value);
-
-                        SqlParameter returnValue = new SqlParameter
-                        {
-                            Direction = ParameterDirection.ReturnValue
-                        };
-
-                        command.Parameters.Add(returnValue);
-
-                        command.ExecuteScalar();
-
-                        isFound = (int)returnValue.Value == 1;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                clsErrorLogger.LogError(ex);
-
-                isFound = false;
-            }
-            return isFound;
-        }
-
         public static DataTable GetAllCountries()
         {
             DataTable Datatable = new DataTable();

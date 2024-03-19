@@ -1,5 +1,6 @@
 ﻿using CarRentalManagementSystem.Bookings;
 using CarRentalManagementSystem.Customers;
+using CarRentalManagementSystem.Transactions;
 using CarRentalManagementSystem.Users;
 using CarRentalManagementSystem.Vehicles;
 using Guna.UI2.WinForms;
@@ -11,7 +12,6 @@ namespace CarRentalManagementSystem
     public partial class frmHome : Form
     {
         private Guna2Button _CurrentActiveButton = new Guna2Button();
-
         public frmHome()
         {
             InitializeComponent();
@@ -56,24 +56,19 @@ namespace CarRentalManagementSystem
             ((Guna2ImageButton)sender).BackColor = ColorTranslator.FromHtml("#FBCD08");
         }
 
-        private void btnManageUsers_Click(object sender, System.EventArgs e)
-        {
-            _ShowForm((Guna2Button)sender,new frmListUsers());
-        }
-
         private void frmHome_Load(object sender, System.EventArgs e)
         {
            
         }
 
+        private void btnManageUsers_Click(object sender, System.EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListUsers());
+        }
+
         private void btnManageCustomers_Click(object sender, System.EventArgs e)
         {
             _ShowForm((Guna2Button)sender, new frmListCustomers());
-        }
-
-        private void btnLogout_Click(object sender, System.EventArgs e)
-        {
-            btnExit.PerformClick();
         }
 
         private void btnManageBookings_Click(object sender, System.EventArgs e)
@@ -85,6 +80,26 @@ namespace CarRentalManagementSystem
         private void btnManageVehicles_Click(object sender, System.EventArgs e)
         {
             _ShowForm((Guna2Button)sender, new frmListVehicles());
+        }
+
+        private void btnManageTransactions_Click(object sender, System.EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListTransactions());
+        }
+
+        private void btnLogout_Click(object sender, System.EventArgs e)
+        {
+            btnExit.PerformClick();
+        }
+
+        private void btnManageReturns_Click(object sender, System.EventArgs e)
+        {
+            
+        }
+
+        private void btnDashboard_Click(object sender, System.EventArgs e)
+        {
+            //Not implemented yet !
         }
     }
 }

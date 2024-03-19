@@ -32,11 +32,6 @@ namespace CarRental_BusinessLayer
             return isFound ? new clsCountry(CountryID, CountryName) : null;
         }
 
-        public static bool DoesCountryExist(int? CountryID)
-        {
-            return clsCountryData.DoesCountryExist(CountryID);
-        }
-
         public static DataTable GetAllCountries()
         {
             return clsCountryData.GetAllCountries();

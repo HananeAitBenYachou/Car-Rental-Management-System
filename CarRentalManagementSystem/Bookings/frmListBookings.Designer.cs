@@ -197,7 +197,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.lblTitle.Location = new System.Drawing.Point(93, 35);
+            this.lblTitle.Location = new System.Drawing.Point(102, 35);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(281, 31);
             this.lblTitle.TabIndex = 9;
@@ -256,7 +256,7 @@
             this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources.rental_car;
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.Location = new System.Drawing.Point(25, 11);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(34, 11);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);

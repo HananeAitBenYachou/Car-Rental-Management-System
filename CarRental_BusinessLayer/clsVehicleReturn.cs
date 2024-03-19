@@ -6,7 +6,7 @@ namespace CarRental_BusinessLayer
 {
     public class clsVehicleReturn
     {
-        private enum enMode { AddNew = 0, Update = 1 };
+        private enum enMode : byte { AddNew = 0, Update = 1 };
         private enMode _Mode;
         public int? ReturenID { get; private set; }
         public DateTime ActualReturnDate { get; set; }
@@ -16,6 +16,8 @@ namespace CarRental_BusinessLayer
         public string FinalCheckNotes { get; set; }
         public float AdditionalCharges { get; set; }
         public float ActualTotalDueAmount { get; set; }
+        public int TransactionID { get; set; }
+        public clsRentalTransaction TransactionInfo { get; }
 
         public clsVehicleReturn()
         {
@@ -25,11 +27,14 @@ namespace CarRental_BusinessLayer
             ActualRentalDays = default;
             Mileage = default;
             ConsumedMileage = default;
-            FinalCheckNotes = default;
+            FinalCheckNotes = null;
             AdditionalCharges = default;
             ActualTotalDueAmount = default;
+            TransactionID = default;
         }
-        private clsVehicleReturn(int? ReturenID, DateTime ActualReturnDate, byte ActualRentalDays, short Mileage, short ConsumedMileage, string FinalCheckNotes, float AdditionalCharges, float ActualTotalDueAmount)
+        private clsVehicleReturn(int? ReturenID, DateTime ActualReturnDate, byte ActualRentalDays,
+            short Mileage, short ConsumedMileage, string FinalCheckNotes, 
+            float AdditionalCharges, float ActualTotalDueAmount, int TransactionID)
         {
             _Mode = enMode.Update;
             this.ReturenID = ReturenID;
@@ -40,6 +45,9 @@ namespace CarRental_BusinessLayer
             this.FinalCheckNotes = FinalCheckNotes;
             this.AdditionalCharges = AdditionalCharges;
             this.ActualTotalDueAmount = ActualTotalDueAmount;
+            this.TransactionID = TransactionID;
+
+            this.TransactionInfo = clsRentalTransaction.Find<int?>(TransactionID , clsRentalTransaction.enFindTransactionBy.TransactionID);
         }
 
         public static clsVehicleReturn Find(int? ReturenID)
@@ -51,11 +59,12 @@ namespace CarRental_BusinessLayer
             string FinalCheckNotes = default;
             float AdditionalCharges = default;
             float ActualTotalDueAmount = default;
+            int TransactionID = default;
 
-            bool isFound = clsVehicleReturnData.GetVehicleReturnInfoByID(ReturenID, ref ActualReturnDate, ref ActualRentalDays, ref Mileage, ref ConsumedMileage, ref FinalCheckNotes, ref AdditionalCharges, ref ActualTotalDueAmount);
+            bool isFound = clsVehicleReturnData.GetVehicleReturnInfoByID(ReturenID, ref ActualReturnDate, ref ActualRentalDays, ref Mileage, ref ConsumedMileage, ref FinalCheckNotes, ref AdditionalCharges, ref ActualTotalDueAmount, ref TransactionID);
 
             if (isFound)
-                return new clsVehicleReturn(ReturenID, ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount);
+                return new clsVehicleReturn(ReturenID, ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount, TransactionID);
             else
                 return null;
         }
@@ -67,13 +76,13 @@ namespace CarRental_BusinessLayer
 
         private bool _AddNewVehicleReturn()
         {
-            ReturenID = clsVehicleReturnData.AddNewVehicleReturn(ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount);
+            ReturenID = clsVehicleReturnData.AddNewVehicleReturn(ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount, TransactionID);
             return ReturenID.HasValue;
         }
 
         private bool _UpdateVehicleReturn()
         {
-            return clsVehicleReturnData.UpdateVehicleReturnInfo(ReturenID, ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount);
+            return clsVehicleReturnData.UpdateVehicleReturnInfo(ReturenID, ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount, TransactionID);
         }
 
         public bool Save()
@@ -94,16 +103,9 @@ namespace CarRental_BusinessLayer
             }
             return false;
         }
-
-        public static bool DeleteVehicleReturn(int? ReturenID)
-        {
-            return clsVehicleReturnData.DeleteVehicleReturn(ReturenID);
-        }
-
         public static DataTable GetAllVehicleReturns()
         {
             return clsVehicleReturnData.GetAllVehicleReturns();
         }
-
     }
 }
