@@ -45,9 +45,9 @@ namespace CarRentalManagementSystem.Bookings.UserControls
             InitializeComponent();
         }
 
-        public void LoadBookingData(int? vehicleID)
+        public void LoadBookingData(int? bookingID)
         {
-            txtBookingID.Text = vehicleID.ToString();
+            txtBookingID.Text = bookingID.ToString();
             _FindBooking();
         }
 

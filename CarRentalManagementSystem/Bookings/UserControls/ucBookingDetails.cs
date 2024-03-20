@@ -32,7 +32,7 @@ namespace CarRentalManagementSystem.Bookings.UserControls
                 return false;
             }
 
-            BookingID = Booking.VehicleID;
+            BookingID = Booking.BookingID;
 
             txtBookingID.Text = BookingID.ToString();
             txtCustomerID.Text = Booking.CustomerID.ToString();

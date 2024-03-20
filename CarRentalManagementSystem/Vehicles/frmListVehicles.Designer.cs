@@ -147,7 +147,7 @@
             this.addNewVehicleToolStripMenuItem.Name = "addNewVehicleToolStripMenuItem";
             this.addNewVehicleToolStripMenuItem.Size = new System.Drawing.Size(290, 36);
             this.addNewVehicleToolStripMenuItem.Text = "Add New Vehicle";
-            this.addNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.addNewVehiclesToolStripMenuItem_Click);
+            this.addNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.addNewVehicleToolStripMenuItem_Click);
             // 
             // editVehicleInformationToolStripMenuItem
             // 

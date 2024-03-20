@@ -23,7 +23,9 @@ namespace CarRentalManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAddRentalBooking());
+            Application.Run(new frmReturnRentedVehicle());
+          //  Application.Run(new frmAddRentalBooking());
+
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

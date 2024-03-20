@@ -114,5 +114,11 @@ namespace CarRental_BusinessLayer
         {
             return clsRentalTransactionData.GetAllRentalTransactions();
         }
+
+        public static int GetTransactionIDByBookingID(int? BookingID)
+        {
+            return clsRentalTransactionData.GetTransactionIDByBookingID(BookingID);
+        }
+
     }
 }

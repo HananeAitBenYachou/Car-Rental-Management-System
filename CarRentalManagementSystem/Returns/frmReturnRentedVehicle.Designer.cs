@@ -432,11 +432,6 @@
             0,
             0,
             0});
-            this.nudActualRentalDays.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudActualRentalDays.Name = "nudActualRentalDays";
             this.nudActualRentalDays.Size = new System.Drawing.Size(229, 43);
             this.nudActualRentalDays.TabIndex = 248;

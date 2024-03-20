@@ -19,9 +19,9 @@ namespace CarRental_BusinessLayer
         public float RentalPricePerDay { get; set; }
         public float InitialTotalDueAmount { get; set; }
         public string InitialCheckNotes { get; set; }
-        public bool IsBookingActive => IsRentalBookingActive();
 
-        public clsRentalTransaction TransactionInfo => clsRentalTransaction.Find<int>(BookingID.Value, clsRentalTransaction.enFindTransactionBy.BookingID);
+        public bool IsBookingActive { get; }
+        public int TransactionID { get; }
         public clsVehicle VehicleInfo { get; }
         public clsCustomer CustomerInfo { get; }
 
@@ -39,6 +39,8 @@ namespace CarRental_BusinessLayer
             RentalPricePerDay = default;
             InitialTotalDueAmount = default;
             InitialCheckNotes = null;
+            IsBookingActive = false;
+            TransactionID = -1;               
         }
         private clsRentalBooking(int? BookingID, int CustomerID, int VehicleID, DateTime RentalStartDate, 
             DateTime RentalEndDate, string PickupLocation, string DropoffLocation,
@@ -59,8 +61,10 @@ namespace CarRental_BusinessLayer
 
             this.VehicleInfo = clsVehicle.Find(VehicleID);
             this.CustomerInfo = clsCustomer.Find<int?>(CustomerID,clsCustomer.enFindCustomerBy.CustomerID);
-
+            this.TransactionID = clsRentalTransaction.GetTransactionIDByBookingID(BookingID);
+            this.IsBookingActive = IsRentalBookingActive();
         }
+
 
         public static clsRentalBooking Find(int? BookingID)
         {

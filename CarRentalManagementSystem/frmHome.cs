@@ -1,5 +1,6 @@
 ﻿using CarRentalManagementSystem.Bookings;
 using CarRentalManagementSystem.Customers;
+using CarRentalManagementSystem.Returns;
 using CarRentalManagementSystem.Transactions;
 using CarRentalManagementSystem.Users;
 using CarRentalManagementSystem.Vehicles;
@@ -87,19 +88,19 @@ namespace CarRentalManagementSystem
             _ShowForm((Guna2Button)sender, new frmListTransactions());
         }
 
-        private void btnLogout_Click(object sender, System.EventArgs e)
-        {
-            btnExit.PerformClick();
-        }
-
         private void btnManageReturns_Click(object sender, System.EventArgs e)
         {
-            
+            _ShowForm((Guna2Button)sender, new frmListVehicleReturns());
         }
 
         private void btnDashboard_Click(object sender, System.EventArgs e)
         {
             //Not implemented yet !
+        }
+
+        private void btnLogout_Click(object sender, System.EventArgs e)
+        {
+            btnExit.PerformClick();
         }
     }
 }

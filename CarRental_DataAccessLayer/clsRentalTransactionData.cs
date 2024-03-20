@@ -70,7 +70,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool GetRentalTransactionInfoByBookingID(int BookingID , ref int? TransactionID, ref int? ReturnID,
+        public static bool GetRentalTransactionInfoByBookingID(int BookingID, ref int? TransactionID, ref int? ReturnID,
             ref float PaidInitialTotalDueAmount, ref float? ActualTotalDueAmount,
             ref float? TotalRemaining, ref float? TotalRefundedAmount, ref DateTime TransactionDate,
             ref DateTime? UpdatedTransactionDate)
@@ -83,7 +83,7 @@ namespace CarRental_DataAccessLayer
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SP_CheckIfRentalTransactionExistsByBookingID", connection))
+                    using (SqlCommand command = new SqlCommand("SP_GetRentalTransactionInfoByBookingID", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -189,6 +189,44 @@ namespace CarRental_DataAccessLayer
                 isFound = false;
             }
             return isFound;
+        }
+
+        public static int GetTransactionIDByBookingID(int? BookingID)
+        {
+            int TransactionID = -1;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetTransactionIDByBookingID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@BookingID", (object)BookingID ?? DBNull.Value);
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        TransactionID = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                TransactionID = -1;
+            }
+            return TransactionID;
+
         }
 
         public static DataTable GetAllRentalTransactions()

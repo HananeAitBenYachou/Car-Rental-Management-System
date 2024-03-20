@@ -44,7 +44,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void UcBookingDetailsWithFilter1_BookingFound(object sender, int? bookingID)
         {
-            _Booking = clsRentalBooking.Find(_BookingID);
+            _Booking = clsRentalBooking.Find(bookingID);
 
             if (!_Booking.IsBookingActive)
             {
@@ -57,10 +57,10 @@ namespace CarRentalManagementSystem.Returns
 
             btnNext.Enabled = true;
 
-            txtTransactionID.Text = _Booking.TransactionInfo.ToString();
+            txtTransactionID.Text = _Booking.TransactionID.ToString();
 
-            dtpActualReturnDate.MinDate = _Booking.RentalStartDate;
             dtpActualReturnDate.Value = DateTime.Now;
+            dtpActualReturnDate.MinDate = _Booking.RentalStartDate;
             dtpActualReturnDate.MaxDate = dtpActualReturnDate.Value;
 
             btnSave.Enabled = true;
@@ -79,7 +79,7 @@ namespace CarRentalManagementSystem.Returns
         private void _SaveReturnInfo()
         {
             _Return = new clsVehicleReturn();
-            _Return.TransactionID = _Booking.TransactionInfo.TransactionID.Value;
+            _Return.TransactionID = _Booking.TransactionID;
             _Return.ActualReturnDate = dtpActualReturnDate.Value;
             _Return.ActualRentalDays = Convert.ToByte(nudActualRentalDays.Value);
             _Return.Mileage = Convert.ToInt16(txtMileage.Text.Trim());
@@ -117,7 +117,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void dtpActualReturnDate_ValueChanged(object sender, EventArgs e)
         {
-            TimeSpan difference = dtpActualReturnDate.Value.Date - _Booking.RentalStartDate.Date;
+            TimeSpan difference = dtpActualReturnDate.Value.Date - _Booking.RentalStartDate;
 
             int ActualRentalDays = (int)difference.TotalDays;
 
@@ -133,20 +133,20 @@ namespace CarRentalManagementSystem.Returns
 
         private void txtMileage_TextChanged(object sender, EventArgs e)
         {
-            int consumedMileage = _Booking.VehicleInfo.Mileage - Convert.ToInt16(txtMileage.Text.Trim());
+            int consumedMileage = Convert.ToInt16(txtMileage.Text.Trim()) - _Booking.VehicleInfo.Mileage;
             txtConsumedMileage.Text = consumedMileage.ToString();
         }
 
         private void txtMileage_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMileage.Text.Trim()))
+            if (string.IsNullOrEmpty(txtMileage.Text))
             {
                 e.Cancel = true;
                 txtMileage.Focus();
                 errorProvider1.SetError(txtMileage, "This field is required !");
             }
 
-            if (Convert.ToInt16(txtMileage.Text.Trim()) < _Booking.VehicleInfo.Mileage)
+            else if (Convert.ToInt16(txtMileage.Text.Trim()) < _Booking.VehicleInfo.Mileage)
             {
                 e.Cancel = true;
                 txtMileage.Focus();
@@ -162,7 +162,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.';
+            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '-';
         }
     }
 }

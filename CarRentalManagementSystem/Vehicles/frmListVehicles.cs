@@ -239,10 +239,10 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void btnAddNewVehicle_Click(object sender, EventArgs e)
         {
-            //Not Implemented yet !
+            addNewVehicleToolStripMenuItem.PerformClick();
         }
 
-        private void addNewVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addNewVehicleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAddUpdateVehicle form = new frmAddUpdateVehicle();
             form.ShowDialog();
