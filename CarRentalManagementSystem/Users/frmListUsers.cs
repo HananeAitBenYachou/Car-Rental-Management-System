@@ -29,7 +29,7 @@ namespace CarRentalManagementSystem.Users
             {
                 cbTemp.Invoke(new Action(() =>
                 {
-                    foreach (DataRow row in clsCountry.GetAllCountries().Rows)
+                    foreach (DataRow row in Country.GetAllCountries().Rows)
                     {
                         cbTemp.Items.Add((string)row["CountryName"]);
                     }
@@ -47,12 +47,12 @@ namespace CarRentalManagementSystem.Users
             switch (option)
             {
                 case _FilterOptions.Gender:
-                    cbTemp.Items.AddRange(new object[] { "All" ,"Female", "Male" });
+                    cbTemp.Items.AddRange(new object[] { "All", "Female", "Male" });
                     cbTemp.SelectedIndex = 0;
                     break;
 
                 case _FilterOptions.IsActive:
-                    cbTemp.Items.AddRange(new object[] { "All" ,"Yes", "No" });
+                    cbTemp.Items.AddRange(new object[] { "All", "Yes", "No" });
                     cbTemp.SelectedIndex = 0;
                     break;
 
@@ -64,7 +64,7 @@ namespace CarRentalManagementSystem.Users
 
         private void _RefreshUsersList()
         {
-            _UsersDataView = clsUser.GetAllUsers().DefaultView;
+            _UsersDataView = User.GetAllUsers().DefaultView;
             dgvUsersList.DataSource = _UsersDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
@@ -180,11 +180,11 @@ namespace CarRentalManagementSystem.Users
         {
             if (MessageBox.Show("Are you sure you want to delete the selected user ?", "Verification",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
-            return;
+                return;
 
-            if(!clsUser.DeleteUser((int)dgvUsersList.CurrentRow.Cells[0].Value))                           
-            MessageBox.Show("Failed to delete The selected user , due to the data connected to it !", "Deletion Failed",
-             MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!User.DeleteUser((int)dgvUsersList.CurrentRow.Cells[0].Value))
+                MessageBox.Show("Failed to delete The selected user , due to the data connected to it !", "Deletion Failed",
+                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             else
             {
@@ -198,7 +198,7 @@ namespace CarRentalManagementSystem.Users
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangeUserPassword form = new frmChangeUserPassword((int)dgvUsersList.CurrentRow.Cells[0].Value);    
+            frmChangeUserPassword form = new frmChangeUserPassword((int)dgvUsersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
 

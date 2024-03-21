@@ -42,20 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsCountryData.cs" />
-    <Compile Include="clsCustomerData.cs" />
-    <Compile Include="clsDriveTypeData.cs" />
-    <Compile Include="clsFuelTypeData.cs" />
-    <Compile Include="clsMaintenanceData.cs" />
-    <Compile Include="clsMakeData.cs" />
-    <Compile Include="clsModelData.cs" />
-    <Compile Include="clsPersonData.cs" />
-    <Compile Include="clsRentalBookingData.cs" />
-    <Compile Include="clsRentalTransactionData.cs" />
-    <Compile Include="clsSubModelData.cs" />
-    <Compile Include="clsUserData.cs" />
-    <Compile Include="clsVehicleData.cs" />
-    <Compile Include="clsVehicleReturnData.cs" />
+    <Compile Include="CountryData.cs" />
+    <Compile Include="CustomerData.cs" />
+    <Compile Include="DriveTypeData.cs" />
+    <Compile Include="FuelTypeData.cs" />
+    <Compile Include="MaintenanceData.cs" />
+    <Compile Include="MakeData.cs" />
+    <Compile Include="ModelData.cs" />
+    <Compile Include="PersonData.cs" />
+    <Compile Include="RentalBookingData.cs" />
+    <Compile Include="RentalTransactionData.cs" />
+    <Compile Include="SubModelData.cs" />
+    <Compile Include="UserData.cs" />
+    <Compile Include="VehicleData.cs" />
+    <Compile Include="VehicleReturnData.cs" />
     <Compile Include="Global\clsDataAccessSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

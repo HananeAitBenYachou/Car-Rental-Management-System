@@ -115,12 +115,6 @@
     <Compile Include="Customers\UserControls\ucCustomerCardWithFilter.Designer.cs">
       <DependentUpon>ucCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +140,18 @@
     </Compile>
     <Compile Include="Returns\frmReturnRentedVehicle.Designer.cs">
       <DependentUpon>frmReturnRentedVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Returns\frmShowVehicleReturnDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returns\frmShowVehicleReturnDetails.Designer.cs">
+      <DependentUpon>frmShowVehicleReturnDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Returns\UserControls\ucVehicleReturnDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Returns\UserControls\ucVehicleReturnDetails.Designer.cs">
+      <DependentUpon>ucVehicleReturnDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Transactions\frmListTransactions.cs">
       <SubType>Form</SubType>
@@ -255,9 +261,6 @@
     <EmbeddedResource Include="Customers\UserControls\ucCustomerCardWithFilter.resx">
       <DependentUpon>ucCustomerCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Returns\frmReturnRentedVehicle.resx">
       <DependentUpon>frmReturnRentedVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Returns\frmShowVehicleReturnDetails.resx">
+      <DependentUpon>frmShowVehicleReturnDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Returns\UserControls\ucVehicleReturnDetails.resx">
+      <DependentUpon>ucVehicleReturnDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\frmListTransactions.resx">
       <DependentUpon>frmListTransactions.cs</DependentUpon>

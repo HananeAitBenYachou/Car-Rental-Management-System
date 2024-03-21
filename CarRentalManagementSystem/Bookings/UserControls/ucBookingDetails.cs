@@ -1,13 +1,4 @@
 ﻿using CarRental_BusinessLayer;
-using Guna.UI2.WinForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Bookings.UserControls
@@ -15,16 +6,16 @@ namespace CarRentalManagementSystem.Bookings.UserControls
     public partial class ucBookingDetails : UserControl
     {
         public int? BookingID { get; private set; } = null;
-        public clsRentalBooking Booking { get; private set; } = null;
+        public RentalBooking Booking { get; private set; } = null;
 
         public ucBookingDetails()
         {
             InitializeComponent();
-        }     
+        }
 
         public bool LoadBookingData(int? bookingID)
         {
-            Booking = clsRentalBooking.Find(bookingID);
+            Booking = RentalBooking.Find(bookingID);
 
             if (Booking == null)
             {

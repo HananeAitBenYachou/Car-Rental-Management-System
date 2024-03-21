@@ -1,12 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Users;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,7 +29,7 @@ namespace CarRentalManagementSystem.Customers
             {
                 cbTemp.Invoke(new Action(() =>
                 {
-                    foreach (DataRow row in clsCountry.GetAllCountries().Rows)
+                    foreach (DataRow row in Country.GetAllCountries().Rows)
                     {
                         cbTemp.Items.Add((string)row["CountryName"]);
                     }
@@ -65,7 +59,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void _RefreshCustomersList()
         {
-            _CustomersDataView = clsCustomer.GetAllCustomers().DefaultView;
+            _CustomersDataView = Customer.GetAllCustomers().DefaultView;
             dgvCustomersList.DataSource = _CustomersDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
@@ -111,7 +105,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void cbTemp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbTemp.Text == "All")
+            if (cbTemp.Text == "All")
             {
                 _CustomersDataView.RowFilter = null;
                 return;
@@ -164,7 +158,7 @@ namespace CarRentalManagementSystem.Customers
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                 return;
 
-            if (!clsCustomer.DeleteCustomer((int)dgvCustomersList.CurrentRow.Cells[0].Value))
+            if (!Customer.DeleteCustomer((int)dgvCustomersList.CurrentRow.Cells[0].Value))
                 MessageBox.Show("Failed to delete The selected customer , due to the data connected to it !", "Deletion Failed",
                  MessageBoxButtons.OK, MessageBoxIcon.Information);
 

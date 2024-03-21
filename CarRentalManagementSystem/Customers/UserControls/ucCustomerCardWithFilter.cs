@@ -1,13 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Vehicles.UserControls;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Customers.UserControls
@@ -15,7 +8,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
     public partial class ucCustomerCardWithFilter : UserControl
     {
         private int? _CustomerID => ucCustomerCard1.CustomerID;
-        private clsCustomer _Customer => ucCustomerCard1.Customer;
+        private Customer _Customer => ucCustomerCard1.Customer;
 
         public bool FilterEnabled
         {
@@ -79,7 +72,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            if(!ValidateChildren())
+            if (!ValidateChildren())
             {
                 MessageBox.Show("Please enter the customer's ID/License No you want to search !", "Validation Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -108,13 +101,13 @@ namespace CarRentalManagementSystem.Customers.UserControls
         private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
             _FindCustomerBy = cbFilterByOptions.SelectedIndex == 0 ? enFindBy.CustomerID : enFindBy.DriverLicenseNumber;
-            
+
             txtFilterValue.ResetText();
         }
 
         private void txtFilterValue_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrEmpty(txtFilterValue.Text))
+            if (string.IsNullOrEmpty(txtFilterValue.Text))
             {
                 e.Cancel = true;
                 txtFilterValue.Focus();

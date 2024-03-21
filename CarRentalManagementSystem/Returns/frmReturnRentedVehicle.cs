@@ -1,27 +1,17 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Customers.UserControls;
-using CarRentalManagementSystem.Vehicles.UserControls;
-using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter;
 
 namespace CarRentalManagementSystem.Returns
 {
     public partial class frmReturnRentedVehicle : Form
     {
         private int? _BookingID = null;
-        private clsRentalBooking _Booking = null;
+        private RentalBooking _Booking = null;
 
         private int? _ReturnID = null;
-        private clsVehicleReturn _Return = null;
+        private VehicleReturn _Return = null;
 
         public frmReturnRentedVehicle()
         {
@@ -44,7 +34,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void UcBookingDetailsWithFilter1_BookingFound(object sender, int? bookingID)
         {
-            _Booking = clsRentalBooking.Find(bookingID);
+            _Booking = RentalBooking.Find(bookingID);
 
             if (!_Booking.IsBookingActive)
             {
@@ -78,7 +68,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void _SaveReturnInfo()
         {
-            _Return = new clsVehicleReturn();
+            _Return = new VehicleReturn();
             _Return.TransactionID = _Booking.TransactionID;
             _Return.ActualReturnDate = dtpActualReturnDate.Value;
             _Return.ActualRentalDays = Convert.ToByte(nudActualRentalDays.Value);
@@ -96,7 +86,7 @@ namespace CarRentalManagementSystem.Returns
             else
             {
                 MessageBox.Show("Data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _ReturnID = _Return.ReturenID;
+                _ReturnID = _Return.ReturnID;
                 txtReturnID.Text = _ReturnID.ToString();
 
                 btnSave.Enabled = false;

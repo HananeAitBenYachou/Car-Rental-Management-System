@@ -1,15 +1,9 @@
 ﻿using CarRental_BusinessLayer;
 using CarRental_UtilityLayer;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CarRental_BusinessLayer.clsUser;
+using static CarRental_BusinessLayer.User;
 
 namespace CarRentalManagementSystem.Users
 {
@@ -17,7 +11,7 @@ namespace CarRentalManagementSystem.Users
     {
         private int? _UserID = null;
 
-        private clsUser _User = null;
+        private User _User = null;
         public frmChangeUserPassword(int? userID)
         {
             InitializeComponent();
@@ -56,7 +50,7 @@ namespace CarRentalManagementSystem.Users
                 txtNewPassword.Focus();
                 errorProvider1.SetError(txtNewPassword, "This field is required !");
             }
-         
+
             else
             {
                 e.Cancel = false;
@@ -93,7 +87,7 @@ namespace CarRentalManagementSystem.Users
             if (_User.UpdateUserPassword(clsCryptoUtility.ComputeHash(txtNewPassword.Text.Trim())))
                 MessageBox.Show("Your password has been changed successfully !", "Password changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            else        
+            else
                 MessageBox.Show("The change password operation failed .", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
@@ -116,7 +110,7 @@ namespace CarRentalManagementSystem.Users
 
         private void frmChangeUserPassword_Load(object sender, EventArgs e)
         {
-            _User = clsUser.Find<int?>(_UserID, enFindUserBy.UserID);
+            _User = User.Find<int?>(_UserID, enFindUserBy.UserID);
 
             if (_User == null)
             {

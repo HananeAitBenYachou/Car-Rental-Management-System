@@ -41,20 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsCountry.cs" />
-    <Compile Include="clsCustomer.cs" />
-    <Compile Include="clsDriveType.cs" />
-    <Compile Include="clsFuelType.cs" />
-    <Compile Include="clsMaintenance.cs" />
-    <Compile Include="clsMake.cs" />
-    <Compile Include="clsModel.cs" />
-    <Compile Include="clsPerson.cs" />
-    <Compile Include="clsRentalBooking.cs" />
-    <Compile Include="clsRentalTransaction.cs" />
-    <Compile Include="clsSubModel.cs" />
-    <Compile Include="clsUser.cs" />
-    <Compile Include="clsVehicle.cs" />
-    <Compile Include="clsVehicleReturn.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="DriveType.cs" />
+    <Compile Include="FuelType.cs" />
+    <Compile Include="Maintenance.cs" />
+    <Compile Include="Make.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="RentalBooking.cs" />
+    <Compile Include="RentalTransaction.cs" />
+    <Compile Include="SubModel.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

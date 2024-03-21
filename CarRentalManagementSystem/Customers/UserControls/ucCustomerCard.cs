@@ -1,26 +1,16 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.People.UserControls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CarRental_BusinessLayer.clsCustomer;
-using static CarRental_BusinessLayer.clsUser;
+using static CarRental_BusinessLayer.Customer;
 
 namespace CarRentalManagementSystem.Customers.UserControls
 {
     public partial class ucCustomerCard : UserControl
     {
         public int? PersonID => ucPersonCard1.PersonID;
-        public clsPerson Person => ucPersonCard1.Person;
+        public Person Person => ucPersonCard1.Person;
 
         public int? CustomerID { get; private set; } = null;
-        public clsCustomer Customer { get; private set; } = null;
+        public Customer Customer { get; private set; } = null;
 
         public ucCustomerCard()
         {
@@ -39,7 +29,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         public bool LoadCustomerData(int? customerID)
         {
-            Customer = clsCustomer.Find<int?>(customerID, enFindCustomerBy.CustomerID);
+            Customer = Customer.Find<int?>(customerID, enFindCustomerBy.CustomerID);
 
             if (Customer == null)
             {
@@ -53,7 +43,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         public bool LoadCustomerData(string driverLicenseNumber)
         {
-            Customer = clsCustomer.Find<string>(driverLicenseNumber, enFindCustomerBy.LicenseNumber);
+            Customer = Customer.Find<string>(driverLicenseNumber, enFindCustomerBy.LicenseNumber);
 
             if (Customer == null)
             {

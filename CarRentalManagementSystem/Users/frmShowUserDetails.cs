@@ -1,12 +1,4 @@
-﻿using CarRental_BusinessLayer;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Users
@@ -19,8 +11,8 @@ namespace CarRentalManagementSystem.Users
 
             Load += (sender, e) =>
             {
-                if(!ucUserCard1.LoadUserData(userID))
-                btnClose.PerformClick();
+                if (!ucUserCard1.LoadUserData(userID))
+                    btnClose.PerformClick();
             };
         }
 

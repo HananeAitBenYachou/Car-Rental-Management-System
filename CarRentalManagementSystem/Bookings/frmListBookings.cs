@@ -1,13 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Users;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Bookings
@@ -23,7 +16,7 @@ namespace CarRentalManagementSystem.Bookings
 
         private void _RefreshBookingsList()
         {
-            _BookingsDataView = clsRentalBooking.GetAllRentalBookings().DefaultView;
+            _BookingsDataView = RentalBooking.GetAllRentalBookings().DefaultView;
             dgvBookingsList.DataSource = _BookingsDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
@@ -62,7 +55,7 @@ namespace CarRentalManagementSystem.Bookings
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbFilterByOptions.Text == "Vehicle ID" || cbFilterByOptions.Text == "Booking ID"  || cbFilterByOptions.Text == "Customer ID")
+            if (cbFilterByOptions.Text == "Vehicle ID" || cbFilterByOptions.Text == "Booking ID" || cbFilterByOptions.Text == "Customer ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 

@@ -202,7 +202,7 @@
             // 
             this.txtRentalPricePerDay.BorderRadius = 22;
             this.txtRentalPricePerDay.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRentalPricePerDay.DefaultText = "N/A";
+            this.txtRentalPricePerDay.DefaultText = "";
             this.txtRentalPricePerDay.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtRentalPricePerDay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtRentalPricePerDay.DisabledState.ForeColor = System.Drawing.Color.DimGray;
@@ -239,7 +239,7 @@
             // 
             this.txtInitialTotalDueAmount.BorderRadius = 22;
             this.txtInitialTotalDueAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtInitialTotalDueAmount.DefaultText = "N/A";
+            this.txtInitialTotalDueAmount.DefaultText = "";
             this.txtInitialTotalDueAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtInitialTotalDueAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtInitialTotalDueAmount.DisabledState.ForeColor = System.Drawing.Color.DimGray;
@@ -304,11 +304,6 @@
             this.nudInitialRentalDays.Size = new System.Drawing.Size(229, 43);
             this.nudInitialRentalDays.TabIndex = 272;
             this.nudInitialRentalDays.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.nudInitialRentalDays.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label5
             // 

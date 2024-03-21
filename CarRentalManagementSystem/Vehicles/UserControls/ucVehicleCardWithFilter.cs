@@ -1,14 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Customers.UserControls;
-using CarRentalManagementSystem.Customers;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Vehicles.UserControls
@@ -21,7 +13,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             public bool IsAvailableForRent { get; }
             public double RentalPricePerDay { get; }
 
-            public VehicleFoundEventArgs(int? vehicleID , bool isAvailableForRent , double rentalPricePerDay)
+            public VehicleFoundEventArgs(int? vehicleID, bool isAvailableForRent, double rentalPricePerDay)
             {
                 VehicleID = vehicleID;
                 IsAvailableForRent = isAvailableForRent;
@@ -30,7 +22,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
         }
 
         private int? _VehicleID => ucVehicleCard1.VehicleID;
-        private clsVehicle _Vehicle => ucVehicleCard1.Vehicle;
+        private Vehicle _Vehicle => ucVehicleCard1.Vehicle;
 
         public bool FilterEnabled
         {
@@ -55,7 +47,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
         }
         protected virtual void OnVehicleFound(VehicleFoundEventArgs vehicleInfo)
         {
-            VehicleFound?.Invoke(this,vehicleInfo);
+            VehicleFound?.Invoke(this, vehicleInfo);
         }
 
         public ucVehicleCardWithFilter()
@@ -113,7 +105,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             {
                 e.Cancel = true;
                 txtVehicleID.Focus();
-                errorProvider1.SetError(txtVehicleID,"Please enter the vehicle'ID you want to search !");
+                errorProvider1.SetError(txtVehicleID, "Please enter the vehicle'ID you want to search !");
             }
 
             else
@@ -125,7 +117,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
 
         private void txtVehicleID_KeyPress(object sender, KeyPressEventArgs e)
         {
-           e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
     }

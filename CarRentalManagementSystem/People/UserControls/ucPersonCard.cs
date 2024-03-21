@@ -4,13 +4,7 @@ using Guna.UI2.WinForms;
 
 //using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.People.UserControls
@@ -18,7 +12,7 @@ namespace CarRentalManagementSystem.People.UserControls
     public partial class ucPersonCard : UserControl
     {
         public int? PersonID { get; private set; } = null;
-        public clsPerson Person { get; private set; } = null;
+        public Person Person { get; private set; } = null;
 
         public ucPersonCard()
         {
@@ -27,7 +21,7 @@ namespace CarRentalManagementSystem.People.UserControls
 
         public void Reset()
         {
-            PersonID = null; 
+            PersonID = null;
             Person = null;
 
             foreach (Guna2TextBox textBox in this.groupBox.Controls.OfType<Guna2TextBox>())
@@ -47,7 +41,7 @@ namespace CarRentalManagementSystem.People.UserControls
         private void _LoadPersonData()
         {
             PersonID = Person.PersonID;
-            
+
             txtPersonID.Text = PersonID.ToString();
             txtNationalNo.Text = Person.NationalNo;
             txtFirstName.Text = Person.FirstName;
@@ -55,11 +49,11 @@ namespace CarRentalManagementSystem.People.UserControls
             txtPhone.Text = Person.Phone;
             txtEmail.Text = Person.Email ?? string.Empty;
             txtAddress.Text = Person.Address ?? string.Empty;
-            txtCountry.Text = Person.CountryInfo.CountryName;
+            txtCountry.Text = Person.CountryInfo.Name;
 
             dtpBirthDate.Value = Person.BirthDate;
 
-            rbMale.Checked = (Person.Gender == clsPerson.enGender.Male);
+            rbMale.Checked = (Person.Gender == Person.enGender.Male);
             rbFemale.Checked = !rbMale.Checked;
 
             pbPersonalImage.Image = rbMale.Checked ? Resources.man : Resources.woman;
@@ -70,7 +64,7 @@ namespace CarRentalManagementSystem.People.UserControls
 
         public bool LoadPersonData(int? personID)
         {
-            Person = clsPerson.Find(personID);
+            Person = Person.Find(personID);
 
             if (Person == null)
             {
@@ -85,7 +79,7 @@ namespace CarRentalManagementSystem.People.UserControls
 
         public bool LoadPersonData(string nationalNo)
         {
-            Person = clsPerson.Find(nationalNo);
+            Person = Person.Find(nationalNo);
 
             if (Person == null)
             {

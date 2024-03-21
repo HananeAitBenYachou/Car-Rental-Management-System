@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CarRental_UtilityLayer
 {
@@ -11,7 +7,7 @@ namespace CarRental_UtilityLayer
     {
         private static bool IsMatch(string pattern, string value)
         {
-            return Regex.IsMatch(value,pattern);
+            return Regex.IsMatch(value, pattern);
         }
 
         public static bool ValidateFloat(string number)
@@ -43,11 +39,11 @@ namespace CarRental_UtilityLayer
         public static bool IsValidYear(string year)
         {
             DateTime temp;
-            
-            if(DateTime.TryParseExact(year, "yyyy", null,
+
+            if (DateTime.TryParseExact(year, "yyyy", null,
                 System.Globalization.DateTimeStyles.None, out temp))
             {
-                return temp.Year >= DateTime.Now.AddYears(-150).Year && 
+                return temp.Year >= DateTime.Now.AddYears(-150).Year &&
                     temp.Year <= DateTime.Now.Year;
             }
 

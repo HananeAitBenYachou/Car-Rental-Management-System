@@ -1,26 +1,16 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TheArtOfDevHtmlRenderer.Adapters;
-using static CarRental_BusinessLayer.clsUser;
+using static CarRental_BusinessLayer.User;
 
 namespace CarRentalManagementSystem.Users.UserControls
 {
     public partial class ucUserCard : UserControl
     {
         public int? PersonID => ucPersonCard1.PersonID;
-        public clsPerson Person => ucPersonCard1.Person;
+        public Person Person => ucPersonCard1.Person;
 
         public int? UserID { get; private set; } = null;
-        public clsUser User { get; private set; } = null;
+        public User User { get; private set; } = null;
 
         public ucUserCard()
         {
@@ -51,7 +41,7 @@ namespace CarRentalManagementSystem.Users.UserControls
 
         public bool LoadUserData(int? userID)
         {
-            User = clsUser.Find<int?>(userID,enFindUserBy.UserID);
+            User = User.Find<int?>(userID, enFindUserBy.UserID);
 
             if (User == null)
             {
@@ -66,7 +56,7 @@ namespace CarRentalManagementSystem.Users.UserControls
 
         public bool LoadUserData(string userName)
         {
-            User = clsUser.Find<string>(userName, enFindUserBy.UserName);
+            User = User.Find<string>(userName, enFindUserBy.UserName);
 
             if (User == null)
             {

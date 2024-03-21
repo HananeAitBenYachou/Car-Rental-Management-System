@@ -1,14 +1,7 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Customers.UserControls;
 using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter;
 
@@ -20,7 +13,7 @@ namespace CarRentalManagementSystem.Bookings
         private int? _CustomerID = null;
 
         private int? _BookingID = null;
-        private clsRentalBooking _Booking = null;
+        private RentalBooking _Booking = null;
 
         public event EventHandler<int?> NewBookingAdded;
         protected virtual void OnNewBookingAdded()
@@ -43,7 +36,7 @@ namespace CarRentalManagementSystem.Bookings
 
             btnSave.Enabled = false;
             btnToVehicleInfo.Enabled = false;
-            btnToBookingInfo.Enabled = false;        
+            btnToBookingInfo.Enabled = false;
         }
 
         private void frmAddRentalBooking_Load(object sender, EventArgs e)
@@ -53,7 +46,7 @@ namespace CarRentalManagementSystem.Bookings
 
         private void UcVehicleCardWithFilter1_VehicleFound(object sender, VehicleFoundEventArgs vehicleInfo)
         {
-            if(!vehicleInfo.IsAvailableForRent)
+            if (!vehicleInfo.IsAvailableForRent)
             {
                 MessageBox.Show($"This car is not available for rental!", "Not Available !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnToBookingInfo.Enabled = false;
@@ -109,7 +102,7 @@ namespace CarRentalManagementSystem.Bookings
 
         private bool _SaveRentalBookingInfo()
         {
-            _Booking = new clsRentalBooking();
+            _Booking = new RentalBooking();
 
             _Booking.CustomerID = _CustomerID.Value;
             _Booking.VehicleID = _VehicleID.Value;
@@ -128,9 +121,9 @@ namespace CarRentalManagementSystem.Bookings
 
             else
             {
-                MessageBox.Show("Vehicle booked successfully from " + dtpStartDate.Value.ToShortDateString() + " to " + dtpEndDate.Value.ToShortDateString() + ".", 
+                MessageBox.Show("Vehicle booked successfully from " + dtpStartDate.Value.ToShortDateString() + " to " + dtpEndDate.Value.ToShortDateString() + ".",
                                 "Booking Successful", MessageBoxButtons.OK, MessageBoxIcon.Information); _BookingID = _Booking.BookingID;
-                
+
                 txtBookingID.Text = _BookingID.ToString();
 
                 btnSave.Enabled = false;

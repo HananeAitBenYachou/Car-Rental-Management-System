@@ -1,13 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Transactions;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Returns
@@ -23,7 +16,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void _RefreshVehicleReturnsList()
         {
-            _VehicleReturnsDataView = clsVehicleReturn.GetAllVehicleReturns().DefaultView;
+            _VehicleReturnsDataView = VehicleReturn.GetAllVehicleReturns().DefaultView;
             dgvReturnsList.DataSource = _VehicleReturnsDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
@@ -84,6 +77,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void dgvVehicleReturnsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            showReturnInformationToolStripMenuItem.PerformClick();
         }
 
         private void dtpVehicleReturns_ValueChanged(object sender, EventArgs e)
@@ -91,5 +85,10 @@ namespace CarRentalManagementSystem.Returns
             _VehicleReturnsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpActualReturnDate.Value.Date.ToString("dd-MM-yyyy"));
         }
 
+        private void showReturnInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowVehicleReturnDetails form = new frmShowVehicleReturnDetails((int?)dgvReturnsList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
+        }
     }
 }

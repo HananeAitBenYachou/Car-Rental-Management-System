@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarRental_UtilityLayer
 {
@@ -19,7 +15,7 @@ namespace CarRental_UtilityLayer
                     return true;
                 }
 
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     clsErrorLogger.LogError(ex);
                     return false;
@@ -33,14 +29,14 @@ namespace CarRental_UtilityLayer
         {
             FileInfo fileInfo = new FileInfo(sourceFilePath);
 
-            return Guid.NewGuid().ToString() + fileInfo.Extension; 
+            return Guid.NewGuid().ToString() + fileInfo.Extension;
         }
 
-        public static bool CopyImageToProjectImagesFolder(ref string sourceFilePath , string destinationFolder)
+        public static bool CopyImageToProjectImagesFolder(ref string sourceFilePath, string destinationFolder)
         {
-            if(!CreateFolderIfDoesNotExist(destinationFolder))           
+            if (!CreateFolderIfDoesNotExist(destinationFolder))
                 return false;
-            
+
             try
             {
                 string destinationFilePath = Path.Combine(destinationFolder, ReplaceFilePathWithGuid(sourceFilePath));

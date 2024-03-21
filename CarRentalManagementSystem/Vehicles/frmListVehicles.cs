@@ -1,13 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Customers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -47,7 +40,7 @@ namespace CarRentalManagementSystem.Vehicles
             {
                 cbTemp.Invoke(new Action(() =>
                 {
-                    foreach (DataRow row in clsMake.GetAllMakes().Rows)
+                    foreach (DataRow row in Make.GetAllMakes().Rows)
                     {
                         cbTemp.Items.Add((string)row["Make"]);
                     }
@@ -64,7 +57,7 @@ namespace CarRentalManagementSystem.Vehicles
             {
                 cbTemp.Invoke(new Action(() =>
                 {
-                    foreach (DataRow row in clsModel.GetAllModels().Rows)
+                    foreach (DataRow row in Model.GetAllModels().Rows)
                     {
                         cbTemp.Items.Add((string)row["ModelName"]);
                     }
@@ -81,7 +74,7 @@ namespace CarRentalManagementSystem.Vehicles
             {
                 cbTemp.Invoke(new Action(() =>
                 {
-                    foreach (DataRow row in clsSubModel.GetAllSubModels().Rows)
+                    foreach (DataRow row in SubModel.GetAllSubModels().Rows)
                     {
                         cbTemp.Items.Add((string)row["SubModelName"]);
                     }
@@ -98,7 +91,7 @@ namespace CarRentalManagementSystem.Vehicles
             {
                 cbTemp.Invoke(new Action(() =>
                 {
-                    foreach (DataRow row in clsDriveType.GetAllDriveTypes().Rows)
+                    foreach (DataRow row in DriveType.GetAllDriveTypes().Rows)
                     {
                         cbTemp.Items.Add((string)row["DriveTypeName"]);
                     }
@@ -115,7 +108,7 @@ namespace CarRentalManagementSystem.Vehicles
             {
                 cbTemp.Invoke(new Action(() =>
                 {
-                    foreach (DataRow row in clsFuelType.GetAllFuelTypes().Rows)
+                    foreach (DataRow row in FuelType.GetAllFuelTypes().Rows)
                     {
                         cbTemp.Items.Add((string)row["FuelTypeName"]);
                     }
@@ -161,7 +154,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void _RefreshVehiclesList()
         {
-            _VehiclesDataView = clsVehicle.GetAllVehicles(_PageNumber, _PageSize).DefaultView;
+            _VehiclesDataView = Vehicle.GetAllVehicles(_PageNumber, _PageSize).DefaultView;
             dgvVehiclesList.DataSource = _VehiclesDataView;
 
             cbFilterByOptions.SelectedIndex = 0;
@@ -179,8 +172,8 @@ namespace CarRentalManagementSystem.Vehicles
                 _VehiclesDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
 
             else if (cbFilterByOptions.Text == "Rental Price Per Day")
-                _VehiclesDataView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '%{1}%'", cbFilterByOptions.Text, 
-                                                            txtFilterValue.Text.Trim().Replace('.',','));
+                _VehiclesDataView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '%{1}%'", cbFilterByOptions.Text,
+                                                            txtFilterValue.Text.Trim().Replace('.', ','));
 
             else
                 _VehiclesDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
@@ -194,7 +187,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ",""), true, out _SelectedOption))
+            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ", ""), true, out _SelectedOption))
             {
                 txtFilterValue.Visible = false;
                 cbTemp.Visible = true;
@@ -232,8 +225,8 @@ namespace CarRentalManagementSystem.Vehicles
         {
             if (cbFilterByOptions.Text == "Vehicle ID" || cbFilterByOptions.Text == "Doors")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-            
-            else if(cbFilterByOptions.Text == "Rental Price Per Day")
+
+            else if (cbFilterByOptions.Text == "Rental Price Per Day")
                 e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',';
         }
 
@@ -261,7 +254,7 @@ namespace CarRentalManagementSystem.Vehicles
         private void showVehiclesInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowVehicleDetails form = new frmShowVehicleDetails((int)dgvVehiclesList.CurrentRow.Cells[0].Value);
-            form.ShowDialog();             
+            form.ShowDialog();
         }
 
         private void deleteVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -270,7 +263,7 @@ namespace CarRentalManagementSystem.Vehicles
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                 return;
 
-            if (!clsVehicle.DeleteVehicle((int)dgvVehiclesList.CurrentRow.Cells[0].Value))
+            if (!Vehicle.DeleteVehicle((int)dgvVehiclesList.CurrentRow.Cells[0].Value))
                 MessageBox.Show("Failed to delete The selected vehicle , due to the data connected to it !", "Deletion Failed",
                  MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -296,7 +289,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private int _GetTotalPages()
         {
-            return (int)Math.Ceiling((Convert.ToDouble(clsVehicle.GetTotalVehiclesCount()) / _PageSize));
+            return (int)Math.Ceiling((Convert.ToDouble(Vehicle.GetTotalVehiclesCount()) / _PageSize));
         }
 
         private void _UpdateButtonStates()

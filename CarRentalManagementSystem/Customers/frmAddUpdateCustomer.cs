@@ -3,16 +3,11 @@ using CarRental_UtilityLayer;
 using CarRentalManagementSystem.Properties;
 using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CarRental_BusinessLayer.clsCustomer;
+using static CarRental_BusinessLayer.Customer;
 
 namespace CarRentalManagementSystem.Customers
 {
@@ -26,11 +21,11 @@ namespace CarRentalManagementSystem.Customers
         {
             NewCustomerAdded?.Invoke(this, _CustomerID);
         }
-        
+
 
         private int? _CustomerID = null;
 
-        private clsCustomer _Customer = null;
+        private Customer _Customer = null;
 
         public frmAddUpdateCustomer(int? customerID)
         {
@@ -50,7 +45,7 @@ namespace CarRentalManagementSystem.Customers
 
             if (_Mode == _enMode.AddNew)
             {
-                _Customer = new clsCustomer();
+                _Customer = new Customer();
                 lblTitle.Text = "Add New Customer";
             }
 
@@ -69,7 +64,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void _FillCountriesInComboBox()
         {
-            foreach (DataRow row in clsCountry.GetAllCountries().Rows)
+            foreach (DataRow row in Country.GetAllCountries().Rows)
             {
                 cbCountries.Items.Add((string)row["CountryName"]);
             }
@@ -79,7 +74,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void _LoadCustomerData()
         {
-            _Customer = clsCustomer.Find<int?>(_CustomerID, enFindCustomerBy.CustomerID);
+            _Customer = Customer.Find<int?>(_CustomerID, enFindCustomerBy.CustomerID);
 
             if (_Customer == null)
             {
@@ -98,9 +93,9 @@ namespace CarRentalManagementSystem.Customers
             txtEmail.Text = _Customer.Email ?? string.Empty;
 
             dtpBirthDate.Value = _Customer.BirthDate;
-            cbCountries.SelectedIndex = cbCountries.FindString(_Customer.CountryInfo.CountryName);
+            cbCountries.SelectedIndex = cbCountries.FindString(_Customer.CountryInfo.Name);
 
-            rbMale.Checked = (_Customer.Gender == clsPerson.enGender.Male);
+            rbMale.Checked = (_Customer.Gender == Person.enGender.Male);
             rbFemale.Checked = !rbMale.Checked;
 
             if (_Customer.ImagePath != null)
@@ -167,8 +162,8 @@ namespace CarRentalManagementSystem.Customers
             _Customer.Address = string.IsNullOrEmpty(txtAddress.Text) ? null : txtAddress.Text.Trim();
             _Customer.DriverLicenseNumber = txtLicenseNo.Text.Trim();
             _Customer.BirthDate = dtpBirthDate.Value;
-            _Customer.NationalityCountryID = clsCountry.Find(cbCountries.Text).CountryID.Value;
-            _Customer.Gender = rbMale.Checked == true ? clsPerson.enGender.Male : clsPerson.enGender.Female;
+            _Customer.NationalityCountryID = Country.Find(cbCountries.Text).CountryID.Value;
+            _Customer.Gender = rbMale.Checked == true ? Person.enGender.Male : Person.enGender.Female;
             _Customer.ImagePath = pbPersonalImage.ImageLocation ?? null;
 
             if (!_Customer.Save())
@@ -208,7 +203,7 @@ namespace CarRentalManagementSystem.Customers
                 errorProvider1.SetError(txtNationalNo, "This field is required !");
             }
 
-            else if (_Customer.NationalNo != txtNationalNo.Text.Trim() && clsUser.DoesPersonExist(txtNationalNo.Text.Trim()))
+            else if (_Customer.NationalNo != txtNationalNo.Text.Trim() && User.DoesPersonExist(txtNationalNo.Text.Trim()))
             {
                 e.Cancel = true;
                 txtNationalNo.Focus();
@@ -231,7 +226,7 @@ namespace CarRentalManagementSystem.Customers
                 errorProvider1.SetError(txtLicenseNo, "This field is required !");
             }
 
-            else if (_Customer.DriverLicenseNumber != txtLicenseNo.Text.Trim() && clsCustomer.DoesCustomerExist(txtLicenseNo.Text.Trim()))
+            else if (_Customer.DriverLicenseNumber != txtLicenseNo.Text.Trim() && Customer.DoesCustomerExist(txtLicenseNo.Text.Trim()))
             {
                 e.Cancel = true;
                 txtLicenseNo.Focus();
@@ -320,7 +315,7 @@ namespace CarRentalManagementSystem.Customers
                 return;
             }
 
-            if(_SaveCustomerData())
+            if (_SaveCustomerData())
                 OnNewCustomerAdded();
         }
 

@@ -1,14 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Vehicles.UserControls;
-using CarRentalManagementSystem.Vehicles;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Bookings.UserControls
@@ -16,7 +8,7 @@ namespace CarRentalManagementSystem.Bookings.UserControls
     public partial class ucBookingDetailsWithFilter : UserControl
     {
         private int? _BookingID => ucBookingDetails1.BookingID;
-        private clsRentalBooking _Booking => ucBookingDetails1.Booking;
+        private RentalBooking _Booking => ucBookingDetails1.Booking;
 
         public bool FilterEnabled
         {

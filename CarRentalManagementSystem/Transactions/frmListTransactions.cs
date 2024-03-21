@@ -1,13 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Transactions;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Transactions
@@ -29,7 +22,7 @@ namespace CarRentalManagementSystem.Transactions
 
         private void _RefreshTransactionsList()
         {
-            _TransactionsDataView = clsRentalTransaction.GetAllRentalTransactions().DefaultView;
+            _TransactionsDataView = RentalTransaction.GetAllRentalTransactions().DefaultView;
             dgvTransactionsList.DataSource = _TransactionsDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
@@ -55,7 +48,7 @@ namespace CarRentalManagementSystem.Transactions
 
         private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ", ""), true , out _FilterOptions result))
+            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ", ""), true, out _FilterOptions result))
             {
                 txtFilterValue.Visible = false;
                 dtpTemp.Visible = true;

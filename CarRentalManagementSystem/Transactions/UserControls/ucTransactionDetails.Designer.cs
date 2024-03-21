@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTotalRefundedAmount = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTotalRemaining = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtReturnID = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtInitialTotalDueAmount = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtActualTotalDueAmount = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,12 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBookingID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtReturnID = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtTotalRemaining = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtTotalRefundedAmount = new Guna.UI2.WinForms.Guna2TextBox();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +80,118 @@
             this.groupBox.Size = new System.Drawing.Size(1017, 419);
             this.groupBox.TabIndex = 3;
             this.groupBox.Text = "Transaction Information";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.label7.Location = new System.Drawing.Point(532, 209);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(187, 21);
+            this.label7.TabIndex = 289;
+            this.label7.Text = "Total Refunded Amount :";
+            // 
+            // txtTotalRefundedAmount
+            // 
+            this.txtTotalRefundedAmount.BorderRadius = 22;
+            this.txtTotalRefundedAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTotalRefundedAmount.DefaultText = "";
+            this.txtTotalRefundedAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotalRefundedAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotalRefundedAmount.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtTotalRefundedAmount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotalRefundedAmount.Enabled = false;
+            this.txtTotalRefundedAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotalRefundedAmount.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalRefundedAmount.ForeColor = System.Drawing.Color.Black;
+            this.txtTotalRefundedAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotalRefundedAmount.IconRightSize = new System.Drawing.Size(28, 28);
+            this.txtTotalRefundedAmount.Location = new System.Drawing.Point(760, 197);
+            this.txtTotalRefundedAmount.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtTotalRefundedAmount.Name = "txtTotalRefundedAmount";
+            this.txtTotalRefundedAmount.PasswordChar = '\0';
+            this.txtTotalRefundedAmount.PlaceholderText = "";
+            this.txtTotalRefundedAmount.ReadOnly = true;
+            this.txtTotalRefundedAmount.SelectedText = "";
+            this.txtTotalRefundedAmount.Size = new System.Drawing.Size(229, 43);
+            this.txtTotalRefundedAmount.TabIndex = 288;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.label6.Location = new System.Drawing.Point(532, 139);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(132, 21);
+            this.label6.TabIndex = 287;
+            this.label6.Text = "Total Remaining :";
+            // 
+            // txtTotalRemaining
+            // 
+            this.txtTotalRemaining.BorderRadius = 22;
+            this.txtTotalRemaining.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTotalRemaining.DefaultText = "";
+            this.txtTotalRemaining.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotalRemaining.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotalRemaining.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtTotalRemaining.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotalRemaining.Enabled = false;
+            this.txtTotalRemaining.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotalRemaining.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalRemaining.ForeColor = System.Drawing.Color.Black;
+            this.txtTotalRemaining.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotalRemaining.IconRightSize = new System.Drawing.Size(28, 28);
+            this.txtTotalRemaining.Location = new System.Drawing.Point(760, 127);
+            this.txtTotalRemaining.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtTotalRemaining.Name = "txtTotalRemaining";
+            this.txtTotalRemaining.PasswordChar = '\0';
+            this.txtTotalRemaining.PlaceholderText = "";
+            this.txtTotalRemaining.ReadOnly = true;
+            this.txtTotalRemaining.SelectedText = "";
+            this.txtTotalRemaining.Size = new System.Drawing.Size(229, 43);
+            this.txtTotalRemaining.TabIndex = 286;
+            // 
+            // txtReturnID
+            // 
+            this.txtReturnID.BorderRadius = 22;
+            this.txtReturnID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtReturnID.DefaultText = "N/A";
+            this.txtReturnID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtReturnID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtReturnID.DisabledState.ForeColor = System.Drawing.Color.DimGray;
+            this.txtReturnID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtReturnID.Enabled = false;
+            this.txtReturnID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtReturnID.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReturnID.ForeColor = System.Drawing.Color.Black;
+            this.txtReturnID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtReturnID.IconRightSize = new System.Drawing.Size(28, 28);
+            this.txtReturnID.Location = new System.Drawing.Point(233, 197);
+            this.txtReturnID.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtReturnID.Name = "txtReturnID";
+            this.txtReturnID.PasswordChar = '\0';
+            this.txtReturnID.PlaceholderText = "";
+            this.txtReturnID.ReadOnly = true;
+            this.txtReturnID.SelectedText = "";
+            this.txtReturnID.Size = new System.Drawing.Size(229, 43);
+            this.txtReturnID.TabIndex = 285;
+            this.txtReturnID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.label1.Location = new System.Drawing.Point(15, 209);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 21);
+            this.label1.TabIndex = 284;
+            this.label1.Text = "Return ID :";
             // 
             // txtInitialTotalDueAmount
             // 
@@ -121,7 +233,7 @@
             // 
             this.txtActualTotalDueAmount.BorderRadius = 22;
             this.txtActualTotalDueAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtActualTotalDueAmount.DefaultText = "N/A";
+            this.txtActualTotalDueAmount.DefaultText = "";
             this.txtActualTotalDueAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtActualTotalDueAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtActualTotalDueAmount.DisabledState.ForeColor = System.Drawing.Color.DimGray;
@@ -285,118 +397,6 @@
             this.label2.Size = new System.Drawing.Size(96, 21);
             this.label2.TabIndex = 264;
             this.label2.Text = "Booking ID :";
-            // 
-            // txtReturnID
-            // 
-            this.txtReturnID.BorderRadius = 22;
-            this.txtReturnID.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReturnID.DefaultText = "N/A";
-            this.txtReturnID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtReturnID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtReturnID.DisabledState.ForeColor = System.Drawing.Color.DimGray;
-            this.txtReturnID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtReturnID.Enabled = false;
-            this.txtReturnID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtReturnID.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReturnID.ForeColor = System.Drawing.Color.Black;
-            this.txtReturnID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtReturnID.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtReturnID.Location = new System.Drawing.Point(233, 197);
-            this.txtReturnID.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.txtReturnID.Name = "txtReturnID";
-            this.txtReturnID.PasswordChar = '\0';
-            this.txtReturnID.PlaceholderText = "";
-            this.txtReturnID.ReadOnly = true;
-            this.txtReturnID.SelectedText = "";
-            this.txtReturnID.Size = new System.Drawing.Size(229, 43);
-            this.txtReturnID.TabIndex = 285;
-            this.txtReturnID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.label1.Location = new System.Drawing.Point(15, 209);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 21);
-            this.label1.TabIndex = 284;
-            this.label1.Text = "Return ID :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.label6.Location = new System.Drawing.Point(532, 139);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 21);
-            this.label6.TabIndex = 287;
-            this.label6.Text = "Total Remaining :";
-            // 
-            // txtTotalRemaining
-            // 
-            this.txtTotalRemaining.BorderRadius = 22;
-            this.txtTotalRemaining.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTotalRemaining.DefaultText = "N/A";
-            this.txtTotalRemaining.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalRemaining.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalRemaining.DisabledState.ForeColor = System.Drawing.Color.DimGray;
-            this.txtTotalRemaining.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalRemaining.Enabled = false;
-            this.txtTotalRemaining.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalRemaining.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalRemaining.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalRemaining.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalRemaining.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtTotalRemaining.Location = new System.Drawing.Point(760, 127);
-            this.txtTotalRemaining.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.txtTotalRemaining.Name = "txtTotalRemaining";
-            this.txtTotalRemaining.PasswordChar = '\0';
-            this.txtTotalRemaining.PlaceholderText = "";
-            this.txtTotalRemaining.ReadOnly = true;
-            this.txtTotalRemaining.SelectedText = "";
-            this.txtTotalRemaining.Size = new System.Drawing.Size(229, 43);
-            this.txtTotalRemaining.TabIndex = 286;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.label7.Location = new System.Drawing.Point(532, 209);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(187, 21);
-            this.label7.TabIndex = 289;
-            this.label7.Text = "Total Refunded Amount :";
-            // 
-            // txtTotalRefundedAmount
-            // 
-            this.txtTotalRefundedAmount.BorderRadius = 22;
-            this.txtTotalRefundedAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTotalRefundedAmount.DefaultText = "N/A";
-            this.txtTotalRefundedAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalRefundedAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalRefundedAmount.DisabledState.ForeColor = System.Drawing.Color.DimGray;
-            this.txtTotalRefundedAmount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalRefundedAmount.Enabled = false;
-            this.txtTotalRefundedAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalRefundedAmount.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalRefundedAmount.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalRefundedAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalRefundedAmount.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtTotalRefundedAmount.Location = new System.Drawing.Point(760, 197);
-            this.txtTotalRefundedAmount.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.txtTotalRefundedAmount.Name = "txtTotalRefundedAmount";
-            this.txtTotalRefundedAmount.PasswordChar = '\0';
-            this.txtTotalRefundedAmount.PlaceholderText = "";
-            this.txtTotalRefundedAmount.ReadOnly = true;
-            this.txtTotalRefundedAmount.SelectedText = "";
-            this.txtTotalRefundedAmount.Size = new System.Drawing.Size(229, 43);
-            this.txtTotalRefundedAmount.TabIndex = 288;
             // 
             // ucTransactionDetails
             // 

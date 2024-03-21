@@ -1,19 +1,10 @@
 ﻿using CarRental_BusinessLayer;
 using CarRental_UtilityLayer;
-using CarRentalManagementSystem.Properties;
-using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static CarRental_BusinessLayer.clsCustomer;
-using TheArtOfDevHtmlRenderer.Adapters;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Vehicles
 {
@@ -31,7 +22,7 @@ namespace CarRentalManagementSystem.Vehicles
 
 
         private int? _VehicleID = null;
-        private clsVehicle _Vehicle = null;
+        private Vehicle _Vehicle = null;
 
         public frmAddUpdateVehicle(int? vehicleID)
         {
@@ -49,11 +40,11 @@ namespace CarRentalManagementSystem.Vehicles
         {
             _FillMakesInComboBox();
             _FillDriveTypesInComboBox();
-            _FillFuelTypesInComboBox(); 
+            _FillFuelTypesInComboBox();
 
             if (_Mode == _enMode.AddNew)
             {
-                _Vehicle = new clsVehicle();
+                _Vehicle = new Vehicle();
                 lblTitle.Text = "Add New Vehicle";
             }
 
@@ -67,7 +58,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void _FillMakesInComboBox()
         {
-            foreach (DataRow row in clsMake.GetAllMakes().Rows)
+            foreach (DataRow row in Make.GetAllMakes().Rows)
             {
                 cbMakes.Items.Add((string)row["Make"]);
             }
@@ -77,9 +68,9 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void _FillMakeModelsInComboBox(int MakeID)
         {
-            cbModels.Items.Clear(); 
+            cbModels.Items.Clear();
 
-            foreach (DataRow row in clsModel.GetAllModelsPerMake(MakeID).Rows)
+            foreach (DataRow row in Model.GetAllModelsPerMake(MakeID).Rows)
             {
                 cbModels.Items.Add((string)row["ModelName"]);
             }
@@ -91,7 +82,7 @@ namespace CarRentalManagementSystem.Vehicles
         {
             cbSubModels.Items.Clear();
 
-            foreach (DataRow row in clsSubModel.GetAllSubModelsPerModel(ModelID).Rows)
+            foreach (DataRow row in SubModel.GetAllSubModelsPerModel(ModelID).Rows)
             {
                 cbSubModels.Items.Add((string)row["SubModelName"]);
             }
@@ -101,7 +92,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void _FillDriveTypesInComboBox()
         {
-            foreach (DataRow row in clsDriveType.GetAllDriveTypes().Rows)
+            foreach (DataRow row in DriveType.GetAllDriveTypes().Rows)
             {
                 cbDriveTypes.Items.Add((string)row["DriveTypeName"]);
             }
@@ -111,7 +102,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void _FillFuelTypesInComboBox()
         {
-            foreach (DataRow row in clsFuelType.GetAllFuelTypes().Rows)
+            foreach (DataRow row in FuelType.GetAllFuelTypes().Rows)
             {
                 cbFuelTypes.Items.Add((string)row["FuelTypeName"]);
             }
@@ -121,7 +112,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void _LoadVehicleData()
         {
-            _Vehicle = clsVehicle.Find(_VehicleID);
+            _Vehicle = Vehicle.Find(_VehicleID);
 
             if (_Vehicle == null)
             {
@@ -135,9 +126,9 @@ namespace CarRentalManagementSystem.Vehicles
             txtYear.Text = _Vehicle.Year.ToString();
             txtEngine.Text = _Vehicle.Engine ?? string.Empty;
             txtMileage.Text = _Vehicle.Mileage.ToString();
-            txtRentalPricePerDay.Text = _Vehicle.RentalPricePerDay.ToString().Replace(',','.');
-            
-            cbMakes.SelectedIndex = cbMakes.FindString(_Vehicle.SubModelInfo.ModelInfo.MakeInfo.Make);
+            txtRentalPricePerDay.Text = _Vehicle.RentalPricePerDay.ToString().Replace(',', '.');
+
+            cbMakes.SelectedIndex = cbMakes.FindString(_Vehicle.SubModelInfo.ModelInfo.MakeInfo.Name);
             cbModels.SelectedIndex = cbModels.FindString(_Vehicle.SubModelInfo.ModelInfo.ModelName);
             cbSubModels.SelectedIndex = cbSubModels.FindString(_Vehicle.SubModelInfo.SubModelName);
             cbFuelTypes.SelectedIndex = cbFuelTypes.FindString(_Vehicle.FuelTypeInfo.FuelTypeName);
@@ -154,14 +145,14 @@ namespace CarRentalManagementSystem.Vehicles
             _Vehicle.Year = Convert.ToInt16(txtYear.Text.Trim());
             _Vehicle.Engine = string.IsNullOrEmpty(txtEngine.Text.Trim()) ? null : txtEngine.Text.Trim();
             _Vehicle.Mileage = Convert.ToInt16(txtMileage.Text.Trim());
-            _Vehicle.RentalPricePerDay = float.Parse(txtRentalPricePerDay.Text.Trim(),NumberStyles.AllowDecimalPoint,CultureInfo.InvariantCulture);
+            _Vehicle.RentalPricePerDay = float.Parse(txtRentalPricePerDay.Text.Trim(), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
             _Vehicle.NumDoors = (byte)nudNumberOfDoors.Value;
             _Vehicle.IsAvailableForRent = ckbIsAvailableForRent.Checked;
-            _Vehicle.DriveTypeID = clsDriveType.Find(cbDriveTypes.Text).DriveTypeID.Value;
-            _Vehicle.FuelTypeID = clsFuelType.Find(cbFuelTypes.Text).FuelTypeID.Value;
-            _Vehicle.MakeID = clsMake.Find(cbMakes.Text).MakeID.Value;
-            _Vehicle.ModelID = clsModel.Find(cbModels.Text).ModelID.Value;
-            _Vehicle.SubModelID = clsSubModel.Find(cbSubModels.Text).SubModelID.Value;
+            _Vehicle.DriveTypeID = DriveType.Find(cbDriveTypes.Text).DriveTypeID.Value;
+            _Vehicle.FuelTypeID = FuelType.Find(cbFuelTypes.Text).FuelTypeID.Value;
+            _Vehicle.MakeID = Make.Find(cbMakes.Text).MakeID.Value;
+            _Vehicle.ModelID = Model.Find(cbModels.Text).ModelID.Value;
+            _Vehicle.SubModelID = SubModel.Find(cbSubModels.Text).SubModelID.Value;
 
             if (!_Vehicle.Save())
             {
@@ -210,12 +201,12 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void cbMakes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _FillMakeModelsInComboBox(clsMake.Find(cbMakes.Text).MakeID.Value);
+            _FillMakeModelsInComboBox(Make.Find(cbMakes.Text).MakeID.Value);
         }
 
         private void cbModels_SelectedIndexChanged(object sender, EventArgs e)
         {
-           _FillSubModelsInComboBox(clsModel.Find(cbModels.Text).ModelID.Value);
+            _FillSubModelsInComboBox(Model.Find(cbModels.Text).ModelID.Value);
         }
 
         private void txtYear_Validating(object sender, CancelEventArgs e)
