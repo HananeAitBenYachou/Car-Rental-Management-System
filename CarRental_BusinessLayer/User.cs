@@ -7,7 +7,7 @@ namespace CarRental_BusinessLayer
     public class User : Person
     {
         private new enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        private enMode _mode;
 
         public enum enFindUserBy : byte { PersonID = 0, UserID = 1, UserName = 3 }
 
@@ -19,163 +19,164 @@ namespace CarRental_BusinessLayer
 
         public User() : base()
         {
-            _Mode = enMode.AddNew;
+            _mode = enMode.AddNew;
+
             UserID = null;
             PersonID = null;
             UserName = default;
             Password = default;
             IsActive = default;
         }
-        private User(int? UserID, int? PersonID, string UserName, string Password, bool IsActive,
-            string NationalNo, string FirstName, string LastName, DateTime BirthDate, enGender Gender,
-            string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
-            : base(PersonID, NationalNo, FirstName, LastName, BirthDate, Gender, Address, Phone, Email,
-                  NationalityCountryID, ImagePath)
+        private User(int? userID, int? personID, string userName, string password, bool isActive, string nationalNo,
+                     string firstName, string lastName, DateTime birthDate, enGender gender, string address,
+                     string phone, string email, int nationalityCountryID, string imagePath)
+
+                    : base(personID, nationalNo, firstName, lastName, birthDate, gender, address, phone, email,
+                           nationalityCountryID, imagePath)
 
         {
-            _Mode = enMode.Update;
+            _mode = enMode.Update;
 
-            this.UserID = UserID;
-            this.PersonID = PersonID;
-            this.UserName = UserName;
-            this.Password = Password;
-            this.IsActive = IsActive;
+            UserID = userID;
+            PersonID = personID;
+            UserName = userName;
+            Password = Password;
+            IsActive = isActive;
         }
 
-        private static User _FindUserByUserID(int? UserID)
+        private static User FindUserByUserID(int? userID)
         {
-            int? PersonID = default;
-            string UserName = default;
-            string Password = default;
-            bool IsActive = default;
+            int? personID = default;
+            string userName = default;
+            string password = default;
+            bool isActive = default;
 
-            bool isFound = UserData.GetUserInfoByID(UserID, ref PersonID, ref UserName, ref Password, ref IsActive);
+            bool isFound = UserData.GetUserInfoByID(userID, ref personID, ref userName, ref password, ref isActive);
 
             if (isFound)
             {
-                Person person = Person.Find(PersonID);
+                Person person = Person.Find(personID);
 
                 if (person == null)
                     return null;
 
-                return new User(UserID, PersonID, UserName, Password, IsActive,
-                    person.NationalNo, person.FirstName, person.LastName, person.BirthDate, person.Gender, person.Address,
-                    person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
+                return new User(userID, personID, userName, password, isActive, person.NationalNo, person.FirstName,
+                                person.LastName, person.BirthDate, person.Gender, person.Address, person.Phone,
+                                person.Email, person.NationalityCountryID, person.ImagePath);
 
             }
             else
                 return null;
         }
 
-        private static User _FindUserByPersonID(int? PersonID)
+        private static User FindUserByPersonID(int? personID)
         {
-            int? UserID = default;
-            string UserName = default;
-            string Password = default;
-            bool IsActive = default;
+            int? userID = default;
+            string userName = default;
+            string password = default;
+            bool isActive = default;
 
-            bool isFound = UserData.GetUserInfoByPersonID(PersonID, ref UserID, ref UserName, ref Password, ref IsActive);
+            bool isFound = UserData.GetUserInfoByPersonID(personID, ref userID, ref userName, ref password, ref isActive);
 
             if (isFound)
             {
-                Person person = Person.Find(PersonID);
+                Person person = Person.Find(personID);
 
                 if (person == null)
                     return null;
 
-                return new User(UserID, PersonID, UserName, Password, IsActive,
-                    person.NationalNo, person.FirstName, person.LastName, person.BirthDate, person.Gender, person.Address,
-                    person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
+                return new User(userID, personID, userName, password, isActive, person.NationalNo, person.FirstName,
+                                person.LastName, person.BirthDate, person.Gender, person.Address, person.Phone,
+                                person.Email, person.NationalityCountryID, person.ImagePath);
 
             }
             else
                 return null;
         }
 
-        private static User _FindUserByUserName(string UserName)
+        private static User FindUserByUserName(string userName)
         {
-            int? PersonID = default;
-            int? UserID = default;
-            string Password = default;
-            bool IsActive = default;
+            int? personID = default;
+            int? userID = default;
+            string password = default;
+            bool isActive = default;
 
-            bool isFound = UserData.GetUserInfoByUserName(UserName, ref UserID, ref PersonID, ref Password, ref IsActive);
+            bool isFound = UserData.GetUserInfoByUserName(userName, ref userID, ref personID, ref password, ref isActive);
 
             if (isFound)
             {
-                Person person = Person.Find(PersonID);
+                Person person = Person.Find(personID);
 
                 if (person == null)
                     return null;
 
-                return new User(UserID, PersonID, UserName, Password, IsActive,
-                    person.NationalNo, person.FirstName, person.LastName, person.BirthDate, person.Gender, person.Address,
-                    person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
+                return new User(userID, personID, userName, password, isActive, person.NationalNo, person.FirstName,
+                                person.LastName, person.BirthDate, person.Gender, person.Address, person.Phone,
+                                person.Email, person.NationalityCountryID, person.ImagePath);
+            }
+            else
+                return null;
+        }
+
+        public static User Find(string userName, string password)
+        {
+            int? personID = default;
+            int? userID = default;
+            bool isActive = default;
+
+            bool isFound = UserData.GetUserInfoByUserNameAndPassword(userName, password, ref userID, ref personID,ref isActive);
+
+            if (isFound)
+            {
+                Person person = Person.Find(personID);
+
+                if (person == null)
+                    return null;
+
+                return new User(userID, personID, userName, password, isActive, person.NationalNo, person.FirstName,
+                                person.LastName, person.BirthDate, person.Gender, person.Address, person.Phone,
+                                person.Email, person.NationalityCountryID, person.ImagePath);
 
             }
             else
                 return null;
         }
 
-        public static User Find(string UserName, string Password)
+        public static User Find<T>(T searchValue, enFindUserBy findUserBy)
         {
-            int? PersonID = default;
-            int? UserID = default;
-            bool IsActive = default;
-
-            bool isFound = UserData.GetUserInfoByUserNameAndPassword(UserName, Password, ref UserID, ref PersonID, ref IsActive);
-
-            if (isFound)
-            {
-                Person person = Person.Find(PersonID);
-
-                if (person == null)
-                    return null;
-
-                return new User(UserID, PersonID, UserName, Password, IsActive,
-                    person.NationalNo, person.FirstName, person.LastName, person.BirthDate, person.Gender, person.Address,
-                    person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
-
-            }
-            else
-                return null;
-        }
-
-        public static User Find<T>(T searchValue, enFindUserBy FindUserBy)
-        {
-            switch (FindUserBy)
+            switch (findUserBy)
             {
                 case enFindUserBy.PersonID:
-                    return _FindUserByPersonID(Convert.ToInt32(searchValue));
+                    return FindUserByPersonID(Convert.ToInt32(searchValue));
 
                 case enFindUserBy.UserID:
-                    return _FindUserByUserID(Convert.ToInt32(searchValue));
+                    return FindUserByUserID(Convert.ToInt32(searchValue));
 
                 case enFindUserBy.UserName:
-                    return _FindUserByUserName(Convert.ToString(searchValue));
+                    return FindUserByUserName(Convert.ToString(searchValue));
 
                 default:
                     return null;
             }
         }
 
-        public static bool DoesUserExist(int? UserID)
+        public static bool DoesUserExist(int? userID)
         {
-            return UserData.DoesUserExist(UserID);
+            return UserData.DoesUserExist(userID);
         }
 
-        public static bool DoesUserExist(string UserName)
+        public static bool DoesUserExist(string userName)
         {
-            return UserData.DoesUserExist(UserName);
+            return UserData.DoesUserExist(userName);
         }
 
-        private bool _AddNewUser()
+        private bool AddNewUser()
         {
             UserID = UserData.AddNewUser(PersonID, UserName, Password, IsActive);
             return UserID.HasValue;
         }
 
-        private bool _UpdateUser()
+        private bool UpdateUser()
         {
             return UserData.UpdateUserInfo(UserID, PersonID, UserName, Password, IsActive);
         }
@@ -185,33 +186,33 @@ namespace CarRental_BusinessLayer
             if (!base.Save())
                 return false;
 
-            this.PersonID = base.PersonID;
+            PersonID = base.PersonID;
 
-            switch (_Mode)
+            switch (_mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewUser())
+                    if (AddNewUser())
                     {
-                        _Mode = enMode.Update;
+                        _mode = enMode.Update;
                         return true;
                     }
                     return false;
 
                 case enMode.Update:
-                    return _UpdateUser();
+                    return UpdateUser();
 
             }
             return false;
         }
 
-        public static bool DeleteUser(int? UserID)
+        public static bool DeleteUser(int? userID)
         {
-            int? personID = UserData.GetUserPersonID(UserID);
+            int? personID = UserData.GetUserPersonID(userID);
 
             if (!personID.HasValue)
                 return false;
 
-            return Person.DeletePerson(personID) ? UserData.DeleteUser(UserID) : false;
+            return DeletePerson(personID) ? UserData.DeleteUser(userID) : false;
         }
 
         public static DataTable GetAllUsers()
@@ -219,9 +220,9 @@ namespace CarRental_BusinessLayer
             return UserData.GetAllUsers();
         }
 
-        public bool UpdateUserPassword(string NewPassword)
+        public bool UpdateUserPassword(string newPassword)
         {
-            return UserData.UpdateUserPassword(this.UserID, NewPassword);
+            return UserData.UpdateUserPassword(UserID, newPassword);
         }
     }
 }

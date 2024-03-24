@@ -8,28 +8,28 @@ namespace CarRental_BusinessLayer
         public int? MakeID { get; private set; }
         public string Name { get; set; }
 
-        private Make(int? MakeID, string Name)
+        private Make(int? makeID, string name)
         {
-            this.MakeID = MakeID;
-            this.Name = Name;
+            MakeID = makeID;
+            Name = name;
         }
 
-        public static Make Find(int? MakeID)
+        public static Make Find(int? makeID)
         {
-            string Name = default;
+            string name = default;
 
-            bool isFound = MakeData.GetMakeInfoByID(MakeID, ref Name);
+            bool isFound = MakeData.GetMakeInfoByID(makeID, ref name);
 
-            return isFound ? new Make(MakeID, Name) : null;
+            return isFound ? new Make(makeID, name) : null;
         }
 
-        public static Make Find(string Name)
+        public static Make Find(string name)
         {
-            int? MakeID = default;
+            int? makeID = default;
 
-            bool isFound = MakeData.GetMakeInfoByName(Name, ref MakeID);
+            bool isFound = MakeData.GetMakeInfoByName(name, ref makeID);
 
-            return isFound ? new Make(MakeID, Name) : null;
+            return isFound ? new Make(makeID, name) : null;
         }
 
         public static DataTable GetAllMakes()

@@ -7,16 +7,17 @@ namespace CarRental_DataAccessLayer
 {
     public class RentalBookingData
     {
-        public static bool GetRentalBookingInfoByID(int? BookingID, ref int CustomerID, ref int VehicleID,
-            ref DateTime RentalStartDate, ref DateTime RentalEndDate, ref string PickupLocation,
-            ref string DropoffLocation, ref int InitialRentalDays, ref float RentalPricePerDay,
-            ref float InitialTotalDueAmount, ref string InitialCheckNotes)
+        public static bool GetRentalBookingInfoByID(int? bookingID, ref int customerID, ref int vehicleID,
+                                                    ref DateTime rentalStartDate, ref DateTime rentalEndDate,
+                                                    ref string pickupLocation, ref string dropoffLocation,
+                                                    ref int initialRentalDays, ref float rentalPricePerDay,
+                                                    ref float initialTotalDueAmount, ref string initialCheckNotes)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -24,7 +25,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@BookingID", (object)BookingID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@BookingID", (object)bookingID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -33,25 +34,25 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                CustomerID = (int)reader["CustomerID"];
+                                customerID = (int)reader["CustomerID"];
 
-                                VehicleID = (int)reader["VehicleID"];
+                                vehicleID = (int)reader["VehicleID"];
 
-                                RentalStartDate = (DateTime)reader["RentalStartDate"];
+                                rentalStartDate = (DateTime)reader["RentalStartDate"];
 
-                                RentalEndDate = (DateTime)reader["RentalEndDate"];
+                                rentalEndDate = (DateTime)reader["RentalEndDate"];
 
-                                PickupLocation = (string)reader["PickupLocation"];
+                                pickupLocation = (string)reader["PickupLocation"];
 
-                                DropoffLocation = (string)reader["DropoffLocation"];
+                                dropoffLocation = (string)reader["DropoffLocation"];
 
-                                InitialRentalDays = (int)reader["InitialRentalDays"];
+                                initialRentalDays = (int)reader["InitialRentalDays"];
 
-                                RentalPricePerDay = Convert.ToSingle(reader["RentalPricePerDay"]);
+                                rentalPricePerDay = Convert.ToSingle(reader["RentalPricePerDay"]);
 
-                                InitialTotalDueAmount = Convert.ToSingle(reader["InitialTotalDueAmount"]);
+                                initialTotalDueAmount = Convert.ToSingle(reader["InitialTotalDueAmount"]);
 
-                                InitialCheckNotes = (reader["InitialCheckNotes"] != DBNull.Value) ? (string)reader["InitialCheckNotes"] : null;
+                                initialCheckNotes = (reader["InitialCheckNotes"] != DBNull.Value) ? (string)reader["InitialCheckNotes"] : null;
 
                             }
 
@@ -66,20 +67,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesRentalBookingExist(int? BookingID)
+        public static bool DoesRentalBookingExist(int? bookingID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -87,7 +88,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@BookingID", (object)BookingID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@BookingID", (object)bookingID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -104,20 +105,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool IsRentalBookingActive(int? BookingID)
+        public static bool IsRentalBookingActive(int? bookingID)
         {
             bool isActive = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -125,7 +126,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@BookingID", (object)BookingID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@BookingID", (object)bookingID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -142,37 +143,36 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isActive = false;
             }
             return isActive;
         }
 
-        public static int? AddNewRentalBooking(int CustomerID, int VehicleID, DateTime RentalStartDate,
-            DateTime RentalEndDate, string PickupLocation, string DropoffLocation,
-            float RentalPricePerDay, string InitialCheckNotes)
+        public static int? AddNewRentalBooking(int customerID, int vehicleID, DateTime rentalStartDate,
+                                               DateTime rentalEndDate, string pickupLocation, string dropoffLocation,
+                                               float rentalPricePerDay, string initialCheckNotes)
         {
-            int? BookingID = null;
+            int? bookingID = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_AddNewRentalBooking", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@CustomerID", CustomerID);
-                        command.Parameters.AddWithValue("@VehicleID", VehicleID);
-                        command.Parameters.AddWithValue("@RentalStartDate", RentalStartDate);
-                        command.Parameters.AddWithValue("@RentalEndDate", RentalEndDate);
-                        command.Parameters.AddWithValue("@PickupLocation", PickupLocation);
-                        command.Parameters.AddWithValue("@DropoffLocation", DropoffLocation);
-                        command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
-                        command.Parameters.AddWithValue("@InitialCheckNotes", (object)InitialCheckNotes ?? DBNull.Value);
-
+                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        command.Parameters.AddWithValue("@VehicleID", vehicleID);
+                        command.Parameters.AddWithValue("@RentalStartDate", rentalStartDate);
+                        command.Parameters.AddWithValue("@RentalEndDate", rentalEndDate);
+                        command.Parameters.AddWithValue("@PickupLocation", pickupLocation);
+                        command.Parameters.AddWithValue("@DropoffLocation", dropoffLocation);
+                        command.Parameters.AddWithValue("@RentalPricePerDay",rentalPricePerDay);
+                        command.Parameters.AddWithValue("@InitialCheckNotes", (object)initialCheckNotes ?? DBNull.Value);
 
                         SqlParameter outputParameter = new SqlParameter("@NewBookingID", SqlDbType.Int)
                         {
@@ -183,45 +183,44 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteNonQuery();
 
-                        BookingID = (int)outputParameter.Value;
+                        bookingID = (int)outputParameter.Value;
                     }
                 }
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
-                BookingID = null;
+                bookingID = null;
             }
-            return BookingID;
+            return bookingID;
         }
 
-        public static bool UpdateRentalBookingInfo(int? BookingID, int CustomerID, int VehicleID,
-            DateTime RentalStartDate, DateTime RentalEndDate, string PickupLocation,
-            string DropoffLocation, float RentalPricePerDay,
-            string InitialCheckNotes)
+        public static bool UpdateRentalBookingInfo(int? bookingID, int customerID, int vehicleID,
+                                                   DateTime rentalStartDate, DateTime rentalEndDate,
+                                                   string pickupLocation, string dropoffLocation,
+                                                   float rentalPricePerDay, string initialCheckNotes)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_UpdateRentalBookingInfo", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@BookingID", BookingID);
-                        command.Parameters.AddWithValue("@CustomerID", CustomerID);
-                        command.Parameters.AddWithValue("@VehicleID", VehicleID);
-                        command.Parameters.AddWithValue("@RentalStartDate", RentalStartDate);
-                        command.Parameters.AddWithValue("@RentalEndDate", RentalEndDate);
-                        command.Parameters.AddWithValue("@PickupLocation", PickupLocation);
-                        command.Parameters.AddWithValue("@DropoffLocation", DropoffLocation);
-                        command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
-                        command.Parameters.AddWithValue("@InitialCheckNotes", (object)InitialCheckNotes ?? DBNull.Value);
-
+                        command.Parameters.AddWithValue("@BookingID", bookingID);
+                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        command.Parameters.AddWithValue("@VehicleID", vehicleID);
+                        command.Parameters.AddWithValue("@RentalStartDate", rentalStartDate);
+                        command.Parameters.AddWithValue("@RentalEndDate", rentalEndDate);
+                        command.Parameters.AddWithValue("@PickupLocation", pickupLocation);
+                        command.Parameters.AddWithValue("@DropoffLocation", dropoffLocation);
+                        command.Parameters.AddWithValue("@RentalPricePerDay", rentalPricePerDay);
+                        command.Parameters.AddWithValue("@InitialCheckNotes", (object)initialCheckNotes ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -229,7 +228,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 rowsAffected = 0;
             }
@@ -238,11 +237,11 @@ namespace CarRental_DataAccessLayer
 
         public static DataTable GetAllRentalBookings()
         {
-            DataTable Datatable = new DataTable();
+            DataTable rentalBookingsdatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -254,7 +253,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                rentalBookingsdatatable.Load(reader);
                             }
                         }
                     }
@@ -262,10 +261,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return rentalBookingsdatatable;
         }
-
     }
 }

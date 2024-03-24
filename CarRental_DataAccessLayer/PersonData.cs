@@ -8,15 +8,16 @@ namespace CarRental_DataAccessLayer
 {
     public class PersonData
     {
-        public static bool GetPersonInfoByID(int? PersonID, ref string NationalNo, ref string FirstName,
-            ref string LastName, ref DateTime BirthDate, ref byte Gender, ref string Address,
-            ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
+        public static bool GetPersonInfoByID(int? personID, ref string nationalNo, ref string firstName,
+                                             ref string lastName, ref DateTime birthDate, ref byte gender,
+                                             ref string address, ref string phone, ref string email,
+                                             ref int nationalityCountryID, ref string imagePath)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -24,7 +25,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PersonID", (object)personID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -33,25 +34,25 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                NationalNo = (string)reader["NationalNo"];
+                                nationalNo = (string)reader["NationalNo"];
 
-                                FirstName = (string)reader["FirstName"];
+                                firstName = (string)reader["FirstName"];
 
-                                LastName = (string)reader["LastName"];
+                                lastName = (string)reader["LastName"];
 
-                                BirthDate = (DateTime)reader["BirthDate"];
+                                birthDate = (DateTime)reader["BirthDate"];
 
-                                Gender = (byte)reader["Gender"];
+                                gender = (byte)reader["Gender"];
 
-                                Address = (reader["Address"] != DBNull.Value) ? (string)reader["Address"] : null;
+                                address = (reader["Address"] != DBNull.Value) ? (string)reader["Address"] : null;
 
-                                Phone = (string)reader["Phone"];
+                                phone = (string)reader["Phone"];
 
-                                Email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : null;
+                                email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : null;
 
-                                NationalityCountryID = (int)reader["NationalityCountryID"];
+                                nationalityCountryID = (int)reader["NationalityCountryID"];
 
-                                ImagePath = (reader["ImagePath"] != DBNull.Value) ? (string)reader["ImagePath"] : null;
+                                imagePath = (reader["ImagePath"] != DBNull.Value) ? (string)reader["ImagePath"] : null;
 
                             }
 
@@ -66,22 +67,23 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetPersonInfoByNationalNo(string NationalNo, ref int? PersonID, ref string FirstName,
-           ref string LastName, ref DateTime BirthDate, ref byte Gender, ref string Address,
-           ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
+        public static bool GetPersonInfoByNationalNo(string nationalNo, ref int? personID, ref string firstName,
+                                                     ref string lastName, ref DateTime birthDate, ref byte gender,
+                                                     ref string address, ref string phone, ref string email,
+                                                     ref int nationalityCountryID, ref string imagePath)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -89,7 +91,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@NationalNo", NationalNo);
+                        command.Parameters.AddWithValue("@NationalNo", nationalNo);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -98,25 +100,25 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+                                personID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
 
-                                FirstName = (string)reader["FirstName"];
+                                firstName = (string)reader["FirstName"];
 
-                                LastName = (string)reader["LastName"];
+                                lastName = (string)reader["LastName"];
 
-                                BirthDate = (DateTime)reader["BirthDate"];
+                                birthDate = (DateTime)reader["BirthDate"];
 
-                                Gender = (byte)reader["Gender"];
+                                gender = (byte)reader["Gender"];
 
-                                Address = (reader["Address"] != DBNull.Value) ? (string)reader["Address"] : null;
+                                address = (reader["Address"] != DBNull.Value) ? (string)reader["Address"] : null;
 
-                                Phone = (string)reader["Phone"];
+                                phone = (string)reader["Phone"];
 
-                                Email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : null;
+                                email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : null;
 
-                                NationalityCountryID = (int)reader["NationalityCountryID"];
+                                nationalityCountryID = (int)reader["NationalityCountryID"];
 
-                                ImagePath = (reader["ImagePath"] != DBNull.Value) ? (string)reader["ImagePath"] : null;
+                                imagePath = (reader["ImagePath"] != DBNull.Value) ? (string)reader["ImagePath"] : null;
 
                             }
 
@@ -131,19 +133,19 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
-        public static bool DoesPersonExist(int? PersonID)
+        public static bool DoesPersonExist(int? personID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -151,7 +153,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PersonID", (object)personID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -168,20 +170,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesPersonExist(string NationalNo)
+        public static bool DoesPersonExist(string nationalNo)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -189,7 +191,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@NationalNo", NationalNo);
+                        command.Parameters.AddWithValue("@NationalNo", nationalNo);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -206,38 +208,38 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static int? AddNewPerson(string NationalNo, string FirstName,
-            string LastName, DateTime BirthDate, byte Gender, string Address, string Phone,
-            string Email, int NationalityCountryID, string ImagePath)
+        public static int? AddNewPerson(string nationalNo, string firstName, string lastName, DateTime birthDate,
+                                        byte gender, string address, string phone, string email,
+                                        int nationalityCountryID, string imagePath)
         {
             int? PersonID = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_AddNewPerson", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@NationalNo", NationalNo);
-                        command.Parameters.AddWithValue("@FirstName", FirstName);
-                        command.Parameters.AddWithValue("@LastName", LastName);
-                        command.Parameters.AddWithValue("@BirthDate", BirthDate);
-                        command.Parameters.AddWithValue("@Gender", Gender);
-                        command.Parameters.AddWithValue("@Address", (object)Address ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Phone", Phone);
-                        command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-                        command.Parameters.AddWithValue("@ImagePath", (object)ImagePath ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@NationalNo", nationalNo);
+                        command.Parameters.AddWithValue("@FirstName", firstName);
+                        command.Parameters.AddWithValue("@LastName", lastName);
+                        command.Parameters.AddWithValue("@BirthDate", birthDate);
+                        command.Parameters.AddWithValue("@Gender", gender);
+                        command.Parameters.AddWithValue("@Address", (object)address ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Phone", phone);
+                        command.Parameters.AddWithValue("@Email", (object)email ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@NationalityCountryID", nationalityCountryID);
+                        command.Parameters.AddWithValue("@ImagePath", (object)imagePath ?? DBNull.Value);
 
 
                         SqlParameter outputPersonIDParameter = new SqlParameter("@NewPersonID", SqlDbType.Int)
@@ -255,39 +257,39 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 PersonID = null;
             }
             return PersonID;
         }
 
-        public static bool UpdatePersonInfo(int? PersonID, string NationalNo, string FirstName,
-            string LastName, DateTime BirthDate, byte Gender, string Address, string Phone,
-            string Email, int NationalityCountryID, string ImagePath)
+        public static bool UpdatePersonInfo(int? personID, string nationalNo, string firstName, string lastName,
+                                            DateTime birthDate, byte gender, string address, string phone, string email,
+                                            int nationalityCountryID, string imagePath)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_UpdatePersonInfo", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@PersonID", PersonID);
-                        command.Parameters.AddWithValue("@NationalNo", NationalNo);
-                        command.Parameters.AddWithValue("@FirstName", FirstName);
-                        command.Parameters.AddWithValue("@LastName", LastName);
-                        command.Parameters.AddWithValue("@BirthDate", BirthDate);
-                        command.Parameters.AddWithValue("@Gender", Gender);
-                        command.Parameters.AddWithValue("@Address", (object)Address ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Phone", Phone);
-                        command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-                        command.Parameters.AddWithValue("@ImagePath", (object)ImagePath ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PersonID", personID);
+                        command.Parameters.AddWithValue("@NationalNo", nationalNo);
+                        command.Parameters.AddWithValue("@FirstName", firstName);
+                        command.Parameters.AddWithValue("@LastName", lastName);
+                        command.Parameters.AddWithValue("@BirthDate", birthDate);
+                        command.Parameters.AddWithValue("@Gender", gender);
+                        command.Parameters.AddWithValue("@Address", (object)address ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Phone", phone);
+                        command.Parameters.AddWithValue("@Email", (object)email ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@NationalityCountryID", nationalityCountryID);
+                        command.Parameters.AddWithValue("@ImagePath", (object)imagePath ?? DBNull.Value);
 
 
                         rowsAffected = command.ExecuteNonQuery();
@@ -296,20 +298,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 rowsAffected = 0;
             }
             return rowsAffected != 0;
         }
 
-        public static bool DeletePerson(int? PersonID)
+        public static bool DeletePerson(int? personID)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -317,7 +319,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PersonID", (object)personID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -325,7 +327,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
             return rowsAffected != 0;
         }

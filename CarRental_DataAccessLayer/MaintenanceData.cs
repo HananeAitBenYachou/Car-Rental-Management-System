@@ -8,13 +8,14 @@ namespace CarRental_DataAccessLayer
 {
     public class MaintenanceData
     {
-        public static bool GetMaintenanceInfoByID(int? MaintenanceID, ref int VehicleID, ref string Description, ref DateTime MaintenanceDate, ref double Cost)
+        public static bool GetMaintenanceInfoByID(int? maintenanceID, ref int vehicleID, ref string description,
+                                                  ref DateTime maintenanceDate, ref double cost)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -22,7 +23,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@MaintenanceID", (object)MaintenanceID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@MaintenanceID", (object)maintenanceID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -31,13 +32,13 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                VehicleID = (int)reader["VehicleID"];
+                                vehicleID = (int)reader["VehicleID"];
 
-                                Description = (string)reader["Description"];
+                                description = (string)reader["Description"];
 
-                                MaintenanceDate = (DateTime)reader["MaintenanceDate"];
+                                maintenanceDate = (DateTime)reader["MaintenanceDate"];
 
-                                Cost = (double)reader["Cost"];
+                                cost = (double)reader["Cost"];
 
                             }
 
@@ -52,20 +53,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesMaintenanceExist(int? MaintenanceID)
+        public static bool DoesMaintenanceExist(int? maintenanceID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -73,7 +74,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@MaintenanceID", (object)MaintenanceID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@MaintenanceID", (object)maintenanceID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -90,30 +91,30 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static int? AddNewMaintenance(int VehicleID, string Description, DateTime MaintenanceDate, double Cost)
+        public static int? AddNewMaintenance(int vehicleID, string description, DateTime maintenanceDate, double cost)
         {
             int? MaintenanceID = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_AddNewMaintenance", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@VehicleID", VehicleID);
-                        command.Parameters.AddWithValue("@Description", Description);
-                        command.Parameters.AddWithValue("@MaintenanceDate", MaintenanceDate);
-                        command.Parameters.AddWithValue("@Cost", Cost);
+                        command.Parameters.AddWithValue("@VehicleID", vehicleID);
+                        command.Parameters.AddWithValue("@Description", description);
+                        command.Parameters.AddWithValue("@MaintenanceDate", maintenanceDate);
+                        command.Parameters.AddWithValue("@Cost", cost);
 
 
                         SqlParameter outputParameter = new SqlParameter("@NewMaintenanceID", SqlDbType.Int)
@@ -131,31 +132,32 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 MaintenanceID = null;
             }
             return MaintenanceID;
         }
 
-        public static bool UpdateMaintenanceInfo(int? MaintenanceID, int VehicleID, string Description, DateTime MaintenanceDate, double Cost)
+        public static bool UpdateMaintenanceInfo(int? maintenanceID, int vehicleID, string description,
+                                                 DateTime maintenanceDate, double cost)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_UpdateMaintenanceInfo", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@MaintenanceID", MaintenanceID);
-                        command.Parameters.AddWithValue("@VehicleID", VehicleID);
-                        command.Parameters.AddWithValue("@Description", Description);
-                        command.Parameters.AddWithValue("@MaintenanceDate", MaintenanceDate);
-                        command.Parameters.AddWithValue("@Cost", Cost);
+                        command.Parameters.AddWithValue("@MaintenanceID", maintenanceID);
+                        command.Parameters.AddWithValue("@VehicleID", vehicleID);
+                        command.Parameters.AddWithValue("@Description", description);
+                        command.Parameters.AddWithValue("@MaintenanceDate", maintenanceDate);
+                        command.Parameters.AddWithValue("@Cost", cost);
 
 
                         rowsAffected = command.ExecuteNonQuery();
@@ -164,20 +166,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 rowsAffected = 0;
             }
             return rowsAffected != 0;
         }
-
-        public static bool DeleteMaintenance(int? MaintenanceID)
+    
+        public static bool DeleteMaintenance(int? maintenanceID)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -185,7 +187,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@MaintenanceID", (object)MaintenanceID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@MaintenanceID", (object)maintenanceID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -193,18 +195,18 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
             return rowsAffected != 0;
         }
 
         public static DataTable GetAllMaintenances()
         {
-            DataTable Datatable = new DataTable();
+            DataTable maintenancesDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -216,7 +218,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                maintenancesDatatable.Load(reader);
                             }
                         }
                     }
@@ -224,9 +226,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return maintenancesDatatable;
         }
 
     }

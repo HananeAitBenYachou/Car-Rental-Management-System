@@ -34,7 +34,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCard();
+            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCard();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,6 +141,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label lblTitle;
         private Guna.UI2.WinForms.Guna2Button btnClose;
-        private UserControls.ucCustomerCard ucCustomerCard1;
+        private UserControls.UcCustomerCard ucCustomerCard1;
     }
 }

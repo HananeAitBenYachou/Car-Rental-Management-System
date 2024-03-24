@@ -27,6 +27,7 @@ namespace CarRental_BusinessLayer
         public Person()
         {
             Mode = enMode.AddNew;
+
             PersonID = null;
             NationalNo = default;
             FirstName = default;
@@ -40,94 +41,97 @@ namespace CarRental_BusinessLayer
             ImagePath = null;
         }
 
-        protected Person(int? PersonID, string NationalNo, string FirstName, string LastName,
-            DateTime BirthDate, enGender Gender, string Address, string Phone,
-            string Email, int NationalityCountryID, string ImagePath)
+        protected Person(int? personID, string nationalNo, string firstName, string lastName, DateTime birthDate,
+                         enGender gender, string address, string phone, string email, int nationalityCountryID,
+                         string imagePath)
         {
             Mode = enMode.Update;
-            this.PersonID = PersonID;
-            this.NationalNo = NationalNo;
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.BirthDate = BirthDate;
-            this.Gender = Gender;
-            this.Address = Address;
-            this.Phone = Phone;
-            this.Email = Email;
-            this.NationalityCountryID = NationalityCountryID;
-            this.ImagePath = ImagePath;
 
-            this.CountryInfo = Country.Find(NationalityCountryID);
+            PersonID = personID;
+            NationalNo = nationalNo;
+            FirstName = firstName;
+            LastName = lastName;
+            BirthDate = birthDate;
+            Gender = gender;
+            Address = address;
+            Phone = phone;
+            Email = email;
+            NationalityCountryID = nationalityCountryID;
+            ImagePath = imagePath;
+
+            CountryInfo = Country.Find(nationalityCountryID);
         }
 
-        public static Person Find(int? PersonID)
+        public static Person Find(int? personID)
         {
-            string NationalNo = default;
-            string FirstName = default;
-            string LastName = default;
-            DateTime BirthDate = default;
-            byte Gender = default;
-            string Address = default;
-            string Phone = default;
-            string Email = default;
-            int NationalityCountryID = default;
-            string ImagePath = default;
+            string nationalNo = default;
+            string firstName = default;
+            string lastName = default;
+            DateTime birthDate = default;
+            byte gender = default;
+            string address = default;
+            string phone = default;
+            string email = default;
+            int nationalityCountryID = default;
+            string imagePath = default;
 
-            bool isFound = PersonData.GetPersonInfoByID(PersonID, ref NationalNo, ref FirstName,
-                ref LastName, ref BirthDate, ref Gender, ref Address,
-                ref Phone, ref Email, ref NationalityCountryID, ref ImagePath);
+            bool isFound = PersonData.GetPersonInfoByID(personID, ref nationalNo, ref firstName, ref lastName,
+                                                        ref birthDate, ref gender, ref address, ref phone, ref email,
+                                                        ref nationalityCountryID, ref imagePath);
 
             if (isFound)
-                return new Person(PersonID, NationalNo, FirstName, LastName,
-                    BirthDate, (enGender)Gender, Address, Phone, Email,
-                    NationalityCountryID, ImagePath);
+                return new Person(personID, nationalNo, firstName, lastName,
+                    birthDate, (enGender)gender, address, phone, email,
+                    nationalityCountryID, imagePath);
             else
                 return null;
         }
 
-        public static Person Find(string NationalNo)
+        public static Person Find(string nationalNo)
         {
-            int? PersonID = default;
-            string FirstName = default;
-            string LastName = default;
-            DateTime BirthDate = default;
-            byte Gender = default;
-            string Address = default;
-            string Phone = default;
-            string Email = default;
-            int NationalityCountryID = default;
-            string ImagePath = default;
+            int? personID = default;
+            string firstName = default;
+            string lastName = default;
+            DateTime birthDate = default;
+            byte gender = default;
+            string address = default;
+            string phone = default;
+            string email = default;
+            int nationalityCountryID = default;
+            string imagePath = default;
 
-            bool isFound = PersonData.GetPersonInfoByNationalNo(NationalNo, ref PersonID, ref FirstName,
-                ref LastName, ref BirthDate, ref Gender, ref Address, ref Phone, ref Email,
-                ref NationalityCountryID, ref ImagePath);
+            bool isFound = PersonData.GetPersonInfoByNationalNo(nationalNo, ref personID, ref firstName, ref lastName,
+                                                                ref birthDate, ref gender, ref address, ref phone,
+                                                                ref email, ref nationalityCountryID, ref imagePath);
 
             if (isFound)
-                return new Person(PersonID, NationalNo, FirstName, LastName, BirthDate,
-                    (enGender)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+                return new Person(personID, nationalNo, firstName, lastName, birthDate,
+                    (enGender)gender, address, phone, email, nationalityCountryID, imagePath);
             else
                 return null;
         }
 
-        public static bool DoesPersonExist(int? PersonID)
+        public static bool DoesPersonExist(int? personID)
         {
-            return PersonData.DoesPersonExist(PersonID);
+            return PersonData.DoesPersonExist(personID);
         }
 
-        public static bool DoesPersonExist(string NationalNo)
+        public static bool DoesPersonExist(string nationalNo)
         {
-            return PersonData.DoesPersonExist(NationalNo);
+            return PersonData.DoesPersonExist(nationalNo);
         }
 
-        private bool _AddNewPerson()
+        private bool AddNewPerson()
         {
-            PersonID = PersonData.AddNewPerson(NationalNo, FirstName, LastName, BirthDate, (byte)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            PersonID = PersonData.AddNewPerson(NationalNo, FirstName, LastName, BirthDate, (byte)Gender,
+                                               Address, Phone,Email, NationalityCountryID, ImagePath);
             return PersonID.HasValue;
         }
 
-        private bool _UpdatePerson()
+        private bool UpdatePerson()
         {
-            return PersonData.UpdatePersonInfo(PersonID, NationalNo, FirstName, LastName, BirthDate, (byte)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            return PersonData.UpdatePersonInfo(PersonID, NationalNo, FirstName, LastName, BirthDate, (byte)Gender,
+                                               Address, Phone, Email, NationalityCountryID, ImagePath);
         }
 
         public bool Save()
@@ -135,7 +139,7 @@ namespace CarRental_BusinessLayer
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewPerson())
+                    if (AddNewPerson())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -143,15 +147,15 @@ namespace CarRental_BusinessLayer
                     return false;
 
                 case enMode.Update:
-                    return _UpdatePerson();
+                    return UpdatePerson();
 
             }
             return false;
         }
 
-        public static bool DeletePerson(int? PersonID)
+        public static bool DeletePerson(int? personID)
         {
-            return PersonData.DeletePerson(PersonID);
+            return PersonData.DeletePerson(personID);
         }
     }
 }

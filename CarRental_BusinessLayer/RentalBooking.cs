@@ -7,7 +7,7 @@ namespace CarRental_BusinessLayer
     public class RentalBooking
     {
         private enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        private enMode _mode;
         public int? BookingID { get; private set; }
         public int CustomerID { get; set; }
         public int VehicleID { get; set; }
@@ -22,12 +22,13 @@ namespace CarRental_BusinessLayer
 
         public bool IsBookingActive { get; }
         public int TransactionID { get; }
-        public Vehicle VehicleInfo { get; }
+        public Vehicle RentedVehicleInfo { get; }
         public Customer CustomerInfo { get; }
 
         public RentalBooking()
         {
-            _Mode = enMode.AddNew;
+            _mode = enMode.AddNew;
+
             BookingID = null;
             CustomerID = default;
             VehicleID = default;
@@ -42,58 +43,61 @@ namespace CarRental_BusinessLayer
             IsBookingActive = false;
             TransactionID = -1;
         }
-        private RentalBooking(int? BookingID, int CustomerID, int VehicleID, DateTime RentalStartDate,
-            DateTime RentalEndDate, string PickupLocation, string DropoffLocation,
-            int InitialRentalDays, float RentalPricePerDay, float InitialTotalDueAmount, string InitialCheckNotes)
+        private RentalBooking(int? bookingID, int customerID, int vehicleID, DateTime rentalStartDate,
+                              DateTime rentalEndDate, string pickupLocation, string dropoffLocation,
+                              int initialRentalDays, float rentalPricePerDay, float initialTotalDueAmount,
+                              string initialCheckNotes)
         {
-            _Mode = enMode.Update;
-            this.BookingID = BookingID;
-            this.CustomerID = CustomerID;
-            this.VehicleID = VehicleID;
-            this.RentalStartDate = RentalStartDate;
-            this.RentalEndDate = RentalEndDate;
-            this.PickupLocation = PickupLocation;
-            this.DropoffLocation = DropoffLocation;
-            this.InitialRentalDays = InitialRentalDays;
-            this.RentalPricePerDay = RentalPricePerDay;
-            this.InitialTotalDueAmount = InitialTotalDueAmount;
-            this.InitialCheckNotes = InitialCheckNotes;
+            _mode = enMode.Update;
 
-            this.VehicleInfo = Vehicle.Find(VehicleID);
-            this.CustomerInfo = Customer.Find<int?>(CustomerID, Customer.enFindCustomerBy.CustomerID);
-            this.TransactionID = RentalTransaction.GetTransactionIDByBookingID(BookingID);
-            this.IsBookingActive = IsRentalBookingActive();
+            BookingID = bookingID;
+            CustomerID = customerID;
+            VehicleID = vehicleID;
+            RentalStartDate = rentalStartDate;
+            RentalEndDate = rentalEndDate;
+            PickupLocation = pickupLocation;
+            DropoffLocation = dropoffLocation;
+            InitialRentalDays = initialRentalDays;
+            RentalPricePerDay = rentalPricePerDay;
+            InitialTotalDueAmount = initialTotalDueAmount;
+            InitialCheckNotes = initialCheckNotes;
+
+            RentedVehicleInfo = Vehicle.Find(vehicleID);
+            CustomerInfo = Customer.Find(customerID, Customer.enFindCustomerBy.CustomerID);
+            TransactionID = RentalTransaction.GetTransactionIDByBookingID(bookingID);
+            IsBookingActive = IsRentalBookingActive();
         }
 
-
-        public static RentalBooking Find(int? BookingID)
+        public static RentalBooking Find(int? bookingID)
         {
-            int CustomerID = default;
-            int VehicleID = default;
-            DateTime RentalStartDate = default;
-            DateTime RentalEndDate = default;
-            string PickupLocation = default;
-            string DropoffLocation = default;
-            int InitialRentalDays = default;
-            float RentalPricePerDay = default;
-            float InitialTotalDueAmount = default;
-            string InitialCheckNotes = default;
+            int customerID = default;
+            int vehicleID = default;
+            DateTime rentalStartDate = default;
+            DateTime rentalEndDate = default;
+            string pickupLocation = default;
+            string dropoffLocation = default;
+            int initialRentalDays = default;
+            float rentalPricePerDay = default;
+            float initialTotalDueAmount = default;
+            string initialCheckNotes = default;
 
-            bool isFound = RentalBookingData.GetRentalBookingInfoByID(BookingID, ref CustomerID, ref VehicleID, ref RentalStartDate,
-                ref RentalEndDate, ref PickupLocation, ref DropoffLocation, ref InitialRentalDays,
-                ref RentalPricePerDay, ref InitialTotalDueAmount, ref InitialCheckNotes);
+            bool isFound = RentalBookingData.GetRentalBookingInfoByID(bookingID, ref customerID, ref vehicleID,
+                                                                      ref rentalStartDate, ref rentalEndDate,
+                                                                      ref pickupLocation, ref dropoffLocation,
+                                                                      ref initialRentalDays, ref rentalPricePerDay,
+                                                                      ref initialTotalDueAmount, ref initialCheckNotes);
 
             if (isFound)
-                return new RentalBooking(BookingID, CustomerID, VehicleID, RentalStartDate,
-                    RentalEndDate, PickupLocation, DropoffLocation, InitialRentalDays, RentalPricePerDay,
-                    InitialTotalDueAmount, InitialCheckNotes);
+                return new RentalBooking(bookingID, customerID, vehicleID, rentalStartDate, rentalEndDate,
+                                         pickupLocation, dropoffLocation, initialRentalDays, rentalPricePerDay,
+                                         initialTotalDueAmount, initialCheckNotes);
             else
                 return null;
         }
 
-        public static bool DoesRentalBookingExist(int? BookingID)
+        public static bool DoesRentalBookingExist(int? bookingID)
         {
-            return RentalBookingData.DoesRentalBookingExist(BookingID);
+            return RentalBookingData.DoesRentalBookingExist(bookingID);
         }
 
         private bool IsRentalBookingActive()
@@ -101,34 +105,35 @@ namespace CarRental_BusinessLayer
             return RentalBookingData.IsRentalBookingActive(BookingID);
         }
 
-        private bool _AddNewRentalBooking()
+        private bool AddNewRentalBooking()
         {
-            BookingID = RentalBookingData.AddNewRentalBooking(CustomerID, VehicleID, RentalStartDate,
-                RentalEndDate, PickupLocation, DropoffLocation, RentalPricePerDay, InitialCheckNotes);
+            BookingID = RentalBookingData.AddNewRentalBooking(CustomerID, VehicleID, RentalStartDate, RentalEndDate,
+                                                              PickupLocation, DropoffLocation, RentalPricePerDay,
+                                                              InitialCheckNotes);
             return BookingID.HasValue;
         }
 
-        private bool _UpdateRentalBooking()
+        private bool UpdateRentalBooking()
         {
-            return RentalBookingData.UpdateRentalBookingInfo(BookingID, CustomerID, VehicleID,
-                RentalStartDate, RentalEndDate, PickupLocation, DropoffLocation,
-                RentalPricePerDay, InitialCheckNotes);
+            return RentalBookingData.UpdateRentalBookingInfo(BookingID, CustomerID, VehicleID, RentalStartDate,
+                                                             RentalEndDate, PickupLocation, DropoffLocation,
+                                                             RentalPricePerDay, InitialCheckNotes);
         }
 
         public bool Save()
         {
-            switch (_Mode)
+            switch (_mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewRentalBooking())
+                    if (AddNewRentalBooking())
                     {
-                        _Mode = enMode.Update;
+                        _mode = enMode.Update;
                         return true;
                     }
                     return false;
 
                 case enMode.Update:
-                    return _UpdateRentalBooking();
+                    return UpdateRentalBooking();
 
             }
             return false;

@@ -7,6 +7,7 @@ namespace CarRental_BusinessLayer
     public class RentalTransaction
     {
         public enum enFindTransactionBy : byte { TransactionID, BookingID }
+
         public int? TransactionID { get; private set; }
         public int BookingID { get; set; }
         public int? ReturnID { get; set; }
@@ -33,22 +34,22 @@ namespace CarRental_BusinessLayer
             UpdatedTransactionDate = null;
         }
 
-        private RentalTransaction(int? TransactionID, int BookingID, int? ReturnID,
-            float PaidInitialTotalDueAmount, float? ActualTotalDueAmount, float? TotalRemaining,
-            float? TotalRefundedAmount, DateTime TransactionDate, DateTime? UpdatedTransactionDate)
+        private RentalTransaction(int? transactionID, int bookingID, int? returnID, float paidInitialTotalDueAmount,
+                                  float? actualTotalDueAmount, float? totalRemaining, float? totalRefundedAmount,
+                                  DateTime transactionDate, DateTime? updatedTransactionDate)
         {
-            this.TransactionID = TransactionID;
-            this.BookingID = BookingID;
-            this.ReturnID = ReturnID;
-            this.PaidInitialTotalDueAmount = PaidInitialTotalDueAmount;
-            this.ActualTotalDueAmount = ActualTotalDueAmount;
-            this.TotalRemaining = TotalRemaining;
-            this.TotalRefundedAmount = TotalRefundedAmount;
-            this.TransactionDate = TransactionDate;
-            this.UpdatedTransactionDate = UpdatedTransactionDate;
+            TransactionID = transactionID;
+            BookingID = bookingID;
+            ReturnID = returnID;
+            PaidInitialTotalDueAmount = paidInitialTotalDueAmount;
+            ActualTotalDueAmount = actualTotalDueAmount;
+            TotalRemaining = totalRemaining;
+            TotalRefundedAmount = totalRefundedAmount;
+            TransactionDate = transactionDate;
+            UpdatedTransactionDate = updatedTransactionDate;
 
-            this.RentalBookingInfo = RentalBooking.Find(BookingID);
-            this.ReturnInfo = VehicleReturn.Find(ReturnID);
+            RentalBookingInfo = RentalBooking.Find(bookingID);
+            ReturnInfo = VehicleReturn.Find(returnID);
         }
 
         public static RentalTransaction Find<T>(T searchValue, enFindTransactionBy findTransactionBy)
@@ -69,45 +70,53 @@ namespace CarRental_BusinessLayer
 
         private static RentalTransaction FindByTransactionID(int? TransactionID)
         {
-            int BookingID = default;
-            int? ReturnID = default;
-            float PaidInitialTotalDueAmount = default;
-            float? ActualTotalDueAmount = default;
-            float? TotalRemaining = default;
-            float? TotalRefundedAmount = default;
-            DateTime TransactionDate = default;
-            DateTime? UpdatedTransactionDate = default;
+            int bookingID = default;
+            int? returnID = default;
+            float paidInitialTotalDueAmount = default;
+            float? actualTotalDueAmount = default;
+            float? totalRemaining = default;
+            float? totalRefundedAmount = default;
+            DateTime transactionDate = default;
+            DateTime? updatedTransactionDate = default;
 
-            bool isFound = RentalTransactionData.GetRentalTransactionInfoByID(TransactionID, ref BookingID, ref ReturnID, ref PaidInitialTotalDueAmount, ref ActualTotalDueAmount, ref TotalRemaining, ref TotalRefundedAmount, ref TransactionDate, ref UpdatedTransactionDate);
+            bool isFound = RentalTransactionData.GetRentalTransactionInfoByID(TransactionID, ref bookingID, ref returnID, ref paidInitialTotalDueAmount, 
+                                                                              ref actualTotalDueAmount, ref totalRemaining, ref totalRefundedAmount, 
+                                                                              ref transactionDate, ref updatedTransactionDate);
 
             if (isFound)
-                return new RentalTransaction(TransactionID, BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
+                return new RentalTransaction(TransactionID, bookingID, returnID, paidInitialTotalDueAmount,
+                                             actualTotalDueAmount, totalRemaining, totalRefundedAmount, transactionDate,
+                                             updatedTransactionDate);
             else
                 return null;
         }
 
         private static RentalTransaction FindByBookingID(int BookingID)
         {
-            int? TransactionID = default;
-            int? ReturnID = default;
-            float PaidInitialTotalDueAmount = default;
-            float? ActualTotalDueAmount = default;
-            float? TotalRemaining = default;
-            float? TotalRefundedAmount = default;
-            DateTime TransactionDate = default;
-            DateTime? UpdatedTransactionDate = default;
+            int? transactionID = default;
+            int? returnID = default;
+            float paidInitialTotalDueAmount = default;
+            float? actualTotalDueAmount = default;
+            float? totalRemaining = default;
+            float? totalRefundedAmount = default;
+            DateTime transactionDate = default;
+            DateTime? updatedTransactionDate = default;
 
-            bool isFound = RentalTransactionData.GetRentalTransactionInfoByBookingID(BookingID, ref TransactionID, ref ReturnID, ref PaidInitialTotalDueAmount, ref ActualTotalDueAmount, ref TotalRemaining, ref TotalRefundedAmount, ref TransactionDate, ref UpdatedTransactionDate);
+            bool isFound = RentalTransactionData.GetRentalTransactionInfoByBookingID(BookingID, ref transactionID, ref returnID, 
+                                                                                     ref paidInitialTotalDueAmount, ref actualTotalDueAmount, ref totalRemaining, 
+                                                                                     ref totalRefundedAmount, ref transactionDate, ref updatedTransactionDate);
 
             if (isFound)
-                return new RentalTransaction(TransactionID, BookingID, ReturnID, PaidInitialTotalDueAmount, ActualTotalDueAmount, TotalRemaining, TotalRefundedAmount, TransactionDate, UpdatedTransactionDate);
+                return new RentalTransaction(transactionID, BookingID, returnID, paidInitialTotalDueAmount,
+                                             actualTotalDueAmount, totalRemaining, totalRefundedAmount, transactionDate,
+                                             updatedTransactionDate);
             else
                 return null;
         }
 
-        public static bool DoesRentalTransactionExist(int? TransactionID)
+        public static bool DoesRentalTransactionExist(int? transactionID)
         {
-            return RentalTransactionData.DoesRentalTransactionExist(TransactionID);
+            return RentalTransactionData.DoesRentalTransactionExist(transactionID);
         }
 
         public static DataTable GetAllRentalTransactions()
@@ -115,9 +124,9 @@ namespace CarRental_BusinessLayer
             return RentalTransactionData.GetAllRentalTransactions();
         }
 
-        public static int GetTransactionIDByBookingID(int? BookingID)
+        public static int GetTransactionIDByBookingID(int? bookingID)
         {
-            return RentalTransactionData.GetTransactionIDByBookingID(BookingID);
+            return RentalTransactionData.GetTransactionIDByBookingID(bookingID);
         }
 
     }

@@ -3,7 +3,7 @@
 
 namespace CarRental_DataAccessLayer.GlobalClasses
 {
-    internal static class clsDataAccessSettings
+    internal static class DataAccessSettings
     {
         public static readonly string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
     }

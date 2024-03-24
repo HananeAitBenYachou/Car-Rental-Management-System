@@ -121,6 +121,13 @@
     <Compile Include="frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global\Global.cs" />
     <Compile Include="People\UserControls\ucPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -264,6 +271,9 @@
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People\UserControls\ucPersonCard.resx">
       <DependentUpon>ucPersonCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -398,9 +408,7 @@
   <ItemGroup>
     <None Include="Resources\search.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Global\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\user-profile.png" />
   </ItemGroup>
@@ -472,6 +480,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rental1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\padlock1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

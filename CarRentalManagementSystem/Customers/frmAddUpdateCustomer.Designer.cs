@@ -92,7 +92,7 @@
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(229, 43);
             this.txtEmail.TabIndex = 196;
-            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TxtEmail_Validating);
             // 
             // label13
             // 
@@ -153,7 +153,7 @@
             this.llbRemoveImage.TabStop = true;
             this.llbRemoveImage.Text = "Remove Image";
             this.llbRemoveImage.Visible = false;
-            this.llbRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbRemoveImage_LinkClicked);
+            this.llbRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlbRemoveImage_LinkClicked);
             // 
             // llbUploadImage
             // 
@@ -165,7 +165,7 @@
             this.llbUploadImage.TabIndex = 190;
             this.llbUploadImage.TabStop = true;
             this.llbUploadImage.Text = "Upload Image";
-            this.llbUploadImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbUploadImage_LinkClicked);
+            this.llbUploadImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlbUploadImage_LinkClicked);
             // 
             // txtLicenseNo
             // 
@@ -189,7 +189,7 @@
             this.txtLicenseNo.SelectedText = "";
             this.txtLicenseNo.Size = new System.Drawing.Size(229, 43);
             this.txtLicenseNo.TabIndex = 189;
-            this.txtLicenseNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtLicenseNo_Validating);
+            this.txtLicenseNo.Validating += new System.ComponentModel.CancelEventHandler(this.TxtLicenseNo_Validating);
             // 
             // label11
             // 
@@ -225,7 +225,7 @@
             this.txtPhone.SelectedText = "";
             this.txtPhone.Size = new System.Drawing.Size(229, 43);
             this.txtPhone.TabIndex = 187;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPhone_KeyPress);
             // 
             // label10
             // 
@@ -304,7 +304,7 @@
             this.txtNationalNo.SelectedText = "";
             this.txtNationalNo.Size = new System.Drawing.Size(229, 43);
             this.txtNationalNo.TabIndex = 183;
-            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNo_Validating);
+            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNationalNo_Validating);
             // 
             // label8
             // 
@@ -357,7 +357,7 @@
             this.rbMale.UncheckedState.BorderThickness = 2;
             this.rbMale.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rbMale.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbMale.Click += new System.EventHandler(this.rbMale_Click);
+            this.rbMale.Click += new System.EventHandler(this.RbMale_Click);
             // 
             // rbFemale
             // 
@@ -374,7 +374,7 @@
             this.rbFemale.UncheckedState.BorderThickness = 2;
             this.rbFemale.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rbFemale.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbFemale.Click += new System.EventHandler(this.rbFemale_Click);
+            this.rbFemale.Click += new System.EventHandler(this.RbFemale_Click);
             // 
             // label5
             // 
@@ -581,7 +581,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 201;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnSave
             // 
@@ -601,7 +601,7 @@
             this.btnSave.Size = new System.Drawing.Size(171, 58);
             this.btnSave.TabIndex = 200;
             this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // pbPersonalImage
             // 
@@ -657,7 +657,7 @@
             this.Name = "frmAddUpdateCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddUpdateCustomer";
-            this.Load += new System.EventHandler(this.frmAddUpdateCustomer_Load);
+            this.Load += new System.EventHandler(this.FrmAddUpdateCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();

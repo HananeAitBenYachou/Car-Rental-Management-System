@@ -6,7 +6,7 @@ namespace CarRental_BusinessLayer
     public class Vehicle
     {
         private enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        private enMode _mode;
         public int? VehicleID { get; private set; }
         public int MakeID { get; set; }
         public int ModelID { get; set; }
@@ -27,7 +27,8 @@ namespace CarRental_BusinessLayer
 
         public Vehicle()
         {
-            _Mode = enMode.AddNew;
+            _mode = enMode.AddNew;
+
             VehicleID = null;
             MakeID = default;
             ModelID = default;
@@ -42,101 +43,104 @@ namespace CarRental_BusinessLayer
             RentalPricePerDay = default;
             IsAvailableForRent = default;
         }
-        private Vehicle(int? VehicleID, int MakeID, int ModelID, int SubModelID, string VehicleName,
-            short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors,
-            int Mileage, double RentalPricePerDay, bool IsAvailableForRent)
+        private Vehicle(int? vehicleID, int makeID, int modelID, int subModelID, string vehicleName, short year,
+                        int driveTypeID, string engine, int fuelTypeID, byte numDoors, int mileage,
+                        double rentalPricePerDay, bool isAvailableForRent)
         {
-            _Mode = enMode.Update;
-            this.VehicleID = VehicleID;
-            this.MakeID = MakeID;
-            this.ModelID = ModelID;
-            this.SubModelID = SubModelID;
-            this.VehicleName = VehicleName;
-            this.Year = Year;
-            this.DriveTypeID = DriveTypeID;
-            this.Engine = Engine;
-            this.FuelTypeID = FuelTypeID;
-            this.NumDoors = NumDoors;
-            this.Mileage = Mileage;
-            this.RentalPricePerDay = RentalPricePerDay;
-            this.IsAvailableForRent = IsAvailableForRent;
+            _mode = enMode.Update;
 
-            this.SubModelInfo = SubModel.Find(SubModelID);
-            this.DriveTypeInfo = DriveType.Find(DriveTypeID);
-            this.FuelTypeInfo = FuelType.Find(FuelTypeID);
+            VehicleID = vehicleID;
+            MakeID = makeID;
+            ModelID = modelID;
+            SubModelID = subModelID;
+            VehicleName = vehicleName;
+            Year = year;
+            DriveTypeID = driveTypeID;
+            Engine = engine;
+            FuelTypeID = fuelTypeID;
+            NumDoors = numDoors;
+            Mileage = mileage;
+            RentalPricePerDay = rentalPricePerDay;
+            IsAvailableForRent = isAvailableForRent;
+
+            SubModelInfo = SubModel.Find(subModelID);
+            DriveTypeInfo = DriveType.Find(driveTypeID);
+            FuelTypeInfo = FuelType.Find(fuelTypeID);
         }
 
-        public static Vehicle Find(int? VehicleID)
+        public static Vehicle Find(int? vehicleID)
         {
-            int MakeID = default;
-            int ModelID = default;
-            int SubModelID = default;
-            string VehicleName = default;
-            short Year = default;
-            int DriveTypeID = default;
-            string Engine = default;
-            int FuelTypeID = default;
-            byte NumDoors = default;
-            int Mileage = default;
-            double RentalPricePerDay = default;
-            bool IsAvailableForRent = default;
+            int makeID = default;
+            int modelID = default;
+            int subModelID = default;
+            string vehicleName = default;
+            short year = default;
+            int driveTypeID = default;
+            string engine = default;
+            int fuelTypeID = default;
+            byte numDoors = default;
+            int mileage = default;
+            double rentalPricePerDay = default;
+            bool isAvailableForRent = default;
 
-            bool isFound = VehicleData.GetVehicleInfoByID(VehicleID, ref MakeID, ref ModelID, ref SubModelID,
-                ref VehicleName, ref Year, ref DriveTypeID, ref Engine, ref FuelTypeID, ref NumDoors, ref Mileage,
-                ref RentalPricePerDay, ref IsAvailableForRent);
+            bool isFound = VehicleData.GetVehicleInfoByID(vehicleID, ref makeID, ref modelID, ref subModelID,
+                                                          ref vehicleName, ref year, ref driveTypeID, ref engine,
+                                                          ref fuelTypeID, ref numDoors, ref mileage,
+                                                          ref rentalPricePerDay, ref isAvailableForRent);
 
             if (isFound)
-                return new Vehicle(VehicleID, MakeID, ModelID, SubModelID, VehicleName, Year, DriveTypeID, Engine,
-                    FuelTypeID, NumDoors, Mileage, RentalPricePerDay, IsAvailableForRent);
+                return new Vehicle(vehicleID, makeID, modelID, subModelID, vehicleName, year, driveTypeID, engine,
+                                   fuelTypeID, numDoors, mileage, rentalPricePerDay, isAvailableForRent);
             else
                 return null;
         }
 
-        public static bool DoesVehicleExist(int? VehicleID)
+        public static bool DoesVehicleExist(int? vehicleID)
         {
-            return VehicleData.DoesVehicleExist(VehicleID);
+            return VehicleData.DoesVehicleExist(vehicleID);
         }
 
-        private bool _AddNewVehicle()
+        private bool AddNewVehicle()
         {
-            VehicleID = VehicleData.AddNewVehicle(MakeID, ModelID, SubModelID, VehicleName, Year,
-                DriveTypeID, Engine, FuelTypeID, NumDoors, Mileage, RentalPricePerDay, IsAvailableForRent);
+            VehicleID = VehicleData.AddNewVehicle(MakeID, ModelID, SubModelID, VehicleName, Year, DriveTypeID, Engine,
+                                                  FuelTypeID, NumDoors, Mileage, RentalPricePerDay, IsAvailableForRent);
             return VehicleID.HasValue;
         }
 
-        private bool _UpdateVehicle()
+        private bool UpdateVehicle()
         {
-            return VehicleData.UpdateVehicleInfo(VehicleID, MakeID, ModelID, SubModelID, VehicleName,
-                Year, DriveTypeID, Engine, FuelTypeID, NumDoors, Mileage, RentalPricePerDay, IsAvailableForRent);
+            return VehicleData.UpdateVehicleInfo(VehicleID, MakeID, ModelID, SubModelID, VehicleName, Year, DriveTypeID,
+                                                 Engine, FuelTypeID, NumDoors, Mileage, RentalPricePerDay,
+                                                 IsAvailableForRent);
         }
 
         public bool Save()
         {
-            switch (_Mode)
+            switch (_mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewVehicle())
+                    if (AddNewVehicle())
                     {
-                        _Mode = enMode.Update;
+                        _mode = enMode.Update;
                         return true;
                     }
                     return false;
 
                 case enMode.Update:
-                    return _UpdateVehicle();
+                    return UpdateVehicle();
 
             }
             return false;
         }
 
-        public static bool DeleteVehicle(int? VehicleID)
+        public static bool DeleteVehicle(int? vehicleID)
         {
-            return VehicleData.DeleteVehicle(VehicleID);
+            return VehicleData.DeleteVehicle(vehicleID);
         }
 
-        public static DataTable GetAllVehicles(int PageNumber, int RowsPerPage)
+        public static DataTable GetAllVehicles(int pageNumber, int rowsPerPage)
         {
-            return VehicleData.GetAllVehicles(PageNumber, RowsPerPage);
+            return VehicleData.GetAllVehicles(pageNumber, rowsPerPage);
         }
 
         public static int GetTotalVehiclesCount()

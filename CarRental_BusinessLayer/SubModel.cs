@@ -10,33 +10,34 @@ namespace CarRental_BusinessLayer
         public string SubModelName { get; set; }
 
         public Model ModelInfo { get; }
-        private SubModel(int? SubModelID, int ModelID, string SubModelName)
-        {
-            this.SubModelID = SubModelID;
-            this.ModelID = ModelID;
-            this.SubModelName = SubModelName;
 
-            this.ModelInfo = Model.Find(ModelID);
+        private SubModel(int? subModelID, int modelID, string subModelName)
+        {
+            SubModelID = subModelID;
+            ModelID = modelID;
+            SubModelName = subModelName;
+
+            ModelInfo = Model.Find(modelID);
         }
 
-        public static SubModel Find(int? SubModelID)
+        public static SubModel Find(int? subModelID)
         {
-            int ModelID = default;
-            string SubModelName = default;
+            int modelID = default;
+            string subModelName = default;
 
-            bool isFound = SubModelData.GetSubModelInfoByID(SubModelID, ref ModelID, ref SubModelName);
+            bool isFound = SubModelData.GetSubModelInfoByID(subModelID, ref modelID, ref subModelName);
 
-            return isFound ? new SubModel(SubModelID, ModelID, SubModelName) : null;
+            return isFound ? new SubModel(subModelID, modelID, subModelName) : null;
         }
 
-        public static SubModel Find(string SubModelName)
+        public static SubModel Find(string subModelName)
         {
-            int ModelID = default;
-            int? SubModelID = default;
+            int modelID = default;
+            int? subModelID = default;
 
-            bool isFound = SubModelData.GetSubModelInfoByName(SubModelName, ref SubModelID, ref ModelID);
+            bool isFound = SubModelData.GetSubModelInfoByName(subModelName, ref subModelID, ref modelID);
 
-            return isFound ? new SubModel(SubModelID, ModelID, SubModelName) : null;
+            return isFound ? new SubModel(subModelID, modelID, subModelName) : null;
         }
 
         public static DataTable GetAllSubModels()
@@ -44,9 +45,9 @@ namespace CarRental_BusinessLayer
             return SubModelData.GetAllSubModels();
         }
 
-        public static DataTable GetAllSubModelsPerModel(int ModelID)
+        public static DataTable GetAllSubModelsPerModel(int modelID)
         {
-            return SubModelData.GetAllSubModelsPerModel(ModelID);
+            return SubModelData.GetAllSubModelsPerModel(modelID);
         }
 
     }

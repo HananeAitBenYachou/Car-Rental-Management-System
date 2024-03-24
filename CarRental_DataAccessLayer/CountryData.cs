@@ -8,13 +8,13 @@ namespace CarRental_DataAccessLayer
 {
     public class CountryData
     {
-        public static bool GetCountryInfoByID(int? CountryID, ref string CountryName)
+        public static bool GetCountryInfoByID(int? countryID, ref string countryName)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -22,7 +22,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@CountryID", (object)CountryID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@CountryID", (object)countryID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -31,7 +31,7 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                CountryName = (string)reader["CountryName"];
+                                countryName = (string)reader["CountryName"];
 
                             }
 
@@ -46,20 +46,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetCountryInfoByName(string CountryName, ref int? CountryID)
+        public static bool GetCountryInfoByName(string countryName, ref int? countryID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -67,7 +67,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@CountryName", CountryName);
+                        command.Parameters.AddWithValue("@CountryName", countryName);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -76,7 +76,7 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                CountryID = (reader["CountryID"] != DBNull.Value) ? (int?)reader["CountryID"] : null;
+                                countryID = (reader["CountryID"] != DBNull.Value) ? (int?)reader["CountryID"] : null;
                             }
 
                             else
@@ -90,7 +90,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
@@ -99,11 +99,11 @@ namespace CarRental_DataAccessLayer
 
         public static DataTable GetAllCountries()
         {
-            DataTable Datatable = new DataTable();
+            DataTable countriesDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -115,7 +115,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                countriesDatatable.Load(reader);
                             }
                         }
                     }
@@ -123,9 +123,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return countriesDatatable;
         }
 
     }

@@ -218,7 +218,7 @@ namespace CarRentalManagementSystem.Vehicles
                 errorProvider1.SetError(txtYear, "This field is required !");
             }
 
-            else if (!clsValidation.IsValidYear(txtYear.Text.Trim()))
+            else if (!Validation.IsValidYear(txtYear.Text.Trim()))
             {
                 e.Cancel = true;
                 txtYear.Focus();
@@ -262,7 +262,7 @@ namespace CarRentalManagementSystem.Vehicles
                 errorProvider1.SetError(txtRentalPricePerDay, "This field is required !");
             }
 
-            else if (!clsValidation.IsValidNumber(txtRentalPricePerDay.Text.Trim()))
+            else if (!Validation.IsValidNumber(txtRentalPricePerDay.Text.Trim()))
             {
                 e.Cancel = true;
                 txtRentalPricePerDay.Focus();

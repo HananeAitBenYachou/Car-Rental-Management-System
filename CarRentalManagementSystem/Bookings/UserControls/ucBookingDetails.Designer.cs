@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Bookings.UserControls
 {
-    partial class ucBookingDetails
+    partial class UcBookingDetails
     {
         /// <summary> 
         /// Required designer variable.

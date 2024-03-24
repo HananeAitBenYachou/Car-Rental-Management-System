@@ -8,16 +8,16 @@ namespace CarRental_DataAccessLayer
 {
     public class VehicleData
     {
-        public static bool GetVehicleInfoByID(int? VehicleID, ref int MakeID, ref int ModelID,
-            ref int SubModelID, ref string VehicleName, ref short Year, ref int DriveTypeID,
-            ref string Engine, ref int FuelTypeID, ref byte NumDoors, ref int Mileage,
-            ref double RentalPricePerDay, ref bool IsAvailableForRent)
+        public static bool GetVehicleInfoByID(int? vehicleID, ref int makeID, ref int modelID,
+                                              ref int subModelID, ref string vehicleName, ref short year, ref int driveTypeID,
+                                              ref string engine, ref int fuelTypeID, ref byte numDoors, ref int mileage,
+                                              ref double rentalPricePerDay, ref bool isAvailableForRent)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -25,7 +25,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@VehicleID", (object)VehicleID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@VehicleID", (object)vehicleID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -34,29 +34,29 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                MakeID = (int)reader["MakeID"];
+                                makeID = (int)reader["MakeID"];
 
-                                ModelID = (int)reader["ModelID"];
+                                modelID = (int)reader["ModelID"];
 
-                                SubModelID = (int)reader["SubModelID"];
+                                subModelID = (int)reader["SubModelID"];
 
-                                VehicleName = (string)reader["VehicleName"];
+                                vehicleName = (string)reader["VehicleName"];
 
-                                Year = (short)reader["Year"];
+                                year = (short)reader["Year"];
 
-                                DriveTypeID = (int)reader["DriveTypeID"];
+                                driveTypeID = (int)reader["DriveTypeID"];
 
-                                Engine = (reader["Engine"] != DBNull.Value) ? (string)reader["Engine"] : null;
+                                engine = (reader["Engine"] != DBNull.Value) ? (string)reader["Engine"] : null;
 
-                                FuelTypeID = (int)reader["FuelTypeID"];
+                                fuelTypeID = (int)reader["FuelTypeID"];
 
-                                NumDoors = (byte)reader["NumDoors"];
+                                numDoors = (byte)reader["NumDoors"];
 
-                                Mileage = (int)reader["Mileage"];
+                                mileage = (int)reader["Mileage"];
 
-                                RentalPricePerDay = Convert.ToDouble(reader["RentalPricePerDay"]);
+                                rentalPricePerDay = Convert.ToDouble(reader["RentalPricePerDay"]);
 
-                                IsAvailableForRent = (bool)reader["IsAvailableForRent"];
+                                isAvailableForRent = (bool)reader["IsAvailableForRent"];
 
                             }
 
@@ -71,20 +71,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesVehicleExist(int? VehicleID)
+        public static bool DoesVehicleExist(int? vehicleID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -92,7 +92,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@VehicleID", (object)VehicleID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@VehicleID", (object)vehicleID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -109,40 +109,40 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static int? AddNewVehicle(int MakeID, int ModelID, int SubModelID, string VehicleName,
-            short Year, int DriveTypeID, string Engine, int FuelTypeID, byte NumDoors, int Mileage,
-            double RentalPricePerDay, bool IsAvailableForRent)
+        public static int? AddNewVehicle(int makeID, int modelID, int subModelID, string vehicleName,
+                                         short year, int driveTypeID, string engine, int fuelTypeID, byte numDoors, int mileage,
+                                         double rentalPricePerDay, bool isAvailableForRent)
         {
             int? VehicleID = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_AddNewVehicle", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@MakeID", MakeID);
-                        command.Parameters.AddWithValue("@ModelID", ModelID);
-                        command.Parameters.AddWithValue("@SubModelID", SubModelID);
-                        command.Parameters.AddWithValue("@VehicleName", VehicleName);
-                        command.Parameters.AddWithValue("@Year", Year);
-                        command.Parameters.AddWithValue("@DriveTypeID", DriveTypeID);
-                        command.Parameters.AddWithValue("@Engine", (object)Engine ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@FuelTypeID", FuelTypeID);
-                        command.Parameters.AddWithValue("@NumDoors", NumDoors);
-                        command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
-                        command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
+                        command.Parameters.AddWithValue("@MakeID", makeID);
+                        command.Parameters.AddWithValue("@ModelID", modelID);
+                        command.Parameters.AddWithValue("@SubModelID", subModelID);
+                        command.Parameters.AddWithValue("@VehicleName", vehicleName);
+                        command.Parameters.AddWithValue("@Year", year);
+                        command.Parameters.AddWithValue("@DriveTypeID", driveTypeID);
+                        command.Parameters.AddWithValue("@Engine", (object)engine ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@FuelTypeID", fuelTypeID);
+                        command.Parameters.AddWithValue("@NumDoors", numDoors);
+                        command.Parameters.AddWithValue("@Mileage", mileage);
+                        command.Parameters.AddWithValue("@RentalPricePerDay", rentalPricePerDay);
+                        command.Parameters.AddWithValue("@IsAvailableForRent", isAvailableForRent);
 
 
                         SqlParameter outputVehicleIDParameter = new SqlParameter("@NewVehicleID", SqlDbType.Int)
@@ -160,41 +160,41 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 VehicleID = null;
             }
             return VehicleID;
         }
 
-        public static bool UpdateVehicleInfo(int? VehicleID, int MakeID, int ModelID, int SubModelID,
-            string VehicleName, short Year, int DriveTypeID, string Engine, int FuelTypeID,
-            byte NumDoors, int Mileage, double RentalPricePerDay, bool IsAvailableForRent)
+        public static bool UpdateVehicleInfo(int? vehicleID, int makeID, int modelID, int subModelID,
+                                             string vehicleName, short year, int driveTypeID, string engine, int fuelTypeID,
+                                             byte numDoors, int mileage, double rentalPricePerDay, bool isAvailableForRent)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_UpdateVehicleInfo", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@VehicleID", VehicleID);
-                        command.Parameters.AddWithValue("@MakeID", MakeID);
-                        command.Parameters.AddWithValue("@ModelID", ModelID);
-                        command.Parameters.AddWithValue("@SubModelID", SubModelID);
-                        command.Parameters.AddWithValue("@VehicleName", VehicleName);
-                        command.Parameters.AddWithValue("@Year", Year);
-                        command.Parameters.AddWithValue("@DriveTypeID", DriveTypeID);
-                        command.Parameters.AddWithValue("@Engine", (object)Engine ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@FuelTypeID", FuelTypeID);
-                        command.Parameters.AddWithValue("@NumDoors", NumDoors);
-                        command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@RentalPricePerDay", RentalPricePerDay);
-                        command.Parameters.AddWithValue("@IsAvailableForRent", IsAvailableForRent);
+                        command.Parameters.AddWithValue("@VehicleID", vehicleID);
+                        command.Parameters.AddWithValue("@MakeID", makeID);
+                        command.Parameters.AddWithValue("@ModelID", modelID);
+                        command.Parameters.AddWithValue("@SubModelID", subModelID);
+                        command.Parameters.AddWithValue("@VehicleName", vehicleName);
+                        command.Parameters.AddWithValue("@Year", year);
+                        command.Parameters.AddWithValue("@DriveTypeID", driveTypeID);
+                        command.Parameters.AddWithValue("@Engine", (object)engine ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@FuelTypeID", fuelTypeID);
+                        command.Parameters.AddWithValue("@NumDoors", numDoors);
+                        command.Parameters.AddWithValue("@Mileage", mileage);
+                        command.Parameters.AddWithValue("@RentalPricePerDay", rentalPricePerDay);
+                        command.Parameters.AddWithValue("@IsAvailableForRent", isAvailableForRent);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -202,20 +202,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 rowsAffected = 0;
             }
             return rowsAffected != 0;
         }
 
-        public static bool DeleteVehicle(int? VehicleID)
+        public static bool DeleteVehicle(int? vehicleID)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -223,7 +223,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@VehicleID", (object)VehicleID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@VehicleID", (object)vehicleID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -231,18 +231,18 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
             return rowsAffected != 0;
         }
 
-        public static DataTable GetAllVehicles(int PageNumber, int RowsPerPage)
+        public static DataTable GetAllVehicles(int pageNumber, int rowsPerPage)
         {
-            DataTable Datatable = new DataTable();
+            DataTable vehiclesDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -250,14 +250,14 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@PageNumber", PageNumber);
-                        command.Parameters.AddWithValue("@RowsPerPage", RowsPerPage);
+                        command.Parameters.AddWithValue("@PageNumber", pageNumber);
+                        command.Parameters.AddWithValue("@RowsPerPage", rowsPerPage);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                vehiclesDatatable.Load(reader);
                             }
                         }
                     }
@@ -265,18 +265,18 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return vehiclesDatatable;
         }
 
         public static int GetTotalVehiclesCount()
         {
-            int TotalCount = 0;
+            int totalvehiclesCount = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -293,17 +293,17 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteScalar();
 
-                        TotalCount = (int)returnValue.Value;
+                        totalvehiclesCount = (int)returnValue.Value;
                     }
                 }
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
-                TotalCount = 0;
+                totalvehiclesCount = 0;
             }
-            return TotalCount;
+            return totalvehiclesCount;
         }
 
     }

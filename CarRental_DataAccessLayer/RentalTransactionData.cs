@@ -8,16 +8,15 @@ namespace CarRental_DataAccessLayer
 {
     public class RentalTransactionData
     {
-        public static bool GetRentalTransactionInfoByID(int? TransactionID, ref int BookingID, ref int? ReturnID,
-            ref float PaidInitialTotalDueAmount, ref float? ActualTotalDueAmount,
-            ref float? TotalRemaining, ref float? TotalRefundedAmount, ref DateTime TransactionDate,
-            ref DateTime? UpdatedTransactionDate)
+        public static bool GetRentalTransactionInfoByID(int? transactionID, ref int bookingID, ref int? returnID,
+                                                        ref float paidInitialTotalDueAmount,ref float? actualTotalDueAmount, ref float? totalRemaining,
+                                                        ref float? totalRefundedAmount, ref DateTime transactionDate,ref DateTime? UpdatedTransactionDate)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -25,7 +24,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@TransactionID", (object)TransactionID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@TransactionID", (object)transactionID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -34,19 +33,19 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                BookingID = (int)reader["BookingID"];
+                                bookingID = (int)reader["BookingID"];
 
-                                ReturnID = (reader["ReturnID"] != DBNull.Value) ? (int?)reader["ReturnID"] : null;
+                                returnID = (reader["ReturnID"] != DBNull.Value) ? (int?)reader["ReturnID"] : null;
 
-                                PaidInitialTotalDueAmount = (float)reader["PaidInitialTotalDueAmount"];
+                                paidInitialTotalDueAmount = (float)reader["PaidInitialTotalDueAmount"];
 
-                                ActualTotalDueAmount = (reader["ActualTotalDueAmount"] != DBNull.Value) ? (float?)reader["ActualTotalDueAmount"] : null;
+                                actualTotalDueAmount = (reader["ActualTotalDueAmount"] != DBNull.Value) ? (float?)reader["ActualTotalDueAmount"] : null;
 
-                                TotalRemaining = (reader["TotalRemaining"] != DBNull.Value) ? (float?)reader["TotalRemaining"] : null;
+                                totalRemaining = (reader["TotalRemaining"] != DBNull.Value) ? (float?)reader["TotalRemaining"] : null;
 
-                                TotalRefundedAmount = (reader["TotalRefundedAmount"] != DBNull.Value) ? (float?)reader["TotalRefundedAmount"] : null;
+                                totalRefundedAmount = (reader["TotalRefundedAmount"] != DBNull.Value) ? (float?)reader["TotalRefundedAmount"] : null;
 
-                                TransactionDate = (DateTime)reader["TransactionDate"];
+                                transactionDate = (DateTime)reader["TransactionDate"];
 
                                 UpdatedTransactionDate = (reader["UpdatedTransactionDate"] != DBNull.Value) ? (DateTime?)reader["UpdatedTransactionDate"] : null;
 
@@ -63,23 +62,23 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetRentalTransactionInfoByBookingID(int BookingID, ref int? TransactionID, ref int? ReturnID,
-            ref float PaidInitialTotalDueAmount, ref float? ActualTotalDueAmount,
-            ref float? TotalRemaining, ref float? TotalRefundedAmount, ref DateTime TransactionDate,
-            ref DateTime? UpdatedTransactionDate)
+        public static bool GetRentalTransactionInfoByBookingID(int bookingID, ref int? transactionID, ref int? returnID,
+                                                               ref float paidInitialTotalDueAmount, ref float? actualTotalDueAmount,
+                                                               ref float? totalRemaining, ref float? totalRefundedAmount, ref DateTime transactionDate,
+                                                               ref DateTime? updatedTransactionDate)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -87,7 +86,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@BookingID", BookingID);
+                        command.Parameters.AddWithValue("@BookingID", bookingID);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -96,42 +95,42 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                ReturnID = (reader["ReturnID"] != DBNull.Value) ? (int?)reader["ReturnID"] : null;
+                                returnID = (reader["ReturnID"] != DBNull.Value) ? (int?)reader["ReturnID"] : null;
 
-                                TransactionID = (reader["TransactionID"] != DBNull.Value) ? (int?)reader["TransactionID"] : null;
+                                transactionID = (reader["TransactionID"] != DBNull.Value) ? (int?)reader["TransactionID"] : null;
 
-                                PaidInitialTotalDueAmount = Convert.ToSingle(reader["PaidInitialTotalDueAmount"]);
+                                paidInitialTotalDueAmount = Convert.ToSingle(reader["PaidInitialTotalDueAmount"]);
 
                                 if ((reader["ActualTotalDueAmount"] != DBNull.Value))
                                 {
-                                    ActualTotalDueAmount = Convert.ToSingle(reader["ActualTotalDueAmount"]);
+                                    actualTotalDueAmount = Convert.ToSingle(reader["ActualTotalDueAmount"]);
                                 }
                                 else
                                 {
-                                    ActualTotalDueAmount = null;
+                                    actualTotalDueAmount = null;
                                 }
 
                                 if ((reader["TotalRemaining"] != DBNull.Value))
                                 {
-                                    TotalRemaining = Convert.ToSingle(reader["TotalRemaining"]);
+                                    totalRemaining = Convert.ToSingle(reader["TotalRemaining"]);
                                 }
                                 else
                                 {
-                                    TotalRemaining = null;
+                                    totalRemaining = null;
                                 }
 
                                 if ((reader["TotalRefundedAmount"] != DBNull.Value))
                                 {
-                                    TotalRefundedAmount = Convert.ToSingle(reader["TotalRefundedAmount"]);
+                                    totalRefundedAmount = Convert.ToSingle(reader["TotalRefundedAmount"]);
                                 }
                                 else
                                 {
-                                    TotalRefundedAmount = null;
+                                    totalRefundedAmount = null;
                                 }
 
-                                TransactionDate = (DateTime)reader["TransactionDate"];
+                                transactionDate = (DateTime)reader["TransactionDate"];
 
-                                UpdatedTransactionDate = (reader["UpdatedTransactionDate"] != DBNull.Value) ? (DateTime?)reader["UpdatedTransactionDate"] : null;
+                                updatedTransactionDate = (reader["UpdatedTransactionDate"] != DBNull.Value) ? (DateTime?)reader["UpdatedTransactionDate"] : null;
 
                             }
 
@@ -146,20 +145,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesRentalTransactionExist(int? TransactionID)
+        public static bool DoesRentalTransactionExist(int? transactionID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -167,7 +166,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@TransactionID", (object)TransactionID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@TransactionID", (object)transactionID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -184,20 +183,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static int GetTransactionIDByBookingID(int? BookingID)
+        public static int GetTransactionIDByBookingID(int? bookingID)
         {
             int TransactionID = -1;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -205,7 +204,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@BookingID", (object)BookingID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@BookingID", (object)bookingID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -222,7 +221,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
                 TransactionID = -1;
             }
             return TransactionID;
@@ -231,11 +230,11 @@ namespace CarRental_DataAccessLayer
 
         public static DataTable GetAllRentalTransactions()
         {
-            DataTable Datatable = new DataTable();
+            DataTable rentalTransactionsDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -247,7 +246,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                rentalTransactionsDatatable.Load(reader);
                             }
                         }
                     }
@@ -255,9 +254,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return rentalTransactionsDatatable;
         }
 
     }

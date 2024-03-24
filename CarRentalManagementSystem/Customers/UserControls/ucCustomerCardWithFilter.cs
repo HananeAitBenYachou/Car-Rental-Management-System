@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Customers.UserControls
 {
-    public partial class ucCustomerCardWithFilter : UserControl
+    public partial class UcCustomerCardWithFilter : UserControl
     {
-        private int? _CustomerID => ucCustomerCard1.CustomerID;
-        private Customer _Customer => ucCustomerCard1.Customer;
+        private int? _customerID => ucCustomerCard1.CustomerID;
+        private Customer _customer => ucCustomerCard1.Customer;
 
         public bool FilterEnabled
         {
@@ -26,18 +26,18 @@ namespace CarRentalManagementSystem.Customers.UserControls
             }
         }
 
-        private enum enFindBy { CustomerID, DriverLicenseNumber };
+        private enum EnFindBy { CustomerID, DriverLicenseNumber };
 
-        private enFindBy _FindCustomerBy;
+        private EnFindBy _findCustomerBy;
 
 
         public event EventHandler<int?> CustomerFound;
         protected virtual void OnCustomerFound()
         {
-            CustomerFound?.Invoke(this, _CustomerID);
+            CustomerFound?.Invoke(this, _customerID);
         }
 
-        public ucCustomerCardWithFilter()
+        public UcCustomerCardWithFilter()
         {
             InitializeComponent();
         }
@@ -46,31 +46,31 @@ namespace CarRentalManagementSystem.Customers.UserControls
         {
             cbFilterByOptions.SelectedIndex = 0;
             txtFilterValue.Text = customerID.ToString();
-            _FindCustomer();
+            FindCustomer();
         }
 
-        private void _ClearErrorProvider()
+        private void ClearErrorProvider()
         {
             errorProvider1.SetError(txtFilterValue, null);
         }
 
-        private bool _FindCustomer()
+        private bool FindCustomer()
         {
-            switch (_FindCustomerBy)
+            switch (_findCustomerBy)
             {
-                case enFindBy.CustomerID:
+                case EnFindBy.CustomerID:
                     ucCustomerCard1.LoadCustomerData(Convert.ToInt16(txtFilterValue.Text.Trim()));
                     break;
 
-                case enFindBy.DriverLicenseNumber:
+                case EnFindBy.DriverLicenseNumber:
                     ucCustomerCard1.LoadCustomerData(txtFilterValue.Text.Trim());
                     break;
             }
 
-            return _CustomerID.HasValue;
+            return _customerID.HasValue;
         }
 
-        private void btnSearchCustomer_Click(object sender, EventArgs e)
+        private void BtnSearchCustomer_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
@@ -78,34 +78,34 @@ namespace CarRentalManagementSystem.Customers.UserControls
                 return;
             }
 
-            if (_FindCustomer())
+            if (FindCustomer())
                 OnCustomerFound();
         }
 
-        private void btnAddCustomer_Click(object sender, EventArgs e)
+        private void BtnAddCustomer_Click(object sender, EventArgs e)
         {
             frmAddUpdateCustomer form = new frmAddUpdateCustomer();
-            form.NewCustomerAdded += frmAddUpdateCustomer_NewCustomerAdded;
+            form.NewCustomerAdded += FrmAddUpdateCustomer_NewCustomerAdded;
             form.ShowDialog();
         }
 
-        private void frmAddUpdateCustomer_NewCustomerAdded(object sender, int? customerID)
+        private void FrmAddUpdateCustomer_NewCustomerAdded(object sender, int? customerID)
         {
             LoadCustomerData(customerID);
-            _ClearErrorProvider();
+            ClearErrorProvider();
             FilterEnabled = false;
 
             OnCustomerFound();
         }
 
-        private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _FindCustomerBy = cbFilterByOptions.SelectedIndex == 0 ? enFindBy.CustomerID : enFindBy.DriverLicenseNumber;
+            _findCustomerBy = cbFilterByOptions.SelectedIndex == 0 ? EnFindBy.CustomerID : EnFindBy.DriverLicenseNumber;
 
             txtFilterValue.ResetText();
         }
 
-        private void txtFilterValue_Validating(object sender, CancelEventArgs e)
+        private void TxtFilterValue_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtFilterValue.Text))
             {
@@ -121,13 +121,13 @@ namespace CarRentalManagementSystem.Customers.UserControls
             }
         }
 
-        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_FindCustomerBy == enFindBy.CustomerID)
+            if (_findCustomerBy == EnFindBy.CustomerID)
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void ucCustomerCardWithFilter_Load(object sender, EventArgs e)
+        private void UcCustomerCardWithFilter_Load(object sender, EventArgs e)
         {
             if (cbFilterByOptions.SelectedIndex < 0)
                 cbFilterByOptions.SelectedIndex = 0;

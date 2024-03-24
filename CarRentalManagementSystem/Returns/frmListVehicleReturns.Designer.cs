@@ -33,16 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListVehicleReturns));
             this.dgvReturnsList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dtpActualReturnDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.cbVehicleReturns = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.cbVehicleReturns = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.returnVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showReturnInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnsList)).BeginInit();
@@ -195,6 +194,17 @@
             this.lblTitle.TabIndex = 25;
             this.lblTitle.Text = "Manage Vehicle Returns";
             // 
+            // cbVehicleReturns
+            // 
+            this.cbVehicleReturns.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbVehicleReturns.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cbVehicleReturns.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.returnVehicleToolStripMenuItem,
+            this.showReturnInformationToolStripMenuItem});
+            this.cbVehicleReturns.Name = "cbUsers";
+            this.cbVehicleReturns.Size = new System.Drawing.Size(288, 132);
+            this.cbVehicleReturns.Text = "Show Booking Information";
+            // 
             // txtFilterValue
             // 
             this.txtFilterValue.BorderRadius = 22;
@@ -223,7 +233,7 @@
             // 
             this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
+            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources._return;
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
             this.guna2ImageButton1.Location = new System.Drawing.Point(23, 10);
@@ -231,17 +241,6 @@
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.TabIndex = 26;
-            // 
-            // cbVehicleReturns
-            // 
-            this.cbVehicleReturns.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.cbVehicleReturns.ImageScalingSize = new System.Drawing.Size(30, 30);
-            this.cbVehicleReturns.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.returnVehicleToolStripMenuItem,
-            this.showReturnInformationToolStripMenuItem});
-            this.cbVehicleReturns.Name = "cbUsers";
-            this.cbVehicleReturns.Size = new System.Drawing.Size(288, 104);
-            this.cbVehicleReturns.Text = "Show Booking Information";
             // 
             // returnVehicleToolStripMenuItem
             // 

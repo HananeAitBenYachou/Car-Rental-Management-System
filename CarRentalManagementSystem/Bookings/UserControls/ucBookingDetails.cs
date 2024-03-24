@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Bookings.UserControls
 {
-    public partial class ucBookingDetails : UserControl
+    public partial class UcBookingDetails : UserControl
     {
         public int? BookingID { get; private set; } = null;
         public RentalBooking Booking { get; private set; } = null;
 
-        public ucBookingDetails()
+        public UcBookingDetails()
         {
             InitializeComponent();
         }
@@ -28,7 +28,6 @@ namespace CarRentalManagementSystem.Bookings.UserControls
             txtBookingID.Text = BookingID.ToString();
             txtCustomerID.Text = Booking.CustomerID.ToString();
             txtVehicleID.Text = Booking.VehicleID.ToString();
-            txtRentalPricePerDay.Text = Booking.VehicleInfo.RentalPricePerDay.ToString();
             txtInitialTotalDueAmount.Text = Booking.InitialTotalDueAmount.ToString();
             txtPickUpLocation.Text = Booking.PickupLocation;
             txtDropOffLocation.Text = Booking.DropoffLocation;

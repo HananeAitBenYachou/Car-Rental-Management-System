@@ -6,24 +6,24 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Customers
 {
-    public partial class frmListCustomers : Form
+    public partial class FrmListCustomers : Form
     {
-        private enum _FilterOptions
+        private enum FilterOptions
         {
             Gender,
             Country,
         }
 
-        private _FilterOptions _SelectedOption;
+        private FilterOptions _selectedOption;
 
-        private DataView _CustomersDataView;
+        private DataView _customersDataView;
 
-        public frmListCustomers()
+        public FrmListCustomers()
         {
             InitializeComponent();
         }
 
-        private async void _FillCountriesInComboBoxAsync()
+        private async void FillCountriesInComboBoxAsync()
         {
             await Task.Run(() =>
             {
@@ -40,56 +40,56 @@ namespace CarRentalManagementSystem.Customers
             });
         }
 
-        private void _FillFilterOptionsInComboBox(_FilterOptions option)
+        private void FillFilterOptionsInComboBox(FilterOptions option)
         {
             cbTemp.Items.Clear();
 
             switch (option)
             {
-                case _FilterOptions.Gender:
+                case FilterOptions.Gender:
                     cbTemp.Items.AddRange(new object[] { "All", "Female", "Male" });
                     cbTemp.SelectedIndex = 0;
                     break;
 
-                case _FilterOptions.Country:
-                    _FillCountriesInComboBoxAsync();
+                case FilterOptions.Country:
+                    FillCountriesInComboBoxAsync();
                     break;
             }
         }
 
-        private void _RefreshCustomersList()
+        private void RefreshCustomersList()
         {
-            _CustomersDataView = Customer.GetAllCustomers().DefaultView;
-            dgvCustomersList.DataSource = _CustomersDataView;
+            _customersDataView = Customer.GetAllCustomers().DefaultView;
+            dgvCustomersList.DataSource = _customersDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
 
-        private void _FilterCustomersList()
+        private void FilterCustomersList()
         {
             if (string.IsNullOrEmpty(txtFilterValue.Text))
             {
-                _CustomersDataView.RowFilter = null;
+                _customersDataView.RowFilter = null;
                 return;
             }
 
             if (cbFilterByOptions.Text == "Customer ID")
-                _CustomersDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
+                _customersDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
             else
-                _CustomersDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
+                _customersDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
         }
 
-        private void frmListCustomers_Load(object sender, EventArgs e)
+        private void FrmListCustomers_Load(object sender, EventArgs e)
         {
-            _RefreshCustomersList();
+            RefreshCustomersList();
         }
 
-        private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enum.TryParse(cbFilterByOptions.Text, out _SelectedOption))
+            if (Enum.TryParse(cbFilterByOptions.Text, out _selectedOption))
             {
                 txtFilterValue.Visible = false;
                 cbTemp.Visible = true;
-                _FillFilterOptionsInComboBox(_SelectedOption);
+                FillFilterOptionsInComboBox(_selectedOption);
             }
 
             else
@@ -98,61 +98,61 @@ namespace CarRentalManagementSystem.Customers
                 txtFilterValue.Visible = (cbFilterByOptions.Text != "None");
                 txtFilterValue.ResetText();
                 txtFilterValue.Focus();
-                txtFilterValue_TextChanged(null, null);
+                TxtFilterValue_TextChanged(null, null);
             }
 
         }
 
-        private void cbTemp_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbTemp_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbTemp.Text == "All")
             {
-                _CustomersDataView.RowFilter = null;
+                _customersDataView.RowFilter = null;
                 return;
             }
 
-            _CustomersDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, cbTemp.Text);
+            _customersDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, cbTemp.Text);
         }
 
-        private void txtFilterValue_TextChanged(object sender, EventArgs e)
+        private void TxtFilterValue_TextChanged(object sender, EventArgs e)
         {
-            _FilterCustomersList();
+            FilterCustomersList();
         }
 
-        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cbFilterByOptions.Text == "Customer ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void btnAddNewCustomer_Click(object sender, EventArgs e)
+        private void BtnAddNewCustomer_Click(object sender, EventArgs e)
         {
             frmAddUpdateCustomer form = new frmAddUpdateCustomer();
             form.ShowDialog();
 
-            _RefreshCustomersList();
+            RefreshCustomersList();
         }
 
-        private void addNewCustomerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddNewCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnAddNewCustomer.PerformClick();
         }
 
-        private void editCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAddUpdateCustomer form = new frmAddUpdateCustomer((int)dgvCustomersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
 
-            _RefreshCustomersList();
+            RefreshCustomersList();
         }
 
-        private void showCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowCustomerDetails form = new frmShowCustomerDetails((int)dgvCustomersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
 
-        private void deleteCustomerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DeleteCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete the selected customer ?", "Verification",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
@@ -167,17 +167,17 @@ namespace CarRentalManagementSystem.Customers
                 MessageBox.Show("The selected customer has been deleted successfully .", "Deletion Completed",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _RefreshCustomersList();
+                RefreshCustomersList();
             }
 
         }
 
-        private void dgvCustomersList_SelectionChanged(object sender, EventArgs e)
+        private void DgvCustomersList_SelectionChanged(object sender, EventArgs e)
         {
-            cbCustomers.Enabled = dgvCustomersList.SelectedRows.Count > 0 ? true : false;
+            cbCustomers.Enabled = dgvCustomersList.SelectedRows.Count > 0;
         }
 
-        private void dgvCustomersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvCustomersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             showCustomerInformationToolStripMenuItem.PerformClick();
         }

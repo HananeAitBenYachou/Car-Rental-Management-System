@@ -8,34 +8,33 @@ namespace CarRental_BusinessLayer
         public int? FuelTypeID { get; private set; }
         public string FuelTypeName { get; set; }
 
-        private FuelType(int? FuelTypeID, string FuelTypeName)
+        private FuelType(int? fuelTypeID, string fuelTypeName)
         {
-            this.FuelTypeID = FuelTypeID;
-            this.FuelTypeName = FuelTypeName;
+            FuelTypeID = fuelTypeID;
+            FuelTypeName = fuelTypeName;
         }
 
-        public static FuelType Find(int? FuelTypeID)
+        public static FuelType Find(int? fuelTypeID)
         {
-            string FuelTypeName = default;
+            string fuelTypeName = default;
 
-            bool isFound = FuelTypeData.GetFuelTypeInfoByID(FuelTypeID, ref FuelTypeName);
+            bool isFound = FuelTypeData.GetFuelTypeInfoByID(fuelTypeID, ref fuelTypeName);
 
-            return isFound ? new FuelType(FuelTypeID, FuelTypeName) : null;
+            return isFound ? new FuelType(fuelTypeID, fuelTypeName) : null;
         }
 
-        public static FuelType Find(string FuelTypeName)
+        public static FuelType Find(string fuelTypeName)
         {
-            int? FuelTypeID = default;
+            int? fuelTypeID = default;
 
-            bool isFound = FuelTypeData.GetFuelTypeInfoByName(FuelTypeName, ref FuelTypeID);
+            bool isFound = FuelTypeData.GetFuelTypeInfoByName(fuelTypeName, ref fuelTypeID);
 
-            return isFound ? new FuelType(FuelTypeID, FuelTypeName) : null;
+            return isFound ? new FuelType(fuelTypeID, fuelTypeName) : null;
         }
 
         public static DataTable GetAllFuelTypes()
         {
             return FuelTypeData.GetAllFuelTypes();
         }
-
     }
 }

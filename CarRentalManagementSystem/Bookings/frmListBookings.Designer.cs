@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Bookings
 {
-    partial class frmListBookings
+    partial class FrmListBookings
     {
         /// <summary>
         /// Required designer variable.
@@ -35,12 +35,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBookingsList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cbRentalBookings = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addNewBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showBookingInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.addNewBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showBookingInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.returnVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddNewBooking = new Guna.UI2.WinForms.Guna2Button();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -116,8 +117,8 @@
             this.dgvBookingsList.ThemeStyle.RowsStyle.Height = 24;
             this.dgvBookingsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvBookingsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvBookingsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBookingsList_CellContentClick);
-            this.dgvBookingsList.SelectionChanged += new System.EventHandler(this.dgvBookingsList_SelectionChanged);
+            this.dgvBookingsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookingsList_CellContentClick);
+            this.dgvBookingsList.SelectionChanged += new System.EventHandler(this.DgvBookingsList_SelectionChanged);
             // 
             // cbRentalBookings
             // 
@@ -125,27 +126,11 @@
             this.cbRentalBookings.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.cbRentalBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewBookingToolStripMenuItem,
-            this.showBookingInformationToolStripMenuItem});
+            this.showBookingInformationToolStripMenuItem,
+            this.returnVehicleToolStripMenuItem});
             this.cbRentalBookings.Name = "cbUsers";
-            this.cbRentalBookings.Size = new System.Drawing.Size(299, 76);
-            // 
-            // addNewBookingToolStripMenuItem
-            // 
-            this.addNewBookingToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
-            this.addNewBookingToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
-            this.addNewBookingToolStripMenuItem.Name = "addNewBookingToolStripMenuItem";
-            this.addNewBookingToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
-            this.addNewBookingToolStripMenuItem.Text = "Add New Booking";
-            this.addNewBookingToolStripMenuItem.Click += new System.EventHandler(this.addNewBookingToolStripMenuItem_Click);
-            // 
-            // showBookingInformationToolStripMenuItem
-            // 
-            this.showBookingInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
-            this.showBookingInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
-            this.showBookingInformationToolStripMenuItem.Name = "showBookingInformationToolStripMenuItem";
-            this.showBookingInformationToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
-            this.showBookingInformationToolStripMenuItem.Text = "Show Booking Information";
-            this.showBookingInformationToolStripMenuItem.Click += new System.EventHandler(this.showBookingInformationToolStripMenuItem_Click);
+            this.cbRentalBookings.Size = new System.Drawing.Size(299, 140);
+            this.cbRentalBookings.Opening += new System.ComponentModel.CancelEventHandler(this.CbRentalBookings_Opening);
             // 
             // cbFilterByOptions
             // 
@@ -170,7 +155,7 @@
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
             this.cbFilterByOptions.TabIndex = 14;
-            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
+            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -203,6 +188,33 @@
             this.lblTitle.TabIndex = 9;
             this.lblTitle.Text = "Manage Rental Bookings";
             // 
+            // addNewBookingToolStripMenuItem
+            // 
+            this.addNewBookingToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.addNewBookingToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
+            this.addNewBookingToolStripMenuItem.Name = "addNewBookingToolStripMenuItem";
+            this.addNewBookingToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
+            this.addNewBookingToolStripMenuItem.Text = "Add New Booking";
+            this.addNewBookingToolStripMenuItem.Click += new System.EventHandler(this.AddNewBookingToolStripMenuItem_Click);
+            // 
+            // showBookingInformationToolStripMenuItem
+            // 
+            this.showBookingInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.showBookingInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
+            this.showBookingInformationToolStripMenuItem.Name = "showBookingInformationToolStripMenuItem";
+            this.showBookingInformationToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
+            this.showBookingInformationToolStripMenuItem.Text = "Show Booking Information";
+            this.showBookingInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowBookingInformationToolStripMenuItem_Click);
+            // 
+            // returnVehicleToolStripMenuItem
+            // 
+            this.returnVehicleToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.returnVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.return1;
+            this.returnVehicleToolStripMenuItem.Name = "returnVehicleToolStripMenuItem";
+            this.returnVehicleToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
+            this.returnVehicleToolStripMenuItem.Text = "Return Vehicle";
+            this.returnVehicleToolStripMenuItem.Click += new System.EventHandler(this.ReturnVehicleToolStripMenuItem_Click);
+            // 
             // btnAddNewBooking
             // 
             this.btnAddNewBooking.BorderRadius = 22;
@@ -221,7 +233,7 @@
             this.btnAddNewBooking.Size = new System.Drawing.Size(186, 51);
             this.btnAddNewBooking.TabIndex = 16;
             this.btnAddNewBooking.Text = "Add New Booking";
-            this.btnAddNewBooking.Click += new System.EventHandler(this.btnAddNewBooking_Click);
+            this.btnAddNewBooking.Click += new System.EventHandler(this.BtnAddNewBooking_Click);
             // 
             // txtFilterValue
             // 
@@ -246,8 +258,8 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
             this.txtFilterValue.TabIndex = 13;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
             // 
             // guna2ImageButton1
             // 
@@ -280,7 +292,7 @@
             this.Name = "frmListBookings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListBookings";
-            this.Load += new System.EventHandler(this.frmListBookings_Load);
+            this.Load += new System.EventHandler(this.FrmListBookings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingsList)).EndInit();
             this.cbRentalBookings.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -301,5 +313,6 @@
         private Guna.UI2.WinForms.Guna2Button btnAddNewBooking;
         private Guna.UI2.WinForms.Guna2TextBox txtFilterValue;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private System.Windows.Forms.ToolStripMenuItem returnVehicleToolStripMenuItem;
     }
 }

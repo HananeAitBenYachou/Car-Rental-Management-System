@@ -131,7 +131,7 @@ namespace CarRentalManagementSystem.Users
                     }
                     catch (Exception ex)
                     {
-                        clsErrorLogger.LogError(ex);
+                        ErrorLogger.LogError(ex);
                         MessageBox.Show("An error occured while deleting the user's old personal image", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
@@ -145,7 +145,7 @@ namespace CarRentalManagementSystem.Users
                         string FolderPath = @"C:\CarRentalApp-Users-Images";
                         string sourceFilePath = pbPersonalImage.ImageLocation;
 
-                        clsUtility.CopyImageToProjectImagesFolder(ref sourceFilePath, FolderPath);
+                        Utility.CopyImageToProjectImagesFolder(ref sourceFilePath, FolderPath);
 
                         pbPersonalImage.ImageLocation = sourceFilePath;
 
@@ -153,7 +153,7 @@ namespace CarRentalManagementSystem.Users
                     }
                     catch (Exception ex)
                     {
-                        clsErrorLogger.LogError(ex);
+                        ErrorLogger.LogError(ex);
                         MessageBox.Show("An error occured while saving the user's new personal image", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
@@ -275,7 +275,7 @@ namespace CarRentalManagementSystem.Users
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()) && !clsValidation.IsValidEmailAddress(txtEmail.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()) && !Validation.IsValidEmailAddress(txtEmail.Text.Trim()))
             {
                 e.Cancel = true;
                 txtEmail.Focus();

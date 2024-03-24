@@ -17,19 +17,36 @@ namespace CarRentalManagementSystem.Returns
         {
             InitializeComponent();
         }
+        public frmReturnRentedVehicle(int? bookingID)
+        {
+            InitializeComponent();
+
+            _BookingID = bookingID;
+        }
+
+        private void _LoadBookingData()
+        {
+            ucBookingDetailsWithFilter1.FilterEnabled = false;
+
+            if (!ucBookingDetailsWithFilter1.LoadBookingData(_BookingID))
+                btnClose.PerformClick();
+
+        }
 
         private void _Reset()
         {
-            ucBookingDetailsWithFilter1.BookingFound += UcBookingDetailsWithFilter1_BookingFound;
-            ucBookingDetailsWithFilter1.FilterEnabled = true;
-
-            btnSave.Enabled = false;
+            ucBookingDetailsWithFilter1.BookingFound += UcBookingDetailsWithFilter1_BookingFound;        
+            ucBookingDetailsWithFilter1.FilterEnabled = !_BookingID.HasValue;
             btnNext.Enabled = false;
+            btnSave.Enabled = false;
         }
 
         private void frmAddRentalBooking_Load(object sender, EventArgs e)
         {
             _Reset();
+
+            if (_BookingID.HasValue)
+                _LoadBookingData();
         }
 
         private void UcBookingDetailsWithFilter1_BookingFound(object sender, int? bookingID)
@@ -113,7 +130,7 @@ namespace CarRentalManagementSystem.Returns
 
             nudActualRentalDays.Value = ActualRentalDays;
 
-            txtActualTotalDueAmount.Text = (_Booking.VehicleInfo.RentalPricePerDay * ActualRentalDays).ToString();
+            txtActualTotalDueAmount.Text = (_Booking.RentedVehicleInfo.RentalPricePerDay * ActualRentalDays).ToString();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -123,7 +140,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void txtMileage_TextChanged(object sender, EventArgs e)
         {
-            int consumedMileage = Convert.ToInt16(txtMileage.Text.Trim()) - _Booking.VehicleInfo.Mileage;
+            int consumedMileage = Convert.ToInt16(txtMileage.Text.Trim()) - _Booking.RentedVehicleInfo.Mileage;
             txtConsumedMileage.Text = consumedMileage.ToString();
         }
 
@@ -136,7 +153,7 @@ namespace CarRentalManagementSystem.Returns
                 errorProvider1.SetError(txtMileage, "This field is required !");
             }
 
-            else if (Convert.ToInt16(txtMileage.Text.Trim()) < _Booking.VehicleInfo.Mileage)
+            else if (Convert.ToInt16(txtMileage.Text.Trim()) < _Booking.RentedVehicleInfo.Mileage)
             {
                 e.Cancel = true;
                 txtMileage.Focus();

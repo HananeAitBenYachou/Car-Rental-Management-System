@@ -4,40 +4,40 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Bookings
 {
-    public partial class frmShowBookingDetails : Form
+    public partial class FrmShowBookingDetails : Form
     {
-        private int? _BookingID = null;
-        private RentalBooking _Booking = null;
+        private int? _bookingID = null;
+        private RentalBooking _booking = null;
 
-        public frmShowBookingDetails(int? bookingID)
+        public FrmShowBookingDetails(int? bookingID)
         {
             InitializeComponent();
-            _BookingID = bookingID;
+            _bookingID = bookingID;
         }
 
-        private void _LoadRentalBookingData()
+        private void LoadRentalBookingData()
         {
-            _Booking = RentalBooking.Find(_BookingID);
+            _booking = RentalBooking.Find(_bookingID);
 
-            if (_Booking == null)
+            if (_booking == null)
             {
-                MessageBox.Show($"No booking with bookingID = {_BookingID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No booking with bookingID = {_bookingID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnClose.PerformClick();
                 return;
 
             }
 
-            ucCustomerCard1.LoadCustomerData(_Booking.CustomerID);
-            ucVehicleCard1.LoadVehicleData(_Booking.VehicleID);
-            ucBookingDetails1.LoadBookingData(_Booking.BookingID);
+            ucCustomerCard1.LoadCustomerData(_booking.CustomerID);
+            ucVehicleCard1.LoadVehicleData(_booking.VehicleID);
+            ucBookingDetails1.LoadBookingData(_booking.BookingID);
         }
 
-        private void frmShowBookingDetails_Load(object sender, EventArgs e)
+        private void FrmShowBookingDetails_Load(object sender, EventArgs e)
         {
-            _LoadRentalBookingData();
+            LoadRentalBookingData();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

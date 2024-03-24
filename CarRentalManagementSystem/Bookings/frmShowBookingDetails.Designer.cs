@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Bookings
 {
-    partial class frmShowBookingDetails
+    partial class FrmShowBookingDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -35,12 +35,12 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.tcRentalBooking = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpCustomerInfo = new System.Windows.Forms.TabPage();
-            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCard();
+            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCard();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
             this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ucBookingDetails1 = new CarRentalManagementSystem.Bookings.UserControls.ucBookingDetails();
+            this.ucBookingDetails1 = new CarRentalManagementSystem.Bookings.UserControls.UcBookingDetails();
             this.guna2GradientPanel1.SuspendLayout();
             this.tcRentalBooking.SuspendLayout();
             this.tpCustomerInfo.SuspendLayout();
@@ -196,7 +196,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 206;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // ucBookingDetails1
             // 
@@ -220,7 +220,7 @@
             this.Name = "frmShowBookingDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShowBookingDetails";
-            this.Load += new System.EventHandler(this.frmShowBookingDetails_Load);
+            this.Load += new System.EventHandler(this.FrmShowBookingDetails_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             this.tcRentalBooking.ResumeLayout(false);
@@ -241,9 +241,9 @@
         private System.Windows.Forms.TabPage tpCustomerInfo;
         private System.Windows.Forms.TabPage tpVehicleInfo;
         private System.Windows.Forms.TabPage tpBookingInfo;
-        private Customers.UserControls.ucCustomerCard ucCustomerCard1;
+        private Customers.UserControls.UcCustomerCard ucCustomerCard1;
         private Vehicles.UserControls.ucVehicleCard ucVehicleCard1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
-        private UserControls.ucBookingDetails ucBookingDetails1;
+        private UserControls.UcBookingDetails ucBookingDetails1;
     }
 }

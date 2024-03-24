@@ -8,28 +8,28 @@ namespace CarRental_BusinessLayer
         public int? DriveTypeID { get; private set; }
         public string DriveTypeName { get; set; }
 
-        private DriveType(int? DriveTypeID, string DriveTypeName)
+        private DriveType(int? driveTypeID, string driveTypeName)
         {
-            this.DriveTypeID = DriveTypeID;
-            this.DriveTypeName = DriveTypeName;
+            DriveTypeID = driveTypeID;
+            DriveTypeName = driveTypeName;
         }
 
-        public static DriveType Find(int? DriveTypeID)
+        public static DriveType Find(int? driveTypeID)
         {
-            string DriveTypeName = default;
+            string driveTypeName = default;
 
-            bool isFound = DriveTypeData.GetDriveTypeInfoByID(DriveTypeID, ref DriveTypeName);
+            bool isFound = DriveTypeData.GetDriveTypeInfoByID(driveTypeID, ref driveTypeName);
 
-            return isFound ? new DriveType(DriveTypeID, DriveTypeName) : null;
+            return isFound ? new DriveType(driveTypeID, driveTypeName) : null;
         }
 
-        public static DriveType Find(string DriveTypeName)
+        public static DriveType Find(string driveTypeName)
         {
-            int? DriveTypeID = default;
+            int? driveTypeID = default;
 
-            bool isFound = DriveTypeData.GetDriveTypeInfoByName(DriveTypeName, ref DriveTypeID);
+            bool isFound = DriveTypeData.GetDriveTypeInfoByName(driveTypeName, ref driveTypeID);
 
-            return isFound ? new DriveType(DriveTypeID, DriveTypeName) : null;
+            return isFound ? new DriveType(driveTypeID, driveTypeName) : null;
         }
 
         public static DataTable GetAllDriveTypes()

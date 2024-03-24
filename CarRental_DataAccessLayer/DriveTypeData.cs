@@ -8,13 +8,13 @@ namespace CarRental_DataAccessLayer
 {
     public class DriveTypeData
     {
-        public static bool GetDriveTypeInfoByID(int? DriveTypeID, ref string DriveTypeName)
+        public static bool GetDriveTypeInfoByID(int? driveTypeID, ref string driveTypeName)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -22,7 +22,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@DriveTypeID", (object)DriveTypeID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@DriveTypeID", (object)driveTypeID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -31,7 +31,7 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                DriveTypeName = (string)reader["DriveTypeName"];
+                                driveTypeName = (string)reader["DriveTypeName"];
 
                             }
 
@@ -46,20 +46,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetDriveTypeInfoByName(string DriveTypeName, ref int? DriveTypeID)
+        public static bool GetDriveTypeInfoByName(string driveTypeName, ref int? driveTypeID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -67,7 +67,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@DriveTypeName", DriveTypeName);
+                        command.Parameters.AddWithValue("@DriveTypeName", driveTypeName);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -76,7 +76,7 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                DriveTypeID = (reader["DriveTypeID"] != DBNull.Value) ? (int?)reader["DriveTypeID"] : null;
+                                driveTypeID = (reader["DriveTypeID"] != DBNull.Value) ? (int?)reader["DriveTypeID"] : null;
                             }
 
                             else
@@ -90,7 +90,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
@@ -99,11 +99,11 @@ namespace CarRental_DataAccessLayer
 
         public static DataTable GetAllDriveTypes()
         {
-            DataTable Datatable = new DataTable();
+            DataTable driveTypesDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -115,7 +115,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                driveTypesDatatable.Load(reader);
                             }
                         }
                     }
@@ -123,9 +123,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return driveTypesDatatable;
         }
 
     }

@@ -13,39 +13,39 @@ namespace CarRentalManagementSystem.Customers
 {
     public partial class frmAddUpdateCustomer : Form
     {
-        private enum _enMode : byte { AddNew = 0, Update = 1 };
-        private _enMode _Mode = _enMode.AddNew;
+        private enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _mode = EnMode.AddNew;
 
         public event EventHandler<int?> NewCustomerAdded;
         protected virtual void OnNewCustomerAdded()
         {
-            NewCustomerAdded?.Invoke(this, _CustomerID);
+            NewCustomerAdded?.Invoke(this, _customerID);
         }
 
 
-        private int? _CustomerID = null;
+        private int? _customerID = null;
 
-        private Customer _Customer = null;
+        private Customer _customer = null;
 
         public frmAddUpdateCustomer(int? customerID)
         {
             InitializeComponent();
-            _Mode = _enMode.Update;
-            _CustomerID = customerID;
+            _mode = EnMode.Update;
+            _customerID = customerID;
         }
         public frmAddUpdateCustomer()
         {
             InitializeComponent();
-            _Mode = _enMode.AddNew;
+            _mode = EnMode.AddNew;
         }
 
-        private void _Reset()
+        private void Reset()
         {
-            _FillCountriesInComboBox();
+            FillCountriesInComboBox();
 
-            if (_Mode == _enMode.AddNew)
+            if (_mode == EnMode.AddNew)
             {
-                _Customer = new Customer();
+                _customer = new Customer();
                 lblTitle.Text = "Add New Customer";
             }
 
@@ -62,7 +62,7 @@ namespace CarRentalManagementSystem.Customers
             llbRemoveImage.Visible = false;
         }
 
-        private void _FillCountriesInComboBox()
+        private void FillCountriesInComboBox()
         {
             foreach (DataRow row in Country.GetAllCountries().Rows)
             {
@@ -72,51 +72,51 @@ namespace CarRentalManagementSystem.Customers
             cbCountries.SelectedIndex = 0;
         }
 
-        private void _LoadCustomerData()
+        private void LoadCustomerData()
         {
-            _Customer = Customer.Find<int?>(_CustomerID, enFindCustomerBy.CustomerID);
+            _customer = Customer.Find<int?>(_customerID, enFindCustomerBy.CustomerID);
 
-            if (_Customer == null)
+            if (_customer == null)
             {
-                MessageBox.Show($"No customer with CustomerID = {_CustomerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No customer with CustomerID = {_customerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-            txtCustomerID.Text = _CustomerID.ToString();
-            txtNationalNo.Text = _Customer.NationalNo;
-            txtFirstName.Text = _Customer.FirstName;
-            txtLastName.Text = _Customer.LastName;
-            txtPhone.Text = _Customer.Phone;
-            txtLicenseNo.Text = _Customer.DriverLicenseNumber;
-            txtAddress.Text = _Customer.Address ?? string.Empty;
-            txtEmail.Text = _Customer.Email ?? string.Empty;
+            txtCustomerID.Text = _customerID.ToString();
+            txtNationalNo.Text = _customer.NationalNo;
+            txtFirstName.Text = _customer.FirstName;
+            txtLastName.Text = _customer.LastName;
+            txtPhone.Text = _customer.Phone;
+            txtLicenseNo.Text = _customer.DriverLicenseNumber;
+            txtAddress.Text = _customer.Address ?? string.Empty;
+            txtEmail.Text = _customer.Email ?? string.Empty;
 
-            dtpBirthDate.Value = _Customer.BirthDate;
-            cbCountries.SelectedIndex = cbCountries.FindString(_Customer.CountryInfo.Name);
+            dtpBirthDate.Value = _customer.BirthDate;
+            cbCountries.SelectedIndex = cbCountries.FindString(_customer.CountryInfo.Name);
 
-            rbMale.Checked = (_Customer.Gender == Person.enGender.Male);
+            rbMale.Checked = (_customer.Gender == Person.enGender.Male);
             rbFemale.Checked = !rbMale.Checked;
 
-            if (_Customer.ImagePath != null)
-                pbPersonalImage.ImageLocation = _Customer.ImagePath;
+            if (_customer.ImagePath != null)
+                pbPersonalImage.ImageLocation = _customer.ImagePath;
 
             llbRemoveImage.Visible = pbPersonalImage.ImageLocation != null;
         }
 
-        private bool _IsPersonImageHandledSuccessfully()
+        private bool IsPersonImageHandledSuccessfully()
         {
-            if (_Customer.ImagePath != pbPersonalImage.ImageLocation)
+            if (_customer.ImagePath != pbPersonalImage.ImageLocation)
             {
-                if (_Customer.ImagePath != null)
+                if (_customer.ImagePath != null)
                 {
                     try
                     {
-                        File.Delete(_Customer.ImagePath);
+                        File.Delete(_customer.ImagePath);
                     }
                     catch (Exception ex)
                     {
-                        clsErrorLogger.LogError(ex);
+                        ErrorLogger.LogError(ex);
                         MessageBox.Show("An error occured while deleting the customer's old personal image", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
@@ -130,7 +130,7 @@ namespace CarRentalManagementSystem.Customers
                         string FolderPath = @"C:\CarRentalApp-Customers-Images";
                         string sourceFilePath = pbPersonalImage.ImageLocation;
 
-                        clsUtility.CopyImageToProjectImagesFolder(ref sourceFilePath, FolderPath);
+                        Utility.CopyImageToProjectImagesFolder(ref sourceFilePath, FolderPath);
 
                         pbPersonalImage.ImageLocation = sourceFilePath;
 
@@ -138,7 +138,7 @@ namespace CarRentalManagementSystem.Customers
                     }
                     catch (Exception ex)
                     {
-                        clsErrorLogger.LogError(ex);
+                        ErrorLogger.LogError(ex);
                         MessageBox.Show("An error occured while saving the customer's new personal image", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
@@ -149,24 +149,24 @@ namespace CarRentalManagementSystem.Customers
             return true;
         }
 
-        private bool _SaveCustomerData()
+        private bool SaveCustomerData()
         {
-            if (!_IsPersonImageHandledSuccessfully())
+            if (!IsPersonImageHandledSuccessfully())
                 return false;
 
-            _Customer.NationalNo = txtNationalNo.Text.Trim();
-            _Customer.FirstName = txtFirstName.Text.Trim();
-            _Customer.LastName = txtLastName.Text.Trim();
-            _Customer.Phone = txtPhone.Text.Trim();
-            _Customer.Email = string.IsNullOrEmpty(txtEmail.Text) ? null : txtEmail.Text.Trim();
-            _Customer.Address = string.IsNullOrEmpty(txtAddress.Text) ? null : txtAddress.Text.Trim();
-            _Customer.DriverLicenseNumber = txtLicenseNo.Text.Trim();
-            _Customer.BirthDate = dtpBirthDate.Value;
-            _Customer.NationalityCountryID = Country.Find(cbCountries.Text).CountryID.Value;
-            _Customer.Gender = rbMale.Checked == true ? Person.enGender.Male : Person.enGender.Female;
-            _Customer.ImagePath = pbPersonalImage.ImageLocation ?? null;
+            _customer.NationalNo = txtNationalNo.Text.Trim();
+            _customer.FirstName = txtFirstName.Text.Trim();
+            _customer.LastName = txtLastName.Text.Trim();
+            _customer.Phone = txtPhone.Text.Trim();
+            _customer.Email = string.IsNullOrEmpty(txtEmail.Text) ? null : txtEmail.Text.Trim();
+            _customer.Address = string.IsNullOrEmpty(txtAddress.Text) ? null : txtAddress.Text.Trim();
+            _customer.DriverLicenseNumber = txtLicenseNo.Text.Trim();
+            _customer.BirthDate = dtpBirthDate.Value;
+            _customer.NationalityCountryID = Country.Find(cbCountries.Text).CountryID.Value;
+            _customer.Gender = rbMale.Checked == true ? Person.enGender.Male : Person.enGender.Female;
+            _customer.ImagePath = pbPersonalImage.ImageLocation ?? null;
 
-            if (!_Customer.Save())
+            if (!_customer.Save())
             {
                 MessageBox.Show("Failed to save the customer data !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -176,25 +176,25 @@ namespace CarRentalManagementSystem.Customers
             {
                 MessageBox.Show("Customer data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _Mode = _enMode.Update;
+                _mode = EnMode.Update;
                 lblTitle.Text = "Update Customer";
 
-                _CustomerID = _Customer.CustomerID;
-                txtCustomerID.Text = _CustomerID.ToString();
+                _customerID = _customer.CustomerID;
+                txtCustomerID.Text = _customerID.ToString();
             }
 
             return true;
         }
 
-        private void frmAddUpdateCustomer_Load(object sender, EventArgs e)
+        private void FrmAddUpdateCustomer_Load(object sender, EventArgs e)
         {
-            _Reset();
+            Reset();
 
-            if (_Mode == _enMode.Update)
-                _LoadCustomerData();
+            if (_mode == EnMode.Update)
+                LoadCustomerData();
         }
 
-        private void txtNationalNo_Validating(object sender, CancelEventArgs e)
+        private void TxtNationalNo_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtNationalNo.Text.Trim()))
             {
@@ -203,7 +203,7 @@ namespace CarRentalManagementSystem.Customers
                 errorProvider1.SetError(txtNationalNo, "This field is required !");
             }
 
-            else if (_Customer.NationalNo != txtNationalNo.Text.Trim() && User.DoesPersonExist(txtNationalNo.Text.Trim()))
+            else if (_customer.NationalNo != txtNationalNo.Text.Trim() && User.DoesPersonExist(txtNationalNo.Text.Trim()))
             {
                 e.Cancel = true;
                 txtNationalNo.Focus();
@@ -217,7 +217,7 @@ namespace CarRentalManagementSystem.Customers
             }
         }
 
-        private void txtLicenseNo_Validating(object sender, CancelEventArgs e)
+        private void TxtLicenseNo_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtLicenseNo.Text.Trim()))
             {
@@ -226,7 +226,7 @@ namespace CarRentalManagementSystem.Customers
                 errorProvider1.SetError(txtLicenseNo, "This field is required !");
             }
 
-            else if (_Customer.DriverLicenseNumber != txtLicenseNo.Text.Trim() && Customer.DoesCustomerExist(txtLicenseNo.Text.Trim()))
+            else if (_customer.DriverLicenseNumber != txtLicenseNo.Text.Trim() && Customer.DoesCustomerExist(txtLicenseNo.Text.Trim()))
             {
                 e.Cancel = true;
                 txtLicenseNo.Focus();
@@ -242,25 +242,25 @@ namespace CarRentalManagementSystem.Customers
 
         private void TextBox_Validating(object sender, CancelEventArgs e)
         {
-            Guna2TextBox txtTemp = (Guna2TextBox)sender;
+            Guna2TextBox temp = (Guna2TextBox)sender;
 
-            if (string.IsNullOrEmpty(txtTemp.Text.Trim()))
+            if (string.IsNullOrEmpty(temp.Text.Trim()))
             {
                 e.Cancel = true;
-                txtTemp.Focus();
-                errorProvider1.SetError(txtTemp, "This field is required !");
+                temp.Focus();
+                errorProvider1.SetError(temp, "This field is required !");
             }
 
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtTemp, null);
+                errorProvider1.SetError(temp, null);
             }
         }
 
-        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        private void TxtEmail_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()) && !clsValidation.IsValidEmailAddress(txtEmail.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()) && !Validation.IsValidEmailAddress(txtEmail.Text.Trim()))
             {
                 e.Cancel = true;
                 txtEmail.Focus();
@@ -274,7 +274,7 @@ namespace CarRentalManagementSystem.Customers
             }
         }
 
-        private void llbUploadImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LlbUploadImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             openFileDialog1.FilterIndex = 1;
@@ -287,7 +287,7 @@ namespace CarRentalManagementSystem.Customers
             }
         }
 
-        private void llbRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LlbRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             llbRemoveImage.Visible = false;
             pbPersonalImage.ImageLocation = null;
@@ -295,19 +295,19 @@ namespace CarRentalManagementSystem.Customers
             pbPersonalImage.Image = rbMale.Checked ? Resources.man : Resources.woman;
         }
 
-        private void rbFemale_Click(object sender, EventArgs e)
+        private void RbFemale_Click(object sender, EventArgs e)
         {
             if (pbPersonalImage.ImageLocation == null)
                 pbPersonalImage.Image = Resources.woman;
         }
 
-        private void rbMale_Click(object sender, EventArgs e)
+        private void RbMale_Click(object sender, EventArgs e)
         {
             if (pbPersonalImage.ImageLocation == null)
                 pbPersonalImage.Image = Resources.man;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
@@ -315,16 +315,16 @@ namespace CarRentalManagementSystem.Customers
                 return;
             }
 
-            if (_SaveCustomerData())
+            if (SaveCustomerData())
                 OnNewCustomerAdded();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }

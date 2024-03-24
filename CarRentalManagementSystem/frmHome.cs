@@ -7,18 +7,24 @@ using CarRentalManagementSystem.Vehicles;
 using Guna.UI2.WinForms;
 using System.Drawing;
 using System.Windows.Forms;
+using static CarRentalManagementSystem.Global.Global;
+
 
 namespace CarRentalManagementSystem
 {
-    public partial class frmHome : Form
+    public partial class FrmHome : Form
     {
         private Guna2Button _CurrentActiveButton = new Guna2Button();
-        public frmHome()
+
+        private FrmLogin _loginForm;
+
+        public FrmHome(FrmLogin loginForm)
         {
             InitializeComponent();
+            _loginForm = loginForm;
         }
 
-        private void _ShowForm(Guna2Button activeBtn, Form frm)
+        private void ShowForm(Guna2Button activeBtn, Form frm)
         {
             if (_CurrentActiveButton != null)
                 _CurrentActiveButton.Checked = false;
@@ -37,68 +43,70 @@ namespace CarRentalManagementSystem
             frm.Show();
         }
 
-        private void btnExit_Click(object sender, System.EventArgs e)
+        private void BtnExit_Click(object sender, System.EventArgs e)
         {
+            CurrentUser = null;
             this.Close();
+            _loginForm.Show();
         }
 
-        private void btnCollapse_Click(object sender, System.EventArgs e)
+        private void BtnCollapse_Click(object sender, System.EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button_MouseEnter(object sender, System.EventArgs e)
+        private void Button_MouseEnter(object sender, System.EventArgs e)
         {
             ((Guna2ImageButton)sender).BackColor = ColorTranslator.FromHtml("#372E18");
         }
 
-        private void button_MouseLeave(object sender, System.EventArgs e)
+        private void Button_MouseLeave(object sender, System.EventArgs e)
         {
             ((Guna2ImageButton)sender).BackColor = ColorTranslator.FromHtml("#FBCD08");
         }
 
-        private void frmHome_Load(object sender, System.EventArgs e)
+        private void FrmHome_Load(object sender, System.EventArgs e)
         {
 
         }
 
-        private void btnManageUsers_Click(object sender, System.EventArgs e)
+        private void BtnManageUsers_Click(object sender, System.EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListUsers());
+            ShowForm((Guna2Button)sender, new frmListUsers());
         }
 
-        private void btnManageCustomers_Click(object sender, System.EventArgs e)
+        private void BtnManageCustomers_Click(object sender, System.EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListCustomers());
+            ShowForm((Guna2Button)sender, new FrmListCustomers());
         }
 
-        private void btnManageBookings_Click(object sender, System.EventArgs e)
+        private void BtnManageBookings_Click(object sender, System.EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListBookings());
+            ShowForm((Guna2Button)sender, new FrmListBookings());
 
         }
 
-        private void btnManageVehicles_Click(object sender, System.EventArgs e)
+        private void BtnManageVehicles_Click(object sender, System.EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListVehicles());
+            ShowForm((Guna2Button)sender, new frmListVehicles());
         }
 
-        private void btnManageTransactions_Click(object sender, System.EventArgs e)
+        private void BtnManageTransactions_Click(object sender, System.EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListTransactions());
+            ShowForm((Guna2Button)sender, new frmListTransactions());
         }
 
-        private void btnManageReturns_Click(object sender, System.EventArgs e)
+        private void BtnManageReturns_Click(object sender, System.EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListVehicleReturns());
+            ShowForm((Guna2Button)sender, new frmListVehicleReturns());
         }
 
-        private void btnDashboard_Click(object sender, System.EventArgs e)
+        private void BtnDashboard_Click(object sender, System.EventArgs e)
         {
             //Not implemented yet !
         }
 
-        private void btnLogout_Click(object sender, System.EventArgs e)
+        private void BtnLogout_Click(object sender, System.EventArgs e)
         {
             btnExit.PerformClick();
         }

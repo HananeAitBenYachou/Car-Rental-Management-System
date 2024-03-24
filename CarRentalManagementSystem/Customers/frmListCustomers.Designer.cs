@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Customers
 {
-    partial class frmListCustomers
+    partial class FrmListCustomers
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListCustomers));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListCustomers));
             this.dgvCustomersList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cbCustomers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,8 +121,8 @@
             this.dgvCustomersList.ThemeStyle.RowsStyle.Height = 24;
             this.dgvCustomersList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvCustomersList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvCustomersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomersList_CellContentClick);
-            this.dgvCustomersList.SelectionChanged += new System.EventHandler(this.dgvCustomersList_SelectionChanged);
+            this.dgvCustomersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCustomersList_CellContentClick);
+            this.dgvCustomersList.SelectionChanged += new System.EventHandler(this.DgvCustomersList_SelectionChanged);
             // 
             // cbCustomers
             // 
@@ -143,7 +143,7 @@
             this.addNewCustomerToolStripMenuItem.Name = "addNewCustomerToolStripMenuItem";
             this.addNewCustomerToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
             this.addNewCustomerToolStripMenuItem.Text = "Add New Customer";
-            this.addNewCustomerToolStripMenuItem.Click += new System.EventHandler(this.addNewCustomerToolStripMenuItem_Click);
+            this.addNewCustomerToolStripMenuItem.Click += new System.EventHandler(this.AddNewCustomerToolStripMenuItem_Click);
             // 
             // editCustomerInformationToolStripMenuItem
             // 
@@ -152,7 +152,7 @@
             this.editCustomerInformationToolStripMenuItem.Name = "editCustomerInformationToolStripMenuItem";
             this.editCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
             this.editCustomerInformationToolStripMenuItem.Text = "Edit Customer Information";
-            this.editCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.editCustomerInformationToolStripMenuItem_Click);
+            this.editCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.EditCustomerInformationToolStripMenuItem_Click);
             // 
             // showCustomerInformationToolStripMenuItem
             // 
@@ -161,7 +161,7 @@
             this.showCustomerInformationToolStripMenuItem.Name = "showCustomerInformationToolStripMenuItem";
             this.showCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
             this.showCustomerInformationToolStripMenuItem.Text = "Show Customer Information";
-            this.showCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.showCustomerInformationToolStripMenuItem_Click);
+            this.showCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerInformationToolStripMenuItem_Click);
             // 
             // deleteCustomerToolStripMenuItem
             // 
@@ -170,7 +170,7 @@
             this.deleteCustomerToolStripMenuItem.Name = "deleteCustomerToolStripMenuItem";
             this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
             this.deleteCustomerToolStripMenuItem.Text = "Delete Customer";
-            this.deleteCustomerToolStripMenuItem.Click += new System.EventHandler(this.deleteCustomerToolStripMenuItem_Click);
+            this.deleteCustomerToolStripMenuItem.Click += new System.EventHandler(this.DeleteCustomerToolStripMenuItem_Click);
             // 
             // cbFilterByOptions
             // 
@@ -195,7 +195,7 @@
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
             this.cbFilterByOptions.TabIndex = 14;
-            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
+            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -251,7 +251,7 @@
             this.cbTemp.Size = new System.Drawing.Size(192, 41);
             this.cbTemp.TabIndex = 17;
             this.cbTemp.Visible = false;
-            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.cbTemp_SelectedIndexChanged);
+            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.CbTemp_SelectedIndexChanged);
             // 
             // btnAddNewCustomer
             // 
@@ -271,7 +271,7 @@
             this.btnAddNewCustomer.Size = new System.Drawing.Size(205, 51);
             this.btnAddNewCustomer.TabIndex = 16;
             this.btnAddNewCustomer.Text = "Add New Customer";
-            this.btnAddNewCustomer.Click += new System.EventHandler(this.btnAddNewCustomer_Click);
+            this.btnAddNewCustomer.Click += new System.EventHandler(this.BtnAddNewCustomer_Click);
             // 
             // txtFilterValue
             // 
@@ -296,8 +296,8 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
             this.txtFilterValue.TabIndex = 13;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
             // 
             // guna2ImageButton1
             // 
@@ -331,7 +331,7 @@
             this.Name = "frmListCustomers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListCustomers";
-            this.Load += new System.EventHandler(this.frmListCustomers_Load);
+            this.Load += new System.EventHandler(this.FrmListCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomersList)).EndInit();
             this.cbCustomers.ResumeLayout(false);
             this.ResumeLayout(false);

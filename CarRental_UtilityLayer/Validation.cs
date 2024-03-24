@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace CarRental_UtilityLayer
 {
-    public static class clsValidation
+    public static class Validation
     {
         private static bool IsMatch(string pattern, string value)
         {

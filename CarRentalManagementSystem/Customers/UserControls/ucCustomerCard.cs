@@ -4,7 +4,7 @@ using static CarRental_BusinessLayer.Customer;
 
 namespace CarRentalManagementSystem.Customers.UserControls
 {
-    public partial class ucCustomerCard : UserControl
+    public partial class UcCustomerCard : UserControl
     {
         public int? PersonID => ucPersonCard1.PersonID;
         public Person Person => ucPersonCard1.Person;
@@ -12,12 +12,12 @@ namespace CarRentalManagementSystem.Customers.UserControls
         public int? CustomerID { get; private set; } = null;
         public Customer Customer { get; private set; } = null;
 
-        public ucCustomerCard()
+        public UcCustomerCard()
         {
             InitializeComponent();
         }
 
-        private void _LoadCustomerData()
+        private void LoadCustomerData()
         {
             CustomerID = Customer.CustomerID;
 
@@ -29,21 +29,21 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         public bool LoadCustomerData(int? customerID)
         {
-            Customer = Customer.Find<int?>(customerID, enFindCustomerBy.CustomerID);
+            Customer = Find(customerID, enFindCustomerBy.CustomerID);
 
             if (Customer == null)
             {
-                MessageBox.Show($"No customer with ID = {customerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No customer with customerID = {customerID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            _LoadCustomerData();
+            LoadCustomerData();
             return true;
         }
 
         public bool LoadCustomerData(string driverLicenseNumber)
         {
-            Customer = Customer.Find<string>(driverLicenseNumber, enFindCustomerBy.LicenseNumber);
+            Customer = Find(driverLicenseNumber, enFindCustomerBy.LicenseNumber);
 
             if (Customer == null)
             {
@@ -51,7 +51,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
                 return false;
             }
 
-            _LoadCustomerData();
+            LoadCustomerData();
             return true;
         }
     }

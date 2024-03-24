@@ -28,7 +28,7 @@ namespace CarRentalManagementSystem.Users
                 errorProvider1.SetError(txtCurrentPassword, "This field is required !");
             }
 
-            else if (clsCryptoUtility.ComputeHash(txtCurrentPassword.Text.Trim()) != _User.Password)
+            else if (CryptoUtility.ComputeHash(txtCurrentPassword.Text.Trim()) != _User.Password)
             {
                 e.Cancel = true;
                 txtCurrentPassword.Focus();
@@ -84,7 +84,7 @@ namespace CarRentalManagementSystem.Users
 
         private void _UpdateUserPassword()
         {
-            if (_User.UpdateUserPassword(clsCryptoUtility.ComputeHash(txtNewPassword.Text.Trim())))
+            if (_User.UpdateUserPassword(CryptoUtility.ComputeHash(txtNewPassword.Text.Trim())))
                 MessageBox.Show("Your password has been changed successfully !", "Password changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             else

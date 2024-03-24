@@ -8,13 +8,13 @@ namespace CarRental_DataAccessLayer
 {
     public class CustomerData
     {
-        public static bool GetCustomerInfoByID(int? CustomerID, ref string DriverLicenseNumber, ref int? PersonID)
+        public static bool GetCustomerInfoByID(int? customerID, ref string driverLicenseNumber, ref int? personID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -22,7 +22,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@CustomerID", (object)CustomerID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@CustomerID", (object)customerID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -31,9 +31,9 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                DriverLicenseNumber = (string)reader["DriverLicenseNumber"];
+                                driverLicenseNumber = (string)reader["DriverLicenseNumber"];
 
-                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+                                personID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
 
                             }
 
@@ -48,20 +48,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetCustomerInfoByPersonID(int? PersonID, ref int? CustomerID, ref string DriverLicenseNumber)
+        public static bool GetCustomerInfoByPersonID(int? personID, ref int? customerID, ref string driverLicenseNumber)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -69,7 +69,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PersonID", (object)personID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -78,9 +78,9 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                DriverLicenseNumber = (string)reader["DriverLicenseNumber"];
+                                driverLicenseNumber = (string)reader["DriverLicenseNumber"];
 
-                                CustomerID = (reader["CustomerID"] != DBNull.Value) ? (int?)reader["CustomerID"] : null;
+                                customerID = (reader["CustomerID"] != DBNull.Value) ? (int?)reader["CustomerID"] : null;
 
                             }
 
@@ -95,20 +95,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetCustomerInfoByLicenseNo(string DriverLicenseNumber, ref int? CustomerID, ref int? PersonID)
+        public static bool GetCustomerInfoByLicenseNo(string driverLicenseNumber, ref int? customerID, ref int? personID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -116,7 +116,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
+                        command.Parameters.AddWithValue("@DriverLicenseNumber", driverLicenseNumber);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -125,9 +125,9 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                CustomerID = (reader["CustomerID"] != DBNull.Value) ? (int?)reader["CustomerID"] : null;
+                                customerID = (reader["CustomerID"] != DBNull.Value) ? (int?)reader["CustomerID"] : null;
 
-                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+                                personID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
 
                             }
 
@@ -142,20 +142,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesCustomerExist(int? CustomerID)
+        public static bool DoesCustomerExist(int? customerID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -163,7 +163,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@CustomerID", (object)CustomerID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@CustomerID", (object)customerID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -180,20 +180,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesCustomerExist(string DriverLicenseNumber)
+        public static bool DoesCustomerExist(string driverLicenseNumber)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -201,7 +201,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
+                        command.Parameters.AddWithValue("@DriverLicenseNumber", driverLicenseNumber);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -218,28 +218,28 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static int? AddNewCustomer(string DriverLicenseNumber, int? PersonID)
+        public static int? AddNewCustomer(string driverLicenseNumber, int? personID)
         {
             int? CustomerID = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_AddNewCustomer", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@DriverLicenseNumber", driverLicenseNumber);
+                        command.Parameters.AddWithValue("@PersonID", (object)personID ?? DBNull.Value);
 
 
                         SqlParameter outputParameter = new SqlParameter("@NewCustomerID", SqlDbType.Int)
@@ -257,29 +257,29 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 CustomerID = null;
             }
             return CustomerID;
         }
 
-        public static bool UpdateCustomerInfo(int? CustomerID, string DriverLicenseNumber, int? PersonID)
+        public static bool UpdateCustomerInfo(int? customerID, string driverLicenseNumber, int? personID)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_UpdateCustomerInfo", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@CustomerID", CustomerID);
-                        command.Parameters.AddWithValue("@DriverLicenseNumber", DriverLicenseNumber);
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        command.Parameters.AddWithValue("@DriverLicenseNumber", driverLicenseNumber);
+                        command.Parameters.AddWithValue("@PersonID", (object)personID ?? DBNull.Value);
 
 
                         rowsAffected = command.ExecuteNonQuery();
@@ -288,20 +288,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 rowsAffected = 0;
             }
             return rowsAffected != 0;
         }
 
-        public static bool DeleteCustomer(int? CustomerID)
+        public static bool DeleteCustomer(int? customerID)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -309,7 +309,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@CustomerID", (object)CustomerID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@CustomerID", (object)customerID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -317,18 +317,18 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
             return rowsAffected != 0;
         }
 
         public static DataTable GetAllCustomers()
         {
-            DataTable Datatable = new DataTable();
+            DataTable customersDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -340,7 +340,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                customersDatatable.Load(reader);
                             }
                         }
                     }
@@ -348,25 +348,25 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return customersDatatable;
         }
 
-        public static int? GetCustomerPersonID(int? CustomerID)
+        public static int? GetCustomerPersonID(int? customerID)
         {
             int? PersonID = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_GetCustomerPersonID", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@CustomerID", CustomerID);
+                        command.Parameters.AddWithValue("@CustomerID", customerID);
 
                         SqlParameter outputPersonIDParameter = new SqlParameter("@PersonID", SqlDbType.Int)
                         {
@@ -383,7 +383,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
                 PersonID = null;
             }
             return PersonID;

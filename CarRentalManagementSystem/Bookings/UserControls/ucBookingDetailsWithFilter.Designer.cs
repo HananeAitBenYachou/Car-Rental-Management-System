@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Bookings.UserControls
 {
-    partial class ucBookingDetailsWithFilter
+    partial class UcBookingDetailsWithFilter
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ucBookingDetails1 = new CarRentalManagementSystem.Bookings.UserControls.ucBookingDetails();
+            this.ucBookingDetails1 = new CarRentalManagementSystem.Bookings.UserControls.UcBookingDetails();
             this.gbFilter = new Guna.UI2.WinForms.Guna2GroupBox();
             this.btnAddVehicle = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnSearchVehicle = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -79,7 +79,7 @@
             this.btnAddVehicle.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnAddVehicle.Size = new System.Drawing.Size(50, 50);
             this.btnAddVehicle.TabIndex = 174;
-            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddBooking_Click);
+            this.btnAddVehicle.Click += new System.EventHandler(this.BtnAddBooking_Click);
             // 
             // btnSearchVehicle
             // 
@@ -94,7 +94,7 @@
             this.btnSearchVehicle.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnSearchVehicle.Size = new System.Drawing.Size(50, 50);
             this.btnSearchVehicle.TabIndex = 173;
-            this.btnSearchVehicle.Click += new System.EventHandler(this.btnSearchBooking_Click);
+            this.btnSearchVehicle.Click += new System.EventHandler(this.BtnSearchBooking_Click);
             // 
             // txtBookingID
             // 
@@ -120,8 +120,8 @@
             this.txtBookingID.SelectedText = "";
             this.txtBookingID.Size = new System.Drawing.Size(340, 43);
             this.txtBookingID.TabIndex = 0;
-            this.txtBookingID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBookingID_KeyPress);
-            this.txtBookingID.Validating += new System.ComponentModel.CancelEventHandler(this.txtBookingID_Validating);
+            this.txtBookingID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBookingID_KeyPress);
+            this.txtBookingID.Validating += new System.ComponentModel.CancelEventHandler(this.TxtBookingID_Validating);
             // 
             // label2
             // 
@@ -157,7 +157,7 @@
 
         #endregion
 
-        private ucBookingDetails ucBookingDetails1;
+        private UcBookingDetails ucBookingDetails1;
         private Guna.UI2.WinForms.Guna2GroupBox gbFilter;
         private Guna.UI2.WinForms.Guna2ImageButton btnAddVehicle;
         private Guna.UI2.WinForms.Guna2ImageButton btnSearchVehicle;

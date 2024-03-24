@@ -8,13 +8,13 @@ namespace CarRental_DataAccessLayer
 {
     public class SubModelData
     {
-        public static bool GetSubModelInfoByID(int? SubModelID, ref int ModelID, ref string SubModelName)
+        public static bool GetSubModelInfoByID(int? subModelID, ref int modelID, ref string subModelName)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -22,7 +22,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@SubModelID", (object)SubModelID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@SubModelID", (object)subModelID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -31,9 +31,9 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                ModelID = (int)reader["ModelID"];
+                                modelID = (int)reader["ModelID"];
 
-                                SubModelName = (string)reader["SubModelName"];
+                                subModelName = (string)reader["SubModelName"];
 
                             }
 
@@ -48,20 +48,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetSubModelInfoByName(string SubModelName, ref int? SubModelID, ref int ModelID)
+        public static bool GetSubModelInfoByName(string subModelName, ref int? subModelID, ref int modelID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -69,7 +69,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@SubModelName", SubModelName);
+                        command.Parameters.AddWithValue("@SubModelName", subModelName);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -78,9 +78,9 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                ModelID = (int)reader["ModelID"];
+                                modelID = (int)reader["ModelID"];
 
-                                SubModelID = (reader["SubModelID"] != DBNull.Value) ? (int?)reader["SubModelID"] : null;
+                                subModelID = (reader["SubModelID"] != DBNull.Value) ? (int?)reader["SubModelID"] : null;
 
                             }
 
@@ -95,7 +95,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
@@ -108,7 +108,7 @@ namespace CarRental_DataAccessLayer
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -128,18 +128,18 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
             return Datatable;
         }
 
-        public static DataTable GetAllSubModelsPerModel(int ModelID)
+        public static DataTable GetAllSubModelsPerModel(int modelID)
         {
-            DataTable Datatable = new DataTable();
+            DataTable subModelsDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -147,13 +147,13 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@ModelID", ModelID);
+                        command.Parameters.AddWithValue("@ModelID", modelID);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                subModelsDatatable.Load(reader);
                             }
                         }
                     }
@@ -161,9 +161,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return subModelsDatatable;
         }
 
     }

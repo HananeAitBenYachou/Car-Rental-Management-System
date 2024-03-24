@@ -7,7 +7,7 @@ namespace CarRental_BusinessLayer
     public class Maintenance
     {
         private enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        private enMode _mode;
         public int? MaintenanceID { get; private set; }
         public int VehicleID { get; set; }
         public string Description { get; set; }
@@ -16,76 +16,76 @@ namespace CarRental_BusinessLayer
 
         public Maintenance()
         {
-            _Mode = enMode.AddNew;
+            _mode = enMode.AddNew;
+
             MaintenanceID = null;
             VehicleID = default;
             Description = default;
             MaintenanceDate = default;
             Cost = default;
         }
-        private Maintenance(int? MaintenanceID, int VehicleID, string Description, DateTime MaintenanceDate, double Cost)
+        private Maintenance(int? maintenanceID, int vehicleID, string description, DateTime maintenanceDate, double cost)
         {
-            _Mode = enMode.Update;
-            this.MaintenanceID = MaintenanceID;
-            this.VehicleID = VehicleID;
-            this.Description = Description;
-            this.MaintenanceDate = MaintenanceDate;
-            this.Cost = Cost;
+            _mode = enMode.Update;
+
+            MaintenanceID = maintenanceID;
+            VehicleID = vehicleID;
+            Description = description;
+            MaintenanceDate = maintenanceDate;
+            Cost = cost;
         }
 
-        public static Maintenance Find(int? MaintenanceID)
+        public static Maintenance Find(int? maintenanceID)
         {
-            int VehicleID = default;
-            string Description = default;
-            DateTime MaintenanceDate = default;
-            double Cost = default;
+            int vehicleID = default;
+            string description = default;
+            DateTime maintenanceDate = default;
+            double cost = default;
 
-            bool isFound = MaintenanceData.GetMaintenanceInfoByID(MaintenanceID, ref VehicleID, ref Description, ref MaintenanceDate, ref Cost);
+            bool isFound = MaintenanceData.GetMaintenanceInfoByID(maintenanceID, ref vehicleID, ref description, 
+                ref maintenanceDate, ref cost);
 
-            if (isFound)
-                return new Maintenance(MaintenanceID, VehicleID, Description, MaintenanceDate, Cost);
-            else
-                return null;
+            return isFound ? new Maintenance(maintenanceID, vehicleID, description, maintenanceDate, cost) : null;
         }
 
-        public static bool DoesMaintenanceExist(int? MaintenanceID)
+        public static bool DoesMaintenanceExist(int? maintenanceID)
         {
-            return MaintenanceData.DoesMaintenanceExist(MaintenanceID);
+            return MaintenanceData.DoesMaintenanceExist(maintenanceID);
         }
 
-        private bool _AddNewMaintenance()
+        private bool AddNewMaintenance()
         {
             MaintenanceID = MaintenanceData.AddNewMaintenance(VehicleID, Description, MaintenanceDate, Cost);
             return MaintenanceID.HasValue;
         }
 
-        private bool _UpdateMaintenance()
+        private bool UpdateMaintenance()
         {
             return MaintenanceData.UpdateMaintenanceInfo(MaintenanceID, VehicleID, Description, MaintenanceDate, Cost);
         }
 
         public bool Save()
         {
-            switch (_Mode)
+            switch (_mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewMaintenance())
+                    if (AddNewMaintenance())
                     {
-                        _Mode = enMode.Update;
+                        _mode = enMode.Update;
                         return true;
                     }
                     return false;
 
                 case enMode.Update:
-                    return _UpdateMaintenance();
+                    return UpdateMaintenance();
 
             }
             return false;
         }
 
-        public static bool DeleteMaintenance(int? MaintenanceID)
+        public static bool DeleteMaintenance(int? maintenanceID)
         {
-            return MaintenanceData.DeleteMaintenance(MaintenanceID);
+            return MaintenanceData.DeleteMaintenance(maintenanceID);
         }
 
         public static DataTable GetAllMaintenances()

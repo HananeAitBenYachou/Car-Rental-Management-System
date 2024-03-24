@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarRental_UtilityLayer
 {
-    public static class clsCryptoUtility
+    public static class CryptoUtility
     {
         public static string ComputeHash(string inputData)
         {

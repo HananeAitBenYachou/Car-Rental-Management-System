@@ -33,57 +33,64 @@ namespace CarRental_BusinessLayer
             ActualTotalDueAmount = default;
             TransactionID = default;
         }
-        private VehicleReturn(int? ReturnID, DateTime ActualReturnDate, byte ActualRentalDays,
-            short Mileage, short ConsumedMileage, string FinalCheckNotes,
-            float AdditionalCharges, float ActualTotalDueAmount, int TransactionID)
+        private VehicleReturn(int? returnID, DateTime actualReturnDate, byte actualRentalDays, short mileage,
+                              short consumedMileage, string finalCheckNotes, float additionalCharges,
+                              float actualTotalDueAmount, int transactionID)
         {
             _Mode = enMode.Update;
-            this.ReturnID = ReturnID;
-            this.ActualReturnDate = ActualReturnDate;
-            this.ActualRentalDays = ActualRentalDays;
-            this.Mileage = Mileage;
-            this.ConsumedMileage = ConsumedMileage;
-            this.FinalCheckNotes = FinalCheckNotes;
-            this.AdditionalCharges = AdditionalCharges;
-            this.ActualTotalDueAmount = ActualTotalDueAmount;
-            this.TransactionID = TransactionID;
+            ReturnID = returnID;
+            ActualReturnDate = actualReturnDate;
+            ActualRentalDays = actualRentalDays;
+            Mileage = mileage;
+            ConsumedMileage = consumedMileage;
+            FinalCheckNotes = finalCheckNotes;
+            AdditionalCharges = additionalCharges;
+            ActualTotalDueAmount = actualTotalDueAmount;
+            TransactionID = transactionID;
 
-            this.TransactionInfo = RentalTransaction.Find<int?>(TransactionID, RentalTransaction.enFindTransactionBy.TransactionID);
+            TransactionInfo = RentalTransaction.Find<int?>(transactionID, RentalTransaction.enFindTransactionBy.TransactionID);
         }
 
-        public static VehicleReturn Find(int? ReturnID)
+        public static VehicleReturn Find(int? returnID)
         {
-            DateTime ActualReturnDate = default;
-            byte ActualRentalDays = default;
-            short Mileage = default;
-            short ConsumedMileage = default;
-            string FinalCheckNotes = default;
-            float AdditionalCharges = default;
-            float ActualTotalDueAmount = default;
-            int TransactionID = default;
+            DateTime actualReturnDate = default;
+            byte actualRentalDays = default;
+            short mileage = default;
+            short consumedMileage = default;
+            string finalCheckNotes = default;
+            float additionalCharges = default;
+            float actualTotalDueAmount = default;
+            int transactionID = default;
 
-            bool isFound = VehicleReturnData.GetVehicleReturnInfoByID(ReturnID, ref ActualReturnDate, ref ActualRentalDays, ref Mileage, ref ConsumedMileage, ref FinalCheckNotes, ref AdditionalCharges, ref ActualTotalDueAmount, ref TransactionID);
+            bool isFound = VehicleReturnData.GetVehicleReturnInfoByID(returnID, ref actualReturnDate,ref actualRentalDays, 
+                                                                      ref mileage,ref consumedMileage, ref finalCheckNotes,
+                                                                      ref additionalCharges, ref actualTotalDueAmount,ref transactionID);
 
             if (isFound)
-                return new VehicleReturn(ReturnID, ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount, TransactionID);
+                return new VehicleReturn(returnID, actualReturnDate, actualRentalDays, mileage, consumedMileage,
+                                         finalCheckNotes, additionalCharges, actualTotalDueAmount, transactionID);
             else
                 return null;
         }
 
-        public static bool DoesVehicleReturnExist(int? ReturnID)
+        public static bool DoesVehicleReturnExist(int? returnID)
         {
-            return VehicleReturnData.DoesVehicleReturnExist(ReturnID);
+            return VehicleReturnData.DoesVehicleReturnExist(returnID);
         }
 
-        private bool _AddNewVehicleReturn()
+        private bool AddNewVehicleReturn()
         {
-            ReturnID = VehicleReturnData.AddNewVehicleReturn(ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount, TransactionID);
+            ReturnID = VehicleReturnData.AddNewVehicleReturn(ActualReturnDate, ActualRentalDays, Mileage,
+                                                             ConsumedMileage, FinalCheckNotes, AdditionalCharges,
+                                                             ActualTotalDueAmount, TransactionID);
             return ReturnID.HasValue;
         }
 
-        private bool _UpdateVehicleReturn()
+        private bool UpdateVehicleReturn()
         {
-            return VehicleReturnData.UpdateVehicleReturnInfo(ReturnID, ActualReturnDate, ActualRentalDays, Mileage, ConsumedMileage, FinalCheckNotes, AdditionalCharges, ActualTotalDueAmount, TransactionID);
+            return VehicleReturnData.UpdateVehicleReturnInfo(ReturnID, ActualReturnDate, ActualRentalDays, Mileage,
+                                                             ConsumedMileage, FinalCheckNotes, AdditionalCharges,
+                                                             ActualTotalDueAmount, TransactionID);
         }
 
         public bool Save()
@@ -91,7 +98,7 @@ namespace CarRental_BusinessLayer
             switch (_Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewVehicleReturn())
+                    if (AddNewVehicleReturn())
                     {
                         _Mode = enMode.Update;
                         return true;
@@ -99,7 +106,7 @@ namespace CarRental_BusinessLayer
                     return false;
 
                 case enMode.Update:
-                    return _UpdateVehicleReturn();
+                    return UpdateVehicleReturn();
 
             }
             return false;

@@ -8,13 +8,13 @@ namespace CarRental_DataAccessLayer
 {
     public class FuelTypeData
     {
-        public static bool GetFuelTypeInfoByID(int? FuelTypeID, ref string FuelTypeName)
+        public static bool GetFuelTypeInfoByID(int? fuelTypeID, ref string fuelTypeName)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -22,7 +22,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@FuelTypeID", (object)FuelTypeID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@FuelTypeID", (object)fuelTypeID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -31,7 +31,7 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                FuelTypeName = (string)reader["FuelTypeName"];
+                                fuelTypeName = (string)reader["FuelTypeName"];
 
                             }
 
@@ -46,20 +46,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetFuelTypeInfoByName(string FuelTypeName, ref int? FuelTypeID)
+        public static bool GetFuelTypeInfoByName(string fuelTypeName, ref int? fuelTypeID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -67,7 +67,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@FuelTypeName", FuelTypeName);
+                        command.Parameters.AddWithValue("@FuelTypeName", fuelTypeName);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -76,7 +76,7 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                FuelTypeID = (reader["FuelTypeID"] != DBNull.Value) ? (int?)reader["FuelTypeID"] : null;
+                                fuelTypeID = (reader["FuelTypeID"] != DBNull.Value) ? (int?)reader["FuelTypeID"] : null;
 
                             }
 
@@ -91,7 +91,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
@@ -100,11 +100,11 @@ namespace CarRental_DataAccessLayer
 
         public static DataTable GetAllFuelTypes()
         {
-            DataTable Datatable = new DataTable();
+            DataTable fuelTypesDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -116,7 +116,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                fuelTypesDatatable.Load(reader);
                             }
                         }
                     }
@@ -124,9 +124,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return fuelTypesDatatable;
         }
 
     }

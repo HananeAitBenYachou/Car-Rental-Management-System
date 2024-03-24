@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem
 {
-    partial class frmHome
+    partial class FrmHome
     {
         /// <summary>
         /// Required designer variable.
@@ -102,7 +102,7 @@
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.TextOffset = new System.Drawing.Point(8, 0);
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
             // pictureBox1
             // 
@@ -137,7 +137,7 @@
             this.btnManageUsers.Text = "Users";
             this.btnManageUsers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageUsers.TextOffset = new System.Drawing.Point(8, 0);
-            this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
+            this.btnManageUsers.Click += new System.EventHandler(this.BtnManageUsers_Click);
             // 
             // btnManageCustomers
             // 
@@ -161,7 +161,7 @@
             this.btnManageCustomers.Text = "Customers";
             this.btnManageCustomers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageCustomers.TextOffset = new System.Drawing.Point(8, -1);
-            this.btnManageCustomers.Click += new System.EventHandler(this.btnManageCustomers_Click);
+            this.btnManageCustomers.Click += new System.EventHandler(this.BtnManageCustomers_Click);
             // 
             // btnManageTransactions
             // 
@@ -185,7 +185,7 @@
             this.btnManageTransactions.Text = "Transactions";
             this.btnManageTransactions.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageTransactions.TextOffset = new System.Drawing.Point(8, -3);
-            this.btnManageTransactions.Click += new System.EventHandler(this.btnManageTransactions_Click);
+            this.btnManageTransactions.Click += new System.EventHandler(this.BtnManageTransactions_Click);
             // 
             // btnManageReturns
             // 
@@ -209,7 +209,7 @@
             this.btnManageReturns.Text = "Returns";
             this.btnManageReturns.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageReturns.TextOffset = new System.Drawing.Point(8, 0);
-            this.btnManageReturns.Click += new System.EventHandler(this.btnManageReturns_Click);
+            this.btnManageReturns.Click += new System.EventHandler(this.BtnManageReturns_Click);
             // 
             // btnManageBookings
             // 
@@ -233,7 +233,7 @@
             this.btnManageBookings.Text = "Bookings";
             this.btnManageBookings.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageBookings.TextOffset = new System.Drawing.Point(8, 0);
-            this.btnManageBookings.Click += new System.EventHandler(this.btnManageBookings_Click);
+            this.btnManageBookings.Click += new System.EventHandler(this.BtnManageBookings_Click);
             // 
             // btnManageVehicles
             // 
@@ -257,7 +257,7 @@
             this.btnManageVehicles.Text = "Vehicles";
             this.btnManageVehicles.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageVehicles.TextOffset = new System.Drawing.Point(8, -6);
-            this.btnManageVehicles.Click += new System.EventHandler(this.btnManageVehicles_Click);
+            this.btnManageVehicles.Click += new System.EventHandler(this.BtnManageVehicles_Click);
             // 
             // btnDashboard
             // 
@@ -281,7 +281,7 @@
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDashboard.TextOffset = new System.Drawing.Point(8, -1);
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
+            this.btnDashboard.Click += new System.EventHandler(this.BtnDashboard_Click);
             // 
             // guna2PictureBox1
             // 
@@ -318,9 +318,9 @@
             this.btnCollapse.ShadowDecoration.BorderRadius = 0;
             this.btnCollapse.Size = new System.Drawing.Size(44, 37);
             this.btnCollapse.TabIndex = 3;
-            this.btnCollapse.Click += new System.EventHandler(this.btnCollapse_Click);
-            this.btnCollapse.MouseEnter += new System.EventHandler(this.button_MouseEnter);
-            this.btnCollapse.MouseLeave += new System.EventHandler(this.button_MouseLeave);
+            this.btnCollapse.Click += new System.EventHandler(this.BtnCollapse_Click);
+            this.btnCollapse.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.btnCollapse.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // btnExit
             // 
@@ -337,9 +337,9 @@
             this.btnExit.ShadowDecoration.BorderRadius = 0;
             this.btnExit.Size = new System.Drawing.Size(44, 37);
             this.btnExit.TabIndex = 2;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            this.btnExit.MouseEnter += new System.EventHandler(this.button_MouseEnter);
-            this.btnExit.MouseLeave += new System.EventHandler(this.button_MouseLeave);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            this.btnExit.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.btnExit.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // frmHome
             // 
@@ -355,7 +355,7 @@
             this.Name = "frmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.frmHome_Load);
+            this.Load += new System.EventHandler(this.FrmHome_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();

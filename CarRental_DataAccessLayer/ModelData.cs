@@ -8,13 +8,13 @@ namespace CarRental_DataAccessLayer
 {
     public class ModelData
     {
-        public static bool GetModelInfoByID(int? ModelID, ref int MakeID, ref string ModelName)
+        public static bool GetModelInfoByID(int? modelID, ref int makeID, ref string modelName)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -22,7 +22,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@ModelID", (object)ModelID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@ModelID", (object)modelID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -31,9 +31,9 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                MakeID = (int)reader["MakeID"];
+                                makeID = (int)reader["MakeID"];
 
-                                ModelName = (string)reader["ModelName"];
+                                modelName = (string)reader["ModelName"];
 
                             }
 
@@ -48,20 +48,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool GetModelInfoByName(string ModelName, ref int? ModelID, ref int MakeID)
+        public static bool GetModelInfoByName(string modelName, ref int? modelID, ref int makeID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -69,7 +69,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@ModelName", ModelName);
+                        command.Parameters.AddWithValue("@ModelName", modelName);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -78,9 +78,9 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                MakeID = (int)reader["MakeID"];
+                                makeID = (int)reader["MakeID"];
 
-                                ModelID = (reader["ModelID"] != DBNull.Value) ? (int?)reader["ModelID"] : null;
+                                modelID = (reader["ModelID"] != DBNull.Value) ? (int?)reader["ModelID"] : null;
                             }
 
                             else
@@ -94,7 +94,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
@@ -103,11 +103,11 @@ namespace CarRental_DataAccessLayer
 
         public static DataTable GetAllModels()
         {
-            DataTable Datatable = new DataTable();
+            DataTable modelsDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -119,7 +119,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                modelsDatatable.Load(reader);
                             }
                         }
                     }
@@ -127,18 +127,18 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return modelsDatatable;
         }
 
-        public static DataTable GetAllModelsPerMake(int MakeID)
+        public static DataTable GetAllModelsPerMake(int makeID)
         {
-            DataTable Datatable = new DataTable();
+            DataTable modelsDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -146,13 +146,13 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@MakeID", MakeID);
+                        command.Parameters.AddWithValue("@MakeID", makeID);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                modelsDatatable.Load(reader);
                             }
                         }
                     }
@@ -160,9 +160,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return modelsDatatable;
         }
 
     }

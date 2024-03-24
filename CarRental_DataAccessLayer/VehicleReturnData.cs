@@ -8,16 +8,16 @@ namespace CarRental_DataAccessLayer
 {
     public class VehicleReturnData
     {
-        public static bool GetVehicleReturnInfoByID(int? ReturenID, ref DateTime ActualReturnDate,
-            ref byte ActualRentalDays, ref short Mileage, ref short ConsumedMileage,
-            ref string FinalCheckNotes, ref float AdditionalCharges, ref float ActualTotalDueAmount,
-            ref int TransactionID)
+        public static bool GetVehicleReturnInfoByID(int? returnID, ref DateTime actualReturnDate,
+                                                    ref byte actualRentalDays, ref short mileage, ref short consumedMileage,
+                                                    ref string finalCheckNotes, ref float additionalCharges, ref float actualTotalDueAmount,
+                                                    ref int transactionID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -25,7 +25,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@ReturenID", (object)ReturenID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@ReturenID", (object)returnID ?? DBNull.Value);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -34,21 +34,21 @@ namespace CarRental_DataAccessLayer
                                 // The record was found successfully !
                                 isFound = true;
 
-                                ActualReturnDate = (DateTime)reader["ActualReturnDate"];
+                                actualReturnDate = (DateTime)reader["ActualReturnDate"];
 
-                                ActualRentalDays = (byte)reader["ActualRentalDays"];
+                                actualRentalDays = (byte)reader["ActualRentalDays"];
 
-                                Mileage = (short)reader["Mileage"];
+                                mileage = (short)reader["Mileage"];
 
-                                ConsumedMileage = (short)reader["ConsumedMileage"];
+                                consumedMileage = (short)reader["ConsumedMileage"];
 
-                                FinalCheckNotes = (reader["FinalCheckNotes"] != DBNull.Value) ? (string)reader["FinalCheckNotes"] : null;
+                                finalCheckNotes = (reader["FinalCheckNotes"] != DBNull.Value) ? (string)reader["FinalCheckNotes"] : null;
 
-                                AdditionalCharges = Convert.ToSingle(reader["AdditionalCharges"]);
+                                additionalCharges = Convert.ToSingle(reader["AdditionalCharges"]);
 
-                                ActualTotalDueAmount = Convert.ToSingle(reader["ActualTotalDueAmount"]);
+                                actualTotalDueAmount = Convert.ToSingle(reader["ActualTotalDueAmount"]);
 
-                                TransactionID = (int)reader["TransactionID"];
+                                transactionID = (int)reader["TransactionID"];
 
                             }
 
@@ -63,20 +63,20 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static bool DoesVehicleReturnExist(int? ReturenID)
+        public static bool DoesVehicleReturnExist(int? returnID)
         {
             bool isFound = false;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -84,7 +84,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@ReturenID", (object)ReturenID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@ReturenID", (object)returnID ?? DBNull.Value);
 
                         SqlParameter returnValue = new SqlParameter
                         {
@@ -101,36 +101,36 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 isFound = false;
             }
             return isFound;
         }
 
-        public static int? AddNewVehicleReturn(DateTime ActualReturnDate, byte ActualRentalDays,
-            short Mileage, short ConsumedMileage, string FinalCheckNotes,
-            float AdditionalCharges, float ActualTotalDueAmount, int TransactionID)
+        public static int? AddNewVehicleReturn(DateTime actualReturnDate, byte actualRentalDays,
+                                               short mileage, short consumedMileage, string finalCheckNotes,
+                                               float additionalCharges, float actualTotalDueAmount, int transactionID)
         {
             int? ReturenID = null;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_AddNewVehicleReturn", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@ActualReturnDate", ActualReturnDate);
-                        command.Parameters.AddWithValue("@ActualRentalDays", ActualRentalDays);
-                        command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@ConsumedMileage", ConsumedMileage);
-                        command.Parameters.AddWithValue("@FinalCheckNotes", (object)FinalCheckNotes ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@AdditionalCharges", AdditionalCharges);
-                        command.Parameters.AddWithValue("@ActualTotalDueAmount", ActualTotalDueAmount);
-                        command.Parameters.AddWithValue("@TransactionID", TransactionID);
+                        command.Parameters.AddWithValue("@ActualReturnDate", actualReturnDate);
+                        command.Parameters.AddWithValue("@ActualRentalDays", actualRentalDays);
+                        command.Parameters.AddWithValue("@Mileage", mileage);
+                        command.Parameters.AddWithValue("@ConsumedMileage", consumedMileage);
+                        command.Parameters.AddWithValue("@FinalCheckNotes", (object)finalCheckNotes ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@AdditionalCharges", additionalCharges);
+                        command.Parameters.AddWithValue("@ActualTotalDueAmount", actualTotalDueAmount);
+                        command.Parameters.AddWithValue("@TransactionID", transactionID);
 
 
                         SqlParameter outputReturenIDParameter = new SqlParameter("@NewReturenID", SqlDbType.Int)
@@ -148,38 +148,38 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 ReturenID = null;
             }
             return ReturenID;
         }
 
-        public static bool UpdateVehicleReturnInfo(int? ReturenID, DateTime ActualReturnDate,
-            byte ActualRentalDays, short Mileage, short ConsumedMileage,
-            string FinalCheckNotes, float AdditionalCharges, float ActualTotalDueAmount,
-            int TransactionID)
+        public static bool UpdateVehicleReturnInfo(int? returnID, DateTime actualReturnDate,
+                                                   byte actualRentalDays, short mileage, short consumedMileage,
+                                                   string finalCheckNotes, float additionalCharges, float actualTotalDueAmount,
+                                                   int transactionID)
         {
             int rowsAffected = 0;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand("SP_UpdateVehicleReturnInfo", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@ReturenID", ReturenID);
-                        command.Parameters.AddWithValue("@ActualReturnDate", ActualReturnDate);
-                        command.Parameters.AddWithValue("@ActualRentalDays", ActualRentalDays);
-                        command.Parameters.AddWithValue("@Mileage", Mileage);
-                        command.Parameters.AddWithValue("@ConsumedMileage", ConsumedMileage);
-                        command.Parameters.AddWithValue("@FinalCheckNotes", (object)FinalCheckNotes ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@AdditionalCharges", AdditionalCharges);
-                        command.Parameters.AddWithValue("@ActualTotalDueAmount", ActualTotalDueAmount);
-                        command.Parameters.AddWithValue("@TransactionID", TransactionID);
+                        command.Parameters.AddWithValue("@ReturenID", returnID);
+                        command.Parameters.AddWithValue("@ActualReturnDate", actualReturnDate);
+                        command.Parameters.AddWithValue("@ActualRentalDays", actualRentalDays);
+                        command.Parameters.AddWithValue("@Mileage", mileage);
+                        command.Parameters.AddWithValue("@ConsumedMileage", consumedMileage);
+                        command.Parameters.AddWithValue("@FinalCheckNotes", (object)finalCheckNotes ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@AdditionalCharges", additionalCharges);
+                        command.Parameters.AddWithValue("@ActualTotalDueAmount", actualTotalDueAmount);
+                        command.Parameters.AddWithValue("@TransactionID", transactionID);
 
 
                         rowsAffected = command.ExecuteNonQuery();
@@ -188,7 +188,7 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
 
                 rowsAffected = 0;
             }
@@ -197,11 +197,11 @@ namespace CarRental_DataAccessLayer
 
         public static DataTable GetAllVehicleReturns()
         {
-            DataTable Datatable = new DataTable();
+            DataTable vehicleReturnsDatatable = new DataTable();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
                 {
                     connection.Open();
 
@@ -213,7 +213,7 @@ namespace CarRental_DataAccessLayer
                         {
                             if (reader.HasRows)
                             {
-                                Datatable.Load(reader);
+                                vehicleReturnsDatatable.Load(reader);
                             }
                         }
                     }
@@ -221,9 +221,9 @@ namespace CarRental_DataAccessLayer
             }
             catch (Exception ex)
             {
-                clsErrorLogger.LogError(ex);
+                ErrorLogger.LogError(ex);
             }
-            return Datatable;
+            return vehicleReturnsDatatable;
         }
 
     }

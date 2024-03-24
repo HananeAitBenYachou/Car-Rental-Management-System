@@ -7,29 +7,31 @@ using static CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFi
 
 namespace CarRentalManagementSystem.Bookings
 {
-    public partial class frmAddRentalBooking : Form
+    public partial class FrmAddRentalBooking : Form
     {
-        private int? _VehicleID = null;
-        private int? _CustomerID = null;
+        private int? _vehicleID = null;
+        private int? _customerID = null;
 
-        private int? _BookingID = null;
-        private RentalBooking _Booking = null;
+        private int? _bookingID = null;
+        private RentalBooking _booking = null;
 
         public event EventHandler<int?> NewBookingAdded;
         protected virtual void OnNewBookingAdded()
         {
-            NewBookingAdded?.Invoke(this, _BookingID);
+            NewBookingAdded?.Invoke(this, _bookingID);
         }
 
-        public frmAddRentalBooking()
+        public FrmAddRentalBooking()
         {
             InitializeComponent();
-        }
-
-        private void _Reset()
-        {
             ucCustomerCardWithFilter1.CustomerFound += UcCustomerCardWithFilter1_CustomerFound;
             ucVehicleCardWithFilter1.VehicleFound += UcVehicleCardWithFilter1_VehicleFound;
+        }
+
+        private void Reset()
+        {
+        //    ucCustomerCardWithFilter1.CustomerFound += ucCustomerCardWithFilter1_CustomerFound;
+        //    ucVehicleCardWithFilter1.VehicleFound += ucVehicleCardWithFilter1_VehicleFound;
 
             ucCustomerCardWithFilter1.FilterEnabled = true;
             ucVehicleCardWithFilter1.FilterEnabled = true;
@@ -39,9 +41,9 @@ namespace CarRentalManagementSystem.Bookings
             btnToBookingInfo.Enabled = false;
         }
 
-        private void frmAddRentalBooking_Load(object sender, EventArgs e)
+        private void FrmAddRentalBooking_Load(object sender, EventArgs e)
         {
-            _Reset();
+            Reset();
         }
 
         private void UcVehicleCardWithFilter1_VehicleFound(object sender, VehicleFoundEventArgs vehicleInfo)
@@ -53,11 +55,11 @@ namespace CarRentalManagementSystem.Bookings
                 return;
             }
 
-            _VehicleID = vehicleInfo.VehicleID;
+            _vehicleID = vehicleInfo.VehicleID;
 
             btnToBookingInfo.Enabled = true;
 
-            txtVehicleID.Text = _VehicleID.ToString();
+            txtVehicleID.Text = _vehicleID.ToString();
             txtRentalPricePerDay.Text = vehicleInfo.RentalPricePerDay.ToString();
 
             dtpStartDate.MinDate = DateTime.Now;
@@ -73,47 +75,47 @@ namespace CarRentalManagementSystem.Bookings
 
         private void UcCustomerCardWithFilter1_CustomerFound(object sender, int? customerID)
         {
-            _CustomerID = customerID;
+            _customerID = customerID;
 
             btnToVehicleInfo.Enabled = true;
 
-            txtCustomerID.Text = _CustomerID.ToString();
+            txtCustomerID.Text = _customerID.ToString();
         }
 
-        private void btnToVehicleInfo_Click(object sender, EventArgs e)
+        private void BtnToVehicleInfo_Click(object sender, EventArgs e)
         {
             tcRentalBooking.SelectedTab = tpVehicleInfo;
         }
 
-        private void btnToBookingInfo_Click(object sender, EventArgs e)
+        private void BtnToBookingInfo_Click(object sender, EventArgs e)
         {
             tcRentalBooking.SelectedTab = tpBookingInfo;
         }
 
-        private void btnToVehicleInfo_EnabledChanged(object sender, EventArgs e)
+        private void BtnToVehicleInfo_EnabledChanged(object sender, EventArgs e)
         {
             tpVehicleInfo.Enabled = btnToVehicleInfo.Enabled;
         }
 
-        private void btnToBookingInfo_EnabledChanged(object sender, EventArgs e)
+        private void BtnToBookingInfo_EnabledChanged(object sender, EventArgs e)
         {
             tpBookingInfo.Enabled = btnToBookingInfo.Enabled;
         }
 
-        private bool _SaveRentalBookingInfo()
+        private bool SaveRentalBookingInfo()
         {
-            _Booking = new RentalBooking();
+            _booking = new RentalBooking();
 
-            _Booking.CustomerID = _CustomerID.Value;
-            _Booking.VehicleID = _VehicleID.Value;
-            _Booking.RentalStartDate = dtpStartDate.Value;
-            _Booking.RentalEndDate = dtpEndDate.Value;
-            _Booking.PickupLocation = txtPickUpLocation.Text.Trim();
-            _Booking.DropoffLocation = txtDropOffLocation.Text.Trim();
-            _Booking.RentalPricePerDay = Convert.ToSingle(txtRentalPricePerDay.Text.Trim());
-            _Booking.InitialCheckNotes = string.IsNullOrEmpty(txtInitialCheckNotes.Text) ? null : txtInitialCheckNotes.Text.Trim();
+            _booking.CustomerID = _customerID.Value;
+            _booking.VehicleID = _vehicleID.Value;
+            _booking.RentalStartDate = dtpStartDate.Value;
+            _booking.RentalEndDate = dtpEndDate.Value;
+            _booking.PickupLocation = txtPickUpLocation.Text.Trim();
+            _booking.DropoffLocation = txtDropOffLocation.Text.Trim();
+            _booking.RentalPricePerDay = Convert.ToSingle(txtRentalPricePerDay.Text.Trim());
+            _booking.InitialCheckNotes = string.IsNullOrEmpty(txtInitialCheckNotes.Text) ? null : txtInitialCheckNotes.Text.Trim();
 
-            if (!_Booking.Save())
+            if (!_booking.Save())
             {
                 MessageBox.Show("Failed to book the vehicle. Please try again.", "Booking Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -122,9 +124,9 @@ namespace CarRentalManagementSystem.Bookings
             else
             {
                 MessageBox.Show("Vehicle booked successfully from " + dtpStartDate.Value.ToShortDateString() + " to " + dtpEndDate.Value.ToShortDateString() + ".",
-                                "Booking Successful", MessageBoxButtons.OK, MessageBoxIcon.Information); _BookingID = _Booking.BookingID;
+                                "Booking Successful", MessageBoxButtons.OK, MessageBoxIcon.Information); _bookingID = _booking.BookingID;
 
-                txtBookingID.Text = _BookingID.ToString();
+                txtBookingID.Text = _bookingID.ToString();
 
                 btnSave.Enabled = false;
                 ucCustomerCardWithFilter1.FilterEnabled = false;
@@ -134,7 +136,7 @@ namespace CarRentalManagementSystem.Bookings
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
@@ -142,39 +144,39 @@ namespace CarRentalManagementSystem.Bookings
                 return;
             }
 
-            if (_SaveRentalBookingInfo())
+            if (SaveRentalBookingInfo())
                 OnNewBookingAdded();
         }
 
-        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        private void DtpEndDate_ValueChanged(object sender, EventArgs e)
         {
             TimeSpan difference = dtpEndDate.Value.Date - dtpStartDate.Value.Date;
-            int InitialRentalDays = (int)difference.TotalDays;
-            double RentalPricePerDay = Convert.ToDouble(txtRentalPricePerDay.Text);
+            int initialRentalDays = (int)difference.TotalDays;
+            double rentalPricePerDay = Convert.ToDouble(txtRentalPricePerDay.Text);
 
-            nudInitialRentalDays.Value = InitialRentalDays;
-            txtInitialTotalDueAmount.Text = (RentalPricePerDay * InitialRentalDays).ToString();
+            nudInitialRentalDays.Value = initialRentalDays;
+            txtInitialTotalDueAmount.Text = (rentalPricePerDay * initialRentalDays).ToString();
         }
 
-        private void textBox_Validating(object sender, CancelEventArgs e)
+        private void TextBox_Validating(object sender, CancelEventArgs e)
         {
-            Guna2TextBox txtTemp = (Guna2TextBox)sender;
+            Guna2TextBox temp = (Guna2TextBox)sender;
 
-            if (string.IsNullOrEmpty(txtTemp.Text.Trim()))
+            if (string.IsNullOrEmpty(temp.Text.Trim()))
             {
                 e.Cancel = true;
-                txtTemp.Focus();
-                errorProvider1.SetError(txtTemp, "This field is required !");
+                temp.Focus();
+                errorProvider1.SetError(temp, "This field is required !");
             }
 
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtTemp, null);
+                errorProvider1.SetError(temp, null);
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

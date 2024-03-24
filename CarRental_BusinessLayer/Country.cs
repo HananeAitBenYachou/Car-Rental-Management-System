@@ -8,28 +8,28 @@ namespace CarRental_BusinessLayer
         public int? CountryID { get; private set; }
         public string Name { get; set; }
 
-        private Country(int? CountryID, string Name)
+        private Country(int? countryID, string name)
         {
-            this.CountryID = CountryID;
-            this.Name = Name;
+            CountryID = countryID;
+            Name = name;
         }
 
-        public static Country Find(int? CountryID)
+        public static Country Find(int? countryID)
         {
             string CountryName = default;
 
-            bool isFound = CountryData.GetCountryInfoByID(CountryID, ref CountryName);
+            bool isFound = CountryData.GetCountryInfoByID(countryID, ref CountryName);
 
-            return isFound ? new Country(CountryID, CountryName) : null;
+            return isFound ? new Country(countryID, CountryName) : null;
         }
 
-        public static Country Find(string Name)
+        public static Country Find(string name)
         {
             int? CountryID = default;
 
-            bool isFound = CountryData.GetCountryInfoByName(Name, ref CountryID);
+            bool isFound = CountryData.GetCountryInfoByName(name, ref CountryID);
 
-            return isFound ? new Country(CountryID, Name) : null;
+            return isFound ? new Country(CountryID, name) : null;
         }
 
         public static DataTable GetAllCountries()

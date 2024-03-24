@@ -7,7 +7,7 @@ namespace CarRental_BusinessLayer
     public class Customer : Person
     {
         private new enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        private enMode _mode;
         public enum enFindCustomerBy : byte { PersonID = 0, CustomerID = 1, LicenseNumber = 3 }
 
         public int? CustomerID { get; private set; }
@@ -16,128 +16,129 @@ namespace CarRental_BusinessLayer
 
         public Customer() : base()
         {
-            _Mode = enMode.AddNew;
+            _mode = enMode.AddNew;
+
             CustomerID = null;
             DriverLicenseNumber = default;
             PersonID = null;
         }
-        private Customer(int? CustomerID, string DriverLicenseNumber, int? PersonID,
-            string NationalNo, string FirstName, string LastName, DateTime BirthDate, enGender Gender,
-            string Address, string Phone, string Email, int NationalityCountryID, string ImagePath) :
-            base(PersonID, NationalNo, FirstName, LastName, BirthDate, Gender, Address, Phone, Email, NationalityCountryID, ImagePath)
+        private Customer(int? customerID, string driverLicenseNumber, int? personID, string nationalNo, string firstName,
+                         string lastName, DateTime birthDate, enGender gender, string address, string phone,
+                         string email, int nationalityCountryID, string imagePath)
+
+           : base(personID, nationalNo, firstName, lastName, birthDate, gender, address, phone, email,
+                  nationalityCountryID, imagePath)
         {
-            _Mode = enMode.Update;
-            this.CustomerID = CustomerID;
-            this.DriverLicenseNumber = DriverLicenseNumber;
-            this.PersonID = PersonID;
+            _mode = enMode.Update;
+
+            CustomerID = customerID;
+            DriverLicenseNumber = driverLicenseNumber;
+            PersonID = personID;
         }
 
-        private static Customer _FindCustomerByCustomerID(int? CustomerID)
+        private static Customer FindCustomerByCustomerID(int? customerID)
         {
-            string DriverLicenseNumber = default;
-            int? PersonID = default;
+            string driverLicenseNumber = default;
+            int? personID = default;
 
-            bool isFound = CustomerData.GetCustomerInfoByID(CustomerID, ref DriverLicenseNumber, ref PersonID);
+            bool isFound = CustomerData.GetCustomerInfoByID(customerID, ref driverLicenseNumber, ref personID);
 
             if (isFound)
             {
-                Person person = Person.Find(PersonID);
+                Person person = Person.Find(personID);
 
                 if (person == null)
                     return null;
 
-                return new Customer(CustomerID, DriverLicenseNumber, PersonID,
-                    person.NationalNo, person.FirstName, person.LastName, person.BirthDate, person.Gender, person.Address,
-                    person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
-
+                return new Customer(customerID, driverLicenseNumber, personID, person.NationalNo, person.FirstName,
+                                    person.LastName, person.BirthDate, person.Gender, person.Address, person.Phone,
+                                    person.Email, person.NationalityCountryID, person.ImagePath);
             }
 
             else
                 return null;
         }
 
-        private static Customer _FindCustomerByPersonID(int? PersonID)
+        private static Customer FindCustomerByPersonID(int? personID)
         {
-            string DriverLicenseNumber = default;
-            int? CustomerID = default;
+            string driverLicenseNumber = default;
+            int? customerID = default;
 
-            bool isFound = CustomerData.GetCustomerInfoByPersonID(PersonID, ref CustomerID, ref DriverLicenseNumber);
+            bool isFound = CustomerData.GetCustomerInfoByPersonID(personID, ref customerID, ref driverLicenseNumber);
 
             if (isFound)
             {
-                Person person = Person.Find(PersonID);
+                Person person = Person.Find(personID);
 
                 if (person == null)
                     return null;
 
-                return new Customer(CustomerID, DriverLicenseNumber, PersonID,
-                    person.NationalNo, person.FirstName, person.LastName, person.BirthDate, person.Gender, person.Address,
-                    person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
-
+                return new Customer(customerID, driverLicenseNumber, personID, person.NationalNo, person.FirstName,
+                                    person.LastName, person.BirthDate, person.Gender, person.Address, person.Phone,
+                                    person.Email, person.NationalityCountryID, person.ImagePath);
             }
 
             else
                 return null;
         }
 
-        private static Customer _FindCustomerByLicenseNo(string DriverLicenseNumber)
+        private static Customer FindCustomerByLicenseNo(string driverLicenseNumber)
         {
-            int? CustomerID = default;
-            int? PersonID = default;
+            int? customerID = default;
+            int? personID = default;
 
-            bool isFound = CustomerData.GetCustomerInfoByLicenseNo(DriverLicenseNumber, ref CustomerID, ref PersonID);
+            bool isFound = CustomerData.GetCustomerInfoByLicenseNo(driverLicenseNumber, ref customerID, ref personID);
 
             if (isFound)
             {
-                Person person = Person.Find(PersonID);
+                Person person = Person.Find(personID);
 
                 if (person == null)
                     return null;
 
-                return new Customer(CustomerID, DriverLicenseNumber, PersonID,
-                    person.NationalNo, person.FirstName, person.LastName, person.BirthDate, person.Gender, person.Address,
-                    person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
-
+                return new Customer(customerID, driverLicenseNumber, personID, person.NationalNo, person.FirstName,
+                                    person.LastName, person.BirthDate, person.Gender, person.Address, person.Phone,
+                                    person.Email, person.NationalityCountryID, person.ImagePath);
             }
             else
                 return null;
         }
 
-        public static Customer Find<T>(T SearchValue, enFindCustomerBy FindCustomerBy)
+        public static Customer Find<T>(T searchValue, enFindCustomerBy findCustomerBy)
         {
-            switch (FindCustomerBy)
+            switch (findCustomerBy)
             {
                 case enFindCustomerBy.PersonID:
-                    return _FindCustomerByPersonID(Convert.ToInt16(SearchValue));
+                    return FindCustomerByPersonID(Convert.ToInt16(searchValue));
 
                 case enFindCustomerBy.CustomerID:
-                    return _FindCustomerByCustomerID(Convert.ToInt16(SearchValue));
+                    return FindCustomerByCustomerID(Convert.ToInt16(searchValue));
 
                 case enFindCustomerBy.LicenseNumber:
-                    return _FindCustomerByLicenseNo(Convert.ToString(SearchValue));
+                    return FindCustomerByLicenseNo(Convert.ToString(searchValue));
 
                 default:
                     return null;
             }
         }
 
-        public static bool DoesCustomerExist(int? CustomerID)
+        public static bool DoesCustomerExist(int? customerID)
         {
-            return CustomerData.DoesCustomerExist(CustomerID);
+            return CustomerData.DoesCustomerExist(customerID);
         }
 
-        public static bool DoesCustomerExist(string DriverLicenseNumber)
+        public static bool DoesCustomerExist(string driverLicenseNumber)
         {
-            return CustomerData.DoesCustomerExist(DriverLicenseNumber);
+            return CustomerData.DoesCustomerExist(driverLicenseNumber);
         }
 
-        private bool _AddNewCustomer()
+        private bool AddNewCustomer()
         {
             CustomerID = CustomerData.AddNewCustomer(DriverLicenseNumber, PersonID);
             return CustomerID.HasValue;
         }
 
-        private bool _UpdateCustomer()
+        private bool UpdateCustomer()
         {
             return CustomerData.UpdateCustomerInfo(CustomerID, DriverLicenseNumber, PersonID);
         }
@@ -147,33 +148,33 @@ namespace CarRental_BusinessLayer
             if (!base.Save())
                 return false;
 
-            this.PersonID = base.PersonID;
+            PersonID = base.PersonID;
 
-            switch (_Mode)
+            switch (_mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewCustomer())
+                    if (AddNewCustomer())
                     {
-                        _Mode = enMode.Update;
+                        _mode = enMode.Update;
                         return true;
                     }
                     return false;
 
                 case enMode.Update:
-                    return _UpdateCustomer();
+                    return UpdateCustomer();
 
             }
             return false;
         }
 
-        public static bool DeleteCustomer(int? CustomerID)
+        public static bool DeleteCustomer(int? customerID)
         {
-            int? personID = CustomerData.GetCustomerPersonID(CustomerID);
+            int? personID = CustomerData.GetCustomerPersonID(customerID);
 
             if (!personID.HasValue)
                 return false;
 
-            return Person.DeletePerson(personID) ? CustomerData.DeleteCustomer(CustomerID) : false;
+            return Person.DeletePerson(personID) ? CustomerData.DeleteCustomer(customerID) : false;
         }
 
         public static DataTable GetAllCustomers()

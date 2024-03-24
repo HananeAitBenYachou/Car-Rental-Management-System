@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Customers.UserControls
 {
-    partial class ucCustomerCardWithFilter
+    partial class UcCustomerCardWithFilter
     {
         /// <summary> 
         /// Required designer variable.
@@ -36,7 +36,7 @@
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCard();
+            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCard();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -80,8 +80,8 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(286, 43);
             this.txtFilterValue.TabIndex = 0;
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
-            this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
+            this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.TxtFilterValue_Validating);
             // 
             // btnAddCustomer
             // 
@@ -96,7 +96,7 @@
             this.btnAddCustomer.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnAddCustomer.Size = new System.Drawing.Size(50, 50);
             this.btnAddCustomer.TabIndex = 174;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            this.btnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
             // 
             // btnSearchCustomer
             // 
@@ -111,7 +111,7 @@
             this.btnSearchCustomer.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnSearchCustomer.Size = new System.Drawing.Size(50, 50);
             this.btnSearchCustomer.TabIndex = 173;
-            this.btnSearchCustomer.Click += new System.EventHandler(this.btnSearchCustomer_Click);
+            this.btnSearchCustomer.Click += new System.EventHandler(this.BtnSearchCustomer_Click);
             // 
             // cbFilterByOptions
             // 
@@ -134,7 +134,7 @@
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
             this.cbFilterByOptions.TabIndex = 172;
-            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
+            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -170,7 +170,7 @@
             this.Controls.Add(this.gbFilter);
             this.Name = "ucCustomerCardWithFilter";
             this.Size = new System.Drawing.Size(1014, 749);
-            this.Load += new System.EventHandler(this.ucCustomerCardWithFilter_Load);
+            this.Load += new System.EventHandler(this.UcCustomerCardWithFilter_Load);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -182,7 +182,7 @@
 
         private Guna.UI2.WinForms.Guna2GroupBox gbFilter;
         private System.Windows.Forms.Label label2;
-        private ucCustomerCard ucCustomerCard1;
+        private UcCustomerCard ucCustomerCard1;
         private Guna.UI2.WinForms.Guna2ComboBox cbFilterByOptions;
         private Guna.UI2.WinForms.Guna2ImageButton btnAddCustomer;
         private Guna.UI2.WinForms.Guna2ImageButton btnSearchCustomer;

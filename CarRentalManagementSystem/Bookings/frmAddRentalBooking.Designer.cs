@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Bookings
 {
-    partial class frmAddRentalBooking
+    partial class FrmAddRentalBooking
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             this.tpCustomerInfo = new System.Windows.Forms.TabPage();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnToVehicleInfo = new Guna.UI2.WinForms.Guna2Button();
-            this.ucCustomerCardWithFilter1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCardWithFilter();
+            this.ucCustomerCardWithFilter1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCardWithFilter();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
             this.btnToBookingInfo = new Guna.UI2.WinForms.Guna2Button();
             this.ucVehicleCardWithFilter1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter();
@@ -183,7 +183,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 53);
             this.btnClose.TabIndex = 233;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnToVehicleInfo
             // 
@@ -202,8 +202,8 @@
             this.btnToVehicleInfo.Size = new System.Drawing.Size(171, 53);
             this.btnToVehicleInfo.TabIndex = 232;
             this.btnToVehicleInfo.Text = "Next";
-            this.btnToVehicleInfo.EnabledChanged += new System.EventHandler(this.btnToVehicleInfo_EnabledChanged);
-            this.btnToVehicleInfo.Click += new System.EventHandler(this.btnToVehicleInfo_Click);
+            this.btnToVehicleInfo.EnabledChanged += new System.EventHandler(this.BtnToVehicleInfo_EnabledChanged);
+            this.btnToVehicleInfo.Click += new System.EventHandler(this.BtnToVehicleInfo_Click);
             // 
             // ucCustomerCardWithFilter1
             // 
@@ -244,8 +244,8 @@
             this.btnToBookingInfo.Size = new System.Drawing.Size(171, 53);
             this.btnToBookingInfo.TabIndex = 233;
             this.btnToBookingInfo.Text = "Next";
-            this.btnToBookingInfo.EnabledChanged += new System.EventHandler(this.btnToBookingInfo_EnabledChanged);
-            this.btnToBookingInfo.Click += new System.EventHandler(this.btnToBookingInfo_Click);
+            this.btnToBookingInfo.EnabledChanged += new System.EventHandler(this.BtnToBookingInfo_EnabledChanged);
+            this.btnToBookingInfo.Click += new System.EventHandler(this.BtnToBookingInfo_Click);
             // 
             // ucVehicleCardWithFilter1
             // 
@@ -307,7 +307,7 @@
             this.btnSave.Size = new System.Drawing.Size(279, 66);
             this.btnSave.TabIndex = 262;
             this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // txtInitialCheckNotes
             // 
@@ -366,7 +366,7 @@
             this.txtPickUpLocation.SelectedText = "";
             this.txtPickUpLocation.Size = new System.Drawing.Size(229, 43);
             this.txtPickUpLocation.TabIndex = 257;
-            this.txtPickUpLocation.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            this.txtPickUpLocation.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // label9
             // 
@@ -402,7 +402,7 @@
             this.txtDropOffLocation.SelectedText = "";
             this.txtDropOffLocation.Size = new System.Drawing.Size(229, 43);
             this.txtDropOffLocation.TabIndex = 255;
-            this.txtDropOffLocation.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
+            this.txtDropOffLocation.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // label10
             // 
@@ -561,7 +561,7 @@
             this.dtpEndDate.Size = new System.Drawing.Size(229, 43);
             this.dtpEndDate.TabIndex = 213;
             this.dtpEndDate.Value = new System.DateTime(2024, 3, 2, 0, 28, 59, 414);
-            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.DtpEndDate_ValueChanged);
             // 
             // label4
             // 
@@ -720,7 +720,7 @@
             this.Name = "frmAddRentalBooking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddBooking";
-            this.Load += new System.EventHandler(this.frmAddRentalBooking_Load);
+            this.Load += new System.EventHandler(this.FrmAddRentalBooking_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             this.tcRentalBooking.ResumeLayout(false);
@@ -743,7 +743,7 @@
         private Guna.UI2.WinForms.Guna2TabControl tcRentalBooking;
         private System.Windows.Forms.TabPage tpCustomerInfo;
         private System.Windows.Forms.TabPage tpVehicleInfo;
-        private Customers.UserControls.ucCustomerCardWithFilter ucCustomerCardWithFilter1;
+        private Customers.UserControls.UcCustomerCardWithFilter ucCustomerCardWithFilter1;
         private Vehicles.UserControls.ucVehicleCardWithFilter ucVehicleCardWithFilter1;
         private System.Windows.Forms.TabPage tpBookingInfo;
         private Guna.UI2.WinForms.Guna2TextBox txtCustomerID;

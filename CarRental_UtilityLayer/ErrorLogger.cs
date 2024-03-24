@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace CarRental_UtilityLayer
 {
-    public static class clsErrorLogger
+    public static class ErrorLogger
     {
         public static void LogError(Exception ex)
         {

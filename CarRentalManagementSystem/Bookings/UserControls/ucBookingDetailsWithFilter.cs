@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Bookings.UserControls
 {
-    public partial class ucBookingDetailsWithFilter : UserControl
+    public partial class UcBookingDetailsWithFilter : UserControl
     {
-        private int? _BookingID => ucBookingDetails1.BookingID;
-        private RentalBooking _Booking => ucBookingDetails1.Booking;
+        public int? BookingID => ucBookingDetails1.BookingID;
+        public RentalBooking Booking => ucBookingDetails1.Booking;
 
         public bool FilterEnabled
         {
@@ -26,34 +26,40 @@ namespace CarRentalManagementSystem.Bookings.UserControls
             }
         }
 
+
         public event EventHandler<int?> BookingFound;
         protected virtual void OnBookingFound()
         {
-            BookingFound?.Invoke(this, _BookingID);
+            BookingFound?.Invoke(this, BookingID);
         }
 
-        public ucBookingDetailsWithFilter()
+        public UcBookingDetailsWithFilter()
         {
             InitializeComponent();
         }
 
-        public void LoadBookingData(int? bookingID)
+        public bool LoadBookingData(int? bookingID)
         {
             txtBookingID.Text = bookingID.ToString();
-            _FindBooking();
+
+            if (!FindBooking())
+                return false;
+
+            OnBookingFound();
+            return true;
         }
 
-        private void _ClearErrorProvider()
+        private void ClearErrorProvider()
         {
             errorProvider1.SetError(txtBookingID, null);
         }
 
-        private bool _FindBooking()
+        private bool FindBooking()
         {
             return ucBookingDetails1.LoadBookingData(Convert.ToInt16(txtBookingID.Text.Trim()));
         }
 
-        private void btnSearchBooking_Click(object sender, EventArgs e)
+        private void BtnSearchBooking_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
@@ -61,33 +67,33 @@ namespace CarRentalManagementSystem.Bookings.UserControls
                 return;
             }
 
-            if (_FindBooking())
+            if (FindBooking())
                 OnBookingFound();
         }
 
-        private void btnAddBooking_Click(object sender, EventArgs e)
+        private void BtnAddBooking_Click(object sender, EventArgs e)
         {
-            frmAddRentalBooking form = new frmAddRentalBooking();
-            form.NewBookingAdded += frmAddRentalBooking_NewBookingAdded;
+            FrmAddRentalBooking form = new FrmAddRentalBooking();
+            form.NewBookingAdded += FrmAddRentalBooking_NewBookingAdded;
             form.ShowDialog();
         }
 
-        private void frmAddRentalBooking_NewBookingAdded(object sender, int? bookingID)
+        private void FrmAddRentalBooking_NewBookingAdded(object sender, int? bookingID)
         {
             LoadBookingData(bookingID);
-            _ClearErrorProvider();
+            ClearErrorProvider();
             FilterEnabled = false;
 
             OnBookingFound();
         }
 
-        private void txtBookingID_Validating(object sender, CancelEventArgs e)
+        private void TxtBookingID_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtBookingID.Text))
             {
                 e.Cancel = true;
                 txtBookingID.Focus();
-                errorProvider1.SetError(txtBookingID, "Please enter the booking'ID you want to search !");
+                errorProvider1.SetError(txtBookingID, "Please enter the rental booking's ID you want to search !");
             }
 
             else
@@ -97,10 +103,9 @@ namespace CarRentalManagementSystem.Bookings.UserControls
             }
         }
 
-        private void txtBookingID_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtBookingID_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-
     }
 }

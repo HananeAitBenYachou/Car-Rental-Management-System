@@ -38,7 +38,7 @@
             this.tpCustomerInfo = new System.Windows.Forms.TabPage();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
             this.tpVehicleReturnInfo = new System.Windows.Forms.TabPage();
-            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.ucCustomerCard();
+            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCard();
             this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
             this.ucVehicleReturnDetails1 = new CarRentalManagementSystem.Returns.UserControls.ucVehicleReturnDetails();
             this.guna2GradientPanel1.SuspendLayout();
@@ -239,7 +239,7 @@
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2TabControl tcVehicleReturn;
         private System.Windows.Forms.TabPage tpCustomerInfo;
-        private Customers.UserControls.ucCustomerCard ucCustomerCard1;
+        private Customers.UserControls.UcCustomerCard ucCustomerCard1;
         private System.Windows.Forms.TabPage tpVehicleInfo;
         private Vehicles.UserControls.ucVehicleCard ucVehicleCard1;
         private System.Windows.Forms.TabPage tpVehicleReturnInfo;

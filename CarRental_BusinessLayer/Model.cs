@@ -11,33 +11,33 @@ namespace CarRental_BusinessLayer
 
         public Make MakeInfo { get; }
 
-        private Model(int? ModelID, int MakeID, string ModelName)
+        private Model(int? modelID, int makeID, string modelName)
         {
-            this.ModelID = ModelID;
-            this.MakeID = MakeID;
-            this.ModelName = ModelName;
+            ModelID = modelID;
+            MakeID = makeID;
+            ModelName = modelName;
 
-            MakeInfo = Make.Find(MakeID);
+            MakeInfo = Make.Find(makeID);
         }
 
-        public static Model Find(int? ModelID)
+        public static Model Find(int? modelID)
         {
-            int MakeID = default;
-            string ModelName = default;
+            int makeID = default;
+            string modelName = default;
 
-            bool isFound = ModelData.GetModelInfoByID(ModelID, ref MakeID, ref ModelName);
+            bool isFound = ModelData.GetModelInfoByID(modelID, ref makeID, ref modelName);
 
-            return isFound ? new Model(ModelID, MakeID, ModelName) : null;
+            return isFound ? new Model(modelID, makeID, modelName) : null;
         }
 
-        public static Model Find(string ModelName)
+        public static Model Find(string modelName)
         {
-            int MakeID = default;
-            int? ModelID = default;
+            int makeID = default;
+            int? modelID = default;
 
-            bool isFound = ModelData.GetModelInfoByName(ModelName, ref ModelID, ref MakeID);
+            bool isFound = ModelData.GetModelInfoByName(modelName, ref modelID, ref makeID);
 
-            return isFound ? new Model(ModelID, MakeID, ModelName) : null;
+            return isFound ? new Model(modelID, makeID, modelName) : null;
         }
 
         public static DataTable GetAllModels()
@@ -45,9 +45,9 @@ namespace CarRental_BusinessLayer
             return ModelData.GetAllModels();
         }
 
-        public static DataTable GetAllModelsPerMake(int MakeID)
+        public static DataTable GetAllModelsPerMake(int makeID)
         {
-            return ModelData.GetAllModelsPerMake(MakeID);
+            return ModelData.GetAllModelsPerMake(makeID);
         }
 
     }

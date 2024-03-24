@@ -33,7 +33,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tcReturnVehicle = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
-            this.ucBookingDetailsWithFilter1 = new CarRentalManagementSystem.Bookings.UserControls.ucBookingDetailsWithFilter();
+            this.ucBookingDetailsWithFilter1 = new CarRentalManagementSystem.Bookings.UserControls.UcBookingDetailsWithFilter();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.tpReturnInfo = new System.Windows.Forms.TabPage();
@@ -641,6 +641,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label lblTitle;
-        private Bookings.UserControls.ucBookingDetailsWithFilter ucBookingDetailsWithFilter1;
+        private Bookings.UserControls.UcBookingDetailsWithFilter ucBookingDetailsWithFilter1;
     }
 }
