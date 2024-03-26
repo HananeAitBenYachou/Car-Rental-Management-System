@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Returns
 {
-    partial class frmListVehicleReturns
+    partial class FrmListVehicleReturns
     {
         /// <summary>
         /// Required designer variable.
@@ -115,8 +115,8 @@
             this.dgvReturnsList.ThemeStyle.RowsStyle.Height = 24;
             this.dgvReturnsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvReturnsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvReturnsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehicleReturnsList_CellContentClick);
-            this.dgvReturnsList.SelectionChanged += new System.EventHandler(this.dgvVehicleReturnsList_SelectionChanged);
+            this.dgvReturnsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVehicleReturnsList_CellContentClick);
+            this.dgvReturnsList.SelectionChanged += new System.EventHandler(this.DgvVehicleReturnsList_SelectionChanged);
             // 
             // dtpActualReturnDate
             // 
@@ -132,7 +132,7 @@
             this.dtpActualReturnDate.Size = new System.Drawing.Size(229, 43);
             this.dtpActualReturnDate.TabIndex = 32;
             this.dtpActualReturnDate.Value = new System.DateTime(2024, 3, 2, 0, 28, 59, 414);
-            this.dtpActualReturnDate.ValueChanged += new System.EventHandler(this.dtpVehicleReturns_ValueChanged);
+            this.dtpActualReturnDate.ValueChanged += new System.EventHandler(this.DtpVehicleReturns_ValueChanged);
             // 
             // cbFilterByOptions
             // 
@@ -159,9 +159,9 @@
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
             this.cbFilterByOptions.TabIndex = 30;
-            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
-            this.cbFilterByOptions.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            this.cbFilterByOptions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
+            this.cbFilterByOptions.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
+            this.cbFilterByOptions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
             // 
             // label2
             // 
@@ -257,7 +257,7 @@
             this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
             this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(287, 36);
             this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
-            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.showReturnInformationToolStripMenuItem_Click);
+            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
             // 
             // frmListVehicleReturns
             // 
@@ -277,7 +277,7 @@
             this.Name = "frmListVehicleReturns";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListVehicleReturns";
-            this.Load += new System.EventHandler(this.frmListVehicleReturns_Load);
+            this.Load += new System.EventHandler(this.FrmListVehicleReturns_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnsList)).EndInit();
             this.cbVehicleReturns.ResumeLayout(false);
             this.ResumeLayout(false);

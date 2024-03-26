@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtUserID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.ucPersonCard1 = new CarRentalManagementSystem.People.UserControls.ucPersonCard();
+            this.ucPersonCard1 = new CarRentalManagementSystem.People.UserControls.UcPersonCard();
             this.guna2GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,7 +188,7 @@
 
         #endregion
 
-        private People.UserControls.ucPersonCard ucPersonCard1;
+        private People.UserControls.UcPersonCard ucPersonCard1;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsIsActive;
         private Guna.UI2.WinForms.Guna2TextBox txtUserName;

@@ -5,50 +5,50 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Transactions
 {
-    public partial class frmListTransactions : Form
+    public partial class FrmListTransactions : Form
     {
-        private enum _FilterOptions
+        private enum FilterOptions
         {
             TransactionDate,
             UpdatedTransactionDate
         }
 
-        private DataView _TransactionsDataView;
+        private DataView _transactionsDataView;
 
-        public frmListTransactions()
+        public FrmListTransactions()
         {
             InitializeComponent();
         }
 
-        private void _RefreshTransactionsList()
+        private void RefreshTransactionsList()
         {
-            _TransactionsDataView = RentalTransaction.GetAllRentalTransactions().DefaultView;
-            dgvTransactionsList.DataSource = _TransactionsDataView;
+            _transactionsDataView = RentalTransaction.GetAllRentalTransactions().DefaultView;
+            dgvTransactionsList.DataSource = _transactionsDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
 
-        private void _FilterTransactionsList()
+        private void FilterTransactionsList()
         {
             if (string.IsNullOrEmpty(txtFilterValue.Text))
             {
-                _TransactionsDataView.RowFilter = null;
+                _transactionsDataView.RowFilter = null;
                 return;
             }
 
             if (cbFilterByOptions.Text.Trim().EndsWith("ID"))
-                _TransactionsDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
+                _transactionsDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
             else
-                _TransactionsDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
+                _transactionsDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
         }
 
-        private void frmListTransactions_Load(object sender, EventArgs e)
+        private void FrmListTransactions_Load(object sender, EventArgs e)
         {
-            _RefreshTransactionsList();
+            RefreshTransactionsList();
         }
 
-        private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ", ""), true, out _FilterOptions result))
+            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ", ""), true, out FilterOptions result))
             {
                 txtFilterValue.Visible = false;
                 dtpTemp.Visible = true;
@@ -61,41 +61,41 @@ namespace CarRentalManagementSystem.Transactions
                 txtFilterValue.Visible = (cbFilterByOptions.Text != "None");
                 txtFilterValue.ResetText();
                 txtFilterValue.Focus();
-                txtFilterValue_TextChanged(null, null);
+                TxtFilterValue_TextChanged(null, null);
             }
         }
 
-        private void txtFilterValue_TextChanged(object sender, EventArgs e)
+        private void TxtFilterValue_TextChanged(object sender, EventArgs e)
         {
-            _FilterTransactionsList();
+            FilterTransactionsList();
         }
 
-        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cbFilterByOptions.Text.EndsWith("ID"))
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void showTransactionInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowTransactionInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowTransactionDetails form = new frmShowTransactionDetails((int)dgvTransactionsList.CurrentRow.Cells[0].Value);
+            FrmShowTransactionDetails form = new FrmShowTransactionDetails((int)dgvTransactionsList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
 
-        private void dgvTransactionsList_SelectionChanged(object sender, EventArgs e)
+        private void DgvTransactionsList_SelectionChanged(object sender, EventArgs e)
         {
             cbRentalTransactions.Enabled = dgvTransactionsList.SelectedRows.Count > 0 ? true : false;
         }
 
-        private void dgvTransactionsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvTransactionsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             showTransactionInformationToolStripMenuItem.PerformClick();
         }
 
-        private void dtpTemp_ValueChanged(object sender, EventArgs e)
+        private void DtpTemp_ValueChanged(object sender, EventArgs e)
         {
 
-            _TransactionsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpTemp.Value.Date.ToString("dd-MM-yyyy"));
+            _transactionsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpTemp.Value.Date.ToString("dd-MM-yyyy"));
         }
     }
 }

@@ -40,7 +40,7 @@
             this.ucCustomerCardWithFilter1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCardWithFilter();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
             this.btnToBookingInfo = new Guna.UI2.WinForms.Guna2Button();
-            this.ucVehicleCardWithFilter1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter();
+            this.ucVehicleCardWithFilter1 = new CarRentalManagementSystem.Vehicles.UserControls.UcVehicleCardWithFilter();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.txtInitialCheckNotes = new Guna.UI2.WinForms.Guna2TextBox();
@@ -744,7 +744,7 @@
         private System.Windows.Forms.TabPage tpCustomerInfo;
         private System.Windows.Forms.TabPage tpVehicleInfo;
         private Customers.UserControls.UcCustomerCardWithFilter ucCustomerCardWithFilter1;
-        private Vehicles.UserControls.ucVehicleCardWithFilter ucVehicleCardWithFilter1;
+        private Vehicles.UserControls.UcVehicleCardWithFilter ucVehicleCardWithFilter1;
         private System.Windows.Forms.TabPage tpBookingInfo;
         private Guna.UI2.WinForms.Guna2TextBox txtCustomerID;
         private System.Windows.Forms.Label label1;

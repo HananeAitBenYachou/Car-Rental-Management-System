@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Transactions.UserControls
 {
-    public partial class ucTransactionDetails : UserControl
+    public partial class UcTransactionDetails : UserControl
     {
         public int? TransactionID { get; private set; } = null;
         public RentalTransaction Transaction { get; private set; } = null;
 
-        public ucTransactionDetails()
+        public UcTransactionDetails()
         {
             InitializeComponent();
         }

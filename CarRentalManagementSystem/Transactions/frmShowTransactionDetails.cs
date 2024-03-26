@@ -3,24 +3,24 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Transactions
 {
-    public partial class frmShowTransactionDetails : Form
+    public partial class FrmShowTransactionDetails : Form
     {
-        private int? _TransactionID = null;
+        private int? _transactionID = null;
 
-        public frmShowTransactionDetails(int? transactionID)
+        public FrmShowTransactionDetails(int? transactionID)
         {
             InitializeComponent();
-            _TransactionID = transactionID;
+            _transactionID = transactionID;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void frmShowTransactionDetails_Load(object sender, EventArgs e)
+        private void FrmShowTransactionDetails_Load(object sender, EventArgs e)
         {
-            if (!ucTransactionDetails1.LoadTransactionData(_TransactionID))
+            if (!ucTransactionDetails1.LoadTransactionData(_transactionID))
                 btnClose.PerformClick();
         }
 

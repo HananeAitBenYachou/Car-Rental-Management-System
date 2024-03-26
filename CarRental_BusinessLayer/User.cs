@@ -124,7 +124,7 @@ namespace CarRental_BusinessLayer
             int? userID = default;
             bool isActive = default;
 
-            bool isFound = UserData.GetUserInfoByUserNameAndPassword(userName, password, ref userID, ref personID,ref isActive);
+            bool isFound = UserData.GetUserInfoByUserNameAndPassword(userName, password, ref userID, ref personID, ref isActive);
 
             if (isFound)
             {

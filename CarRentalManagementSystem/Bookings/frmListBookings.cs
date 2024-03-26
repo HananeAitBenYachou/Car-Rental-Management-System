@@ -91,7 +91,7 @@ namespace CarRentalManagementSystem.Bookings
 
         private void ReturnVehicleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReturnRentedVehicle form = new frmReturnRentedVehicle((int)dgvBookingsList.CurrentRow.Cells[0].Value);
+            FrmReturnRentedVehicle form = new FrmReturnRentedVehicle((int)dgvBookingsList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
 
             RefreshBookingsList();
@@ -102,6 +102,6 @@ namespace CarRentalManagementSystem.Bookings
             RentalBooking rentalBooking = RentalBooking.Find((int)dgvBookingsList.CurrentRow.Cells[0].Value);
             returnVehicleToolStripMenuItem.Enabled = rentalBooking.IsBookingActive;
         }
-   
+
     }
 }

@@ -34,11 +34,11 @@ namespace CarRental_DataAccessLayer
 
                                 vehicleID = (int)reader["VehicleID"];
 
-                                description = (string)reader["Description"];
+                                description = reader["Description"] != DBNull.Value ? (string)reader["Description"] : null;
 
                                 maintenanceDate = (DateTime)reader["MaintenanceDate"];
 
-                                cost = (double)reader["Cost"];
+                                cost = Convert.ToSingle(reader["Cost"]);
 
                             }
 
@@ -100,7 +100,7 @@ namespace CarRental_DataAccessLayer
 
         public static int? AddNewMaintenance(int vehicleID, string description, DateTime maintenanceDate, double cost)
         {
-            int? MaintenanceID = null;
+            int? maintenanceID = null;
 
             try
             {
@@ -112,7 +112,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@VehicleID", vehicleID);
-                        command.Parameters.AddWithValue("@Description", description);
+                        command.Parameters.AddWithValue("@Description", (object) description ?? DBNull.Value);
                         command.Parameters.AddWithValue("@MaintenanceDate", maintenanceDate);
                         command.Parameters.AddWithValue("@Cost", cost);
 
@@ -126,7 +126,7 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteNonQuery();
 
-                        MaintenanceID = (int)outputParameter.Value;
+                        maintenanceID = (int)outputParameter.Value;
                     }
                 }
             }
@@ -134,9 +134,9 @@ namespace CarRental_DataAccessLayer
             {
                 ErrorLogger.LogError(ex);
 
-                MaintenanceID = null;
+                maintenanceID = null;
             }
-            return MaintenanceID;
+            return maintenanceID;
         }
 
         public static bool UpdateMaintenanceInfo(int? maintenanceID, int vehicleID, string description,
@@ -155,7 +155,7 @@ namespace CarRental_DataAccessLayer
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@MaintenanceID", maintenanceID);
                         command.Parameters.AddWithValue("@VehicleID", vehicleID);
-                        command.Parameters.AddWithValue("@Description", description);
+                        command.Parameters.AddWithValue("@Description", (object)description ?? DBNull.Value);
                         command.Parameters.AddWithValue("@MaintenanceDate", maintenanceDate);
                         command.Parameters.AddWithValue("@Cost", cost);
 
@@ -172,7 +172,7 @@ namespace CarRental_DataAccessLayer
             }
             return rowsAffected != 0;
         }
-    
+
         public static bool DeleteMaintenance(int? maintenanceID)
         {
             int rowsAffected = 0;

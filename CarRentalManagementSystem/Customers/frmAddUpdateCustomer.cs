@@ -11,7 +11,7 @@ using static CarRental_BusinessLayer.Customer;
 
 namespace CarRentalManagementSystem.Customers
 {
-    public partial class frmAddUpdateCustomer : Form
+    public partial class FrmAddUpdateCustomer : Form
     {
         private enum EnMode : byte { AddNew = 0, Update = 1 };
         private EnMode _mode = EnMode.AddNew;
@@ -27,13 +27,13 @@ namespace CarRentalManagementSystem.Customers
 
         private Customer _customer = null;
 
-        public frmAddUpdateCustomer(int? customerID)
+        public FrmAddUpdateCustomer(int? customerID)
         {
             InitializeComponent();
             _mode = EnMode.Update;
             _customerID = customerID;
         }
-        public frmAddUpdateCustomer()
+        public FrmAddUpdateCustomer()
         {
             InitializeComponent();
             _mode = EnMode.AddNew;

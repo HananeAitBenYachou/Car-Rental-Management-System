@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Returns.UserControls
 {
-    public partial class ucVehicleReturnDetails : UserControl
+    public partial class UcVehicleReturnDetails : UserControl
     {
         public int? ReturnID { get; private set; } = null;
         public VehicleReturn VehicleReturn { get; private set; } = null;
 
-        public ucVehicleReturnDetails()
+        public UcVehicleReturnDetails()
         {
             InitializeComponent();
         }

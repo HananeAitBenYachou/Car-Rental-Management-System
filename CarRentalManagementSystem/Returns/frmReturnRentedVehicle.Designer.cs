@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Returns
 {
-    partial class frmReturnRentedVehicle
+    partial class FrmReturnRentedVehicle
     {
         /// <summary>
         /// Required designer variable.
@@ -34,10 +34,7 @@
             this.tcReturnVehicle = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
             this.ucBookingDetailsWithFilter1 = new CarRentalManagementSystem.Bookings.UserControls.UcBookingDetailsWithFilter();
-            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.tpReturnInfo = new System.Windows.Forms.TabPage();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.txtFinalCheckNotes = new Guna.UI2.WinForms.Guna2TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtAdditionalCharges = new Guna.UI2.WinForms.Guna2TextBox();
@@ -57,8 +54,11 @@
             this.txtTransactionID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tcReturnVehicle.SuspendLayout();
             this.tpBookingInfo.SuspendLayout();
@@ -132,45 +132,6 @@
             this.ucBookingDetailsWithFilter1.Size = new System.Drawing.Size(1047, 616);
             this.ucBookingDetailsWithFilter1.TabIndex = 234;
             // 
-            // btnClose
-            // 
-            this.btnClose.BorderRadius = 22;
-            this.btnClose.CustomizableEdges.TopLeft = false;
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.btnClose.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
-            this.btnClose.Location = new System.Drawing.Point(3, 631);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(171, 53);
-            this.btnClose.TabIndex = 233;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.BorderRadius = 22;
-            this.btnNext.CustomizableEdges.TopRight = false;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.btnNext.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Image = global::CarRentalManagementSystem.Properties.Resources.next;
-            this.btnNext.Location = new System.Drawing.Point(879, 631);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(171, 53);
-            this.btnNext.TabIndex = 232;
-            this.btnNext.Text = "Next";
-            this.btnNext.EnabledChanged += new System.EventHandler(this.btnNext_EnabledChanged);
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
             // tpReturnInfo
             // 
             this.tpReturnInfo.Controls.Add(this.btnSave);
@@ -199,25 +160,6 @@
             this.tpReturnInfo.TabIndex = 2;
             this.tpReturnInfo.Text = "Return Info";
             this.tpReturnInfo.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BorderRadius = 22;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::CarRentalManagementSystem.Properties.Resources.folder;
-            this.btnSave.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnSave.Location = new System.Drawing.Point(835, 487);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(178, 66);
-            this.btnSave.TabIndex = 262;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtFinalCheckNotes
             // 
@@ -312,9 +254,9 @@
             this.txtMileage.SelectedText = "";
             this.txtMileage.Size = new System.Drawing.Size(229, 43);
             this.txtMileage.TabIndex = 255;
-            this.txtMileage.TextChanged += new System.EventHandler(this.txtMileage_TextChanged);
+            this.txtMileage.TextChanged += new System.EventHandler(this.TxtMileage_TextChanged);
             this.txtMileage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
-            this.txtMileage.Validating += new System.ComponentModel.CancelEventHandler(this.txtMileage_Validating);
+            this.txtMileage.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMileage_Validating);
             // 
             // label10
             // 
@@ -468,7 +410,7 @@
             this.dtpActualReturnDate.Size = new System.Drawing.Size(229, 43);
             this.dtpActualReturnDate.TabIndex = 213;
             this.dtpActualReturnDate.Value = new System.DateTime(2024, 3, 2, 0, 28, 59, 414);
-            this.dtpActualReturnDate.ValueChanged += new System.EventHandler(this.dtpActualReturnDate_ValueChanged);
+            this.dtpActualReturnDate.ValueChanged += new System.EventHandler(this.DtpActualReturnDate_ValueChanged);
             // 
             // txtReturnID
             // 
@@ -558,6 +500,76 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(1061, 88);
             this.guna2GradientPanel1.TabIndex = 205;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(85, 29);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(162, 30);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "Return Vehicle";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BorderRadius = 22;
+            this.btnClose.CustomizableEdges.TopLeft = false;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnClose.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
+            this.btnClose.Location = new System.Drawing.Point(3, 631);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(171, 53);
+            this.btnClose.TabIndex = 233;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BorderRadius = 22;
+            this.btnNext.CustomizableEdges.TopRight = false;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnNext.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.White;
+            this.btnNext.Image = global::CarRentalManagementSystem.Properties.Resources.next;
+            this.btnNext.Location = new System.Drawing.Point(879, 631);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(171, 53);
+            this.btnNext.TabIndex = 232;
+            this.btnNext.Text = "Next";
+            this.btnNext.EnabledChanged += new System.EventHandler(this.BtnNext_EnabledChanged);
+            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BorderRadius = 22;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::CarRentalManagementSystem.Properties.Resources.folder;
+            this.btnSave.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnSave.Location = new System.Drawing.Point(835, 487);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(178, 66);
+            this.btnSave.TabIndex = 262;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
             // guna2ImageButton1
             // 
             this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
@@ -573,19 +585,7 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(55, 55);
             this.guna2ImageButton1.TabIndex = 3;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(85, 29);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(162, 30);
-            this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "Return Vehicle";
-            // 
-            // frmReturnRentedVehicle
+            // FrmReturnRentedVehicle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -594,10 +594,10 @@
             this.Controls.Add(this.tcReturnVehicle);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmReturnRentedVehicle";
+            this.Name = "FrmReturnRentedVehicle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmReturnRentedVehicle";
-            this.Load += new System.EventHandler(this.frmAddRentalBooking_Load);
+            this.Load += new System.EventHandler(this.FrmAddRentalBooking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.tcReturnVehicle.ResumeLayout(false);
             this.tpBookingInfo.ResumeLayout(false);

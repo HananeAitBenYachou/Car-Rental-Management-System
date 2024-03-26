@@ -3,23 +3,23 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Vehicles
 {
-    public partial class frmShowVehicleDetails : Form
+    public partial class FrmShowVehicleDetails : Form
     {
-        private int? _VehicleID = null;
+        private int? _vehicleID = null;
 
-        public frmShowVehicleDetails(int? vehicleID)
+        public FrmShowVehicleDetails(int? vehicleID)
         {
             InitializeComponent();
-            _VehicleID = vehicleID;
+            _vehicleID = vehicleID;
         }
 
-        private void frmShowVehicleDetails_Load(object sender, EventArgs e)
+        private void FrmShowVehicleDetails_Load(object sender, EventArgs e)
         {
-            if (!ucVehicleDetails1.LoadVehicleData(_VehicleID))
+            if (!ucVehicleDetails1.LoadVehicleData(_vehicleID))
                 btnClose.PerformClick();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

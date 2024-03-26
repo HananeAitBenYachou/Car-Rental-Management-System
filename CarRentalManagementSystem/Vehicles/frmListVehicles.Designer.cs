@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Vehicles
 {
-    partial class frmListVehicles
+    partial class FrmListVehicles
     {
         /// <summary>
         /// Required designer variable.
@@ -125,8 +125,8 @@
             this.dgvVehiclesList.ThemeStyle.RowsStyle.Height = 24;
             this.dgvVehiclesList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvVehiclesList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvVehiclesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehiclesList_CellContentClick);
-            this.dgvVehiclesList.SelectionChanged += new System.EventHandler(this.dgvVehiclesList_SelectionChanged);
+            this.dgvVehiclesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVehiclesList_CellContentClick);
+            this.dgvVehiclesList.SelectionChanged += new System.EventHandler(this.DgvVehiclesList_SelectionChanged);
             // 
             // cbVehicles
             // 
@@ -147,7 +147,7 @@
             this.addNewVehicleToolStripMenuItem.Name = "addNewVehicleToolStripMenuItem";
             this.addNewVehicleToolStripMenuItem.Size = new System.Drawing.Size(290, 36);
             this.addNewVehicleToolStripMenuItem.Text = "Add New Vehicle";
-            this.addNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.addNewVehicleToolStripMenuItem_Click);
+            this.addNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.AddNewVehicleToolStripMenuItem_Click);
             // 
             // editVehicleInformationToolStripMenuItem
             // 
@@ -156,7 +156,7 @@
             this.editVehicleInformationToolStripMenuItem.Name = "editVehicleInformationToolStripMenuItem";
             this.editVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(290, 36);
             this.editVehicleInformationToolStripMenuItem.Text = "Edit Vehicle Information";
-            this.editVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.editVehiclesInformationToolStripMenuItem_Click);
+            this.editVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.EditVehiclesInformationToolStripMenuItem_Click);
             // 
             // showVehicleInformationToolStripMenuItem
             // 
@@ -165,7 +165,7 @@
             this.showVehicleInformationToolStripMenuItem.Name = "showVehicleInformationToolStripMenuItem";
             this.showVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(290, 36);
             this.showVehicleInformationToolStripMenuItem.Text = "Show Vehicle Information";
-            this.showVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.showVehiclesInformationToolStripMenuItem_Click);
+            this.showVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowVehiclesInformationToolStripMenuItem_Click);
             // 
             // deleteVehicleToolStripMenuItem
             // 
@@ -174,7 +174,7 @@
             this.deleteVehicleToolStripMenuItem.Name = "deleteVehicleToolStripMenuItem";
             this.deleteVehicleToolStripMenuItem.Size = new System.Drawing.Size(290, 36);
             this.deleteVehicleToolStripMenuItem.Text = "Delete Vehicle";
-            this.deleteVehicleToolStripMenuItem.Click += new System.EventHandler(this.deleteVehiclesToolStripMenuItem_Click);
+            this.deleteVehicleToolStripMenuItem.Click += new System.EventHandler(this.DeleteVehiclesToolStripMenuItem_Click);
             // 
             // cbFilterByOptions
             // 
@@ -204,7 +204,7 @@
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(236, 41);
             this.cbFilterByOptions.TabIndex = 23;
-            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
+            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -260,7 +260,7 @@
             this.cbTemp.Size = new System.Drawing.Size(192, 41);
             this.cbTemp.TabIndex = 26;
             this.cbTemp.Visible = false;
-            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.cbTemp_SelectedIndexChanged);
+            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.CbTemp_SelectedIndexChanged);
             // 
             // btnAddNewVehicle
             // 
@@ -280,7 +280,7 @@
             this.btnAddNewVehicle.Size = new System.Drawing.Size(205, 51);
             this.btnAddNewVehicle.TabIndex = 25;
             this.btnAddNewVehicle.Text = "Add New Vehicle";
-            this.btnAddNewVehicle.Click += new System.EventHandler(this.btnAddNewVehicle_Click);
+            this.btnAddNewVehicle.Click += new System.EventHandler(this.BtnAddNewVehicle_Click);
             // 
             // txtFilterValue
             // 
@@ -305,8 +305,8 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
             this.txtFilterValue.TabIndex = 22;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
             // 
             // guna2ImageButton1
             // 
@@ -349,7 +349,7 @@
             this.btnPreviousPage.Text = "<<";
             this.btnPreviousPage.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.btnPreviousPage.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
-            this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
+            this.btnPreviousPage.Click += new System.EventHandler(this.BtnPreviousPage_Click);
             // 
             // btnCurrentPage
             // 
@@ -406,7 +406,7 @@
             this.btnNextPage.Text = ">>";
             this.btnNextPage.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.btnNextPage.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
-            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
+            this.btnNextPage.Click += new System.EventHandler(this.BtnNextPage_Click);
             // 
             // cbPageSizes
             // 
@@ -433,7 +433,7 @@
             this.cbPageSizes.Size = new System.Drawing.Size(103, 41);
             this.cbPageSizes.StartIndex = 0;
             this.cbPageSizes.TabIndex = 31;
-            this.cbPageSizes.SelectedIndexChanged += new System.EventHandler(this.cbPageSizes_SelectedIndexChanged);
+            this.cbPageSizes.SelectedIndexChanged += new System.EventHandler(this.CbPageSizes_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -470,7 +470,7 @@
             this.Name = "frmListVehicles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListVehicles";
-            this.Load += new System.EventHandler(this.frmListVehicles_Load);
+            this.Load += new System.EventHandler(this.FrmListVehicles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesList)).EndInit();
             this.cbVehicles.ResumeLayout(false);
             this.ResumeLayout(false);

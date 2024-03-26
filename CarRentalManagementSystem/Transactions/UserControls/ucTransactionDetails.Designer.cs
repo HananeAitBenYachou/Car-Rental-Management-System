@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Transactions.UserControls
 {
-    partial class ucTransactionDetails
+    partial class UcTransactionDetails
     {
         /// <summary> 
         /// Required designer variable.

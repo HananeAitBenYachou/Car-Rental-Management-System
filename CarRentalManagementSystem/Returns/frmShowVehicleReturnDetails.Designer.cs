@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Returns
 {
-    partial class frmShowVehicleReturnDetails
+    partial class FrmShowVehicleReturnDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -39,8 +39,8 @@
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
             this.tpVehicleReturnInfo = new System.Windows.Forms.TabPage();
             this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCard();
-            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
-            this.ucVehicleReturnDetails1 = new CarRentalManagementSystem.Returns.UserControls.ucVehicleReturnDetails();
+            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.UcVehicleCard();
+            this.ucVehicleReturnDetails1 = new CarRentalManagementSystem.Returns.UserControls.UcVehicleReturnDetails();
             this.guna2GradientPanel1.SuspendLayout();
             this.tcVehicleReturn.SuspendLayout();
             this.tpCustomerInfo.SuspendLayout();
@@ -114,7 +114,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 208;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // tcVehicleReturn
             // 
@@ -219,7 +219,7 @@
             this.Name = "frmShowVehicleReturnDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShowVehicleReturnDetails";
-            this.Load += new System.EventHandler(this.frmShowVehicleReturnDetails_Load);
+            this.Load += new System.EventHandler(this.FrmShowVehicleReturnDetails_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             this.tcVehicleReturn.ResumeLayout(false);
@@ -241,8 +241,8 @@
         private System.Windows.Forms.TabPage tpCustomerInfo;
         private Customers.UserControls.UcCustomerCard ucCustomerCard1;
         private System.Windows.Forms.TabPage tpVehicleInfo;
-        private Vehicles.UserControls.ucVehicleCard ucVehicleCard1;
+        private Vehicles.UserControls.UcVehicleCard ucVehicleCard1;
         private System.Windows.Forms.TabPage tpVehicleReturnInfo;
-        private UserControls.ucVehicleReturnDetails ucVehicleReturnDetails1;
+        private UserControls.UcVehicleReturnDetails ucVehicleReturnDetails1;
     }
 }

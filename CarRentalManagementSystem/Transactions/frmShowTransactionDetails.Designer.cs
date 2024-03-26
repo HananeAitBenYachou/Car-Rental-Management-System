@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Transactions
 {
-    partial class frmShowTransactionDetails
+    partial class FrmShowTransactionDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.ucTransactionDetails1 = new CarRentalManagementSystem.Transactions.UserControls.ucTransactionDetails();
+            this.ucTransactionDetails1 = new CarRentalManagementSystem.Transactions.UserControls.UcTransactionDetails();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -113,7 +113,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 180;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // frmShowTransactionDetails
             // 
@@ -128,7 +128,7 @@
             this.Name = "frmShowTransactionDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShowTransactionDetails";
-            this.Load += new System.EventHandler(this.frmShowTransactionDetails_Load);
+            this.Load += new System.EventHandler(this.FrmShowTransactionDetails_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -141,7 +141,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label lblTitle;
-        private UserControls.ucTransactionDetails ucTransactionDetails1;
+        private UserControls.UcTransactionDetails ucTransactionDetails1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
     }
 }

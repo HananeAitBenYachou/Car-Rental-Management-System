@@ -7,19 +7,19 @@ using static CarRental_BusinessLayer.User;
 
 namespace CarRentalManagementSystem.Users
 {
-    public partial class frmChangeUserPassword : Form
+    public partial class FrmChangeUserPassword : Form
     {
-        private int? _UserID = null;
+        private int? _userID = null;
+        private User _user = null;
 
-        private User _User = null;
-        public frmChangeUserPassword(int? userID)
+        public FrmChangeUserPassword(int? userID)
         {
             InitializeComponent();
 
-            _UserID = userID;
+            _userID = userID;
         }
 
-        private void txtCurrentPassword_Validating(object sender, CancelEventArgs e)
+        private void TxtCurrentPassword_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtCurrentPassword.Text.Trim()))
             {
@@ -28,7 +28,7 @@ namespace CarRentalManagementSystem.Users
                 errorProvider1.SetError(txtCurrentPassword, "This field is required !");
             }
 
-            else if (CryptoUtility.ComputeHash(txtCurrentPassword.Text.Trim()) != _User.Password)
+            else if (CryptoUtility.ComputeHash(txtCurrentPassword.Text.Trim()) != _user.Password)
             {
                 e.Cancel = true;
                 txtCurrentPassword.Focus();
@@ -42,7 +42,7 @@ namespace CarRentalManagementSystem.Users
             }
         }
 
-        private void txtNewPassword_Validating(object sender, CancelEventArgs e)
+        private void TxtNewPassword_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtNewPassword.Text.Trim()))
             {
@@ -58,7 +58,7 @@ namespace CarRentalManagementSystem.Users
             }
         }
 
-        private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
+        private void TxtConfirmPassword_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtConfirmPassword.Text.Trim()))
             {
@@ -82,9 +82,9 @@ namespace CarRentalManagementSystem.Users
             }
         }
 
-        private void _UpdateUserPassword()
+        private void UpdateUserPassword()
         {
-            if (_User.UpdateUserPassword(CryptoUtility.ComputeHash(txtNewPassword.Text.Trim())))
+            if (_user.UpdateUserPassword(CryptoUtility.ComputeHash(txtNewPassword.Text.Trim())))
                 MessageBox.Show("Your password has been changed successfully !", "Password changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             else
@@ -92,7 +92,7 @@ namespace CarRentalManagementSystem.Users
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
@@ -100,21 +100,21 @@ namespace CarRentalManagementSystem.Users
                 return;
             }
 
-            _UpdateUserPassword();
+            UpdateUserPassword();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void frmChangeUserPassword_Load(object sender, EventArgs e)
+        private void FrmChangeUserPassword_Load(object sender, EventArgs e)
         {
-            _User = User.Find<int?>(_UserID, enFindUserBy.UserID);
+            _user = User.Find<int?>(_userID, enFindUserBy.UserID);
 
-            if (_User == null)
+            if (_user == null)
             {
-                MessageBox.Show($"No user with UserID = {_UserID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No user with UserID = {_userID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }

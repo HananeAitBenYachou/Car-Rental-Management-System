@@ -8,8 +8,8 @@ namespace CarRental_DataAccessLayer
 {
     public class UserData
     {
-        public static bool GetUserInfoByID(int? userID, ref int? personID, ref string userName, 
-                                           ref string password,ref bool isActive)
+        public static bool GetUserInfoByID(int? userID, ref int? personID, ref string userName,
+                                           ref string password, ref bool isActive)
         {
             bool isFound = false;
 
@@ -164,7 +164,7 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
-        public static bool GetUserInfoByUserNameAndPassword(string userName, string password, ref int? userID, 
+        public static bool GetUserInfoByUserNameAndPassword(string userName, string password, ref int? userID,
                                                             ref int? personID, ref bool isActive)
         {
             bool isFound = false;
@@ -294,7 +294,7 @@ namespace CarRental_DataAccessLayer
 
         public static int? AddNewUser(int? personID, string userName, string password, bool isActive)
         {
-            int? UserID = null;
+            int? userID = null;
 
             try
             {
@@ -320,7 +320,7 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteNonQuery();
 
-                        UserID = (int)outputUserIDParameter.Value;
+                        userID = (int)outputUserIDParameter.Value;
                     }
                 }
             }
@@ -328,12 +328,12 @@ namespace CarRental_DataAccessLayer
             {
                 ErrorLogger.LogError(ex);
 
-                UserID = null;
+                userID = null;
             }
-            return UserID;
+            return userID;
         }
 
-        public static bool UpdateUserInfo(int? userID, int? personID, string userName, 
+        public static bool UpdateUserInfo(int? userID, int? personID, string userName,
                                           string password, bool isActive)
         {
             int rowsAffected = 0;

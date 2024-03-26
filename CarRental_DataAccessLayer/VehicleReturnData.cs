@@ -112,7 +112,7 @@ namespace CarRental_DataAccessLayer
                                                short mileage, short consumedMileage, string finalCheckNotes,
                                                float additionalCharges, float actualTotalDueAmount, int transactionID)
         {
-            int? ReturenID = null;
+            int? returnID = null;
 
             try
             {
@@ -142,7 +142,7 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteNonQuery();
 
-                        ReturenID = (int)outputReturenIDParameter.Value;
+                        returnID = (int)outputReturenIDParameter.Value;
                     }
                 }
             }
@@ -150,9 +150,9 @@ namespace CarRental_DataAccessLayer
             {
                 ErrorLogger.LogError(ex);
 
-                ReturenID = null;
+                returnID = null;
             }
-            return ReturenID;
+            return returnID;
         }
 
         public static bool UpdateVehicleReturnInfo(int? returnID, DateTime actualReturnDate,

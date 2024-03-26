@@ -1,7 +1,4 @@
-﻿using CarRental_UtilityLayer;
-using CarRentalManagementSystem.Bookings;
-using CarRentalManagementSystem.Returns;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem

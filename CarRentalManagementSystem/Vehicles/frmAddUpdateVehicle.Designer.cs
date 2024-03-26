@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Vehicles
 {
-    partial class frmAddUpdateVehicle
+    partial class FrmAddUpdateVehicle
     {
         /// <summary>
         /// Required designer variable.
@@ -85,7 +85,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 232;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // label12
             // 
@@ -117,7 +117,7 @@
             this.cbMakes.Name = "cbMakes";
             this.cbMakes.Size = new System.Drawing.Size(342, 43);
             this.cbMakes.TabIndex = 227;
-            this.cbMakes.SelectedIndexChanged += new System.EventHandler(this.cbMakes_SelectedIndexChanged);
+            this.cbMakes.SelectedIndexChanged += new System.EventHandler(this.CbMakes_SelectedIndexChanged);
             // 
             // guna2ImageButton1
             // 
@@ -164,7 +164,7 @@
             this.btnSave.Size = new System.Drawing.Size(171, 58);
             this.btnSave.TabIndex = 231;
             this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // guna2BorderlessForm1
             // 
@@ -196,7 +196,7 @@
             this.txtVehicleName.SelectedText = "";
             this.txtVehicleName.Size = new System.Drawing.Size(342, 43);
             this.txtVehicleName.TabIndex = 217;
-            this.txtVehicleName.Validating += new System.ComponentModel.CancelEventHandler(this.txtVehicleName_Validating);
+            this.txtVehicleName.Validating += new System.ComponentModel.CancelEventHandler(this.TxtVehicleName_Validating);
             // 
             // label8
             // 
@@ -293,7 +293,7 @@
             this.cbModels.Name = "cbModels";
             this.cbModels.Size = new System.Drawing.Size(342, 43);
             this.cbModels.TabIndex = 233;
-            this.cbModels.SelectedIndexChanged += new System.EventHandler(this.cbModels_SelectedIndexChanged);
+            this.cbModels.SelectedIndexChanged += new System.EventHandler(this.CbModels_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -411,7 +411,7 @@
             this.txtYear.Size = new System.Drawing.Size(342, 43);
             this.txtYear.TabIndex = 242;
             this.txtYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
-            this.txtYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtYear_Validating);
+            this.txtYear.Validating += new System.ComponentModel.CancelEventHandler(this.TxtYear_Validating);
             // 
             // label6
             // 
@@ -550,8 +550,8 @@
             this.txtRentalPricePerDay.SelectedText = "";
             this.txtRentalPricePerDay.Size = new System.Drawing.Size(342, 43);
             this.txtRentalPricePerDay.TabIndex = 250;
-            this.txtRentalPricePerDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRentalPricePerDay_KeyPress);
-            this.txtRentalPricePerDay.Validating += new System.ComponentModel.CancelEventHandler(this.txtRentalPricePerDay_Validating);
+            this.txtRentalPricePerDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRentalPricePerDay_KeyPress);
+            this.txtRentalPricePerDay.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRentalPricePerDay_Validating);
             // 
             // label11
             // 
@@ -635,7 +635,7 @@
             this.Name = "frmAddUpdateVehicle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddUpdateVehicle";
-            this.Load += new System.EventHandler(this.frmAddUpdateVehicle_Load);
+            this.Load += new System.EventHandler(this.FrmAddUpdateVehicle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();

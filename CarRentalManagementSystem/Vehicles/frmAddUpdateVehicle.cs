@@ -8,43 +8,43 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Vehicles
 {
-    public partial class frmAddUpdateVehicle : Form
+    public partial class FrmAddUpdateVehicle : Form
     {
-        private enum _enMode : byte { AddNew = 0, Update = 1 };
-        private _enMode _Mode = _enMode.AddNew;
+        private enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _mode = EnMode.AddNew;
 
 
         public event EventHandler<int?> NewVehicleAdded;
         protected virtual void OnNewVehicleAdded()
         {
-            NewVehicleAdded?.Invoke(this, _VehicleID);
+            NewVehicleAdded?.Invoke(this, _vehicleID);
         }
 
 
-        private int? _VehicleID = null;
-        private Vehicle _Vehicle = null;
+        private int? _vehicleID = null;
+        private Vehicle _vehicle = null;
 
-        public frmAddUpdateVehicle(int? vehicleID)
+        public FrmAddUpdateVehicle(int? vehicleID)
         {
             InitializeComponent();
-            _Mode = _enMode.Update;
-            _VehicleID = vehicleID;
+            _mode = EnMode.Update;
+            _vehicleID = vehicleID;
         }
-        public frmAddUpdateVehicle()
+        public FrmAddUpdateVehicle()
         {
             InitializeComponent();
-            _Mode = _enMode.AddNew;
+            _mode = EnMode.AddNew;
         }
 
-        private void _Reset()
+        private void Reset()
         {
-            _FillMakesInComboBox();
-            _FillDriveTypesInComboBox();
-            _FillFuelTypesInComboBox();
+            FillMakesInComboBox();
+            FillDriveTypesInComboBox();
+            FillFuelTypesInComboBox();
 
-            if (_Mode == _enMode.AddNew)
+            if (_mode == EnMode.AddNew)
             {
-                _Vehicle = new Vehicle();
+                _vehicle = new Vehicle();
                 lblTitle.Text = "Add New Vehicle";
             }
 
@@ -56,7 +56,7 @@ namespace CarRentalManagementSystem.Vehicles
             ckbIsAvailableForRent.Checked = true;
         }
 
-        private void _FillMakesInComboBox()
+        private void FillMakesInComboBox()
         {
             foreach (DataRow row in Make.GetAllMakes().Rows)
             {
@@ -66,7 +66,7 @@ namespace CarRentalManagementSystem.Vehicles
             cbMakes.SelectedIndex = 0;
         }
 
-        private void _FillMakeModelsInComboBox(int MakeID)
+        private void FillMakeModelsInComboBox(int MakeID)
         {
             cbModels.Items.Clear();
 
@@ -78,7 +78,7 @@ namespace CarRentalManagementSystem.Vehicles
             cbModels.SelectedIndex = 0;
         }
 
-        private void _FillSubModelsInComboBox(int ModelID)
+        private void FillSubModelsInComboBox(int ModelID)
         {
             cbSubModels.Items.Clear();
 
@@ -90,7 +90,7 @@ namespace CarRentalManagementSystem.Vehicles
             cbSubModels.SelectedIndex = 0;
         }
 
-        private void _FillDriveTypesInComboBox()
+        private void FillDriveTypesInComboBox()
         {
             foreach (DataRow row in DriveType.GetAllDriveTypes().Rows)
             {
@@ -100,7 +100,7 @@ namespace CarRentalManagementSystem.Vehicles
             cbDriveTypes.SelectedIndex = 0;
         }
 
-        private void _FillFuelTypesInComboBox()
+        private void FillFuelTypesInComboBox()
         {
             foreach (DataRow row in FuelType.GetAllFuelTypes().Rows)
             {
@@ -110,51 +110,51 @@ namespace CarRentalManagementSystem.Vehicles
             cbFuelTypes.SelectedIndex = 0;
         }
 
-        private void _LoadVehicleData()
+        private void LoadVehicleData()
         {
-            _Vehicle = Vehicle.Find(_VehicleID);
+            _vehicle = Vehicle.Find(_vehicleID);
 
-            if (_Vehicle == null)
+            if (_vehicle == null)
             {
-                MessageBox.Show($"No vehicle with VehicleID = {_VehicleID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No vehicle with VehicleID = {_vehicleID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-            txtVehicleID.Text = _VehicleID.ToString();
-            txtVehicleName.Text = _Vehicle.VehicleName;
-            txtYear.Text = _Vehicle.Year.ToString();
-            txtEngine.Text = _Vehicle.Engine ?? string.Empty;
-            txtMileage.Text = _Vehicle.Mileage.ToString();
-            txtRentalPricePerDay.Text = _Vehicle.RentalPricePerDay.ToString().Replace(',', '.');
+            txtVehicleID.Text = _vehicleID.ToString();
+            txtVehicleName.Text = _vehicle.VehicleName;
+            txtYear.Text = _vehicle.Year.ToString();
+            txtEngine.Text = _vehicle.Engine ?? string.Empty;
+            txtMileage.Text = _vehicle.Mileage.ToString();
+            txtRentalPricePerDay.Text = _vehicle.RentalPricePerDay.ToString().Replace(',', '.');
 
-            cbMakes.SelectedIndex = cbMakes.FindString(_Vehicle.SubModelInfo.ModelInfo.MakeInfo.Name);
-            cbModels.SelectedIndex = cbModels.FindString(_Vehicle.SubModelInfo.ModelInfo.ModelName);
-            cbSubModels.SelectedIndex = cbSubModels.FindString(_Vehicle.SubModelInfo.SubModelName);
-            cbFuelTypes.SelectedIndex = cbFuelTypes.FindString(_Vehicle.FuelTypeInfo.FuelTypeName);
-            cbDriveTypes.SelectedIndex = cbDriveTypes.FindString(_Vehicle.DriveTypeInfo.DriveTypeName);
+            cbMakes.SelectedIndex = cbMakes.FindString(_vehicle.SubModelInfo.ModelInfo.MakeInfo.Name);
+            cbModels.SelectedIndex = cbModels.FindString(_vehicle.SubModelInfo.ModelInfo.ModelName);
+            cbSubModels.SelectedIndex = cbSubModels.FindString(_vehicle.SubModelInfo.SubModelName);
+            cbFuelTypes.SelectedIndex = cbFuelTypes.FindString(_vehicle.FuelTypeInfo.FuelTypeName);
+            cbDriveTypes.SelectedIndex = cbDriveTypes.FindString(_vehicle.DriveTypeInfo.DriveTypeName);
 
-            nudNumberOfDoors.Value = _Vehicle.NumDoors;
-            ckbIsAvailableForRent.Checked = _Vehicle.IsAvailableForRent;
+            nudNumberOfDoors.Value = _vehicle.NumDoors;
+            ckbIsAvailableForRent.Checked = _vehicle.IsAvailableForRent;
         }
 
-        private bool _SaveVehicleData()
+        private bool SaveVehicleData()
         {
 
-            _Vehicle.VehicleName = txtVehicleName.Text.Trim();
-            _Vehicle.Year = Convert.ToInt16(txtYear.Text.Trim());
-            _Vehicle.Engine = string.IsNullOrEmpty(txtEngine.Text.Trim()) ? null : txtEngine.Text.Trim();
-            _Vehicle.Mileage = Convert.ToInt16(txtMileage.Text.Trim());
-            _Vehicle.RentalPricePerDay = float.Parse(txtRentalPricePerDay.Text.Trim(), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
-            _Vehicle.NumDoors = (byte)nudNumberOfDoors.Value;
-            _Vehicle.IsAvailableForRent = ckbIsAvailableForRent.Checked;
-            _Vehicle.DriveTypeID = DriveType.Find(cbDriveTypes.Text).DriveTypeID.Value;
-            _Vehicle.FuelTypeID = FuelType.Find(cbFuelTypes.Text).FuelTypeID.Value;
-            _Vehicle.MakeID = Make.Find(cbMakes.Text).MakeID.Value;
-            _Vehicle.ModelID = Model.Find(cbModels.Text).ModelID.Value;
-            _Vehicle.SubModelID = SubModel.Find(cbSubModels.Text).SubModelID.Value;
+            _vehicle.VehicleName = txtVehicleName.Text.Trim();
+            _vehicle.Year = Convert.ToInt16(txtYear.Text.Trim());
+            _vehicle.Engine = string.IsNullOrEmpty(txtEngine.Text.Trim()) ? null : txtEngine.Text.Trim();
+            _vehicle.Mileage = Convert.ToInt16(txtMileage.Text.Trim());
+            _vehicle.RentalPricePerDay = float.Parse(txtRentalPricePerDay.Text.Trim(), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
+            _vehicle.NumDoors = (byte)nudNumberOfDoors.Value;
+            _vehicle.IsAvailableForRent = ckbIsAvailableForRent.Checked;
+            _vehicle.DriveTypeID = DriveType.Find(cbDriveTypes.Text).DriveTypeID.Value;
+            _vehicle.FuelTypeID = FuelType.Find(cbFuelTypes.Text).FuelTypeID.Value;
+            _vehicle.MakeID = Make.Find(cbMakes.Text).MakeID.Value;
+            _vehicle.ModelID = Model.Find(cbModels.Text).ModelID.Value;
+            _vehicle.SubModelID = SubModel.Find(cbSubModels.Text).SubModelID.Value;
 
-            if (!_Vehicle.Save())
+            if (!_vehicle.Save())
             {
                 MessageBox.Show("Failed to save the data !", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -164,25 +164,25 @@ namespace CarRentalManagementSystem.Vehicles
             {
                 MessageBox.Show("Data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _Mode = _enMode.Update;
-                _VehicleID = _Vehicle.VehicleID;
+                _mode = EnMode.Update;
+                _vehicleID = _vehicle.VehicleID;
 
                 lblTitle.Text = "Update Vehicle";
-                txtVehicleID.Text = _VehicleID.ToString();
+                txtVehicleID.Text = _vehicleID.ToString();
             }
 
             return true;
         }
 
-        private void frmAddUpdateVehicle_Load(object sender, EventArgs e)
+        private void FrmAddUpdateVehicle_Load(object sender, EventArgs e)
         {
-            _Reset();
+            Reset();
 
-            if (_Mode == _enMode.Update)
-                _LoadVehicleData();
+            if (_mode == EnMode.Update)
+                LoadVehicleData();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
@@ -190,26 +190,26 @@ namespace CarRentalManagementSystem.Vehicles
                 return;
             }
 
-            if (_SaveVehicleData())
+            if (SaveVehicleData())
                 OnNewVehicleAdded();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void cbMakes_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbMakes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _FillMakeModelsInComboBox(Make.Find(cbMakes.Text).MakeID.Value);
+            FillMakeModelsInComboBox(Make.Find(cbMakes.Text).MakeID.Value);
         }
 
-        private void cbModels_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbModels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _FillSubModelsInComboBox(Model.Find(cbModels.Text).ModelID.Value);
+            FillSubModelsInComboBox(Model.Find(cbModels.Text).ModelID.Value);
         }
 
-        private void txtYear_Validating(object sender, CancelEventArgs e)
+        private void TxtYear_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtYear.Text.Trim()))
             {
@@ -232,7 +232,7 @@ namespace CarRentalManagementSystem.Vehicles
             }
         }
 
-        private void txtVehicleName_Validating(object sender, CancelEventArgs e)
+        private void TxtVehicleName_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtVehicleName.Text.Trim()))
             {
@@ -253,7 +253,7 @@ namespace CarRentalManagementSystem.Vehicles
             e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
 
-        private void txtRentalPricePerDay_Validating(object sender, CancelEventArgs e)
+        private void TxtRentalPricePerDay_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtRentalPricePerDay.Text.Trim()))
             {
@@ -276,7 +276,7 @@ namespace CarRentalManagementSystem.Vehicles
             }
         }
 
-        private void txtRentalPricePerDay_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtRentalPricePerDay_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.';
         }

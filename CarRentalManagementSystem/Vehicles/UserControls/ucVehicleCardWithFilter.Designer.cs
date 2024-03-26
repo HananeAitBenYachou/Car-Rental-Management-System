@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Vehicles.UserControls
 {
-    partial class ucVehicleCardWithFilter
+    partial class UcVehicleCardWithFilter
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,7 +35,7 @@
             this.txtVehicleID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
+            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.UcVehicleCard();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +70,7 @@
             this.btnAddVehicle.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnAddVehicle.Size = new System.Drawing.Size(50, 50);
             this.btnAddVehicle.TabIndex = 174;
-            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
+            this.btnAddVehicle.Click += new System.EventHandler(this.BtnAddVehicle_Click);
             // 
             // btnSearchVehicle
             // 
@@ -85,7 +85,7 @@
             this.btnSearchVehicle.PressedState.ImageSize = new System.Drawing.Size(50, 50);
             this.btnSearchVehicle.Size = new System.Drawing.Size(50, 50);
             this.btnSearchVehicle.TabIndex = 173;
-            this.btnSearchVehicle.Click += new System.EventHandler(this.btnSearchVehicle_Click);
+            this.btnSearchVehicle.Click += new System.EventHandler(this.BtnSearchVehicle_Click);
             // 
             // txtVehicleID
             // 
@@ -111,8 +111,8 @@
             this.txtVehicleID.SelectedText = "";
             this.txtVehicleID.Size = new System.Drawing.Size(340, 43);
             this.txtVehicleID.TabIndex = 0;
-            this.txtVehicleID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVehicleID_KeyPress);
-            this.txtVehicleID.Validating += new System.ComponentModel.CancelEventHandler(this.txtVehicleID_Validating);
+            this.txtVehicleID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtVehicleID_KeyPress);
+            this.txtVehicleID.Validating += new System.ComponentModel.CancelEventHandler(this.TxtVehicleID_Validating);
             // 
             // label2
             // 
@@ -157,7 +157,7 @@
 
         #endregion
 
-        private ucVehicleCard ucVehicleCard1;
+        private UcVehicleCard ucVehicleCard1;
         private Guna.UI2.WinForms.Guna2GroupBox gbFilter;
         private Guna.UI2.WinForms.Guna2ImageButton btnAddVehicle;
         private Guna.UI2.WinForms.Guna2ImageButton btnSearchVehicle;

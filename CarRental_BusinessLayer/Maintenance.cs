@@ -42,7 +42,7 @@ namespace CarRental_BusinessLayer
             DateTime maintenanceDate = default;
             double cost = default;
 
-            bool isFound = MaintenanceData.GetMaintenanceInfoByID(maintenanceID, ref vehicleID, ref description, 
+            bool isFound = MaintenanceData.GetMaintenanceInfoByID(maintenanceID, ref vehicleID, ref description,
                 ref maintenanceDate, ref cost);
 
             return isFound ? new Maintenance(maintenanceID, vehicleID, description, maintenanceDate, cost) : null;

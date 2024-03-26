@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Transactions
 {
-    partial class frmListTransactions
+    partial class FrmListTransactions
     {
         /// <summary>
         /// Required designer variable.
@@ -115,8 +115,8 @@
             this.dgvTransactionsList.ThemeStyle.RowsStyle.Height = 24;
             this.dgvTransactionsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvTransactionsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvTransactionsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTransactionsList_CellContentClick);
-            this.dgvTransactionsList.SelectionChanged += new System.EventHandler(this.dgvTransactionsList_SelectionChanged);
+            this.dgvTransactionsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTransactionsList_CellContentClick);
+            this.dgvTransactionsList.SelectionChanged += new System.EventHandler(this.DgvTransactionsList_SelectionChanged);
             // 
             // cbRentalTransactions
             // 
@@ -134,7 +134,7 @@
             this.showTransactionInformationToolStripMenuItem.Name = "showTransactionInformationToolStripMenuItem";
             this.showTransactionInformationToolStripMenuItem.Size = new System.Drawing.Size(324, 36);
             this.showTransactionInformationToolStripMenuItem.Text = "Show Transaction Information";
-            this.showTransactionInformationToolStripMenuItem.Click += new System.EventHandler(this.showTransactionInformationToolStripMenuItem_Click);
+            this.showTransactionInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowTransactionInformationToolStripMenuItem_Click);
             // 
             // cbFilterByOptions
             // 
@@ -160,7 +160,7 @@
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
             this.cbFilterByOptions.TabIndex = 22;
-            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
+            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -216,8 +216,8 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
             this.txtFilterValue.TabIndex = 21;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
             // 
             // guna2ImageButton1
             // 
@@ -246,7 +246,7 @@
             this.dtpTemp.Size = new System.Drawing.Size(229, 43);
             this.dtpTemp.TabIndex = 24;
             this.dtpTemp.Value = new System.DateTime(2024, 3, 2, 0, 28, 59, 414);
-            this.dtpTemp.ValueChanged += new System.EventHandler(this.dtpTemp_ValueChanged);
+            this.dtpTemp.ValueChanged += new System.EventHandler(this.DtpTemp_ValueChanged);
             // 
             // frmListTransactions
             // 
@@ -266,7 +266,7 @@
             this.Name = "frmListTransactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListTransactions";
-            this.Load += new System.EventHandler(this.frmListTransactions_Load);
+            this.Load += new System.EventHandler(this.FrmListTransactions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionsList)).EndInit();
             this.cbRentalTransactions.ResumeLayout(false);
             this.ResumeLayout(false);

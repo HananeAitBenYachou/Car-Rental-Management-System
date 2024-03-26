@@ -6,24 +6,25 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Users
 {
-    public partial class frmListUsers : Form
+    public partial class FrmListUsers : Form
     {
-        private enum _FilterOptions
+        private enum FilterOptions
         {
             Gender,
             Country,
             IsActive
         }
 
-        private _FilterOptions _SelectedOption;
+        private FilterOptions _selectedOption;
 
-        private DataView _UsersDataView;
-        public frmListUsers()
+        private DataView _usersDataView;
+
+        public FrmListUsers()
         {
             InitializeComponent();
         }
 
-        private async void _FillCountriesInComboBoxAsync()
+        private async void FillCountriesInComboBoxAsync()
         {
             await Task.Run(() =>
             {
@@ -40,61 +41,61 @@ namespace CarRentalManagementSystem.Users
             });
         }
 
-        private void _FillFilterOptionsInComboBox(_FilterOptions option)
+        private void FillFilterOptionsInComboBox(FilterOptions option)
         {
             cbTemp.Items.Clear();
 
             switch (option)
             {
-                case _FilterOptions.Gender:
+                case FilterOptions.Gender:
                     cbTemp.Items.AddRange(new object[] { "All", "Female", "Male" });
                     cbTemp.SelectedIndex = 0;
                     break;
 
-                case _FilterOptions.IsActive:
+                case FilterOptions.IsActive:
                     cbTemp.Items.AddRange(new object[] { "All", "Yes", "No" });
                     cbTemp.SelectedIndex = 0;
                     break;
 
-                case _FilterOptions.Country:
-                    _FillCountriesInComboBoxAsync();
+                case FilterOptions.Country:
+                    FillCountriesInComboBoxAsync();
                     break;
             }
         }
 
-        private void _RefreshUsersList()
+        private void RefreshUsersList()
         {
-            _UsersDataView = User.GetAllUsers().DefaultView;
-            dgvUsersList.DataSource = _UsersDataView;
+            _usersDataView = User.GetAllUsers().DefaultView;
+            dgvUsersList.DataSource = _usersDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
 
-        private void _FilterUsersList()
+        private void FilterUsersList()
         {
             if (string.IsNullOrEmpty(txtFilterValue.Text))
             {
-                _UsersDataView.RowFilter = null;
+                _usersDataView.RowFilter = null;
                 return;
             }
 
             if (cbFilterByOptions.Text == "User ID")
-                _UsersDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
+                _usersDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text);
             else
-                _UsersDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
+                _usersDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, txtFilterValue.Text);
         }
 
-        private void frmListUsers_Load(object sender, EventArgs e)
+        private void FrmListUsers_Load(object sender, EventArgs e)
         {
-            _RefreshUsersList();
+            RefreshUsersList();
         }
 
-        private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enum.TryParse(cbFilterByOptions.Text, out _SelectedOption))
+            if (Enum.TryParse(cbFilterByOptions.Text, out _selectedOption))
             {
                 txtFilterValue.Visible = false;
                 cbTemp.Visible = true;
-                _FillFilterOptionsInComboBox(_SelectedOption);
+                FillFilterOptionsInComboBox(_selectedOption);
             }
 
             else
@@ -103,80 +104,80 @@ namespace CarRentalManagementSystem.Users
                 txtFilterValue.Visible = (cbFilterByOptions.Text != "None");
                 txtFilterValue.ResetText();
                 txtFilterValue.Focus();
-                txtFilterValue_TextChanged(null, null);
+                TxtFilterValue_TextChanged(null, null);
             }
 
         }
 
-        private void cbTemp_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbTemp_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbTemp.Text == "All")
             {
-                _UsersDataView.RowFilter = null;
+                _usersDataView.RowFilter = null;
                 return;
             }
 
-            if (_SelectedOption == _FilterOptions.IsActive)
+            if (_selectedOption == FilterOptions.IsActive)
             {
                 switch (cbTemp.Text)
                 {
                     case "Yes":
-                        _UsersDataView.RowFilter = string.Format("[{0}] = 1", cbFilterByOptions.Text);
+                        _usersDataView.RowFilter = string.Format("[{0}] = 1", cbFilterByOptions.Text);
                         break;
 
                     case "No":
-                        _UsersDataView.RowFilter = string.Format("[{0}] = 0", cbFilterByOptions.Text);
+                        _usersDataView.RowFilter = string.Format("[{0}] = 0", cbFilterByOptions.Text);
                         break;
                 }
             }
 
             else
             {
-                _UsersDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, cbTemp.Text);
+                _usersDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, cbTemp.Text);
             }
 
         }
 
-        private void txtFilterValue_TextChanged(object sender, EventArgs e)
+        private void TxtFilterValue_TextChanged(object sender, EventArgs e)
         {
-            _FilterUsersList();
+            FilterUsersList();
         }
 
-        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cbFilterByOptions.Text == "User ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void btnAddNewUser_Click(object sender, EventArgs e)
+        private void BtnAddNewUser_Click(object sender, EventArgs e)
         {
-            frmAddUpdateUser form = new frmAddUpdateUser();
+            FrmAddUpdateUser form = new FrmAddUpdateUser();
             form.ShowDialog();
 
-            _RefreshUsersList();
+            RefreshUsersList();
         }
 
-        private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnAddNewUser.PerformClick();
         }
 
-        private void editUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            frmAddUpdateUser form = new frmAddUpdateUser((int)dgvUsersList.CurrentRow.Cells[0].Value);
+            FrmAddUpdateUser form = new FrmAddUpdateUser((int)dgvUsersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
 
-            _RefreshUsersList();
+            RefreshUsersList();
         }
 
-        private void showUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowUserInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowUserDetails form = new frmShowUserDetails((int)dgvUsersList.CurrentRow.Cells[0].Value);
+            FrmShowUserDetails form = new FrmShowUserDetails((int)dgvUsersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
 
-        private void deleteUserToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DeleteUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete the selected user ?", "Verification",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
@@ -191,23 +192,23 @@ namespace CarRentalManagementSystem.Users
                 MessageBox.Show("The selected user has been deleted successfully .", "Deletion Completed",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _RefreshUsersList();
+                RefreshUsersList();
             }
 
         }
 
-        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangeUserPassword form = new frmChangeUserPassword((int)dgvUsersList.CurrentRow.Cells[0].Value);
+            FrmChangeUserPassword form = new FrmChangeUserPassword((int)dgvUsersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
 
-        private void dgvUsersList_SelectionChanged(object sender, EventArgs e)
+        private void DgvUsersList_SelectionChanged(object sender, EventArgs e)
         {
             cbUsers.Enabled = dgvUsersList.SelectedRows.Count > 0 ? true : false;
         }
 
-        private void dgvUsersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvUsersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             showUserInformationToolStripMenuItem.PerformClick();
         }

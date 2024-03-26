@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Vehicles
 {
-    partial class frmShowVehicleDetails
+    partial class FrmShowVehicleDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.ucVehicleDetails1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
+            this.ucVehicleDetails1 = new CarRentalManagementSystem.Vehicles.UserControls.UcVehicleCard();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -113,7 +113,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 176;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // frmShowVehicleDetails
             // 
@@ -128,7 +128,7 @@
             this.Name = "frmShowVehicleDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShowVehicleDetails";
-            this.Load += new System.EventHandler(this.frmShowVehicleDetails_Load);
+            this.Load += new System.EventHandler(this.FrmShowVehicleDetails_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -142,6 +142,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label lblTitle;
-        private UserControls.ucVehicleCard ucVehicleDetails1;
+        private UserControls.UcVehicleCard ucVehicleDetails1;
     }
 }

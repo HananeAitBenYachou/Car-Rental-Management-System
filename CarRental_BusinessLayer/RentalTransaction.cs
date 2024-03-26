@@ -79,8 +79,8 @@ namespace CarRental_BusinessLayer
             DateTime transactionDate = default;
             DateTime? updatedTransactionDate = default;
 
-            bool isFound = RentalTransactionData.GetRentalTransactionInfoByID(TransactionID, ref bookingID, ref returnID, ref paidInitialTotalDueAmount, 
-                                                                              ref actualTotalDueAmount, ref totalRemaining, ref totalRefundedAmount, 
+            bool isFound = RentalTransactionData.GetRentalTransactionInfoByID(TransactionID, ref bookingID, ref returnID, ref paidInitialTotalDueAmount,
+                                                                              ref actualTotalDueAmount, ref totalRemaining, ref totalRefundedAmount,
                                                                               ref transactionDate, ref updatedTransactionDate);
 
             if (isFound)
@@ -102,8 +102,8 @@ namespace CarRental_BusinessLayer
             DateTime transactionDate = default;
             DateTime? updatedTransactionDate = default;
 
-            bool isFound = RentalTransactionData.GetRentalTransactionInfoByBookingID(BookingID, ref transactionID, ref returnID, 
-                                                                                     ref paidInitialTotalDueAmount, ref actualTotalDueAmount, ref totalRemaining, 
+            bool isFound = RentalTransactionData.GetRentalTransactionInfoByBookingID(BookingID, ref transactionID, ref returnID,
+                                                                                     ref paidInitialTotalDueAmount, ref actualTotalDueAmount, ref totalRemaining,
                                                                                      ref totalRefundedAmount, ref transactionDate, ref updatedTransactionDate);
 
             if (isFound)

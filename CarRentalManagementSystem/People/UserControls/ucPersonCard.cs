@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.People.UserControls
 {
-    public partial class ucPersonCard : UserControl
+    public partial class UcPersonCard : UserControl
     {
         public int? PersonID { get; private set; } = null;
         public Person Person { get; private set; } = null;
 
-        public ucPersonCard()
+        public UcPersonCard()
         {
             InitializeComponent();
         }
@@ -38,7 +38,7 @@ namespace CarRentalManagementSystem.People.UserControls
             pbPersonalImage.Image = Resources.man;
         }
 
-        private void _LoadPersonData()
+        private void LoadPersonData()
         {
             PersonID = Person.PersonID;
 
@@ -73,7 +73,7 @@ namespace CarRentalManagementSystem.People.UserControls
                 return false;
             }
 
-            _LoadPersonData();
+            LoadPersonData();
             return true;
         }
 
@@ -88,7 +88,7 @@ namespace CarRentalManagementSystem.People.UserControls
                 return false;
             }
 
-            _LoadPersonData();
+            LoadPersonData();
             return true;
         }
     }

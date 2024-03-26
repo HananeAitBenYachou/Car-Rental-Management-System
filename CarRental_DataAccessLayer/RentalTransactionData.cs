@@ -9,8 +9,8 @@ namespace CarRental_DataAccessLayer
     public class RentalTransactionData
     {
         public static bool GetRentalTransactionInfoByID(int? transactionID, ref int bookingID, ref int? returnID,
-                                                        ref float paidInitialTotalDueAmount,ref float? actualTotalDueAmount, ref float? totalRemaining,
-                                                        ref float? totalRefundedAmount, ref DateTime transactionDate,ref DateTime? UpdatedTransactionDate)
+                                                        ref float paidInitialTotalDueAmount, ref float? actualTotalDueAmount, ref float? totalRemaining,
+                                                        ref float? totalRefundedAmount, ref DateTime transactionDate, ref DateTime? UpdatedTransactionDate)
         {
             bool isFound = false;
 

@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Users
 {
-    partial class frmShowUserDetails
+    partial class FrmShowUserDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -104,7 +104,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 170;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // ucUserCard1
             // 

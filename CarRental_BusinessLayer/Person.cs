@@ -124,7 +124,7 @@ namespace CarRental_BusinessLayer
         private bool AddNewPerson()
         {
             PersonID = PersonData.AddNewPerson(NationalNo, FirstName, LastName, BirthDate, (byte)Gender,
-                                               Address, Phone,Email, NationalityCountryID, ImagePath);
+                                               Address, Phone, Email, NationalityCountryID, ImagePath);
             return PersonID.HasValue;
         }
 

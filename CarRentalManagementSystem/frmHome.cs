@@ -14,7 +14,7 @@ namespace CarRentalManagementSystem
 {
     public partial class FrmHome : Form
     {
-        private Guna2Button _CurrentActiveButton = new Guna2Button();
+        private Guna2Button _currentActiveButton = new Guna2Button();
 
         private FrmLogin _loginForm;
 
@@ -26,11 +26,11 @@ namespace CarRentalManagementSystem
 
         private void ShowForm(Guna2Button activeBtn, Form frm)
         {
-            if (_CurrentActiveButton != null)
-                _CurrentActiveButton.Checked = false;
+            if (_currentActiveButton != null)
+                _currentActiveButton.Checked = false;
 
-            _CurrentActiveButton = activeBtn;
-            _CurrentActiveButton.Checked = true;
+            _currentActiveButton = activeBtn;
+            _currentActiveButton.Checked = true;
 
             frm.BackColor = pnlContainer.BackColor;
             frm.FormBorderStyle = FormBorderStyle.None;
@@ -72,7 +72,7 @@ namespace CarRentalManagementSystem
 
         private void BtnManageUsers_Click(object sender, System.EventArgs e)
         {
-            ShowForm((Guna2Button)sender, new frmListUsers());
+            ShowForm((Guna2Button)sender, new FrmListUsers());
         }
 
         private void BtnManageCustomers_Click(object sender, System.EventArgs e)
@@ -88,17 +88,17 @@ namespace CarRentalManagementSystem
 
         private void BtnManageVehicles_Click(object sender, System.EventArgs e)
         {
-            ShowForm((Guna2Button)sender, new frmListVehicles());
+            ShowForm((Guna2Button)sender, new FrmListVehicles());
         }
 
         private void BtnManageTransactions_Click(object sender, System.EventArgs e)
         {
-            ShowForm((Guna2Button)sender, new frmListTransactions());
+            ShowForm((Guna2Button)sender, new FrmListTransactions());
         }
 
         private void BtnManageReturns_Click(object sender, System.EventArgs e)
         {
-            ShowForm((Guna2Button)sender, new frmListVehicleReturns());
+            ShowForm((Guna2Button)sender, new FrmListVehicleReturns());
         }
 
         private void BtnDashboard_Click(object sender, System.EventArgs e)

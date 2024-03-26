@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Customers
 {
-    public partial class frmShowCustomerDetails : Form
+    public partial class FrmShowCustomerDetails : Form
     {
-        public frmShowCustomerDetails(int? customerID)
+        public FrmShowCustomerDetails(int? customerID)
         {
             InitializeComponent();
 
@@ -16,7 +16,7 @@ namespace CarRentalManagementSystem.Customers
             };
         }
 
-        public frmShowCustomerDetails(string driverLicenseNumber)
+        public FrmShowCustomerDetails(string driverLicenseNumber)
         {
             InitializeComponent();
 

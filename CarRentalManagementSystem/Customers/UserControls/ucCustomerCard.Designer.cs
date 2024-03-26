@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucPersonCard1 = new CarRentalManagementSystem.People.UserControls.ucPersonCard();
+            this.ucPersonCard1 = new CarRentalManagementSystem.People.UserControls.UcPersonCard();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txtLicenseNo = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -154,7 +154,7 @@
 
         #endregion
 
-        private People.UserControls.ucPersonCard ucPersonCard1;
+        private People.UserControls.UcPersonCard ucPersonCard1;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2TextBox txtLicenseNo;
         private System.Windows.Forms.Label label1;

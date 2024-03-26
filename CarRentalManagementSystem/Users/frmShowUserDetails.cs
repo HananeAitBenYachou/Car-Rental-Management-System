@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Users
 {
-    public partial class frmShowUserDetails : Form
+    public partial class FrmShowUserDetails : Form
     {
-        public frmShowUserDetails(int? userID)
+        public FrmShowUserDetails(int? userID)
         {
             InitializeComponent();
 
@@ -16,7 +16,7 @@ namespace CarRentalManagementSystem.Users
             };
         }
 
-        public frmShowUserDetails(string userName)
+        public FrmShowUserDetails(string userName)
         {
             InitializeComponent();
 
@@ -27,7 +27,7 @@ namespace CarRentalManagementSystem.Users
             };
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

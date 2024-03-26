@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Vehicles.UserControls
 {
-    partial class ucVehicleCard
+    partial class UcVehicleCard
     {
         /// <summary> 
         /// Required designer variable.

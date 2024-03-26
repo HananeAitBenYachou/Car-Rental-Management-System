@@ -3,7 +3,7 @@ using Guna.UI2.WinForms;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using static CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCardWithFilter;
+using static CarRentalManagementSystem.Vehicles.UserControls.UcVehicleCardWithFilter;
 
 namespace CarRentalManagementSystem.Bookings
 {
@@ -30,8 +30,8 @@ namespace CarRentalManagementSystem.Bookings
 
         private void Reset()
         {
-        //    ucCustomerCardWithFilter1.CustomerFound += ucCustomerCardWithFilter1_CustomerFound;
-        //    ucVehicleCardWithFilter1.VehicleFound += ucVehicleCardWithFilter1_VehicleFound;
+            //    ucCustomerCardWithFilter1.CustomerFound += ucCustomerCardWithFilter1_CustomerFound;
+            //    ucVehicleCardWithFilter1.VehicleFound += ucVehicleCardWithFilter1_VehicleFound;
 
             ucCustomerCardWithFilter1.FilterEnabled = true;
             ucVehicleCardWithFilter1.FilterEnabled = true;

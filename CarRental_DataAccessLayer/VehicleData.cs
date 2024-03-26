@@ -120,7 +120,7 @@ namespace CarRental_DataAccessLayer
                                          short year, int driveTypeID, string engine, int fuelTypeID, byte numDoors, int mileage,
                                          double rentalPricePerDay, bool isAvailableForRent)
         {
-            int? VehicleID = null;
+            int? vehicleID = null;
 
             try
             {
@@ -154,7 +154,7 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteNonQuery();
 
-                        VehicleID = (int)outputVehicleIDParameter.Value;
+                        vehicleID = (int)outputVehicleIDParameter.Value;
                     }
                 }
             }
@@ -162,9 +162,9 @@ namespace CarRental_DataAccessLayer
             {
                 ErrorLogger.LogError(ex);
 
-                VehicleID = null;
+                vehicleID = null;
             }
-            return VehicleID;
+            return vehicleID;
         }
 
         public static bool UpdateVehicleInfo(int? vehicleID, int makeID, int modelID, int subModelID,

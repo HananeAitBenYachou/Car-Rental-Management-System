@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Customers
 {
-    partial class frmShowCustomerDetails
+    partial class FrmShowCustomerDetails
     {
         /// <summary>
         /// Required designer variable.

@@ -4,39 +4,39 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Returns
 {
-    public partial class frmShowVehicleReturnDetails : Form
+    public partial class FrmShowVehicleReturnDetails : Form
     {
-        private int? _ReturnID = null;
-        private VehicleReturn _VehicleReturn = null;
+        private int? _returnID = null;
+        private VehicleReturn _vehicleReturn = null;
 
-        public frmShowVehicleReturnDetails(int? returnID)
+        public FrmShowVehicleReturnDetails(int? returnID)
         {
             InitializeComponent();
-            _ReturnID = returnID;
+            _returnID = returnID;
         }
 
-        private void _LoadVehicleReturnData()
+        private void LoadVehicleReturnData()
         {
-            _VehicleReturn = VehicleReturn.Find(_ReturnID);
+            _vehicleReturn = VehicleReturn.Find(_returnID);
 
-            if (_VehicleReturn == null)
+            if (_vehicleReturn == null)
             {
-                MessageBox.Show($"No return with returnID = {_ReturnID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No return with returnID = {_returnID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnClose.PerformClick();
                 return;
             }
 
-            ucCustomerCard1.LoadCustomerData(_VehicleReturn.TransactionInfo.RentalBookingInfo.CustomerID);
-            ucVehicleCard1.LoadVehicleData(_VehicleReturn.TransactionInfo.RentalBookingInfo.VehicleID);
-            ucVehicleReturnDetails1.LoadVehicleReturnData(_VehicleReturn.ReturnID);
+            ucCustomerCard1.LoadCustomerData(_vehicleReturn.TransactionInfo.RentalBookingInfo.CustomerID);
+            ucVehicleCard1.LoadVehicleData(_vehicleReturn.TransactionInfo.RentalBookingInfo.VehicleID);
+            ucVehicleReturnDetails1.LoadVehicleReturnData(_vehicleReturn.ReturnID);
         }
 
-        private void frmShowVehicleReturnDetails_Load(object sender, EventArgs e)
+        private void FrmShowVehicleReturnDetails_Load(object sender, EventArgs e)
         {
-            _LoadVehicleReturnData();
+            LoadVehicleReturnData();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

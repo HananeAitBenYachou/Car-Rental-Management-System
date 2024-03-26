@@ -171,7 +171,7 @@ namespace CarRental_DataAccessLayer
                         command.Parameters.AddWithValue("@RentalEndDate", rentalEndDate);
                         command.Parameters.AddWithValue("@PickupLocation", pickupLocation);
                         command.Parameters.AddWithValue("@DropoffLocation", dropoffLocation);
-                        command.Parameters.AddWithValue("@RentalPricePerDay",rentalPricePerDay);
+                        command.Parameters.AddWithValue("@RentalPricePerDay", rentalPricePerDay);
                         command.Parameters.AddWithValue("@InitialCheckNotes", (object)initialCheckNotes ?? DBNull.Value);
 
                         SqlParameter outputParameter = new SqlParameter("@NewBookingID", SqlDbType.Int)

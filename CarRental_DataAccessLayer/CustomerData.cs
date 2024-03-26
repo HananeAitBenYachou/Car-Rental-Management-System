@@ -227,7 +227,7 @@ namespace CarRental_DataAccessLayer
 
         public static int? AddNewCustomer(string driverLicenseNumber, int? personID)
         {
-            int? CustomerID = null;
+            int? customerID = null;
 
             try
             {
@@ -251,7 +251,7 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteNonQuery();
 
-                        CustomerID = (int)outputParameter.Value;
+                        customerID = (int)outputParameter.Value;
                     }
                 }
             }
@@ -259,9 +259,9 @@ namespace CarRental_DataAccessLayer
             {
                 ErrorLogger.LogError(ex);
 
-                CustomerID = null;
+                customerID = null;
             }
-            return CustomerID;
+            return customerID;
         }
 
         public static bool UpdateCustomerInfo(int? customerID, string driverLicenseNumber, int? personID)

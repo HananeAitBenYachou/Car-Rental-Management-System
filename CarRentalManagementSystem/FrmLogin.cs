@@ -1,9 +1,9 @@
-﻿using CarRental_UtilityLayer;
+﻿using CarRental_BusinessLayer;
+using CarRental_UtilityLayer;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using static CarRentalManagementSystem.Global.Global;
-using CarRental_BusinessLayer;
 
 namespace CarRentalManagementSystem
 {
@@ -113,7 +113,7 @@ namespace CarRentalManagementSystem
             string userName = string.Empty;
             string password = string.Empty;
 
-            if(!Utility.GetUserCredintialsFromRegistery(ref userName, ref password))
+            if (!Utility.GetUserCredintialsFromRegistery(ref userName, ref password))
             {
                 ckbRememberMe.Checked = false;
                 Reset();

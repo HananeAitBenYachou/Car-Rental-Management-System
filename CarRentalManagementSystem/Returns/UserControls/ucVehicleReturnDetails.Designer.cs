@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Returns.UserControls
 {
-    partial class ucVehicleReturnDetails
+    partial class UcVehicleReturnDetails
     {
         /// <summary> 
         /// Required designer variable.

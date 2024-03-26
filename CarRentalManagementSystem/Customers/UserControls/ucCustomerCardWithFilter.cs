@@ -84,7 +84,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         private void BtnAddCustomer_Click(object sender, EventArgs e)
         {
-            frmAddUpdateCustomer form = new frmAddUpdateCustomer();
+            FrmAddUpdateCustomer form = new FrmAddUpdateCustomer();
             form.NewCustomerAdded += FrmAddUpdateCustomer_NewCustomerAdded;
             form.ShowDialog();
         }

@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Users
 {
-    partial class frmListUsers
+    partial class FrmListUsers
     {
         /// <summary>
         /// Required designer variable.
@@ -106,7 +106,7 @@
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
             this.cbFilterByOptions.TabIndex = 5;
-            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
+            this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
             // 
             // dgvUsersList
             // 
@@ -176,8 +176,8 @@
             this.dgvUsersList.ThemeStyle.RowsStyle.Height = 24;
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvUsersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersList_CellContentClick);
-            this.dgvUsersList.SelectionChanged += new System.EventHandler(this.dgvUsersList_SelectionChanged);
+            this.dgvUsersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsersList_CellContentClick);
+            this.dgvUsersList.SelectionChanged += new System.EventHandler(this.DgvUsersList_SelectionChanged);
             // 
             // cbUsers
             // 
@@ -199,7 +199,7 @@
             this.addNewUserToolStripMenuItem.Name = "addNewUserToolStripMenuItem";
             this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.addNewUserToolStripMenuItem.Text = "Add New User";
-            this.addNewUserToolStripMenuItem.Click += new System.EventHandler(this.addNewUserToolStripMenuItem_Click);
+            this.addNewUserToolStripMenuItem.Click += new System.EventHandler(this.AddNewUserToolStripMenuItem_Click);
             // 
             // editUserInformationToolStripMenuItem
             // 
@@ -208,7 +208,7 @@
             this.editUserInformationToolStripMenuItem.Name = "editUserInformationToolStripMenuItem";
             this.editUserInformationToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.editUserInformationToolStripMenuItem.Text = "Edit User Information";
-            this.editUserInformationToolStripMenuItem.Click += new System.EventHandler(this.editUserInformationToolStripMenuItem_Click);
+            this.editUserInformationToolStripMenuItem.Click += new System.EventHandler(this.EditUserInformationToolStripMenuItem_Click);
             // 
             // showUserInformationToolStripMenuItem
             // 
@@ -217,7 +217,7 @@
             this.showUserInformationToolStripMenuItem.Name = "showUserInformationToolStripMenuItem";
             this.showUserInformationToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.showUserInformationToolStripMenuItem.Text = "Show User Information";
-            this.showUserInformationToolStripMenuItem.Click += new System.EventHandler(this.showUserInformationToolStripMenuItem_Click);
+            this.showUserInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowUserInformationToolStripMenuItem_Click);
             // 
             // deleteUserToolStripMenuItem
             // 
@@ -226,7 +226,7 @@
             this.deleteUserToolStripMenuItem.Name = "deleteUserToolStripMenuItem";
             this.deleteUserToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.deleteUserToolStripMenuItem.Text = "Delete User";
-            this.deleteUserToolStripMenuItem.Click += new System.EventHandler(this.deleteUserToolStripMenuItem_Click);
+            this.deleteUserToolStripMenuItem.Click += new System.EventHandler(this.DeleteUserToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
@@ -235,7 +235,7 @@
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
-            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.ChangePasswordToolStripMenuItem_Click);
             // 
             // cbTemp
             // 
@@ -260,7 +260,7 @@
             this.cbTemp.Size = new System.Drawing.Size(192, 41);
             this.cbTemp.TabIndex = 8;
             this.cbTemp.Visible = false;
-            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.cbTemp_SelectedIndexChanged);
+            this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.CbTemp_SelectedIndexChanged);
             // 
             // btnAddNewUser
             // 
@@ -280,7 +280,7 @@
             this.btnAddNewUser.Size = new System.Drawing.Size(186, 51);
             this.btnAddNewUser.TabIndex = 7;
             this.btnAddNewUser.Text = "Add New User";
-            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
+            this.btnAddNewUser.Click += new System.EventHandler(this.BtnAddNewUser_Click);
             // 
             // txtFilterValue
             // 
@@ -305,8 +305,8 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
             this.txtFilterValue.TabIndex = 4;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
             // 
             // guna2ImageButton1
             // 
@@ -340,7 +340,7 @@
             this.Name = "frmListUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListUsers";
-            this.Load += new System.EventHandler(this.frmListUsers_Load);
+            this.Load += new System.EventHandler(this.FrmListUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersList)).EndInit();
             this.cbUsers.ResumeLayout(false);
             this.ResumeLayout(false);

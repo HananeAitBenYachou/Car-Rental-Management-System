@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Vehicles.UserControls
 {
-    public partial class ucVehicleCardWithFilter : UserControl
+    public partial class UcVehicleCardWithFilter : UserControl
     {
         public class VehicleFoundEventArgs : EventArgs
         {
@@ -21,8 +21,8 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             }
         }
 
-        private int? _VehicleID => ucVehicleCard1.VehicleID;
-        private Vehicle _Vehicle => ucVehicleCard1.Vehicle;
+        private int? _vehicleID => ucVehicleCard1.VehicleID;
+        private Vehicle _vehicle => ucVehicleCard1.Vehicle;
 
         public bool FilterEnabled
         {
@@ -41,37 +41,41 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
         }
 
         public event EventHandler<VehicleFoundEventArgs> VehicleFound;
-        private void _RaiseOnVehicleFoundEvent()
+        private void RaiseOnVehicleFoundEvent()
         {
-            OnVehicleFound(new VehicleFoundEventArgs(_VehicleID, _Vehicle.IsAvailableForRent, _Vehicle.RentalPricePerDay));
+            OnVehicleFound(new VehicleFoundEventArgs(_vehicleID, _vehicle.IsAvailableForRent, _vehicle.RentalPricePerDay));
         }
         protected virtual void OnVehicleFound(VehicleFoundEventArgs vehicleInfo)
         {
             VehicleFound?.Invoke(this, vehicleInfo);
         }
 
-        public ucVehicleCardWithFilter()
+        public UcVehicleCardWithFilter()
         {
             InitializeComponent();
         }
 
-        public void LoadVehicleData(int? vehicleID)
+        public bool LoadVehicleData(int? vehicleID)
         {
             txtVehicleID.Text = vehicleID.ToString();
-            _FindVehicle();
-        }
 
-        private void _ClearErrorProvider()
+            if (!FindVehicle())
+                return false;
+
+            RaiseOnVehicleFoundEvent();
+            return true;
+        }
+        private void ClearErrorProvider()
         {
             errorProvider1.SetError(txtVehicleID, null);
         }
 
-        private bool _FindVehicle()
+        private bool FindVehicle()
         {
             return ucVehicleCard1.LoadVehicleData(Convert.ToInt16(txtVehicleID.Text.Trim()));
         }
 
-        private void btnSearchVehicle_Click(object sender, EventArgs e)
+        private void BtnSearchVehicle_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
@@ -79,27 +83,27 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
                 return;
             }
 
-            if (_FindVehicle())
-                _RaiseOnVehicleFoundEvent();
+            if (FindVehicle())
+                RaiseOnVehicleFoundEvent();
         }
 
-        private void btnAddVehicle_Click(object sender, EventArgs e)
+        private void BtnAddVehicle_Click(object sender, EventArgs e)
         {
-            frmAddUpdateVehicle form = new frmAddUpdateVehicle();
-            form.NewVehicleAdded += frmAddUpdateVehicle_NewVehicleAdded;
+            FrmAddUpdateVehicle form = new FrmAddUpdateVehicle();
+            form.NewVehicleAdded += FrmAddUpdateVehicle_NewVehicleAdded;
             form.ShowDialog();
         }
 
-        private void frmAddUpdateVehicle_NewVehicleAdded(object sender, int? vehicleID)
+        private void FrmAddUpdateVehicle_NewVehicleAdded(object sender, int? vehicleID)
         {
             LoadVehicleData(vehicleID);
-            _ClearErrorProvider();
+            ClearErrorProvider();
             FilterEnabled = false;
 
-            _RaiseOnVehicleFoundEvent();
+            RaiseOnVehicleFoundEvent();
         }
 
-        private void txtVehicleID_Validating(object sender, CancelEventArgs e)
+        private void TxtVehicleID_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtVehicleID.Text))
             {
@@ -115,7 +119,7 @@ namespace CarRentalManagementSystem.Vehicles.UserControls
             }
         }
 
-        private void txtVehicleID_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtVehicleID_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }

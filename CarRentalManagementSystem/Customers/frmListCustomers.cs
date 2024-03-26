@@ -127,7 +127,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void BtnAddNewCustomer_Click(object sender, EventArgs e)
         {
-            frmAddUpdateCustomer form = new frmAddUpdateCustomer();
+            FrmAddUpdateCustomer form = new FrmAddUpdateCustomer();
             form.ShowDialog();
 
             RefreshCustomersList();
@@ -140,7 +140,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void EditCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateCustomer form = new frmAddUpdateCustomer((int)dgvCustomersList.CurrentRow.Cells[0].Value);
+            FrmAddUpdateCustomer form = new FrmAddUpdateCustomer((int)dgvCustomersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
 
             RefreshCustomersList();
@@ -148,7 +148,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void ShowCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowCustomerDetails form = new frmShowCustomerDetails((int)dgvCustomersList.CurrentRow.Cells[0].Value);
+            FrmShowCustomerDetails form = new FrmShowCustomerDetails((int)dgvCustomersList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
 

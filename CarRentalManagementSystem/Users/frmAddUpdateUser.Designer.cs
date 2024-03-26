@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Users
 {
-    partial class frmAddUpdateUser
+    partial class FrmAddUpdateUser
     {
         /// <summary>
         /// Required designer variable.
@@ -275,7 +275,7 @@
             this.rbFemale.UncheckedState.BorderThickness = 2;
             this.rbFemale.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rbFemale.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbFemale.Click += new System.EventHandler(this.rbFemale_Click);
+            this.rbFemale.Click += new System.EventHandler(this.RbFemale_Click);
             // 
             // rbMale
             // 
@@ -292,7 +292,7 @@
             this.rbMale.UncheckedState.BorderThickness = 2;
             this.rbMale.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rbMale.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbMale.Click += new System.EventHandler(this.rbMale_Click);
+            this.rbMale.Click += new System.EventHandler(this.RbMale_Click);
             // 
             // label6
             // 
@@ -340,7 +340,7 @@
             this.txtNationalNo.SelectedText = "";
             this.txtNationalNo.Size = new System.Drawing.Size(229, 43);
             this.txtNationalNo.TabIndex = 18;
-            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNo_Validating);
+            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNationalNo_Validating);
             // 
             // label8
             // 
@@ -411,7 +411,7 @@
             this.txtPhone.SelectedText = "";
             this.txtPhone.Size = new System.Drawing.Size(229, 43);
             this.txtPhone.TabIndex = 22;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPhone_KeyPress);
             this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // label10
@@ -448,7 +448,7 @@
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(229, 43);
             this.txtEmail.TabIndex = 24;
-            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TxtEmail_Validating);
             // 
             // label11
             // 
@@ -473,7 +473,7 @@
             this.llbRemoveImage.TabStop = true;
             this.llbRemoveImage.Text = "Remove Image";
             this.llbRemoveImage.Visible = false;
-            this.llbRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbRemoveImage_LinkClicked);
+            this.llbRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlbRemoveImage_LinkClicked);
             // 
             // llbUploadImage
             // 
@@ -485,7 +485,7 @@
             this.llbUploadImage.TabIndex = 156;
             this.llbUploadImage.TabStop = true;
             this.llbUploadImage.Text = "Upload Image";
-            this.llbUploadImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbUploadImage_LinkClicked);
+            this.llbUploadImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlbUploadImage_LinkClicked);
             // 
             // cbCountries
             // 
@@ -537,7 +537,7 @@
             this.txtUserName.SelectedText = "";
             this.txtUserName.Size = new System.Drawing.Size(229, 43);
             this.txtUserName.TabIndex = 162;
-            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.txtUserName_Validating);
+            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.TxtUserName_Validating);
             // 
             // label13
             // 
@@ -632,7 +632,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 167;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnSave
             // 
@@ -718,7 +718,7 @@
             this.Name = "frmAddUpdateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddUpdateUser";
-            this.Load += new System.EventHandler(this.frmAddUpdateUser_Load);
+            this.Load += new System.EventHandler(this.FrmAddUpdateUser_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

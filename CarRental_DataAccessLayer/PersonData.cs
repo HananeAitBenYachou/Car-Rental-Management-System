@@ -219,7 +219,7 @@ namespace CarRental_DataAccessLayer
                                         byte gender, string address, string phone, string email,
                                         int nationalityCountryID, string imagePath)
         {
-            int? PersonID = null;
+            int? personID = null;
 
             try
             {
@@ -251,7 +251,7 @@ namespace CarRental_DataAccessLayer
 
                         command.ExecuteNonQuery();
 
-                        PersonID = (int)outputPersonIDParameter.Value;
+                        personID = (int)outputPersonIDParameter.Value;
                     }
                 }
             }
@@ -259,9 +259,9 @@ namespace CarRental_DataAccessLayer
             {
                 ErrorLogger.LogError(ex);
 
-                PersonID = null;
+                personID = null;
             }
-            return PersonID;
+            return personID;
         }
 
         public static bool UpdatePersonInfo(int? personID, string nationalNo, string firstName, string lastName,

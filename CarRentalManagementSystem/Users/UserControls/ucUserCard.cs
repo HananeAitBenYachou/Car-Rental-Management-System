@@ -28,7 +28,7 @@ namespace CarRentalManagementSystem.Users.UserControls
             User = null;
         }
 
-        private void _LoadUserData()
+        private void LoadUserData()
         {
             UserID = User.UserID;
 
@@ -50,7 +50,7 @@ namespace CarRentalManagementSystem.Users.UserControls
                 return false;
             }
 
-            _LoadUserData();
+            LoadUserData();
             return true;
         }
 
@@ -64,7 +64,7 @@ namespace CarRentalManagementSystem.Users.UserControls
                 MessageBox.Show($"No user with username = {userName} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            _LoadUserData();
+            LoadUserData();
             return true;
         }
 

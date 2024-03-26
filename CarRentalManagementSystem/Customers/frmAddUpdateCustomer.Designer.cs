@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Customers
 {
-    partial class frmAddUpdateCustomer
+    partial class FrmAddUpdateCustomer
     {
         /// <summary>
         /// Required designer variable.

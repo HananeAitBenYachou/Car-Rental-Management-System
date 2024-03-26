@@ -37,7 +37,7 @@
             this.tpCustomerInfo = new System.Windows.Forms.TabPage();
             this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCard();
             this.tpVehicleInfo = new System.Windows.Forms.TabPage();
-            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.ucVehicleCard();
+            this.ucVehicleCard1 = new CarRentalManagementSystem.Vehicles.UserControls.UcVehicleCard();
             this.tpBookingInfo = new System.Windows.Forms.TabPage();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.ucBookingDetails1 = new CarRentalManagementSystem.Bookings.UserControls.UcBookingDetails();
@@ -242,7 +242,7 @@
         private System.Windows.Forms.TabPage tpVehicleInfo;
         private System.Windows.Forms.TabPage tpBookingInfo;
         private Customers.UserControls.UcCustomerCard ucCustomerCard1;
-        private Vehicles.UserControls.ucVehicleCard ucVehicleCard1;
+        private Vehicles.UserControls.UcVehicleCard ucVehicleCard1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private UserControls.UcBookingDetails ucBookingDetails1;
     }

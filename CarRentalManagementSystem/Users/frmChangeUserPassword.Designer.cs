@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Users
 {
-    partial class frmChangeUserPassword
+    partial class FrmChangeUserPassword
     {
         /// <summary>
         /// Required designer variable.
@@ -119,7 +119,7 @@
             this.txtCurrentPassword.SelectedText = "";
             this.txtCurrentPassword.Size = new System.Drawing.Size(229, 43);
             this.txtCurrentPassword.TabIndex = 166;
-            this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCurrentPassword_Validating);
+            this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCurrentPassword_Validating);
             // 
             // lblPassword
             // 
@@ -155,7 +155,7 @@
             this.txtNewPassword.SelectedText = "";
             this.txtNewPassword.Size = new System.Drawing.Size(229, 43);
             this.txtNewPassword.TabIndex = 168;
-            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewPassword_Validating);
+            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNewPassword_Validating);
             // 
             // label1
             // 
@@ -191,7 +191,7 @@
             this.txtConfirmPassword.SelectedText = "";
             this.txtConfirmPassword.Size = new System.Drawing.Size(229, 43);
             this.txtConfirmPassword.TabIndex = 170;
-            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TxtConfirmPassword_Validating);
             // 
             // label2
             // 
@@ -223,7 +223,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 172;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnSave
             // 
@@ -243,7 +243,7 @@
             this.btnSave.Size = new System.Drawing.Size(171, 58);
             this.btnSave.TabIndex = 171;
             this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // frmChangeUserPassword
             // 
@@ -263,7 +263,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmChangeUserPassword";
             this.Text = "frmChangeUserPassword";
-            this.Load += new System.EventHandler(this.frmChangeUserPassword_Load);
+            this.Load += new System.EventHandler(this.FrmChangeUserPassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
