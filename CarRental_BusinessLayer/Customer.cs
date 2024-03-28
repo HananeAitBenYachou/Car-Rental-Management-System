@@ -6,9 +6,9 @@ namespace CarRental_BusinessLayer
 {
     public class Customer : Person
     {
-        private new enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _mode;
-        public enum enFindCustomerBy : byte { PersonID = 0, CustomerID = 1, LicenseNumber = 3 }
+        private new enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _mode;
+        public enum EnFindCustomerBy : byte { PersonID = 0, CustomerID = 1, LicenseNumber = 3 }
 
         public int? CustomerID { get; private set; }
         public new int? PersonID { get; private set; }
@@ -16,20 +16,20 @@ namespace CarRental_BusinessLayer
 
         public Customer() : base()
         {
-            _mode = enMode.AddNew;
+            _mode = EnMode.AddNew;
 
             CustomerID = null;
             DriverLicenseNumber = default;
             PersonID = null;
         }
         private Customer(int? customerID, string driverLicenseNumber, int? personID, string nationalNo, string firstName,
-                         string lastName, DateTime birthDate, enGender gender, string address, string phone,
+                         string lastName, DateTime birthDate, EnGender gender, string address, string phone,
                          string email, int nationalityCountryID, string imagePath)
 
            : base(personID, nationalNo, firstName, lastName, birthDate, gender, address, phone, email,
                   nationalityCountryID, imagePath)
         {
-            _mode = enMode.Update;
+            _mode = EnMode.Update;
 
             CustomerID = customerID;
             DriverLicenseNumber = driverLicenseNumber;
@@ -104,17 +104,17 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
-        public static Customer Find<T>(T searchValue, enFindCustomerBy findCustomerBy)
+        public static Customer Find<T>(T searchValue, EnFindCustomerBy findCustomerBy)
         {
             switch (findCustomerBy)
             {
-                case enFindCustomerBy.PersonID:
+                case EnFindCustomerBy.PersonID:
                     return FindCustomerByPersonID(Convert.ToInt16(searchValue));
 
-                case enFindCustomerBy.CustomerID:
+                case EnFindCustomerBy.CustomerID:
                     return FindCustomerByCustomerID(Convert.ToInt16(searchValue));
 
-                case enFindCustomerBy.LicenseNumber:
+                case EnFindCustomerBy.LicenseNumber:
                     return FindCustomerByLicenseNo(Convert.ToString(searchValue));
 
                 default:
@@ -152,15 +152,15 @@ namespace CarRental_BusinessLayer
 
             switch (_mode)
             {
-                case enMode.AddNew:
+                case EnMode.AddNew:
                     if (AddNewCustomer())
                     {
-                        _mode = enMode.Update;
+                        _mode = EnMode.Update;
                         return true;
                     }
                     return false;
 
-                case enMode.Update:
+                case EnMode.Update:
                     return UpdateCustomer();
 
             }
@@ -180,6 +180,11 @@ namespace CarRental_BusinessLayer
         public static DataTable GetAllCustomers()
         {
             return CustomerData.GetAllCustomers();
+        }
+
+        public static int GetTotalCustomersCount()
+        {
+            return CustomerData.GetTotalCustomersCount();
         }
 
     }

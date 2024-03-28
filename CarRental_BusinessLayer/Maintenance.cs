@@ -6,8 +6,8 @@ namespace CarRental_BusinessLayer
 {
     public class Maintenance
     {
-        private enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _mode;
+        private enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _mode;
         public int? MaintenanceID { get; private set; }
         public int VehicleID { get; set; }
         public string Description { get; set; }
@@ -16,7 +16,7 @@ namespace CarRental_BusinessLayer
 
         public Maintenance()
         {
-            _mode = enMode.AddNew;
+            _mode = EnMode.AddNew;
 
             MaintenanceID = null;
             VehicleID = default;
@@ -26,7 +26,7 @@ namespace CarRental_BusinessLayer
         }
         private Maintenance(int? maintenanceID, int vehicleID, string description, DateTime maintenanceDate, double cost)
         {
-            _mode = enMode.Update;
+            _mode = EnMode.Update;
 
             MaintenanceID = maintenanceID;
             VehicleID = vehicleID;
@@ -68,15 +68,15 @@ namespace CarRental_BusinessLayer
         {
             switch (_mode)
             {
-                case enMode.AddNew:
+                case EnMode.AddNew:
                     if (AddNewMaintenance())
                     {
-                        _mode = enMode.Update;
+                        _mode = EnMode.Update;
                         return true;
                     }
                     return false;
 
-                case enMode.Update:
+                case EnMode.Update:
                     return UpdateMaintenance();
 
             }

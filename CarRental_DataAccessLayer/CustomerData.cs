@@ -389,5 +389,41 @@ namespace CarRental_DataAccessLayer
             return PersonID;
         }
 
+        public static int GetTotalCustomersCount()
+        {
+            int totalCustomersCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetCustomersCount", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        totalCustomersCount = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+
+                totalCustomersCount = 0;
+            }
+            return totalCustomersCount;
+        }
+
     }
 }

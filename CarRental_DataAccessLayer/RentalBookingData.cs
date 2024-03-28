@@ -265,5 +265,42 @@ namespace CarRental_DataAccessLayer
             }
             return rentalBookingsdatatable;
         }
+
+        public static int GetTotalRentalBookingsCount()
+        {
+            int totalRentalBookingsCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetRentalBookingsCount", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        totalRentalBookingsCount = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+
+                totalRentalBookingsCount = 0;
+            }
+            return totalRentalBookingsCount;
+        }
+
     }
 }

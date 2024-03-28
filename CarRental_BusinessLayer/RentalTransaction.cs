@@ -6,7 +6,7 @@ namespace CarRental_BusinessLayer
 {
     public class RentalTransaction
     {
-        public enum enFindTransactionBy : byte { TransactionID, BookingID }
+        public enum EnFindTransactionBy : byte { TransactionID, BookingID }
 
         public int? TransactionID { get; private set; }
         public int BookingID { get; set; }
@@ -52,15 +52,15 @@ namespace CarRental_BusinessLayer
             ReturnInfo = VehicleReturn.Find(returnID);
         }
 
-        public static RentalTransaction Find<T>(T searchValue, enFindTransactionBy findTransactionBy)
+        public static RentalTransaction Find<T>(T searchValue, EnFindTransactionBy findTransactionBy)
         {
             switch (findTransactionBy)
             {
-                case enFindTransactionBy.TransactionID:
+                case EnFindTransactionBy.TransactionID:
                     FindByTransactionID(Convert.ToInt16(searchValue));
                     break;
 
-                case enFindTransactionBy.BookingID:
+                case EnFindTransactionBy.BookingID:
                     FindByBookingID(Convert.ToInt16(searchValue));
                     break;
             }
@@ -129,5 +129,9 @@ namespace CarRental_BusinessLayer
             return RentalTransactionData.GetTransactionIDByBookingID(bookingID);
         }
 
+        public static int GetTotalRentalTransactionsCount()
+        {
+            return RentalTransactionData.GetTotalRentalTransactionsCount();
+        }
     }
 }

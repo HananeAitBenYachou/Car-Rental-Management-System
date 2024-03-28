@@ -74,7 +74,7 @@ namespace CarRentalManagementSystem.Customers
 
         private void LoadCustomerData()
         {
-            _customer = Customer.Find<int?>(_customerID, enFindCustomerBy.CustomerID);
+            _customer = Customer.Find<int?>(_customerID, EnFindCustomerBy.CustomerID);
 
             if (_customer == null)
             {
@@ -95,7 +95,7 @@ namespace CarRentalManagementSystem.Customers
             dtpBirthDate.Value = _customer.BirthDate;
             cbCountries.SelectedIndex = cbCountries.FindString(_customer.CountryInfo.Name);
 
-            rbMale.Checked = (_customer.Gender == Person.enGender.Male);
+            rbMale.Checked = (_customer.Gender == Person.EnGender.Male);
             rbFemale.Checked = !rbMale.Checked;
 
             if (_customer.ImagePath != null)
@@ -163,7 +163,7 @@ namespace CarRentalManagementSystem.Customers
             _customer.DriverLicenseNumber = txtLicenseNo.Text.Trim();
             _customer.BirthDate = dtpBirthDate.Value;
             _customer.NationalityCountryID = Country.Find(cbCountries.Text).CountryID.Value;
-            _customer.Gender = rbMale.Checked == true ? Person.enGender.Male : Person.enGender.Female;
+            _customer.Gender = rbMale.Checked == true ? Person.EnGender.Male : Person.EnGender.Female;
             _customer.ImagePath = pbPersonalImage.ImageLocation ?? null;
 
             if (!_customer.Save())

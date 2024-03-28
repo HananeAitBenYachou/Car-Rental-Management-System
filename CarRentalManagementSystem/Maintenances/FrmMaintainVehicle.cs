@@ -1,14 +1,6 @@
 ﻿using CarRental_BusinessLayer;
-using CarRentalManagementSystem.Bookings.UserControls;
 using CarRentalManagementSystem.Vehicles.UserControls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Maintenances
@@ -16,8 +8,6 @@ namespace CarRentalManagementSystem.Maintenances
     public partial class FrmMaintainVehicle : Form
     {
         private int? _vehicleID = null;
-        private Vehicle _vehicle = null;
-
         private int? _maintenanceID = null;
         private Maintenance _maintenance = null;
 
@@ -53,18 +43,16 @@ namespace CarRentalManagementSystem.Maintenances
             btnSave.Enabled = false;
         }
 
-        private void UcBookingDetailsWithFilter1_BookingFound(object sender, UcVehicleCardWithFilter.VehicleFoundEventArgs e)
+        private void UcBookingDetailsWithFilter1_BookingFound(object sender, UcVehicleCardWithFilter.VehicleFoundEventArgs vehicleInfo)
         {
-            _vehicle = Vehicle.Find(e.VehicleID);
-
-            if (!e.IsAvailableForRent)
+            if (!vehicleInfo.IsAvailableForRent)
             {
                 MessageBox.Show($"You can't maintain this car , it is available now !", "Not Valid !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnNext.Enabled = false;
                 return;
             }
 
-            _vehicleID = _vehicle.VehicleID;
+            _vehicleID = vehicleInfo.VehicleID;
 
             btnNext.Enabled = true;
 

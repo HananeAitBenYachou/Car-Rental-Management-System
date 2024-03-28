@@ -96,7 +96,7 @@
             this.dgvCustomersList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCustomersList.RowHeadersVisible = false;
             this.dgvCustomersList.RowHeadersWidth = 51;
-            this.dgvCustomersList.RowTemplate.Height = 24;
+            this.dgvCustomersList.RowTemplate.Height = 50;
             this.dgvCustomersList.Size = new System.Drawing.Size(1185, 437);
             this.dgvCustomersList.TabIndex = 15;
             this.dgvCustomersList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Ember;
@@ -118,7 +118,7 @@
             this.dgvCustomersList.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvCustomersList.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.dgvCustomersList.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvCustomersList.ThemeStyle.RowsStyle.Height = 24;
+            this.dgvCustomersList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvCustomersList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvCustomersList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.dgvCustomersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCustomersList_CellContentClick);
@@ -312,7 +312,7 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.TabIndex = 10;
             // 
-            // frmListCustomers
+            // FrmListCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -328,7 +328,7 @@
             this.Controls.Add(this.txtFilterValue);
             this.Controls.Add(this.guna2ImageButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmListCustomers";
+            this.Name = "FrmListCustomers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListCustomers";
             this.Load += new System.EventHandler(this.FrmListCustomers_Load);

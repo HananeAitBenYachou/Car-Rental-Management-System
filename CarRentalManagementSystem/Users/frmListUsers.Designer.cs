@@ -151,7 +151,7 @@
             this.dgvUsersList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUsersList.RowHeadersVisible = false;
             this.dgvUsersList.RowHeadersWidth = 51;
-            this.dgvUsersList.RowTemplate.Height = 24;
+            this.dgvUsersList.RowTemplate.Height = 50;
             this.dgvUsersList.Size = new System.Drawing.Size(1185, 437);
             this.dgvUsersList.TabIndex = 6;
             this.dgvUsersList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Ember;
@@ -173,7 +173,7 @@
             this.dgvUsersList.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvUsersList.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.dgvUsersList.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvUsersList.ThemeStyle.RowsStyle.Height = 24;
+            this.dgvUsersList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.dgvUsersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsersList_CellContentClick);
@@ -321,7 +321,7 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.TabIndex = 1;
             // 
-            // frmListUsers
+            // FrmListUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -337,7 +337,7 @@
             this.Controls.Add(this.guna2ImageButton1);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmListUsers";
+            this.Name = "FrmListUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListUsers";
             this.Load += new System.EventHandler(this.FrmListUsers_Load);

@@ -1,6 +1,7 @@
 using CarRental_DataAccessLayer.GlobalClasses;
 using CarRental_UtilityLayer;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -304,6 +305,83 @@ namespace CarRental_DataAccessLayer
                 totalvehiclesCount = 0;
             }
             return totalvehiclesCount;
+        }
+
+        public static int GetVehiclesCountPerStatus(bool vehicleStatus)
+        {
+            int vehiclesCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetVehiclesCountPerStatus", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@Status", vehicleStatus); 
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        vehiclesCount = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+
+                vehiclesCount = 0;
+            }
+            return vehiclesCount;
+        }
+
+        public static List<(int vehicleId, string vehicleName, int rank)> GetTopMostRentedVehicles()
+        {
+            var vehiclesList = new List<(int vehicleId, string vehicleName, int rank)>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetTopMostRentedVehicles", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            int vehicleID = 0;
+                            string vehicleName = "";
+                            int rank = 0;
+
+                            while(reader.Read())
+                            {
+                                vehicleID = (int)reader["Vehicle ID"];
+                                vehicleName = (string)reader["Vehicle Name"];
+                                rank = (int)(long)(reader["Rank"]);
+
+                                vehiclesList.Add((vehicleID, vehicleName, rank));
+                            }                     
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return vehiclesList;
         }
 
     }

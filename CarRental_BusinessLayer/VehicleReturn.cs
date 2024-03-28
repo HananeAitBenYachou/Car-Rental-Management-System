@@ -6,8 +6,8 @@ namespace CarRental_BusinessLayer
 {
     public class VehicleReturn
     {
-        private enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _Mode;
+        private enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _Mode;
         public int? ReturnID { get; private set; }
         public DateTime ActualReturnDate { get; set; }
         public byte ActualRentalDays { get; set; }
@@ -22,7 +22,7 @@ namespace CarRental_BusinessLayer
 
         public VehicleReturn()
         {
-            _Mode = enMode.AddNew;
+            _Mode = EnMode.AddNew;
             ReturnID = null;
             ActualReturnDate = default;
             ActualRentalDays = default;
@@ -37,7 +37,7 @@ namespace CarRental_BusinessLayer
                               short consumedMileage, string finalCheckNotes, float additionalCharges,
                               float actualTotalDueAmount, int transactionID)
         {
-            _Mode = enMode.Update;
+            _Mode = EnMode.Update;
             ReturnID = returnID;
             ActualReturnDate = actualReturnDate;
             ActualRentalDays = actualRentalDays;
@@ -48,7 +48,7 @@ namespace CarRental_BusinessLayer
             ActualTotalDueAmount = actualTotalDueAmount;
             TransactionID = transactionID;
 
-            TransactionInfo = RentalTransaction.Find<int?>(transactionID, RentalTransaction.enFindTransactionBy.TransactionID);
+            TransactionInfo = RentalTransaction.Find<int?>(transactionID, RentalTransaction.EnFindTransactionBy.TransactionID);
         }
 
         public static VehicleReturn Find(int? returnID)
@@ -97,15 +97,15 @@ namespace CarRental_BusinessLayer
         {
             switch (_Mode)
             {
-                case enMode.AddNew:
+                case EnMode.AddNew:
                     if (AddNewVehicleReturn())
                     {
-                        _Mode = enMode.Update;
+                        _Mode = EnMode.Update;
                         return true;
                     }
                     return false;
 
-                case enMode.Update:
+                case EnMode.Update:
                     return UpdateVehicleReturn();
 
             }
@@ -115,6 +115,11 @@ namespace CarRental_BusinessLayer
         public static DataTable GetAllVehicleReturns()
         {
             return VehicleReturnData.GetAllVehicleReturns();
+        }
+
+        public static int GetTotalVehicleReturnsCount()
+        {
+            return VehicleReturnData.GetTotalVehicleReturnsCount();
         }
     }
 }

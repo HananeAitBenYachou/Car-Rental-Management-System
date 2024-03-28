@@ -1,12 +1,15 @@
 using CarRental_DataAccessLayer;
+using System.Collections.Generic;
 using System.Data;
 
 namespace CarRental_BusinessLayer
 {
     public class Vehicle
     {
-        private enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _mode;
+        private enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _mode;
+
+        public enum EnVehicleStatus : byte { Available = 1, Rented = 0 };
         public int? VehicleID { get; private set; }
         public int MakeID { get; set; }
         public int ModelID { get; set; }
@@ -27,7 +30,7 @@ namespace CarRental_BusinessLayer
 
         public Vehicle()
         {
-            _mode = enMode.AddNew;
+            _mode = EnMode.AddNew;
 
             VehicleID = null;
             MakeID = default;
@@ -47,7 +50,7 @@ namespace CarRental_BusinessLayer
                         int driveTypeID, string engine, int fuelTypeID, byte numDoors, int mileage,
                         double rentalPricePerDay, bool isAvailableForRent)
         {
-            _mode = enMode.Update;
+            _mode = EnMode.Update;
 
             VehicleID = vehicleID;
             MakeID = makeID;
@@ -118,15 +121,15 @@ namespace CarRental_BusinessLayer
         {
             switch (_mode)
             {
-                case enMode.AddNew:
+                case EnMode.AddNew:
                     if (AddNewVehicle())
                     {
-                        _mode = enMode.Update;
+                        _mode = EnMode.Update;
                         return true;
                     }
                     return false;
 
-                case enMode.Update:
+                case EnMode.Update:
                     return UpdateVehicle();
 
             }
@@ -148,5 +151,15 @@ namespace CarRental_BusinessLayer
             return VehicleData.GetTotalVehiclesCount();
         }
 
+        public static List<(int vehicleId, string vehicleName, int rank)> GetTopMostRentedVehicles()
+        {
+            return VehicleData.GetTopMostRentedVehicles();
+        }
+
+        public static int GetVehiclesCountPerStatus(EnVehicleStatus vehicleStatus)
+        {
+            return VehicleData.GetVehiclesCountPerStatus(vehicleStatus == EnVehicleStatus.Available);
+        }
+    
     }
 }

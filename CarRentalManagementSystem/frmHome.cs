@@ -43,6 +43,18 @@ namespace CarRentalManagementSystem
             frm.Show();
         }
 
+        private void LoadLoggedInUserInfo()
+        {
+            if (CurrentUser.ImagePath != null)
+                pbUserImage.ImageLocation = CurrentUser.ImagePath;
+        }
+
+        private void BtnShowUserProfile_Click(object sender, System.EventArgs e)
+        {
+            FrmShowUserDetails form = new FrmShowUserDetails(CurrentUser.UserID);
+            form.Show();
+        }
+
         private void BtnExit_Click(object sender, System.EventArgs e)
         {
             CurrentUser = null;
@@ -67,7 +79,9 @@ namespace CarRentalManagementSystem
 
         private void FrmHome_Load(object sender, System.EventArgs e)
         {
+            LoadLoggedInUserInfo();
 
+            btnDashboard.PerformClick();
         }
 
         private void BtnManageUsers_Click(object sender, System.EventArgs e)
@@ -103,12 +117,13 @@ namespace CarRentalManagementSystem
 
         private void BtnDashboard_Click(object sender, System.EventArgs e)
         {
-            //Not implemented yet !
+            ShowForm((Guna2Button)sender, new FrmDashboard());
         }
 
         private void BtnLogout_Click(object sender, System.EventArgs e)
         {
             btnExit.PerformClick();
         }
+
     }
 }

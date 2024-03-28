@@ -1,4 +1,5 @@
 ﻿using CarRental_BusinessLayer;
+using CarRentalManagementSystem.Maintenances;
 using System;
 using System.Data;
 using System.Threading.Tasks;
@@ -323,6 +324,20 @@ namespace CarRentalManagementSystem.Vehicles
                 RefreshVehiclesList();
             }
             UpdateButtonStates();
+        }
+
+        private void MaintainVehicleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMaintainVehicle form = new FrmMaintainVehicle((int)dgvVehiclesList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
+        }
+
+        private void CbVehicles_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Vehicle vehicle = Vehicle.Find((int)dgvVehiclesList.CurrentRow.Cells[0].Value);
+
+            maintainVehicleToolStripMenuItem.Enabled = vehicle.IsAvailableForRent;
+            deleteVehicleToolStripMenuItem.Enabled = vehicle.IsAvailableForRent;
         }
     }
 }

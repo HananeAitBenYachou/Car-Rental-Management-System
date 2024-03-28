@@ -5,17 +5,17 @@ namespace CarRental_BusinessLayer
 {
     public class Person
     {
-        public enum enMode : byte { AddNew = 0, Update = 1 };
-        public enMode Mode;
-        public enum enGender : byte { Male = 0, Female = 1 };
+        public enum EnMode : byte { AddNew = 0, Update = 1 };
+        public EnMode Mode;
+        public enum EnGender : byte { Male = 0, Female = 1 };
 
         public int? PersonID { get; private set; }
         public string NationalNo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName => FirstName + LastName;
+        public string FullName => string.Join(" ",FirstName,LastName);
         public DateTime BirthDate { get; set; }
-        public enGender Gender { get; set; }
+        public EnGender Gender { get; set; }
         public string GenderText => Gender.ToString();
         public string Address { get; set; }
         public string Phone { get; set; }
@@ -26,7 +26,7 @@ namespace CarRental_BusinessLayer
 
         public Person()
         {
-            Mode = enMode.AddNew;
+            Mode = EnMode.AddNew;
 
             PersonID = null;
             NationalNo = default;
@@ -42,10 +42,10 @@ namespace CarRental_BusinessLayer
         }
 
         protected Person(int? personID, string nationalNo, string firstName, string lastName, DateTime birthDate,
-                         enGender gender, string address, string phone, string email, int nationalityCountryID,
+                         EnGender gender, string address, string phone, string email, int nationalityCountryID,
                          string imagePath)
         {
-            Mode = enMode.Update;
+            Mode = EnMode.Update;
 
             PersonID = personID;
             NationalNo = nationalNo;
@@ -81,7 +81,7 @@ namespace CarRental_BusinessLayer
 
             if (isFound)
                 return new Person(personID, nationalNo, firstName, lastName,
-                    birthDate, (enGender)gender, address, phone, email,
+                    birthDate, (EnGender)gender, address, phone, email,
                     nationalityCountryID, imagePath);
             else
                 return null;
@@ -106,7 +106,7 @@ namespace CarRental_BusinessLayer
 
             if (isFound)
                 return new Person(personID, nationalNo, firstName, lastName, birthDate,
-                    (enGender)gender, address, phone, email, nationalityCountryID, imagePath);
+                    (EnGender)gender, address, phone, email, nationalityCountryID, imagePath);
             else
                 return null;
         }
@@ -138,15 +138,15 @@ namespace CarRental_BusinessLayer
         {
             switch (Mode)
             {
-                case enMode.AddNew:
+                case EnMode.AddNew:
                     if (AddNewPerson())
                     {
-                        Mode = enMode.Update;
+                        Mode = EnMode.Update;
                         return true;
                     }
                     return false;
 
-                case enMode.Update:
+                case EnMode.Update:
                     return UpdatePerson();
 
             }

@@ -6,8 +6,8 @@ namespace CarRental_BusinessLayer
 {
     public class RentalBooking
     {
-        private enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _mode;
+        private enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _mode;
         public int? BookingID { get; private set; }
         public int CustomerID { get; set; }
         public int VehicleID { get; set; }
@@ -27,7 +27,7 @@ namespace CarRental_BusinessLayer
 
         public RentalBooking()
         {
-            _mode = enMode.AddNew;
+            _mode = EnMode.AddNew;
 
             BookingID = null;
             CustomerID = default;
@@ -48,7 +48,7 @@ namespace CarRental_BusinessLayer
                               int initialRentalDays, float rentalPricePerDay, float initialTotalDueAmount,
                               string initialCheckNotes)
         {
-            _mode = enMode.Update;
+            _mode = EnMode.Update;
 
             BookingID = bookingID;
             CustomerID = customerID;
@@ -63,7 +63,7 @@ namespace CarRental_BusinessLayer
             InitialCheckNotes = initialCheckNotes;
 
             RentedVehicleInfo = Vehicle.Find(vehicleID);
-            CustomerInfo = Customer.Find(customerID, Customer.enFindCustomerBy.CustomerID);
+            CustomerInfo = Customer.Find(customerID, Customer.EnFindCustomerBy.CustomerID);
             TransactionID = RentalTransaction.GetTransactionIDByBookingID(bookingID);
             IsBookingActive = IsRentalBookingActive();
         }
@@ -124,15 +124,15 @@ namespace CarRental_BusinessLayer
         {
             switch (_mode)
             {
-                case enMode.AddNew:
+                case EnMode.AddNew:
                     if (AddNewRentalBooking())
                     {
-                        _mode = enMode.Update;
+                        _mode = EnMode.Update;
                         return true;
                     }
                     return false;
 
-                case enMode.Update:
+                case EnMode.Update:
                     return UpdateRentalBooking();
 
             }
@@ -142,6 +142,11 @@ namespace CarRental_BusinessLayer
         public static DataTable GetAllRentalBookings()
         {
             return RentalBookingData.GetAllRentalBookings();
+        }
+
+        public static int GetTotalRentalBookingsCount()
+        {
+            return RentalBookingData.GetTotalRentalBookingsCount();
         }
     }
 }

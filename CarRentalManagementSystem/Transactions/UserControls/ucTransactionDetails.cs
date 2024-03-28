@@ -15,7 +15,7 @@ namespace CarRentalManagementSystem.Transactions.UserControls
 
         public bool LoadTransactionData(int? transactionID)
         {
-            Transaction = RentalTransaction.Find(transactionID, RentalTransaction.enFindTransactionBy.TransactionID);
+            Transaction = RentalTransaction.Find(transactionID, RentalTransaction.EnFindTransactionBy.TransactionID);
 
             if (Transaction == null)
             {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarRentalManagementSystem.Transactions;
+using CarRentalManagementSystem.Users;
+using System;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem
@@ -14,12 +16,10 @@ namespace CarRentalManagementSystem
             if (Environment.OSVersion.Version.Major >= 6)
                 SetProcessDPIAware();
 
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new FrmLogin());
-
 
         }
 

@@ -6,10 +6,10 @@ namespace CarRental_BusinessLayer
 {
     public class User : Person
     {
-        private new enum enMode : byte { AddNew = 0, Update = 1 };
-        private enMode _mode;
+        private new enum EnMode : byte { AddNew = 0, Update = 1 };
+        private EnMode _mode;
 
-        public enum enFindUserBy : byte { PersonID = 0, UserID = 1, UserName = 3 }
+        public enum EnFindUserBy : byte { PersonID = 0, UserID = 1, UserName = 3 }
 
         public int? UserID { get; private set; }
         public new int? PersonID { get; private set; }
@@ -19,7 +19,7 @@ namespace CarRental_BusinessLayer
 
         public User() : base()
         {
-            _mode = enMode.AddNew;
+            _mode = EnMode.AddNew;
 
             UserID = null;
             PersonID = null;
@@ -28,14 +28,14 @@ namespace CarRental_BusinessLayer
             IsActive = default;
         }
         private User(int? userID, int? personID, string userName, string password, bool isActive, string nationalNo,
-                     string firstName, string lastName, DateTime birthDate, enGender gender, string address,
+                     string firstName, string lastName, DateTime birthDate, EnGender gender, string address,
                      string phone, string email, int nationalityCountryID, string imagePath)
 
                     : base(personID, nationalNo, firstName, lastName, birthDate, gender, address, phone, email,
                            nationalityCountryID, imagePath)
 
         {
-            _mode = enMode.Update;
+            _mode = EnMode.Update;
 
             UserID = userID;
             PersonID = personID;
@@ -142,17 +142,17 @@ namespace CarRental_BusinessLayer
                 return null;
         }
 
-        public static User Find<T>(T searchValue, enFindUserBy findUserBy)
+        public static User Find<T>(T searchValue, EnFindUserBy findUserBy)
         {
             switch (findUserBy)
             {
-                case enFindUserBy.PersonID:
+                case EnFindUserBy.PersonID:
                     return FindUserByPersonID(Convert.ToInt32(searchValue));
 
-                case enFindUserBy.UserID:
+                case EnFindUserBy.UserID:
                     return FindUserByUserID(Convert.ToInt32(searchValue));
 
-                case enFindUserBy.UserName:
+                case EnFindUserBy.UserName:
                     return FindUserByUserName(Convert.ToString(searchValue));
 
                 default:
@@ -190,15 +190,15 @@ namespace CarRental_BusinessLayer
 
             switch (_mode)
             {
-                case enMode.AddNew:
+                case EnMode.AddNew:
                     if (AddNewUser())
                     {
-                        _mode = enMode.Update;
+                        _mode = EnMode.Update;
                         return true;
                     }
                     return false;
 
-                case enMode.Update:
+                case EnMode.Update:
                     return UpdateUser();
 
             }
@@ -223,6 +223,11 @@ namespace CarRental_BusinessLayer
         public bool UpdateUserPassword(string newPassword)
         {
             return UserData.UpdateUserPassword(UserID, newPassword);
+        }
+
+        public static int GetTotalUsersCount()
+        {
+            return UserData.GetTotalUsersCount();
         }
     }
 }

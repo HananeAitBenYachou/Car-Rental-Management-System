@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.guna2VSeparator1 = new Guna.UI2.WinForms.Guna2VSeparator();
+            this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnShowUserProfile = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.pbUserImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnManageUsers = new Guna.UI2.WinForms.Guna2Button();
@@ -41,10 +46,8 @@
             this.btnManageVehicles = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.pnlContainer = new System.Windows.Forms.Panel();
-            this.btnCollapse = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2GradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +83,63 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(290, 949);
             this.guna2GradientPanel1.TabIndex = 0;
             // 
+            // pnlContainer
+            // 
+            this.pnlContainer.Location = new System.Drawing.Point(310, 123);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(1263, 759);
+            this.pnlContainer.TabIndex = 1;
+            // 
+            // guna2VSeparator1
+            // 
+            this.guna2VSeparator1.FillThickness = 3;
+            this.guna2VSeparator1.Location = new System.Drawing.Point(1490, 16);
+            this.guna2VSeparator1.Name = "guna2VSeparator1";
+            this.guna2VSeparator1.Size = new System.Drawing.Size(10, 48);
+            this.guna2VSeparator1.TabIndex = 13;
+            // 
+            // btnExit
+            // 
+            this.btnExit.CheckedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnExit.Image = global::CarRentalManagementSystem.Properties.Resources.log_out__1_;
+            this.btnExit.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnExit.ImageRotate = 0F;
+            this.btnExit.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExit.Location = new System.Drawing.Point(1557, 30);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnExit.Size = new System.Drawing.Size(25, 25);
+            this.btnExit.TabIndex = 15;
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
+            // btnShowUserProfile
+            // 
+            this.btnShowUserProfile.CheckedState.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnShowUserProfile.HoverState.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnShowUserProfile.Image = global::CarRentalManagementSystem.Properties.Resources.user__1_;
+            this.btnShowUserProfile.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnShowUserProfile.ImageRotate = 0F;
+            this.btnShowUserProfile.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.Location = new System.Drawing.Point(1516, 25);
+            this.btnShowUserProfile.Name = "btnShowUserProfile";
+            this.btnShowUserProfile.PressedState.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnShowUserProfile.Size = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.TabIndex = 14;
+            this.btnShowUserProfile.Click += new System.EventHandler(this.BtnShowUserProfile_Click);
+            // 
+            // pbUserImage
+            // 
+            this.pbUserImage.Image = global::CarRentalManagementSystem.Properties.Resources.man__1_;
+            this.pbUserImage.ImageRotate = 0F;
+            this.pbUserImage.Location = new System.Drawing.Point(1421, 6);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pbUserImage.Size = new System.Drawing.Size(64, 64);
+            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbUserImage.TabIndex = 10;
+            this.pbUserImage.TabStop = false;
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Transparent;
@@ -95,7 +155,7 @@
             this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnLogout.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnLogout.Location = new System.Drawing.Point(45, 554);
+            this.btnLogout.Location = new System.Drawing.Point(45, 553);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(210, 55);
             this.btnLogout.TabIndex = 8;
@@ -108,7 +168,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::CarRentalManagementSystem.Properties.Resources.Car_rental_bro;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 590);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 562);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(287, 369);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -130,7 +190,7 @@
             this.btnManageUsers.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageUsers.ImageOffset = new System.Drawing.Point(-5, -2);
             this.btnManageUsers.ImageSize = new System.Drawing.Size(38, 38);
-            this.btnManageUsers.Location = new System.Drawing.Point(45, 497);
+            this.btnManageUsers.Location = new System.Drawing.Point(45, 494);
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(210, 55);
             this.btnManageUsers.TabIndex = 7;
@@ -154,13 +214,13 @@
             this.btnManageCustomers.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageCustomers.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnManageCustomers.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnManageCustomers.Location = new System.Drawing.Point(45, 434);
+            this.btnManageCustomers.Location = new System.Drawing.Point(45, 435);
             this.btnManageCustomers.Name = "btnManageCustomers";
             this.btnManageCustomers.Size = new System.Drawing.Size(210, 55);
             this.btnManageCustomers.TabIndex = 6;
             this.btnManageCustomers.Text = "Customers";
             this.btnManageCustomers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnManageCustomers.TextOffset = new System.Drawing.Point(8, -1);
+            this.btnManageCustomers.TextOffset = new System.Drawing.Point(8, 0);
             this.btnManageCustomers.Click += new System.EventHandler(this.BtnManageCustomers_Click);
             // 
             // btnManageTransactions
@@ -184,7 +244,7 @@
             this.btnManageTransactions.TabIndex = 5;
             this.btnManageTransactions.Text = "Transactions";
             this.btnManageTransactions.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnManageTransactions.TextOffset = new System.Drawing.Point(8, -3);
+            this.btnManageTransactions.TextOffset = new System.Drawing.Point(8, -1);
             this.btnManageTransactions.Click += new System.EventHandler(this.BtnManageTransactions_Click);
             // 
             // btnManageReturns
@@ -202,7 +262,7 @@
             this.btnManageReturns.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnManageReturns.ImageOffset = new System.Drawing.Point(-5, -3);
             this.btnManageReturns.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnManageReturns.Location = new System.Drawing.Point(45, 315);
+            this.btnManageReturns.Location = new System.Drawing.Point(45, 317);
             this.btnManageReturns.Name = "btnManageReturns";
             this.btnManageReturns.Size = new System.Drawing.Size(210, 55);
             this.btnManageReturns.TabIndex = 4;
@@ -224,9 +284,9 @@
             this.btnManageBookings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.btnManageBookings.Image = global::CarRentalManagementSystem.Properties.Resources.car_rental;
             this.btnManageBookings.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnManageBookings.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.btnManageBookings.ImageOffset = new System.Drawing.Point(-5, -3);
             this.btnManageBookings.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnManageBookings.Location = new System.Drawing.Point(45, 253);
+            this.btnManageBookings.Location = new System.Drawing.Point(45, 258);
             this.btnManageBookings.Name = "btnManageBookings";
             this.btnManageBookings.Size = new System.Drawing.Size(210, 55);
             this.btnManageBookings.TabIndex = 3;
@@ -248,15 +308,15 @@
             this.btnManageVehicles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.btnManageVehicles.Image = global::CarRentalManagementSystem.Properties.Resources.fast_delivery;
             this.btnManageVehicles.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnManageVehicles.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.btnManageVehicles.ImageOffset = new System.Drawing.Point(-5, 3);
             this.btnManageVehicles.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnManageVehicles.Location = new System.Drawing.Point(45, 201);
+            this.btnManageVehicles.Location = new System.Drawing.Point(45, 199);
             this.btnManageVehicles.Name = "btnManageVehicles";
             this.btnManageVehicles.Size = new System.Drawing.Size(210, 55);
             this.btnManageVehicles.TabIndex = 2;
             this.btnManageVehicles.Text = "Vehicles";
             this.btnManageVehicles.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnManageVehicles.TextOffset = new System.Drawing.Point(8, -6);
+            this.btnManageVehicles.TextOffset = new System.Drawing.Point(8, -2);
             this.btnManageVehicles.Click += new System.EventHandler(this.BtnManageVehicles_Click);
             // 
             // btnDashboard
@@ -280,7 +340,7 @@
             this.btnDashboard.TabIndex = 1;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDashboard.TextOffset = new System.Drawing.Point(8, -1);
+            this.btnDashboard.TextOffset = new System.Drawing.Point(8, 1);
             this.btnDashboard.Click += new System.EventHandler(this.BtnDashboard_Click);
             // 
             // guna2PictureBox1
@@ -296,67 +356,25 @@
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // pnlContainer
-            // 
-            this.pnlContainer.Location = new System.Drawing.Point(310, 116);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1263, 759);
-            this.pnlContainer.TabIndex = 1;
-            // 
-            // btnCollapse
-            // 
-            this.btnCollapse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.btnCollapse.CheckedState.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnCollapse.HoverState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnCollapse.Image = global::CarRentalManagementSystem.Properties.Resources.minus_button;
-            this.btnCollapse.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnCollapse.ImageRotate = 0F;
-            this.btnCollapse.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnCollapse.Location = new System.Drawing.Point(1486, 7);
-            this.btnCollapse.Name = "btnCollapse";
-            this.btnCollapse.PressedState.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnCollapse.ShadowDecoration.BorderRadius = 0;
-            this.btnCollapse.Size = new System.Drawing.Size(44, 37);
-            this.btnCollapse.TabIndex = 3;
-            this.btnCollapse.Click += new System.EventHandler(this.BtnCollapse_Click);
-            this.btnCollapse.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnCollapse.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.btnExit.CheckedState.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnExit.Image = global::CarRentalManagementSystem.Properties.Resources.cross;
-            this.btnExit.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnExit.ImageRotate = 0F;
-            this.btnExit.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnExit.Location = new System.Drawing.Point(1542, 7);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(18, 18);
-            this.btnExit.ShadowDecoration.BorderRadius = 0;
-            this.btnExit.Size = new System.Drawing.Size(44, 37);
-            this.btnExit.TabIndex = 2;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
-            this.btnExit.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnExit.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
-            // 
-            // frmHome
+            // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1595, 949);
-            this.Controls.Add(this.btnCollapse);
+            this.ClientSize = new System.Drawing.Size(1595, 910);
             this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnShowUserProfile);
+            this.Controls.Add(this.guna2VSeparator1);
+            this.Controls.Add(this.pbUserImage);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmHome";
+            this.Name = "FrmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -379,6 +397,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlContainer;
         private Guna.UI2.WinForms.Guna2ImageButton btnExit;
-        private Guna.UI2.WinForms.Guna2ImageButton btnCollapse;
+        private Guna.UI2.WinForms.Guna2ImageButton btnShowUserProfile;
+        private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator1;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox pbUserImage;
     }
 }

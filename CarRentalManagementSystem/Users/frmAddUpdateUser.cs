@@ -84,7 +84,7 @@ namespace CarRentalManagementSystem.Users
 
         private void LoadUserData()
         {
-            _user = User.Find<int?>(_userID, enFindUserBy.UserID);
+            _user = User.Find<int?>(_userID, EnFindUserBy.UserID);
 
             if (_user == null)
             {
@@ -106,7 +106,7 @@ namespace CarRentalManagementSystem.Users
             dtpBirthDate.Value = _user.BirthDate;
             cbCountries.SelectedIndex = cbCountries.FindString(_user.CountryInfo.Name);
 
-            if (_user.Gender == Person.enGender.Male)
+            if (_user.Gender == Person.EnGender.Male)
                 rbMale.Checked = true;
             else
                 rbFemale.Checked = true;
@@ -179,7 +179,7 @@ namespace CarRentalManagementSystem.Users
             _user.Password = _passwordEditEnabled ? txtPassword.Text.Trim() : _user.Password;
             _user.BirthDate = dtpBirthDate.Value;
             _user.NationalityCountryID = Country.Find(cbCountries.Text).CountryID.Value;
-            _user.Gender = rbMale.Checked == true ? Person.enGender.Male : Person.enGender.Female;
+            _user.Gender = rbMale.Checked == true ? Person.EnGender.Male : Person.EnGender.Female;
             _user.IsActive = ckbIsActive.Checked == true;
             _user.ImagePath = pbPersonalImage.ImageLocation ?? null;
 

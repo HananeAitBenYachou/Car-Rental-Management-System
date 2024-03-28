@@ -29,7 +29,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         public bool LoadCustomerData(int? customerID)
         {
-            Customer = Find(customerID, enFindCustomerBy.CustomerID);
+            Customer = Find(customerID, EnFindCustomerBy.CustomerID);
 
             if (Customer == null)
             {
@@ -43,7 +43,7 @@ namespace CarRentalManagementSystem.Customers.UserControls
 
         public bool LoadCustomerData(string driverLicenseNumber)
         {
-            Customer = Find(driverLicenseNumber, enFindCustomerBy.LicenseNumber);
+            Customer = Find(driverLicenseNumber, EnFindCustomerBy.LicenseNumber);
 
             if (Customer == null)
             {

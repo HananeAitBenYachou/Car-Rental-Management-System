@@ -41,7 +41,7 @@ namespace CarRentalManagementSystem.Users.UserControls
 
         public bool LoadUserData(int? userID)
         {
-            User = User.Find<int?>(userID, enFindUserBy.UserID);
+            User = User.Find<int?>(userID, EnFindUserBy.UserID);
 
             if (User == null)
             {
@@ -56,7 +56,7 @@ namespace CarRentalManagementSystem.Users.UserControls
 
         public bool LoadUserData(string userName)
         {
-            User = User.Find<string>(userName, enFindUserBy.UserName);
+            User = User.Find<string>(userName, EnFindUserBy.UserName);
 
             if (User == null)
             {

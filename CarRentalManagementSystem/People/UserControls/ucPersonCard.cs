@@ -53,7 +53,7 @@ namespace CarRentalManagementSystem.People.UserControls
 
             dtpBirthDate.Value = Person.BirthDate;
 
-            rbMale.Checked = (Person.Gender == Person.enGender.Male);
+            rbMale.Checked = (Person.Gender == Person.EnGender.Male);
             rbFemale.Checked = !rbMale.Checked;
 
             pbPersonalImage.Image = rbMale.Checked ? Resources.man : Resources.woman;

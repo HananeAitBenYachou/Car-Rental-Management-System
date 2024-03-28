@@ -112,7 +112,7 @@ namespace CarRental_DataAccessLayer
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@VehicleID", vehicleID);
-                        command.Parameters.AddWithValue("@Description", (object) description ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Description", (object)description ?? DBNull.Value);
                         command.Parameters.AddWithValue("@MaintenanceDate", maintenanceDate);
                         command.Parameters.AddWithValue("@Cost", cost);
 

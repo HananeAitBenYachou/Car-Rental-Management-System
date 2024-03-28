@@ -29,29 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvVehiclesList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cbVehicles = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editVehicleInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showVehicleInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.maintainVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
             this.cbTemp = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnAddNewVehicle = new Guna.UI2.WinForms.Guna2Button();
-            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnPreviousPage = new Guna.UI2.WinForms.Guna2Button();
             this.btnCurrentPage = new Guna.UI2.WinForms.Guna2Button();
             this.btnNextPage = new Guna.UI2.WinForms.Guna2Button();
             this.cbPageSizes = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAddNewVehicle = new Guna.UI2.WinForms.Guna2Button();
+            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesList)).BeginInit();
             this.cbVehicles.SuspendLayout();
             this.SuspendLayout();
@@ -61,46 +63,46 @@
             this.dgvVehiclesList.AllowUserToAddRows = false;
             this.dgvVehiclesList.AllowUserToDeleteRows = false;
             this.dgvVehiclesList.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(196)))));
-            this.dgvVehiclesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(196)))));
+            this.dgvVehiclesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVehiclesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvVehiclesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvVehiclesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVehiclesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehiclesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVehiclesList.ColumnHeadersHeight = 45;
             this.dgvVehiclesList.ContextMenuStrip = this.cbVehicles;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVehiclesList.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVehiclesList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVehiclesList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(235)))), ((int)(((byte)(177)))));
             this.dgvVehiclesList.Location = new System.Drawing.Point(32, 246);
             this.dgvVehiclesList.MultiSelect = false;
             this.dgvVehiclesList.Name = "dgvVehiclesList";
             this.dgvVehiclesList.ReadOnly = true;
             this.dgvVehiclesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVehiclesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehiclesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvVehiclesList.RowHeadersVisible = false;
             this.dgvVehiclesList.RowHeadersWidth = 51;
-            this.dgvVehiclesList.RowTemplate.Height = 24;
+            this.dgvVehiclesList.RowTemplate.Height = 50;
             this.dgvVehiclesList.Size = new System.Drawing.Size(1185, 437);
             this.dgvVehiclesList.TabIndex = 24;
             this.dgvVehiclesList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Ember;
@@ -122,7 +124,7 @@
             this.dgvVehiclesList.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvVehiclesList.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.dgvVehiclesList.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvVehiclesList.ThemeStyle.RowsStyle.Height = 24;
+            this.dgvVehiclesList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvVehiclesList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvVehiclesList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.dgvVehiclesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVehiclesList_CellContentClick);
@@ -136,9 +138,12 @@
             this.addNewVehicleToolStripMenuItem,
             this.editVehicleInformationToolStripMenuItem,
             this.showVehicleInformationToolStripMenuItem,
-            this.deleteVehicleToolStripMenuItem});
+            this.deleteVehicleToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.maintainVehicleToolStripMenuItem});
             this.cbVehicles.Name = "cbUsers";
-            this.cbVehicles.Size = new System.Drawing.Size(291, 148);
+            this.cbVehicles.Size = new System.Drawing.Size(291, 190);
+            this.cbVehicles.Opening += new System.ComponentModel.CancelEventHandler(this.CbVehicles_Opening);
             // 
             // addNewVehicleToolStripMenuItem
             // 
@@ -175,6 +180,22 @@
             this.deleteVehicleToolStripMenuItem.Size = new System.Drawing.Size(290, 36);
             this.deleteVehicleToolStripMenuItem.Text = "Delete Vehicle";
             this.deleteVehicleToolStripMenuItem.Click += new System.EventHandler(this.DeleteVehiclesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.BurlyWood;
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.BurlyWood;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(287, 6);
+            // 
+            // maintainVehicleToolStripMenuItem
+            // 
+            this.maintainVehicleToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.maintainVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.gear;
+            this.maintainVehicleToolStripMenuItem.Name = "maintainVehicleToolStripMenuItem";
+            this.maintainVehicleToolStripMenuItem.Size = new System.Drawing.Size(290, 36);
+            this.maintainVehicleToolStripMenuItem.Text = "Maintain Vehicle";
+            this.maintainVehicleToolStripMenuItem.Click += new System.EventHandler(this.MaintainVehicleToolStripMenuItem_Click);
             // 
             // cbFilterByOptions
             // 
@@ -261,66 +282,6 @@
             this.cbTemp.TabIndex = 26;
             this.cbTemp.Visible = false;
             this.cbTemp.SelectedIndexChanged += new System.EventHandler(this.CbTemp_SelectedIndexChanged);
-            // 
-            // btnAddNewVehicle
-            // 
-            this.btnAddNewVehicle.BorderRadius = 22;
-            this.btnAddNewVehicle.CustomizableEdges.TopRight = false;
-            this.btnAddNewVehicle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewVehicle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewVehicle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewVehicle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddNewVehicle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
-            this.btnAddNewVehicle.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewVehicle.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewVehicle.Image = global::CarRentalManagementSystem.Properties.Resources.plus;
-            this.btnAddNewVehicle.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAddNewVehicle.Location = new System.Drawing.Point(1012, 179);
-            this.btnAddNewVehicle.Name = "btnAddNewVehicle";
-            this.btnAddNewVehicle.Size = new System.Drawing.Size(205, 51);
-            this.btnAddNewVehicle.TabIndex = 25;
-            this.btnAddNewVehicle.Text = "Add New Vehicle";
-            this.btnAddNewVehicle.Click += new System.EventHandler(this.BtnAddNewVehicle_Click);
-            // 
-            // txtFilterValue
-            // 
-            this.txtFilterValue.BorderRadius = 22;
-            this.txtFilterValue.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFilterValue.DefaultText = "";
-            this.txtFilterValue.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtFilterValue.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtFilterValue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFilterValue.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFilterValue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterValue.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
-            this.txtFilterValue.ForeColor = System.Drawing.Color.Black;
-            this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterValue.IconRight = global::CarRentalManagementSystem.Properties.Resources.search;
-            this.txtFilterValue.IconRightSize = new System.Drawing.Size(28, 28);
-            this.txtFilterValue.Location = new System.Drawing.Point(374, 187);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.PasswordChar = '\0';
-            this.txtFilterValue.PlaceholderText = "Search ...";
-            this.txtFilterValue.SelectedText = "";
-            this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
-            this.txtFilterValue.TabIndex = 22;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(85, 85);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(85, 85);
-            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources._3d_car;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(85, 85);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(32, 16);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(85, 85);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(91, 80);
-            this.guna2ImageButton1.TabIndex = 19;
             // 
             // btnPreviousPage
             // 
@@ -446,7 +407,67 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "Page size :";
             // 
-            // frmListVehicles
+            // btnAddNewVehicle
+            // 
+            this.btnAddNewVehicle.BorderRadius = 22;
+            this.btnAddNewVehicle.CustomizableEdges.TopRight = false;
+            this.btnAddNewVehicle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewVehicle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewVehicle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewVehicle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddNewVehicle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnAddNewVehicle.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewVehicle.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewVehicle.Image = global::CarRentalManagementSystem.Properties.Resources.plus;
+            this.btnAddNewVehicle.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnAddNewVehicle.Location = new System.Drawing.Point(1012, 179);
+            this.btnAddNewVehicle.Name = "btnAddNewVehicle";
+            this.btnAddNewVehicle.Size = new System.Drawing.Size(205, 51);
+            this.btnAddNewVehicle.TabIndex = 25;
+            this.btnAddNewVehicle.Text = "Add New Vehicle";
+            this.btnAddNewVehicle.Click += new System.EventHandler(this.BtnAddNewVehicle_Click);
+            // 
+            // txtFilterValue
+            // 
+            this.txtFilterValue.BorderRadius = 22;
+            this.txtFilterValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFilterValue.DefaultText = "";
+            this.txtFilterValue.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtFilterValue.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtFilterValue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFilterValue.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFilterValue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFilterValue.Font = new System.Drawing.Font("Calibri", 9.8F, System.Drawing.FontStyle.Bold);
+            this.txtFilterValue.ForeColor = System.Drawing.Color.Black;
+            this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFilterValue.IconRight = global::CarRentalManagementSystem.Properties.Resources.search;
+            this.txtFilterValue.IconRightSize = new System.Drawing.Size(28, 28);
+            this.txtFilterValue.Location = new System.Drawing.Point(374, 187);
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.PasswordChar = '\0';
+            this.txtFilterValue.PlaceholderText = "Search ...";
+            this.txtFilterValue.SelectedText = "";
+            this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
+            this.txtFilterValue.TabIndex = 22;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
+            // 
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(85, 85);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(85, 85);
+            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources._3d_car;
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(85, 85);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(32, 16);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(85, 85);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(91, 80);
+            this.guna2ImageButton1.TabIndex = 19;
+            // 
+            // FrmListVehicles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -467,7 +488,7 @@
             this.Controls.Add(this.txtFilterValue);
             this.Controls.Add(this.guna2ImageButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmListVehicles";
+            this.Name = "FrmListVehicles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListVehicles";
             this.Load += new System.EventHandler(this.FrmListVehicles_Load);
@@ -499,5 +520,7 @@
         private Guna.UI2.WinForms.Guna2Button btnNextPage;
         private Guna.UI2.WinForms.Guna2ComboBox cbPageSizes;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem maintainVehicleToolStripMenuItem;
     }
 }

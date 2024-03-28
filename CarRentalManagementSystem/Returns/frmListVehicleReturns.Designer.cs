@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReturnsList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dtpActualReturnDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -40,10 +40,10 @@
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
             this.cbVehicleReturns = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.returnVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showReturnInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnsList)).BeginInit();
             this.cbVehicleReturns.SuspendLayout();
             this.SuspendLayout();
@@ -53,44 +53,45 @@
             this.dgvReturnsList.AllowUserToAddRows = false;
             this.dgvReturnsList.AllowUserToDeleteRows = false;
             this.dgvReturnsList.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(196)))));
-            this.dgvReturnsList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(196)))));
+            this.dgvReturnsList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvReturnsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvReturnsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvReturnsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReturnsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(192)))), ((int)(((byte)(7)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReturnsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvReturnsList.ColumnHeadersHeight = 45;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReturnsList.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReturnsList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReturnsList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(235)))), ((int)(((byte)(177)))));
             this.dgvReturnsList.Location = new System.Drawing.Point(27, 274);
             this.dgvReturnsList.MultiSelect = false;
             this.dgvReturnsList.Name = "dgvReturnsList";
             this.dgvReturnsList.ReadOnly = true;
             this.dgvReturnsList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReturnsList.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReturnsList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvReturnsList.RowHeadersVisible = false;
             this.dgvReturnsList.RowHeadersWidth = 51;
-            this.dgvReturnsList.RowTemplate.Height = 24;
+            this.dgvReturnsList.RowTemplate.Height = 50;
             this.dgvReturnsList.Size = new System.Drawing.Size(1185, 437);
             this.dgvReturnsList.TabIndex = 31;
             this.dgvReturnsList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Ember;
@@ -112,7 +113,7 @@
             this.dgvReturnsList.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvReturnsList.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.dgvReturnsList.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvReturnsList.ThemeStyle.RowsStyle.Height = 24;
+            this.dgvReturnsList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvReturnsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvReturnsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
             this.dgvReturnsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVehicleReturnsList_CellContentClick);
@@ -202,8 +203,25 @@
             this.returnVehicleToolStripMenuItem,
             this.showReturnInformationToolStripMenuItem});
             this.cbVehicleReturns.Name = "cbUsers";
-            this.cbVehicleReturns.Size = new System.Drawing.Size(288, 132);
+            this.cbVehicleReturns.Size = new System.Drawing.Size(288, 76);
             this.cbVehicleReturns.Text = "Show Booking Information";
+            // 
+            // returnVehicleToolStripMenuItem
+            // 
+            this.returnVehicleToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.returnVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
+            this.returnVehicleToolStripMenuItem.Name = "returnVehicleToolStripMenuItem";
+            this.returnVehicleToolStripMenuItem.Size = new System.Drawing.Size(287, 36);
+            this.returnVehicleToolStripMenuItem.Text = "Return Vehicle";
+            // 
+            // showReturnInformationToolStripMenuItem
+            // 
+            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.showReturnInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
+            this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
+            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(287, 36);
+            this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
+            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
             // 
             // txtFilterValue
             // 
@@ -242,24 +260,7 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.TabIndex = 26;
             // 
-            // returnVehicleToolStripMenuItem
-            // 
-            this.returnVehicleToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
-            this.returnVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
-            this.returnVehicleToolStripMenuItem.Name = "returnVehicleToolStripMenuItem";
-            this.returnVehicleToolStripMenuItem.Size = new System.Drawing.Size(287, 36);
-            this.returnVehicleToolStripMenuItem.Text = "Return Vehicle";
-            // 
-            // showReturnInformationToolStripMenuItem
-            // 
-            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
-            this.showReturnInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
-            this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
-            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(287, 36);
-            this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
-            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
-            // 
-            // frmListVehicleReturns
+            // FrmListVehicleReturns
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -274,7 +275,7 @@
             this.Controls.Add(this.txtFilterValue);
             this.Controls.Add(this.guna2ImageButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmListVehicleReturns";
+            this.Name = "FrmListVehicleReturns";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListVehicleReturns";
             this.Load += new System.EventHandler(this.FrmListVehicleReturns_Load);

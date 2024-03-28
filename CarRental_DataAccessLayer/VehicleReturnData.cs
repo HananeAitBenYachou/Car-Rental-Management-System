@@ -226,5 +226,42 @@ namespace CarRental_DataAccessLayer
             return vehicleReturnsDatatable;
         }
 
+        public static int GetTotalVehicleReturnsCount()
+        {
+            int totalvehicleReturnsCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetVehicleReturnsCount", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        totalvehicleReturnsCount = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+
+                totalvehicleReturnsCount = 0;
+            }
+            return totalvehicleReturnsCount;
+        }
+
+
     }
 }

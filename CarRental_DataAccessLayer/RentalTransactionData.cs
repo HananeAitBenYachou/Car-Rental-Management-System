@@ -259,5 +259,42 @@ namespace CarRental_DataAccessLayer
             return rentalTransactionsDatatable;
         }
 
+        public static int GetTotalRentalTransactionsCount()
+        {
+            int totallRentalTransactionsCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetRentalTransactionsCount", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter returnValue = new SqlParameter
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteScalar();
+
+                        totallRentalTransactionsCount = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+
+                totallRentalTransactionsCount = 0;
+            }
+            return totallRentalTransactionsCount;
+        }
+
+
     }
 }

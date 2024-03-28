@@ -110,7 +110,7 @@ namespace CarRentalManagementSystem.Users
 
         private void FrmChangeUserPassword_Load(object sender, EventArgs e)
         {
-            _user = User.Find<int?>(_userID, enFindUserBy.UserID);
+            _user = User.Find<int?>(_userID, EnFindUserBy.UserID);
 
             if (_user == null)
             {
