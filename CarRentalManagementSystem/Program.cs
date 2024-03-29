@@ -21,7 +21,7 @@ namespace CarRentalManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FrmShowVehicleBookingHistory(1));
+            Application.Run(new FrmShowCustomerBookingHistory(1));
 
         }
 

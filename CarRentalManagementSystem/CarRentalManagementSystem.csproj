@@ -74,6 +74,12 @@
     <Compile Include="Bookings\FrmShowBookingDetails.Designer.cs">
       <DependentUpon>FrmShowBookingDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bookings\FrmShowCustomerBookingHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bookings\FrmShowCustomerBookingHistory.Designer.cs">
+      <DependentUpon>FrmShowCustomerBookingHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bookings\FrmShowVehicleBookingHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,12 @@
     </Compile>
     <Compile Include="Customers\UserControls\UcCustomerCardWithFilter.Designer.cs">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDashboard.cs">
       <SubType>Form</SubType>
@@ -272,6 +284,9 @@
     <EmbeddedResource Include="Bookings\FrmShowBookingDetails.resx">
       <DependentUpon>FrmShowBookingDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\FrmShowCustomerBookingHistory.resx">
+      <DependentUpon>FrmShowCustomerBookingHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bookings\FrmShowVehicleBookingHistory.resx">
       <DependentUpon>FrmShowVehicleBookingHistory.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\UserControls\UcCustomerCardWithFilter.resx">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
