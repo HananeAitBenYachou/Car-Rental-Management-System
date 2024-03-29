@@ -9,24 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarRentalManagementSystem.Maintenances
+namespace CarRentalManagementSystem.Bookings
 {
-    public partial class FrmShowVehicleMaintenanceHistory : Form
+    public partial class FrmShowVehicleBookingHistory : Form
     {
         private int? _vehicleID = null;
 
-        public FrmShowVehicleMaintenanceHistory(int? vehicleID)
+        public FrmShowVehicleBookingHistory(int? vehicleID)
         {
             InitializeComponent();
             _vehicleID = vehicleID;
         }
 
-        private void FrmShowVehicleMaintenancesHistory_Load(object sender, EventArgs e)
+        private void FrmShowVehicleBookingHistory_Load(object sender, EventArgs e)
         {
-            if(!ucVehicleCard1.LoadVehicleData(_vehicleID))            
+            if (!ucVehicleCard1.LoadVehicleData(_vehicleID))
                 return;
 
-            dgvMaintenancesList.DataSource = Vehicle.GetVehicleMaintenances(_vehicleID);
+            dgvBookingsList.DataSource = Vehicle.GetVehicleRentalBookings(_vehicleID);
 
         }
 

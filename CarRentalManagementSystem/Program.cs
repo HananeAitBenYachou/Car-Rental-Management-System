@@ -1,4 +1,5 @@
-﻿using CarRentalManagementSystem.Maintenances;
+﻿using CarRentalManagementSystem.Bookings;
+using CarRentalManagementSystem.Maintenances;
 using CarRentalManagementSystem.Transactions;
 using CarRentalManagementSystem.Users;
 using System;
@@ -20,7 +21,7 @@ namespace CarRentalManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FrmMaintainVehicle());
+            Application.Run(new FrmShowVehicleBookingHistory(1));
 
         }
 

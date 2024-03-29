@@ -109,7 +109,7 @@
             // 
             this.tcMaintenanceHistory.Controls.Add(this.tpMaintenanceHistory);
             this.tcMaintenanceHistory.ItemSize = new System.Drawing.Size(180, 50);
-            this.tcMaintenanceHistory.Location = new System.Drawing.Point(0, 609);
+            this.tcMaintenanceHistory.Location = new System.Drawing.Point(0, 603);
             this.tcMaintenanceHistory.Name = "tcMaintenanceHistory";
             this.tcMaintenanceHistory.SelectedIndex = 0;
             this.tcMaintenanceHistory.Size = new System.Drawing.Size(963, 332);
@@ -227,24 +227,25 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
             this.btnClose.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnClose.Location = new System.Drawing.Point(785, 943);
+            this.btnClose.Location = new System.Drawing.Point(785, 936);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 208;
             this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // FrmShowVehicleMaintenancesHistory
+            // FrmShowVehicleMaintenanceHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(963, 1010);
+            this.ClientSize = new System.Drawing.Size(963, 1000);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tcMaintenanceHistory);
             this.Controls.Add(this.ucVehicleCard1);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmShowVehicleMaintenancesHistory";
+            this.Name = "FrmShowVehicleMaintenanceHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmShowVehicleMaintenancesHistory";
             this.Load += new System.EventHandler(this.FrmShowVehicleMaintenancesHistory_Load);
