@@ -353,6 +353,72 @@ namespace CarRental_DataAccessLayer
             return customersDatatable;
         }
 
+        public static DataTable GetCustomerRentalBookings(int? customerID)
+        {
+            DataTable customerRentalBookingsDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetCustomerRentalBookings", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@CustomerID", (object)customerID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                customerRentalBookingsDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return customerRentalBookingsDatatable;
+        }
+
+        public static DataTable GetCustomerRentalTransactions(int? customerID)
+        {
+            DataTable customerRentalTransactionsDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetCustomerRentalTransactions", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@CustomerID", (object)customerID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                customerRentalTransactionsDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return customerRentalTransactionsDatatable;
+        }
+
         public static int? GetCustomerPersonID(int? customerID)
         {
             int? PersonID = null;

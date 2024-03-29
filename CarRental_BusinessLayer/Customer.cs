@@ -187,5 +187,15 @@ namespace CarRental_BusinessLayer
             return CustomerData.GetTotalCustomersCount();
         }
 
+        public static DataTable GetCustomerRentalBookings(int? customerID)
+        {
+            return CustomerData.GetCustomerRentalBookings(customerID);
+        }
+
+        public static DataTable GetCustomerRentalTransactions(int? customerID)
+        {
+            return CustomerData.GetCustomerRentalTransactions(customerID);
+        }
+
     }
 }

@@ -141,6 +141,12 @@
     <Compile Include="Maintenances\FrmMaintainVehicle.Designer.cs">
       <DependentUpon>FrmMaintainVehicle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maintenances\FrmShowVehicleMaintenanceHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintenances\FrmShowVehicleMaintenanceHistory.Designer.cs">
+      <DependentUpon>FrmShowVehicleMaintenanceHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="People\UserControls\UcPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -292,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Maintenances\FrmMaintainVehicle.resx">
       <DependentUpon>FrmMaintainVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintenances\FrmShowVehicleMaintenanceHistory.resx">
+      <DependentUpon>FrmShowVehicleMaintenanceHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\UserControls\UcPersonCard.resx">
       <DependentUpon>UcPersonCard.cs</DependentUpon>

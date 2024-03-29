@@ -384,6 +384,72 @@ namespace CarRental_DataAccessLayer
             return vehiclesList;
         }
 
+        public static DataTable GetVehicleMaintenances(int? vehicleID)
+        {
+            DataTable vehicleMaintenancesDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetVehicleMaintenances", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@VehicleID", (object)vehicleID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                vehicleMaintenancesDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return vehicleMaintenancesDatatable;
+        }
+
+        public static DataTable GetVehicleRentalBookings(int? vehicleID)
+        {
+            DataTable vehicleRentalBookingsDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetVehicleRentalBookings", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@VehicleID", (object)vehicleID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                vehicleRentalBookingsDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return vehicleRentalBookingsDatatable;
+        }
+
     }
 
 }

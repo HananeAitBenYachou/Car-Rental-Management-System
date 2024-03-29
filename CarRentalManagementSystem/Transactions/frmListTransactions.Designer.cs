@@ -43,6 +43,11 @@
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.dtpTemp = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.showCustomerInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showVehicleInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.showBookingInforamtionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showReturnInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionsList)).BeginInit();
             this.cbRentalTransactions.SuspendLayout();
             this.SuspendLayout();
@@ -121,19 +126,25 @@
             // 
             // cbRentalTransactions
             // 
-            this.cbRentalTransactions.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.cbRentalTransactions.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cbRentalTransactions.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.cbRentalTransactions.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.cbRentalTransactions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showTransactionInformationToolStripMenuItem});
+            this.showTransactionInformationToolStripMenuItem,
+            this.showCustomerInformationToolStripMenuItem,
+            this.showVehicleInformationToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.showBookingInforamtionToolStripMenuItem,
+            this.showReturnInformationToolStripMenuItem});
             this.cbRentalTransactions.Name = "cbUsers";
-            this.cbRentalTransactions.Size = new System.Drawing.Size(325, 40);
+            this.cbRentalTransactions.Size = new System.Drawing.Size(334, 248);
             // 
             // showTransactionInformationToolStripMenuItem
             // 
-            this.showTransactionInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
-            this.showTransactionInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
+            this.showTransactionInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showTransactionInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showTransactionInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.transaction1;
             this.showTransactionInformationToolStripMenuItem.Name = "showTransactionInformationToolStripMenuItem";
-            this.showTransactionInformationToolStripMenuItem.Size = new System.Drawing.Size(324, 36);
+            this.showTransactionInformationToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
             this.showTransactionInformationToolStripMenuItem.Text = "Show Transaction Information";
             this.showTransactionInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowTransactionInformationToolStripMenuItem_Click);
             // 
@@ -249,6 +260,53 @@
             this.dtpTemp.Value = new System.DateTime(2024, 3, 2, 0, 28, 59, 414);
             this.dtpTemp.ValueChanged += new System.EventHandler(this.DtpTemp_ValueChanged);
             // 
+            // showCustomerInformationToolStripMenuItem
+            // 
+            this.showCustomerInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showCustomerInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showCustomerInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.networking;
+            this.showCustomerInformationToolStripMenuItem.Name = "showCustomerInformationToolStripMenuItem";
+            this.showCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showCustomerInformationToolStripMenuItem.Text = "Show Customer Information";
+            this.showCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerInformationToolStripMenuItem_Click);
+            // 
+            // showVehicleInformationToolStripMenuItem
+            // 
+            this.showVehicleInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showVehicleInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showVehicleInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._3d_car;
+            this.showVehicleInformationToolStripMenuItem.Name = "showVehicleInformationToolStripMenuItem";
+            this.showVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showVehicleInformationToolStripMenuItem.Text = "Show Vehicle Information";
+            this.showVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowVehicleInformationToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.White;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(330, 6);
+            // 
+            // showBookingInforamtionToolStripMenuItem
+            // 
+            this.showBookingInforamtionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showBookingInforamtionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showBookingInforamtionToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._event;
+            this.showBookingInforamtionToolStripMenuItem.Name = "showBookingInforamtionToolStripMenuItem";
+            this.showBookingInforamtionToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showBookingInforamtionToolStripMenuItem.Text = "Show Booking Inforamtion";
+            this.showBookingInforamtionToolStripMenuItem.Click += new System.EventHandler(this.ShowBookingInforamtionToolStripMenuItem_Click);
+            // 
+            // showReturnInformationToolStripMenuItem
+            // 
+            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showReturnInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showReturnInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._return;
+            this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
+            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
+            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
+            // 
             // FrmListTransactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,5 +345,10 @@
         private Guna.UI2.WinForms.Guna2TextBox txtFilterValue;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTemp;
+        private System.Windows.Forms.ToolStripMenuItem showCustomerInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showVehicleInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem showBookingInforamtionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showReturnInformationToolStripMenuItem;
     }
 }

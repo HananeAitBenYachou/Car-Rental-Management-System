@@ -1,4 +1,5 @@
-﻿using CarRentalManagementSystem.Transactions;
+﻿using CarRentalManagementSystem.Maintenances;
+using CarRentalManagementSystem.Transactions;
 using CarRentalManagementSystem.Users;
 using System;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace CarRentalManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmMaintainVehicle());
 
         }
 

@@ -1,4 +1,8 @@
 ﻿using CarRental_BusinessLayer;
+using CarRentalManagementSystem.Bookings;
+using CarRentalManagementSystem.Customers;
+using CarRentalManagementSystem.Returns;
+using CarRentalManagementSystem.Vehicles;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -94,8 +98,34 @@ namespace CarRentalManagementSystem.Transactions
 
         private void DtpTemp_ValueChanged(object sender, EventArgs e)
         {
-
             _transactionsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpTemp.Value.Date.ToString("dd-MM-yyyy"));
+        }
+
+        private void ShowCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShowCustomerDetails form = new FrmShowCustomerDetails((int)dgvTransactionsList.CurrentRow.Cells["Customer ID"].Value);
+            form.ShowDialog();
+        }
+
+        private void ShowVehicleInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RentalTransaction transaction = RentalTransaction.Find((int)dgvTransactionsList.CurrentRow.Cells[0].Value
+                , RentalTransaction.EnFindTransactionBy.TransactionID);
+
+            FrmShowVehicleDetails form = new FrmShowVehicleDetails(transaction.RentalBookingInfo.VehicleID);
+            form.ShowDialog();
+        }
+
+        private void ShowBookingInforamtionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShowBookingDetails form = new FrmShowBookingDetails((int)dgvTransactionsList.CurrentRow.Cells["Vehicle ID"].Value);
+            form.ShowDialog();
+        }
+
+        private void ShowReturnInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShowVehicleReturnDetails form = new FrmShowVehicleReturnDetails((int)dgvTransactionsList.CurrentRow.Cells["Return ID"].Value);
+            form.ShowDialog();
         }
     }
 }

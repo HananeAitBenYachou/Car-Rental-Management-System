@@ -146,6 +146,16 @@ namespace CarRental_BusinessLayer
             return VehicleData.GetAllVehicles(pageNumber, rowsPerPage);
         }
 
+        public static DataTable GetVehicleMaintenances(int? vehicleID)
+        {
+            return VehicleData.GetVehicleMaintenances(vehicleID);
+        }
+
+        public static DataTable GetVehicleRentalBookings(int? vehicleID)
+        {
+            return VehicleData.GetVehicleRentalBookings(vehicleID);
+        }
+
         public static int GetTotalVehiclesCount()
         {
             return VehicleData.GetTotalVehiclesCount();
