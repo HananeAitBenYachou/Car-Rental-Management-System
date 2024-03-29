@@ -34,5 +34,6 @@ namespace CarRentalManagementSystem.Bookings
         {
             this.Close();
         }
+
     }
 }
