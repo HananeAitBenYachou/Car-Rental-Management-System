@@ -40,7 +40,6 @@
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
             this.cbVehicleReturns = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.returnVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showReturnInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -200,26 +199,19 @@
             this.cbVehicleReturns.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
             this.cbVehicleReturns.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.cbVehicleReturns.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.returnVehicleToolStripMenuItem,
             this.showReturnInformationToolStripMenuItem});
             this.cbVehicleReturns.Name = "cbUsers";
-            this.cbVehicleReturns.Size = new System.Drawing.Size(288, 76);
+            this.cbVehicleReturns.Size = new System.Drawing.Size(275, 40);
             this.cbVehicleReturns.Text = "Show Booking Information";
-            // 
-            // returnVehicleToolStripMenuItem
-            // 
-            this.returnVehicleToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
-            this.returnVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
-            this.returnVehicleToolStripMenuItem.Name = "returnVehicleToolStripMenuItem";
-            this.returnVehicleToolStripMenuItem.Size = new System.Drawing.Size(287, 36);
-            this.returnVehicleToolStripMenuItem.Text = "Return Vehicle";
             // 
             // showReturnInformationToolStripMenuItem
             // 
-            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showReturnInformationToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.showReturnInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.showReturnInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
             this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
-            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(287, 36);
+            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
             this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
             this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
             // 
@@ -297,7 +289,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtFilterValue;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.ContextMenuStrip cbVehicleReturns;
-        private System.Windows.Forms.ToolStripMenuItem returnVehicleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showReturnInformationToolStripMenuItem;
     }
 }

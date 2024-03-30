@@ -425,7 +425,7 @@
             this.btnAddNewVehicle.ForeColor = System.Drawing.Color.White;
             this.btnAddNewVehicle.Image = global::CarRentalManagementSystem.Properties.Resources.plus;
             this.btnAddNewVehicle.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAddNewVehicle.Location = new System.Drawing.Point(1012, 179);
+            this.btnAddNewVehicle.Location = new System.Drawing.Point(1012, 178);
             this.btnAddNewVehicle.Name = "btnAddNewVehicle";
             this.btnAddNewVehicle.Size = new System.Drawing.Size(205, 51);
             this.btnAddNewVehicle.TabIndex = 25;

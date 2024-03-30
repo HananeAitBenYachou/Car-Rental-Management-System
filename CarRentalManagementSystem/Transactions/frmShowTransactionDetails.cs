@@ -5,7 +5,7 @@ namespace CarRentalManagementSystem.Transactions
 {
     public partial class FrmShowTransactionDetails : Form
     {
-        private int? _transactionID = null;
+        private readonly int? _transactionID = null;
 
         public FrmShowTransactionDetails(int? transactionID)
         {

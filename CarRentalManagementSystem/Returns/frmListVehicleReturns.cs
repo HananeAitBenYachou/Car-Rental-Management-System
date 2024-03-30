@@ -90,6 +90,5 @@ namespace CarRentalManagementSystem.Returns
             FrmShowVehicleReturnDetails form = new FrmShowVehicleReturnDetails((int?)dgvReturnsList.CurrentRow.Cells[0].Value);
             form.ShowDialog();
         }
-
     }
 }

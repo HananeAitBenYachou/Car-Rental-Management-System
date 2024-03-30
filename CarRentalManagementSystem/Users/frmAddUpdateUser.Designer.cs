@@ -652,7 +652,7 @@
             this.btnSave.Size = new System.Drawing.Size(171, 58);
             this.btnSave.TabIndex = 166;
             this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // pbPersonalImage
             // 

@@ -322,7 +322,7 @@ namespace CarRentalManagementSystem.Users
                 pbPersonalImage.Image = Resources.man;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {

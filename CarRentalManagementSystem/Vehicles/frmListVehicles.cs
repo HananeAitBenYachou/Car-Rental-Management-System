@@ -280,7 +280,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void DgvVehiclesList_SelectionChanged(object sender, EventArgs e)
         {
-            cbVehicles.Enabled = dgvVehiclesList.SelectedRows.Count > 0 ? true : false;
+            cbVehicles.Enabled = dgvVehiclesList.SelectedRows.Count > 0;
         }
 
         private void DgvVehiclesList_CellContentClick(object sender, DataGridViewCellEventArgs e)

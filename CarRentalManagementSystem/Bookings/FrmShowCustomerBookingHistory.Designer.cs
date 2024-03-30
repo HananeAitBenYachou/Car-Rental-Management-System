@@ -42,10 +42,14 @@
             this.tcBookingHistory = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpBookingHistory = new System.Windows.Forms.TabPage();
             this.dgvBookingsList = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.cbRentalBookings = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showBookingInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.returnVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2GradientPanel1.SuspendLayout();
             this.tcBookingHistory.SuspendLayout();
             this.tpBookingHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingsList)).BeginInit();
+            this.cbRentalBookings.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -66,7 +70,7 @@
             this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(997, 73);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(1018, 73);
             this.guna2GradientPanel1.TabIndex = 179;
             // 
             // guna2ImageButton1
@@ -114,7 +118,7 @@
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 212;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // ucCustomerCard1
             // 
@@ -122,7 +126,7 @@
             this.ucCustomerCard1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ucCustomerCard1.Location = new System.Drawing.Point(0, 73);
             this.ucCustomerCard1.Name = "ucCustomerCard1";
-            this.ucCustomerCard1.Size = new System.Drawing.Size(997, 617);
+            this.ucCustomerCard1.Size = new System.Drawing.Size(1018, 617);
             this.ucCustomerCard1.TabIndex = 213;
             // 
             // tcBookingHistory
@@ -182,6 +186,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvBookingsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBookingsList.ColumnHeadersHeight = 45;
+            this.dgvBookingsList.ContextMenuStrip = this.cbRentalBookings;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
@@ -232,6 +237,41 @@
             this.dgvBookingsList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvBookingsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvBookingsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.dgvBookingsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookingsList_CellContentClick);
+            this.dgvBookingsList.SelectionChanged += new System.EventHandler(this.DgvBookingsList_SelectionChanged);
+            // 
+            // cbRentalBookings
+            // 
+            this.cbRentalBookings.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbRentalBookings.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cbRentalBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showBookingInformationToolStripMenuItem,
+            this.returnVehicleToolStripMenuItem});
+            this.cbRentalBookings.Name = "cbUsers";
+            this.cbRentalBookings.Size = new System.Drawing.Size(283, 104);
+            this.cbRentalBookings.Opening += new System.ComponentModel.CancelEventHandler(this.CbRentalBookings_Opening);
+            // 
+            // showBookingInformationToolStripMenuItem
+            // 
+            this.showBookingInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showBookingInformationToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.showBookingInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showBookingInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
+            this.showBookingInformationToolStripMenuItem.Name = "showBookingInformationToolStripMenuItem";
+            this.showBookingInformationToolStripMenuItem.Size = new System.Drawing.Size(282, 36);
+            this.showBookingInformationToolStripMenuItem.Text = "Show Booking Information";
+            this.showBookingInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowBookingInformationToolStripMenuItem_Click);
+            // 
+            // returnVehicleToolStripMenuItem
+            // 
+            this.returnVehicleToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.returnVehicleToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.returnVehicleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.returnVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.return1;
+            this.returnVehicleToolStripMenuItem.Name = "returnVehicleToolStripMenuItem";
+            this.returnVehicleToolStripMenuItem.Size = new System.Drawing.Size(282, 36);
+            this.returnVehicleToolStripMenuItem.Text = "Return Vehicle";
+            this.returnVehicleToolStripMenuItem.Click += new System.EventHandler(this.ReturnVehicleToolStripMenuItem_Click);
             // 
             // FrmShowCustomerBookingHistory
             // 
@@ -254,6 +294,7 @@
             this.tcBookingHistory.ResumeLayout(false);
             this.tpBookingHistory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingsList)).EndInit();
+            this.cbRentalBookings.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -269,5 +310,8 @@
         private Guna.UI2.WinForms.Guna2TabControl tcBookingHistory;
         private System.Windows.Forms.TabPage tpBookingHistory;
         private Guna.UI2.WinForms.Guna2DataGridView dgvBookingsList;
+        private System.Windows.Forms.ContextMenuStrip cbRentalBookings;
+        private System.Windows.Forms.ToolStripMenuItem showBookingInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem returnVehicleToolStripMenuItem;
     }
 }

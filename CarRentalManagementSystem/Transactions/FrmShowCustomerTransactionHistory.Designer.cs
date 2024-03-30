@@ -37,15 +37,22 @@
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.ucTransactionDetails1 = new CarRentalManagementSystem.Transactions.UserControls.UcTransactionDetails();
             this.tcTransactionHistory = new Guna.UI2.WinForms.Guna2TabControl();
             this.tpTransactionHistory = new System.Windows.Forms.TabPage();
             this.dgvTransactionsList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.cbRentalTransactions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showTransactionInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showVehicleInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.showBookingInforamtionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showReturnInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ucCustomerCard1 = new CarRentalManagementSystem.Customers.UserControls.UcCustomerCard();
             this.guna2GradientPanel1.SuspendLayout();
             this.tcTransactionHistory.SuspendLayout();
             this.tpTransactionHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionsList)).BeginInit();
+            this.cbRentalTransactions.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -96,20 +103,11 @@
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Customer Transaction History";
             // 
-            // ucTransactionDetails1
-            // 
-            this.ucTransactionDetails1.BackColor = System.Drawing.Color.White;
-            this.ucTransactionDetails1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucTransactionDetails1.Location = new System.Drawing.Point(0, 73);
-            this.ucTransactionDetails1.Name = "ucTransactionDetails1";
-            this.ucTransactionDetails1.Size = new System.Drawing.Size(1018, 419);
-            this.ucTransactionDetails1.TabIndex = 181;
-            // 
             // tcTransactionHistory
             // 
             this.tcTransactionHistory.Controls.Add(this.tpTransactionHistory);
             this.tcTransactionHistory.ItemSize = new System.Drawing.Size(180, 50);
-            this.tcTransactionHistory.Location = new System.Drawing.Point(0, 504);
+            this.tcTransactionHistory.Location = new System.Drawing.Point(0, 700);
             this.tcTransactionHistory.Name = "tcTransactionHistory";
             this.tcTransactionHistory.SelectedIndex = 0;
             this.tcTransactionHistory.Size = new System.Drawing.Size(1018, 332);
@@ -212,6 +210,8 @@
             this.dgvTransactionsList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvTransactionsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvTransactionsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.dgvTransactionsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTransactionsList_CellContentClick);
+            this.dgvTransactionsList.SelectionChanged += new System.EventHandler(this.DgvTransactionsList_SelectionChanged);
             // 
             // btnClose
             // 
@@ -226,22 +226,92 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::CarRentalManagementSystem.Properties.Resources.cross_mark_on_a_black_circle_background;
             this.btnClose.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnClose.Location = new System.Drawing.Point(843, 839);
+            this.btnClose.Location = new System.Drawing.Point(843, 1033);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(171, 58);
             this.btnClose.TabIndex = 215;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // cbRentalTransactions
+            // 
+            this.cbRentalTransactions.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            this.cbRentalTransactions.ImageScalingSize = new System.Drawing.Size(35, 35);
+            this.cbRentalTransactions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showTransactionInformationToolStripMenuItem,
+            this.showVehicleInformationToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.showBookingInforamtionToolStripMenuItem,
+            this.showReturnInformationToolStripMenuItem});
+            this.cbRentalTransactions.Name = "cbUsers";
+            this.cbRentalTransactions.Size = new System.Drawing.Size(334, 178);
+            // 
+            // showTransactionInformationToolStripMenuItem
+            // 
+            this.showTransactionInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showTransactionInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showTransactionInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.transaction1;
+            this.showTransactionInformationToolStripMenuItem.Name = "showTransactionInformationToolStripMenuItem";
+            this.showTransactionInformationToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showTransactionInformationToolStripMenuItem.Text = "Show Transaction Information";
+            this.showTransactionInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowTransactionInformationToolStripMenuItem_Click);
+            // 
+            // showVehicleInformationToolStripMenuItem
+            // 
+            this.showVehicleInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showVehicleInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showVehicleInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._3d_car;
+            this.showVehicleInformationToolStripMenuItem.Name = "showVehicleInformationToolStripMenuItem";
+            this.showVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showVehicleInformationToolStripMenuItem.Text = "Show Vehicle Information";
+            this.showVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowVehicleInformationToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.White;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(330, 6);
+            // 
+            // showBookingInforamtionToolStripMenuItem
+            // 
+            this.showBookingInforamtionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showBookingInforamtionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showBookingInforamtionToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._event;
+            this.showBookingInforamtionToolStripMenuItem.Name = "showBookingInforamtionToolStripMenuItem";
+            this.showBookingInforamtionToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showBookingInforamtionToolStripMenuItem.Text = "Show Booking Inforamtion";
+            this.showBookingInforamtionToolStripMenuItem.Click += new System.EventHandler(this.ShowBookingInforamtionToolStripMenuItem_Click);
+            // 
+            // showReturnInformationToolStripMenuItem
+            // 
+            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showReturnInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showReturnInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._return;
+            this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
+            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(333, 42);
+            this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
+            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
+            // 
+            // ucCustomerCard1
+            // 
+            this.ucCustomerCard1.BackColor = System.Drawing.Color.White;
+            this.ucCustomerCard1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucCustomerCard1.Location = new System.Drawing.Point(0, 73);
+            this.ucCustomerCard1.Name = "ucCustomerCard1";
+            this.ucCustomerCard1.Size = new System.Drawing.Size(1018, 617);
+            this.ucCustomerCard1.TabIndex = 218;
             // 
             // FrmShowCustomerTransactionHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1018, 905);
+            this.ClientSize = new System.Drawing.Size(1018, 850);
+            this.Controls.Add(this.ucCustomerCard1);
             this.Controls.Add(this.tcTransactionHistory);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.ucTransactionDetails1);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmShowCustomerTransactionHistory";
@@ -253,6 +323,7 @@
             this.tcTransactionHistory.ResumeLayout(false);
             this.tpTransactionHistory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionsList)).EndInit();
+            this.cbRentalTransactions.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -263,10 +334,16 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label lblTitle;
-        private UserControls.UcTransactionDetails ucTransactionDetails1;
         private Guna.UI2.WinForms.Guna2TabControl tcTransactionHistory;
         private System.Windows.Forms.TabPage tpTransactionHistory;
         private Guna.UI2.WinForms.Guna2DataGridView dgvTransactionsList;
         private Guna.UI2.WinForms.Guna2Button btnClose;
+        private System.Windows.Forms.ContextMenuStrip cbRentalTransactions;
+        private System.Windows.Forms.ToolStripMenuItem showTransactionInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showVehicleInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem showBookingInforamtionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showReturnInformationToolStripMenuItem;
+        private Customers.UserControls.UcCustomerCard ucCustomerCard1;
     }
 }

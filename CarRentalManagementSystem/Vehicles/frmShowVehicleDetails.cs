@@ -5,7 +5,7 @@ namespace CarRentalManagementSystem.Vehicles
 {
     public partial class FrmShowVehicleDetails : Form
     {
-        private int? _vehicleID = null;
+        private readonly int? _vehicleID = null;
 
         public FrmShowVehicleDetails(int? vehicleID)
         {

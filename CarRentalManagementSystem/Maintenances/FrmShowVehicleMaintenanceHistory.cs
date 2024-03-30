@@ -13,7 +13,7 @@ namespace CarRentalManagementSystem.Maintenances
 {
     public partial class FrmShowVehicleMaintenanceHistory : Form
     {
-        private int? _vehicleID = null;
+        private readonly int? _vehicleID = null;
 
         public FrmShowVehicleMaintenanceHistory(int? vehicleID)
         {
@@ -30,7 +30,7 @@ namespace CarRentalManagementSystem.Maintenances
 
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

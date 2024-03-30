@@ -6,7 +6,7 @@ namespace CarRentalManagementSystem.Bookings
 {
     public partial class FrmShowBookingDetails : Form
     {
-        private int? _bookingID = null;
+        private readonly int? _bookingID = null;
         private RentalBooking _booking = null;
 
         public FrmShowBookingDetails(int? bookingID)

@@ -129,33 +129,39 @@
             this.showBookingInformationToolStripMenuItem,
             this.returnVehicleToolStripMenuItem});
             this.cbRentalBookings.Name = "cbUsers";
-            this.cbRentalBookings.Size = new System.Drawing.Size(299, 112);
+            this.cbRentalBookings.Size = new System.Drawing.Size(283, 112);
             this.cbRentalBookings.Opening += new System.ComponentModel.CancelEventHandler(this.CbRentalBookings_Opening);
             // 
             // addNewBookingToolStripMenuItem
             // 
-            this.addNewBookingToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
-            this.addNewBookingToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
+            this.addNewBookingToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.addNewBookingToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.addNewBookingToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.addNewBookingToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._event;
             this.addNewBookingToolStripMenuItem.Name = "addNewBookingToolStripMenuItem";
-            this.addNewBookingToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
+            this.addNewBookingToolStripMenuItem.Size = new System.Drawing.Size(282, 36);
             this.addNewBookingToolStripMenuItem.Text = "Add New Booking";
             this.addNewBookingToolStripMenuItem.Click += new System.EventHandler(this.AddNewBookingToolStripMenuItem_Click);
             // 
             // showBookingInformationToolStripMenuItem
             // 
-            this.showBookingInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.showBookingInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showBookingInformationToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.showBookingInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.showBookingInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
             this.showBookingInformationToolStripMenuItem.Name = "showBookingInformationToolStripMenuItem";
-            this.showBookingInformationToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
+            this.showBookingInformationToolStripMenuItem.Size = new System.Drawing.Size(282, 36);
             this.showBookingInformationToolStripMenuItem.Text = "Show Booking Information";
             this.showBookingInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowBookingInformationToolStripMenuItem_Click);
             // 
             // returnVehicleToolStripMenuItem
             // 
-            this.returnVehicleToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.returnVehicleToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.returnVehicleToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.returnVehicleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.returnVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.return1;
             this.returnVehicleToolStripMenuItem.Name = "returnVehicleToolStripMenuItem";
-            this.returnVehicleToolStripMenuItem.Size = new System.Drawing.Size(298, 36);
+            this.returnVehicleToolStripMenuItem.Size = new System.Drawing.Size(282, 36);
             this.returnVehicleToolStripMenuItem.Text = "Return Vehicle";
             this.returnVehicleToolStripMenuItem.Click += new System.EventHandler(this.ReturnVehicleToolStripMenuItem_Click);
             // 
@@ -228,7 +234,7 @@
             this.btnAddNewBooking.ForeColor = System.Drawing.Color.White;
             this.btnAddNewBooking.Image = global::CarRentalManagementSystem.Properties.Resources.plus;
             this.btnAddNewBooking.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAddNewBooking.Location = new System.Drawing.Point(1028, 206);
+            this.btnAddNewBooking.Location = new System.Drawing.Point(1028, 198);
             this.btnAddNewBooking.Name = "btnAddNewBooking";
             this.btnAddNewBooking.Size = new System.Drawing.Size(186, 51);
             this.btnAddNewBooking.TabIndex = 16;

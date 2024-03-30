@@ -9,7 +9,7 @@ namespace CarRentalManagementSystem.Users
 {
     public partial class FrmChangeUserPassword : Form
     {
-        private int? _userID = null;
+        private readonly int? _userID = null;
         private User _user = null;
 
         public FrmChangeUserPassword(int? userID)

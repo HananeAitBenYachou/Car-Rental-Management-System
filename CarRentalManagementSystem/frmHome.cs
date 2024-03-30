@@ -16,7 +16,7 @@ namespace CarRentalManagementSystem
     {
         private Guna2Button _currentActiveButton = new Guna2Button();
 
-        private FrmLogin _loginForm;
+        private readonly FrmLogin _loginForm;
 
         public FrmHome(FrmLogin loginForm)
         {

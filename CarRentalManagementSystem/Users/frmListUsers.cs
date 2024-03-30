@@ -205,7 +205,7 @@ namespace CarRentalManagementSystem.Users
 
         private void DgvUsersList_SelectionChanged(object sender, EventArgs e)
         {
-            cbUsers.Enabled = dgvUsersList.SelectedRows.Count > 0 ? true : false;
+            cbUsers.Enabled = dgvUsersList.SelectedRows.Count > 0;
         }
 
         private void DgvUsersList_CellContentClick(object sender, DataGridViewCellEventArgs e)

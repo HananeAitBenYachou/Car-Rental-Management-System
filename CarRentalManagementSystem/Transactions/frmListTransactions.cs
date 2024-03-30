@@ -52,7 +52,7 @@ namespace CarRentalManagementSystem.Transactions
 
         private void CbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ", ""), true, out FilterOptions result))
+            if (Enum.TryParse(cbFilterByOptions.Text.Replace(" ", ""), true, out FilterOptions _))
             {
                 txtFilterValue.Visible = false;
                 dtpTemp.Visible = true;
@@ -80,6 +80,11 @@ namespace CarRentalManagementSystem.Transactions
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
+        private void DtpTemp_ValueChanged(object sender, EventArgs e)
+        {
+            _transactionsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpTemp.Value.Date.ToString("dd-MM-yyyy"));
+        }
+
         private void ShowTransactionInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmShowTransactionDetails form = new FrmShowTransactionDetails((int)dgvTransactionsList.CurrentRow.Cells[0].Value);
@@ -88,17 +93,12 @@ namespace CarRentalManagementSystem.Transactions
 
         private void DgvTransactionsList_SelectionChanged(object sender, EventArgs e)
         {
-            cbRentalTransactions.Enabled = dgvTransactionsList.SelectedRows.Count > 0 ? true : false;
+            cbRentalTransactions.Enabled = dgvTransactionsList.SelectedRows.Count > 0;
         }
 
         private void DgvTransactionsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             showTransactionInformationToolStripMenuItem.PerformClick();
-        }
-
-        private void DtpTemp_ValueChanged(object sender, EventArgs e)
-        {
-            _transactionsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpTemp.Value.Date.ToString("dd-MM-yyyy"));
         }
 
         private void ShowCustomerInformationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,5 +127,6 @@ namespace CarRentalManagementSystem.Transactions
             FrmShowVehicleReturnDetails form = new FrmShowVehicleReturnDetails((int)dgvTransactionsList.CurrentRow.Cells["Return ID"].Value);
             form.ShowDialog();
         }
+
     }
 }

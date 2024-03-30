@@ -128,12 +128,6 @@
     <Compile Include="Customers\UserControls\UcCustomerCardWithFilter.Designer.cs">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +196,12 @@
     </Compile>
     <Compile Include="Transactions\FrmListTransactions.Designer.cs">
       <DependentUpon>FrmListTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\FrmShowCustomerTransactionHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\FrmShowCustomerTransactionHistory.Designer.cs">
+      <DependentUpon>FrmShowCustomerTransactionHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Transactions\FrmShowTransactionDetails.cs">
       <SubType>Form</SubType>
@@ -311,9 +311,6 @@
     <EmbeddedResource Include="Customers\UserControls\UcCustomerCardWithFilter.resx">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -356,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\FrmListTransactions.resx">
       <DependentUpon>FrmListTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\FrmShowCustomerTransactionHistory.resx">
+      <DependentUpon>FrmShowCustomerTransactionHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\FrmShowTransactionDetails.resx">
       <DependentUpon>FrmShowTransactionDetails.cs</DependentUpon>

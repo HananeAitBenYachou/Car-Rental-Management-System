@@ -134,41 +134,49 @@
             this.showCustomerInformationToolStripMenuItem,
             this.deleteCustomerToolStripMenuItem});
             this.cbCustomers.Name = "cbUsers";
-            this.cbCustomers.Size = new System.Drawing.Size(310, 148);
+            this.cbCustomers.Size = new System.Drawing.Size(295, 148);
             // 
             // addNewCustomerToolStripMenuItem
             // 
-            this.addNewCustomerToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.addNewCustomerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.addNewCustomerToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.addNewCustomerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.addNewCustomerToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
             this.addNewCustomerToolStripMenuItem.Name = "addNewCustomerToolStripMenuItem";
-            this.addNewCustomerToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
+            this.addNewCustomerToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
             this.addNewCustomerToolStripMenuItem.Text = "Add New Customer";
             this.addNewCustomerToolStripMenuItem.Click += new System.EventHandler(this.AddNewCustomerToolStripMenuItem_Click);
             // 
             // editCustomerInformationToolStripMenuItem
             // 
-            this.editCustomerInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.editCustomerInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.editCustomerInformationToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.editCustomerInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.editCustomerInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.edit;
             this.editCustomerInformationToolStripMenuItem.Name = "editCustomerInformationToolStripMenuItem";
-            this.editCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
+            this.editCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
             this.editCustomerInformationToolStripMenuItem.Text = "Edit Customer Information";
             this.editCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.EditCustomerInformationToolStripMenuItem_Click);
             // 
             // showCustomerInformationToolStripMenuItem
             // 
-            this.showCustomerInformationToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.showCustomerInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showCustomerInformationToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.showCustomerInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.showCustomerInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
             this.showCustomerInformationToolStripMenuItem.Name = "showCustomerInformationToolStripMenuItem";
-            this.showCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
+            this.showCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
             this.showCustomerInformationToolStripMenuItem.Text = "Show Customer Information";
             this.showCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerInformationToolStripMenuItem_Click);
             // 
             // deleteCustomerToolStripMenuItem
             // 
-            this.deleteCustomerToolStripMenuItem.BackColor = System.Drawing.Color.BurlyWood;
+            this.deleteCustomerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.deleteCustomerToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.deleteCustomerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteCustomerToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.trash_bin;
             this.deleteCustomerToolStripMenuItem.Name = "deleteCustomerToolStripMenuItem";
-            this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(309, 36);
+            this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
             this.deleteCustomerToolStripMenuItem.Text = "Delete Customer";
             this.deleteCustomerToolStripMenuItem.Click += new System.EventHandler(this.DeleteCustomerToolStripMenuItem_Click);
             // 
@@ -266,7 +274,7 @@
             this.btnAddNewCustomer.ForeColor = System.Drawing.Color.White;
             this.btnAddNewCustomer.Image = global::CarRentalManagementSystem.Properties.Resources.plus;
             this.btnAddNewCustomer.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAddNewCustomer.Location = new System.Drawing.Point(1012, 210);
+            this.btnAddNewCustomer.Location = new System.Drawing.Point(1012, 201);
             this.btnAddNewCustomer.Name = "btnAddNewCustomer";
             this.btnAddNewCustomer.Size = new System.Drawing.Size(205, 51);
             this.btnAddNewCustomer.TabIndex = 16;
