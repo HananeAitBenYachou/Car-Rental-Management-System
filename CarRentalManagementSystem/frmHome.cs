@@ -1,5 +1,6 @@
 ﻿using CarRentalManagementSystem.Bookings;
 using CarRentalManagementSystem.Customers;
+using CarRentalManagementSystem.Reports;
 using CarRentalManagementSystem.Returns;
 using CarRentalManagementSystem.Transactions;
 using CarRentalManagementSystem.Users;
@@ -125,5 +126,9 @@ namespace CarRentalManagementSystem
             btnExit.PerformClick();
         }
 
+        private void BtnReports_Click(object sender, System.EventArgs e)
+        {
+            ShowForm((Guna2Button)sender, new FrmGenerateReports());
+        }
     }
 }

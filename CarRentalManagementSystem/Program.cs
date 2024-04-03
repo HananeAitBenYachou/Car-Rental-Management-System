@@ -1,8 +1,4 @@
-﻿using CarRentalManagementSystem.Bookings;
-using CarRentalManagementSystem.Maintenances;
-using CarRentalManagementSystem.Transactions;
-using CarRentalManagementSystem.Users;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CarRentalManagementSystem
@@ -21,10 +17,9 @@ namespace CarRentalManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FrmShowCustomerBookingHistory(1));
-
+            Application.Run(new FrmLogin());
         }
-
+ 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();
     }

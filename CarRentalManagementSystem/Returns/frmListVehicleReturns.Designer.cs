@@ -66,6 +66,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvReturnsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvReturnsList.ColumnHeadersHeight = 45;
+            this.dgvReturnsList.ContextMenuStrip = this.cbVehicleReturns;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);

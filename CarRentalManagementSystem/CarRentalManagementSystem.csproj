@@ -39,7 +39,29 @@
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
@@ -128,6 +150,12 @@
     <Compile Include="Customers\UserControls\UcCustomerCardWithFilter.Designer.cs">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\FrmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmList.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +195,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DataSets\customersDataSet.cs">
+      <DependentUpon>customersDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DataSets\customersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>customersDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateReports.Designer.cs">
+      <DependentUpon>FrmGenerateReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Returns\FrmListVehicleReturns.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +353,9 @@
     <EmbeddedResource Include="Customers\UserControls\UcCustomerCardWithFilter.resx">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmList.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +384,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\FrmGenerateReports.resx">
+      <DependentUpon>FrmGenerateReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportViewers\customersReport.rdlc" />
     <EmbeddedResource Include="Returns\FrmListVehicleReturns.resx">
       <DependentUpon>FrmListVehicleReturns.cs</DependentUpon>
     </EmbeddedResource>
@@ -419,6 +468,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Reports\DataSets\customersDataSet.xsc">
+      <DependentUpon>customersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\customersDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>customersDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DataSets\customersDataSet.xss">
+      <DependentUpon>customersDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
@@ -597,6 +657,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\networking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3d-report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diagram.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

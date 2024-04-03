@@ -31,12 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.pnlContainer = new System.Windows.Forms.Panel();
-            this.guna2VSeparator1 = new Guna.UI2.WinForms.Guna2VSeparator();
-            this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnShowUserProfile = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.pbUserImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
+            this.btnReports = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnManageUsers = new Guna.UI2.WinForms.Guna2Button();
             this.btnManageCustomers = new Guna.UI2.WinForms.Guna2Button();
@@ -46,10 +42,15 @@
             this.btnManageVehicles = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.guna2VSeparator1 = new Guna.UI2.WinForms.Guna2VSeparator();
+            this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnShowUserProfile = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.pbUserImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2GradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -64,6 +65,7 @@
             this.guna2GradientPanel1.BorderRadius = 75;
             this.guna2GradientPanel1.BorderThickness = 1;
             this.guna2GradientPanel1.Controls.Add(this.btnLogout);
+            this.guna2GradientPanel1.Controls.Add(this.btnReports);
             this.guna2GradientPanel1.Controls.Add(this.pictureBox1);
             this.guna2GradientPanel1.Controls.Add(this.btnManageUsers);
             this.guna2GradientPanel1.Controls.Add(this.btnManageCustomers);
@@ -80,65 +82,8 @@
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 59);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(290, 949);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(290, 920);
             this.guna2GradientPanel1.TabIndex = 0;
-            // 
-            // pnlContainer
-            // 
-            this.pnlContainer.Location = new System.Drawing.Point(310, 123);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1263, 759);
-            this.pnlContainer.TabIndex = 1;
-            // 
-            // guna2VSeparator1
-            // 
-            this.guna2VSeparator1.FillThickness = 3;
-            this.guna2VSeparator1.Location = new System.Drawing.Point(1490, 16);
-            this.guna2VSeparator1.Name = "guna2VSeparator1";
-            this.guna2VSeparator1.Size = new System.Drawing.Size(10, 48);
-            this.guna2VSeparator1.TabIndex = 13;
-            // 
-            // btnExit
-            // 
-            this.btnExit.CheckedState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnExit.Image = global::CarRentalManagementSystem.Properties.Resources.log_out__1_;
-            this.btnExit.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnExit.ImageRotate = 0F;
-            this.btnExit.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnExit.Location = new System.Drawing.Point(1557, 30);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnExit.Size = new System.Drawing.Size(25, 25);
-            this.btnExit.TabIndex = 15;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
-            // 
-            // btnShowUserProfile
-            // 
-            this.btnShowUserProfile.CheckedState.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnShowUserProfile.HoverState.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnShowUserProfile.Image = global::CarRentalManagementSystem.Properties.Resources.user__1_;
-            this.btnShowUserProfile.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnShowUserProfile.ImageRotate = 0F;
-            this.btnShowUserProfile.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnShowUserProfile.Location = new System.Drawing.Point(1516, 25);
-            this.btnShowUserProfile.Name = "btnShowUserProfile";
-            this.btnShowUserProfile.PressedState.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnShowUserProfile.Size = new System.Drawing.Size(30, 30);
-            this.btnShowUserProfile.TabIndex = 14;
-            this.btnShowUserProfile.Click += new System.EventHandler(this.BtnShowUserProfile_Click);
-            // 
-            // pbUserImage
-            // 
-            this.pbUserImage.Image = global::CarRentalManagementSystem.Properties.Resources.man__1_;
-            this.pbUserImage.ImageRotate = 0F;
-            this.pbUserImage.Location = new System.Drawing.Point(1421, 6);
-            this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.pbUserImage.Size = new System.Drawing.Size(64, 64);
-            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbUserImage.TabIndex = 10;
-            this.pbUserImage.TabStop = false;
             // 
             // btnLogout
             // 
@@ -155,22 +100,46 @@
             this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnLogout.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnLogout.Location = new System.Drawing.Point(45, 553);
+            this.btnLogout.Location = new System.Drawing.Point(45, 612);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(210, 55);
-            this.btnLogout.TabIndex = 8;
+            this.btnLogout.TabIndex = 10;
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.TextOffset = new System.Drawing.Point(8, 0);
             this.btnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
+            // btnReports
+            // 
+            this.btnReports.BackColor = System.Drawing.Color.Transparent;
+            this.btnReports.BorderRadius = 23;
+            this.btnReports.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnReports.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnReports.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnReports.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnReports.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnReports.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnReports.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.btnReports.Image = global::CarRentalManagementSystem.Properties.Resources.diagram;
+            this.btnReports.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnReports.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.btnReports.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnReports.Location = new System.Drawing.Point(45, 553);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(210, 55);
+            this.btnReports.TabIndex = 8;
+            this.btnReports.Text = "Reports";
+            this.btnReports.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnReports.TextOffset = new System.Drawing.Point(8, 0);
+            this.btnReports.Click += new System.EventHandler(this.BtnReports_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::CarRentalManagementSystem.Properties.Resources.Car_rental_bro;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 562);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 633);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(287, 369);
+            this.pictureBox1.Size = new System.Drawing.Size(287, 287);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -356,12 +325,69 @@
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
             // 
+            // pnlContainer
+            // 
+            this.pnlContainer.Location = new System.Drawing.Point(310, 163);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(1263, 759);
+            this.pnlContainer.TabIndex = 1;
+            // 
+            // guna2VSeparator1
+            // 
+            this.guna2VSeparator1.FillThickness = 3;
+            this.guna2VSeparator1.Location = new System.Drawing.Point(1490, 16);
+            this.guna2VSeparator1.Name = "guna2VSeparator1";
+            this.guna2VSeparator1.Size = new System.Drawing.Size(10, 48);
+            this.guna2VSeparator1.TabIndex = 13;
+            // 
+            // btnExit
+            // 
+            this.btnExit.CheckedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnExit.Image = global::CarRentalManagementSystem.Properties.Resources.log_out__1_;
+            this.btnExit.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnExit.ImageRotate = 0F;
+            this.btnExit.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExit.Location = new System.Drawing.Point(1557, 30);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnExit.Size = new System.Drawing.Size(25, 25);
+            this.btnExit.TabIndex = 15;
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
+            // btnShowUserProfile
+            // 
+            this.btnShowUserProfile.CheckedState.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnShowUserProfile.HoverState.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnShowUserProfile.Image = global::CarRentalManagementSystem.Properties.Resources.user__1_;
+            this.btnShowUserProfile.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnShowUserProfile.ImageRotate = 0F;
+            this.btnShowUserProfile.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.Location = new System.Drawing.Point(1516, 25);
+            this.btnShowUserProfile.Name = "btnShowUserProfile";
+            this.btnShowUserProfile.PressedState.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnShowUserProfile.Size = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.TabIndex = 14;
+            this.btnShowUserProfile.Click += new System.EventHandler(this.BtnShowUserProfile_Click);
+            // 
+            // pbUserImage
+            // 
+            this.pbUserImage.Image = global::CarRentalManagementSystem.Properties.Resources.man__1_;
+            this.pbUserImage.ImageRotate = 0F;
+            this.pbUserImage.Location = new System.Drawing.Point(1421, 6);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pbUserImage.Size = new System.Drawing.Size(64, 64);
+            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbUserImage.TabIndex = 10;
+            this.pbUserImage.TabStop = false;
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1595, 910);
+            this.ClientSize = new System.Drawing.Size(1595, 980);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnShowUserProfile);
             this.Controls.Add(this.guna2VSeparator1);
@@ -374,9 +400,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,7 +416,7 @@
         private Guna.UI2.WinForms.Guna2Button btnManageReturns;
         private Guna.UI2.WinForms.Guna2Button btnManageBookings;
         private Guna.UI2.WinForms.Guna2Button btnManageVehicles;
-        private Guna.UI2.WinForms.Guna2Button btnLogout;
+        private Guna.UI2.WinForms.Guna2Button btnReports;
         private Guna.UI2.WinForms.Guna2Button btnManageUsers;
         private Guna.UI2.WinForms.Guna2Button btnManageCustomers;
         private Guna.UI2.WinForms.Guna2Button btnManageTransactions;
@@ -400,5 +426,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton btnShowUserProfile;
         private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox pbUserImage;
+        private Guna.UI2.WinForms.Guna2Button btnLogout;
     }
 }
