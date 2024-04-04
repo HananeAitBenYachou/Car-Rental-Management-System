@@ -155,7 +155,7 @@ namespace CarRentalManagementSystem.Vehicles
 
         private void RefreshVehiclesList()
         {
-            _vehiclesDataView = Vehicle.GetAllVehicles(_pageNumber, _pageSize).DefaultView;
+            _vehiclesDataView = Vehicle.GetVehiclesPaginated(_pageNumber, _pageSize).DefaultView;
             dgvVehiclesList.DataSource = _vehiclesDataView;
 
             cbFilterByOptions.SelectedIndex = 0;

@@ -2,54 +2,63 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix1">
+      <Tablix Name="Tablix2">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.56138cm</Width>
+              <Width>1.33896cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.06501cm</Width>
+              <Width>3.18048cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.77305cm</Width>
+              <Width>2.79945cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49788cm</Width>
+              <Width>2.53843cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49788cm</Width>
+              <Width>2.53843cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49788cm</Width>
+              <Width>1.50126cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49788cm</Width>
+              <Width>3.32161cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.13288cm</Width>
+              <Width>3.24049cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87889cm</Width>
+              <Width>4.8456cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.08539cm</Width>
+              <Width>1.6071cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.83637cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.1786cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.09393cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.91417cm</Height>
+              <Height>1.75344cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox67">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Customer ID</Value>
+                              <Value>Vehicle ID</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -62,7 +71,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox67</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -79,14 +88,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox7">
+                    <Textbox Name="Textbox69">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Full Name</Value>
+                              <Value>Vehicle Name</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -99,7 +108,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <rd:DefaultName>Textbox69</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -116,14 +125,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox71">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>National No</Value>
+                              <Value>Make</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -136,7 +145,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox71</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -153,14 +162,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox75">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Gender</Value>
+                              <Value>Model</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -173,7 +182,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox75</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -190,14 +199,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox15">
+                    <Textbox Name="Textbox77">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Birth Date</Value>
+                              <Value>Sub Model</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -210,7 +219,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <rd:DefaultName>Textbox77</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -227,14 +236,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox17">
+                    <Textbox Name="Textbox79">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Country</Value>
+                              <Value>Year</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -247,7 +256,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <rd:DefaultName>Textbox79</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -264,14 +273,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox19">
+                    <Textbox Name="Textbox81">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Phone</Value>
+                              <Value>Drive Type</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -284,7 +293,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <rd:DefaultName>Textbox81</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -301,14 +310,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox21">
+                    <Textbox Name="Textbox83">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Email</Value>
+                              <Value>Fuel Type</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -321,7 +330,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox21</rd:DefaultName>
+                      <rd:DefaultName>Textbox83</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -338,14 +347,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox23">
+                    <Textbox Name="Textbox85">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Address</Value>
+                              <Value>Engine</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -358,7 +367,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox23</rd:DefaultName>
+                      <rd:DefaultName>Textbox85</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -375,14 +384,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox25">
+                    <Textbox Name="Textbox87">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>License Number</Value>
+                              <Value>Doors</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -395,7 +404,131 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox25</rd:DefaultName>
+                      <rd:DefaultName>Textbox87</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#fbcd08</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox89">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Mileage</Value>
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox89</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#fbcd08</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox91">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Daily Rental Price</Value>
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox91</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#fbcd08</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox73">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Status</Value>
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox73</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -413,18 +546,18 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.42734cm</Height>
+              <Height>3.12927cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Customer_ID">
+                    <Textbox Name="Vehicle_ID">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Customer_ID.Value</Value>
+                              <Value>=Fields!Vehicle_ID.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -436,7 +569,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Customer_ID</rd:DefaultName>
+                      <rd:DefaultName>Vehicle_ID</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -452,14 +585,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Full_Name">
+                    <Textbox Name="Vehicle_Name">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Full_Name.Value</Value>
+                              <Value>=Fields!Vehicle_Name.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -471,7 +604,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Full_Name</rd:DefaultName>
+                      <rd:DefaultName>Vehicle_Name</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -487,14 +620,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="National_No">
+                    <Textbox Name="Make">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!National_No.Value</Value>
+                              <Value>=Fields!Make.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -506,7 +639,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>National_No</rd:DefaultName>
+                      <rd:DefaultName>Make</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -522,14 +655,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Gender">
+                    <Textbox Name="Model">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Gender.Value</Value>
+                              <Value>=Fields!Model.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -541,7 +674,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Gender</rd:DefaultName>
+                      <rd:DefaultName>Model</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -557,14 +690,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="BirthDate">
+                    <Textbox Name="Sub_Model">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!BirthDate.Value</Value>
+                              <Value>=Fields!Sub_Model.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -576,7 +709,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>BirthDate</rd:DefaultName>
+                      <rd:DefaultName>Sub_Model</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -592,14 +725,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Country">
+                    <Textbox Name="Year">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Country.Value</Value>
+                              <Value>=Fields!Year.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -611,7 +744,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Country</rd:DefaultName>
+                      <rd:DefaultName>Year</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -627,14 +760,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Phone">
+                    <Textbox Name="Drive_Type">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Phone.Value</Value>
+                              <Value>=Fields!Drive_Type.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -646,7 +779,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Phone</rd:DefaultName>
+                      <rd:DefaultName>Drive_Type</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -662,14 +795,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Email">
+                    <Textbox Name="Fuel_Type">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Email.Value</Value>
+                              <Value>=Fields!Fuel_Type.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -681,7 +814,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Email</rd:DefaultName>
+                      <rd:DefaultName>Fuel_Type</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -697,14 +830,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Address">
+                    <Textbox Name="Engine">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Address.Value</Value>
+                              <Value>=Fields!Engine.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -716,7 +849,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Address</rd:DefaultName>
+                      <rd:DefaultName>Engine</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -732,14 +865,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="License_Number">
+                    <Textbox Name="Doors">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!License_Number.Value</Value>
+                              <Value>=Fields!Doors.Value</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -751,7 +884,111 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>License_Number</rd:DefaultName>
+                      <rd:DefaultName>Doors</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Mileage">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Mileage.Value</Value>
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Mileage</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Rental_Price_Per_Day">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Rental_Price_Per_Day.Value</Value>
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Rental_Price_Per_Day</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Status">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Status.Value</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Status</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -781,6 +1018,9 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -794,10 +1034,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet</DataSetName>
-        <Top>0.95533cm</Top>
-        <Left>1.36148cm</Left>
-        <Height>3.34151cm</Height>
-        <Width>28.48812cm</Width>
+        <Top>0.84639cm</Top>
+        <Height>4.88271cm</Height>
+        <Width>33.02071cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -805,13 +1044,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.69167in</Height>
+    <Height>2.25555in</Height>
     <Style />
   </Body>
-  <Width>12.28783in</Width>
+  <Width>13.00028in</Width>
   <Page>
     <PageHeader>
-      <Height>3.17387cm</Height>
+      <Height>3.33614cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -827,6 +1066,43 @@
             </Border>
           </Style>
         </Image>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Vehicles List</Value>
+                  <Style>
+                    <FontStyle>Italic</FontStyle>
+                    <FontFamily>calibri</FontFamily>
+                    <FontSize>40pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.10442cm</Top>
+          <Left>4.13258cm</Left>
+          <Height>1.98994cm</Height>
+          <Width>24.75555cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
         <Textbox Name="ExecutionTime">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -849,46 +1125,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
-          <Left>27.18709cm</Left>
+          <Left>28.99671cm</Left>
           <Height>0.6cm</Height>
           <Width>4.024cm</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox2">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Customers List</Value>
-                  <Style>
-                    <FontStyle>Italic</FontStyle>
-                    <FontFamily>calibri</FontFamily>
-                    <FontSize>40pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.10442cm</Top>
-          <Left>3.22777cm</Left>
-          <Height>1.98994cm</Height>
-          <Width>24.75555cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -901,10 +1140,10 @@
           </Style>
         </Textbox>
         <Line Name="Line2">
-          <Top>2.10848cm</Top>
-          <Left>11.36299cm</Left>
+          <Top>1.98557cm</Top>
+          <Left>13.1758cm</Left>
           <Height>0cm</Height>
-          <Width>8.23543cm</Width>
+          <Width>6.6691cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -946,8 +1185,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.32503cm</Top>
-          <Left>11.27579cm</Left>
+          <Top>0.97cm</Top>
+          <Left>12.1806cm</Left>
           <Height>0.6cm</Height>
           <Width>8.6595cm</Width>
           <Style>
@@ -974,75 +1213,82 @@
     <TopMargin>2cm</TopMargin>
     <BottomMargin>2cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
-    <Style>
-      <Border>
-        <Style>None</Style>
-        <Width>2pt</Width>
-      </Border>
-    </Style>
+    <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DataSet1">
+    <DataSource Name="DataSet2">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>f63b87fc-84dc-4b93-a571-013dcb1011bb</rd:DataSourceID>
+      <rd:DataSourceID>00021b68-fd1f-4ea6-9b78-a008db450a94</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet">
       <Query>
-        <DataSourceName>DataSet1</DataSourceName>
+        <DataSourceName>DataSet2</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Customer_ID">
-          <DataField>Customer_ID</DataField>
+        <Field Name="Vehicle_ID">
+          <DataField>Vehicle_ID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Full_Name">
-          <DataField>Full_Name</DataField>
+        <Field Name="Vehicle_Name">
+          <DataField>Vehicle_Name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="National_No">
-          <DataField>National_No</DataField>
+        <Field Name="Make">
+          <DataField>Make</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Gender">
-          <DataField>Gender</DataField>
+        <Field Name="Model">
+          <DataField>Model</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BirthDate">
-          <DataField>BirthDate</DataField>
+        <Field Name="Sub_Model">
+          <DataField>Sub_Model</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Country">
-          <DataField>Country</DataField>
+        <Field Name="Year">
+          <DataField>Year</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Phone">
-          <DataField>Phone</DataField>
+        <Field Name="Drive_Type">
+          <DataField>Drive_Type</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Email">
-          <DataField>Email</DataField>
+        <Field Name="Fuel_Type">
+          <DataField>Fuel_Type</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Address">
-          <DataField>Address</DataField>
+        <Field Name="Engine">
+          <DataField>Engine</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="License_Number">
-          <DataField>License_Number</DataField>
+        <Field Name="Doors">
+          <DataField>Doors</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Mileage">
+          <DataField>Mileage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rental_Price_Per_Day">
+          <DataField>Rental_Price_Per_Day</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Status">
+          <DataField>Status</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\DataSets\customersDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>customersDataTable</rd:TableName>
+        <rd:DataSetName>DataSet2</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\DataSets\vehiclesDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -1146,5 +1392,5 @@ S9XWUGow9+3uLyQPlyrT3OuWOkpn2loGnPaQSptnb9pWHl0QIFPVcfGuannr+O7M2suuZM7uzk2d4ILE
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>1340b3c8-1254-4220-ae29-d6e0345d04a9</rd:ReportID>
+  <rd:ReportID>b5ebbbf9-b66e-4d95-8cd5-6e7a65b08d1d</rd:ReportID>
 </Report>

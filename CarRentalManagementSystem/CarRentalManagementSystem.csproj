@@ -150,6 +150,20 @@
     <Compile Include="Customers\UserControls\UcCustomerCardWithFilter.Designer.cs">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSets\vehiclesDataSet.cs">
+      <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DataSets\vehiclesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +367,9 @@
     <EmbeddedResource Include="Customers\UserControls\UcCustomerCardWithFilter.resx">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\FrmList.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +405,7 @@
       <DependentUpon>FrmGenerateReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportViewers\customersReport.rdlc" />
+    <EmbeddedResource Include="Reports\ReportViewers\vehiclesReport.rdlc" />
     <EmbeddedResource Include="Returns\FrmListVehicleReturns.resx">
       <DependentUpon>FrmListVehicleReturns.cs</DependentUpon>
     </EmbeddedResource>
@@ -478,6 +496,17 @@
     </None>
     <None Include="Reports\DataSets\customersDataSet.xss">
       <DependentUpon>customersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\vehiclesDataSet.xsc">
+      <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\vehiclesDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vehiclesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DataSets\vehiclesDataSet.xss">
+      <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
     </None>
     <None Include="Resources\home.png" />
   </ItemGroup>

@@ -237,7 +237,41 @@ namespace CarRental_DataAccessLayer
             return rowsAffected != 0;
         }
 
-        public static DataTable GetAllVehicles(int pageNumber, int rowsPerPage)
+        public static DataTable GetVehiclesPaginated(int pageNumber, int rowsPerPage)
+        {
+            DataTable vehiclesDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetVehiclesByPage", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@PageNumber", pageNumber);
+                        command.Parameters.AddWithValue("@RowsPerPage", rowsPerPage);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                vehiclesDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return vehiclesDatatable;
+        }
+
+        public static DataTable GetAllVehicles()
         {
             DataTable vehiclesDatatable = new DataTable();
 
@@ -250,9 +284,6 @@ namespace CarRental_DataAccessLayer
                     using (SqlCommand command = new SqlCommand("SP_GetAllVehicles", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@PageNumber", pageNumber);
-                        command.Parameters.AddWithValue("@RowsPerPage", rowsPerPage);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {

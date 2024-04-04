@@ -40,7 +40,6 @@ namespace CarRentalManagementSystem
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.LocalReport.DataSources.Add(reportDataSource);
             reportViewer1.RefreshReport();
-
         }
 
     }

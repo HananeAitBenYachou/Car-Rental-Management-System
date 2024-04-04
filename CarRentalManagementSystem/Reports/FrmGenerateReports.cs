@@ -28,7 +28,7 @@ namespace CarRentalManagementSystem.Reports
             form.ShowDialog();
         }
 
-        private void btnCustomersListReport_Click(object sender, EventArgs e)
+        private void BtnCustomersListReport_Click(object sender, EventArgs e)
         {
             _dataTable = Customer.GetAllCustomers();
             _reportTitle = "Customers List";
@@ -37,5 +37,13 @@ namespace CarRentalManagementSystem.Reports
             ShowReport();
         }
 
+        private void BtnVehiclesListReport_Click(object sender, EventArgs e)
+        {
+            _dataTable = Vehicle.GetVehiclesPaginated(1,Vehicle.GetTotalVehiclesCount());
+            _reportTitle = "Vehicles List";
+            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehiclesReport.rdlc";
+
+            ShowReport();
+        }
     }
 }

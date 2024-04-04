@@ -91,6 +91,7 @@
             this.btnVehiclesListReport.TabIndex = 6;
             this.btnVehiclesListReport.Text = "Vehicles List";
             this.btnVehiclesListReport.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.btnVehiclesListReport.Click += new System.EventHandler(this.BtnVehiclesListReport_Click);
             // 
             // btnCustomersListReport
             // 
@@ -106,7 +107,7 @@
             this.btnCustomersListReport.Size = new System.Drawing.Size(190, 62);
             this.btnCustomersListReport.TabIndex = 7;
             this.btnCustomersListReport.Text = "Customers List";
-            this.btnCustomersListReport.Click += new System.EventHandler(this.btnCustomersListReport_Click);
+            this.btnCustomersListReport.Click += new System.EventHandler(this.BtnCustomersListReport_Click);
             // 
             // btnRentalBookingsReport
             // 
