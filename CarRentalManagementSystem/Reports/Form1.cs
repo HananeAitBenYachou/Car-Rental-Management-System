@@ -22,7 +22,10 @@ namespace CarRentalManagementSystem.Reports
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            foreach(DataColumn column in Vehicle.GetAllVehicles().Columns)
+            DateTime startDate = new DateTime(2024, 3, 20);
+            DateTime endDate = new DateTime(2024, 3, 23);
+
+            foreach (DataColumn column in RentalBooking.GetAllRentalBookingsByDateRange(startDate,endDate).Columns)
             {
                 listBox1.Items.Add(column.ColumnName.Replace(" ", "_"));
 
@@ -31,8 +34,7 @@ namespace CarRentalManagementSystem.Reports
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
-        {
-                    
+        {              
             Clipboard.SetText(text);
         }
     }

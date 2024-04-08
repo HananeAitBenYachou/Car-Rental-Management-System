@@ -36,9 +36,12 @@ namespace CarRentalManagementSystem
             this.Text = _reportTitle;
 
             ReportDataSource reportDataSource = new ReportDataSource("DataSet", _dataTable);
+            ReportParameter reportParameter = new ReportParameter("Title", _reportTitle);
+
             reportViewer1.LocalReport.ReportPath = _reportPath;
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+            reportViewer1.LocalReport.SetParameters(reportParameter);
             reportViewer1.RefreshReport();
         }
 

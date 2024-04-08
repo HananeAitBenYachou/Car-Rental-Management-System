@@ -266,6 +266,40 @@ namespace CarRental_DataAccessLayer
             return rentalBookingsdatatable;
         }
 
+        public static DataTable GetAllRentalBookingsByDateRange(DateTime startDate , DateTime endDate)
+        {
+            DataTable rentalBookingsdatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetAllRentalBookingsByDateRange", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@StartDate", startDate);
+                        command.Parameters.AddWithValue("@EndDate",  endDate);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                rentalBookingsdatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return rentalBookingsdatatable;
+        }
+
         public static int GetTotalRentalBookingsCount()
         {
             int totalRentalBookingsCount = 0;

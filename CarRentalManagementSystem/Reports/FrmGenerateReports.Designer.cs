@@ -30,13 +30,20 @@
         {
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnVehiclesListReport = new Guna.UI2.WinForms.Guna2Button();
             this.btnCustomersListReport = new Guna.UI2.WinForms.Guna2Button();
             this.btnRentalBookingsReport = new Guna.UI2.WinForms.Guna2Button();
             this.btnTransactionsReport = new Guna.UI2.WinForms.Guna2Button();
             this.btnVehicleReturnsReport = new Guna.UI2.WinForms.Guna2Button();
             this.btnMaintenancesReport = new Guna.UI2.WinForms.Guna2Button();
+            this.dtpStartDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpEndDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.btnGenerateReport = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.pnlContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Separator1
@@ -58,20 +65,6 @@
             this.lblTitle.Size = new System.Drawing.Size(97, 31);
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Reports";
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources._3d_report;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(60, 60);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(30, 19);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(60, 60);
-            this.guna2ImageButton1.TabIndex = 4;
             // 
             // btnVehiclesListReport
             // 
@@ -123,6 +116,7 @@
             this.btnRentalBookingsReport.Size = new System.Drawing.Size(190, 62);
             this.btnRentalBookingsReport.TabIndex = 8;
             this.btnRentalBookingsReport.Text = "Rental Bookings Report";
+            this.btnRentalBookingsReport.Click += new System.EventHandler(this.BtnRentalBookingsReport_Click);
             // 
             // btnTransactionsReport
             // 
@@ -138,6 +132,7 @@
             this.btnTransactionsReport.Size = new System.Drawing.Size(190, 62);
             this.btnTransactionsReport.TabIndex = 9;
             this.btnTransactionsReport.Text = "Transactions Report";
+            this.btnTransactionsReport.Click += new System.EventHandler(this.BtnTransactionsReport_Click);
             // 
             // btnVehicleReturnsReport
             // 
@@ -153,6 +148,7 @@
             this.btnVehicleReturnsReport.Size = new System.Drawing.Size(190, 62);
             this.btnVehicleReturnsReport.TabIndex = 10;
             this.btnVehicleReturnsReport.Text = "Vehicle Returns Report";
+            this.btnVehicleReturnsReport.Click += new System.EventHandler(this.BtnVehicleReturnsReport_Click);
             // 
             // btnMaintenancesReport
             // 
@@ -171,6 +167,108 @@
             this.btnMaintenancesReport.Size = new System.Drawing.Size(190, 62);
             this.btnMaintenancesReport.TabIndex = 11;
             this.btnMaintenancesReport.Text = "Maintenances Report";
+            this.btnMaintenancesReport.Click += new System.EventHandler(this.BtnMaintenancesReport_Click);
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.BorderRadius = 22;
+            this.dtpStartDate.Checked = true;
+            this.dtpStartDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.dtpStartDate.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStartDate.ForeColor = System.Drawing.Color.White;
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpStartDate.Location = new System.Drawing.Point(188, 53);
+            this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(229, 59);
+            this.dtpStartDate.TabIndex = 176;
+            this.dtpStartDate.Value = new System.DateTime(2024, 3, 2, 0, 28, 59, 414);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.BorderRadius = 22;
+            this.dtpEndDate.Checked = true;
+            this.dtpEndDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.dtpEndDate.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEndDate.ForeColor = System.Drawing.Color.White;
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpEndDate.Location = new System.Drawing.Point(188, 145);
+            this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(229, 59);
+            this.dtpEndDate.TabIndex = 177;
+            this.dtpEndDate.Value = new System.DateTime(2024, 3, 2, 0, 28, 59, 414);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.label1.Location = new System.Drawing.Point(67, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 22);
+            this.label1.TabIndex = 179;
+            this.label1.Text = "Start Date :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.label2.Location = new System.Drawing.Point(67, 164);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 22);
+            this.label2.TabIndex = 180;
+            this.label2.Text = "End Date :";
+            // 
+            // pnlContainer
+            // 
+            this.pnlContainer.Controls.Add(this.btnGenerateReport);
+            this.pnlContainer.Controls.Add(this.label2);
+            this.pnlContainer.Controls.Add(this.dtpStartDate);
+            this.pnlContainer.Controls.Add(this.label1);
+            this.pnlContainer.Controls.Add(this.dtpEndDate);
+            this.pnlContainer.Location = new System.Drawing.Point(268, 296);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(746, 260);
+            this.pnlContainer.TabIndex = 181;
+            this.pnlContainer.Visible = false;
+            // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.BorderRadius = 22;
+            this.btnGenerateReport.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGenerateReport.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGenerateReport.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGenerateReport.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGenerateReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
+            this.btnGenerateReport.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGenerateReport.ForeColor = System.Drawing.Color.White;
+            this.btnGenerateReport.Image = global::CarRentalManagementSystem.Properties.Resources.report;
+            this.btnGenerateReport.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnGenerateReport.Location = new System.Drawing.Point(494, 102);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(171, 62);
+            this.btnGenerateReport.TabIndex = 178;
+            this.btnGenerateReport.Text = "Report";
+            this.btnGenerateReport.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.btnGenerateReport.Click += new System.EventHandler(this.BtnGenerateReport_Click);
+            // 
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.Image = global::CarRentalManagementSystem.Properties.Resources._3d_report;
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(60, 60);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(30, 19);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(60, 60);
+            this.guna2ImageButton1.TabIndex = 4;
             // 
             // FrmGenerateReports
             // 
@@ -178,6 +276,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1263, 759);
+            this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.btnMaintenancesReport);
             this.Controls.Add(this.btnVehicleReturnsReport);
             this.Controls.Add(this.btnTransactionsReport);
@@ -191,6 +290,8 @@
             this.Name = "FrmGenerateReports";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmGenerateReports";
+            this.pnlContainer.ResumeLayout(false);
+            this.pnlContainer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +308,11 @@
         private Guna.UI2.WinForms.Guna2Button btnTransactionsReport;
         private Guna.UI2.WinForms.Guna2Button btnVehicleReturnsReport;
         private Guna.UI2.WinForms.Guna2Button btnMaintenancesReport;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartDate;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndDate;
+        private Guna.UI2.WinForms.Guna2Button btnGenerateReport;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnlContainer;
     }
 }

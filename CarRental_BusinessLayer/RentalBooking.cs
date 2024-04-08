@@ -144,9 +144,15 @@ namespace CarRental_BusinessLayer
             return RentalBookingData.GetAllRentalBookings();
         }
 
+        public static DataTable GetAllRentalBookingsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return RentalBookingData.GetAllRentalBookingsByDateRange(startDate, endDate);
+        }
+
         public static int GetTotalRentalBookingsCount()
         {
             return RentalBookingData.GetTotalRentalBookingsCount();
         }
+
     }
 }

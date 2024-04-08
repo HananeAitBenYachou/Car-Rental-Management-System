@@ -150,6 +150,11 @@
     <Compile Include="Customers\UserControls\UcCustomerCardWithFilter.Designer.cs">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSets\rentalBookingsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rentalBookingsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DataSets\vehiclesDataSet.cs">
       <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
     </Compile>
@@ -405,6 +410,7 @@
       <DependentUpon>FrmGenerateReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportViewers\customersReport.rdlc" />
+    <EmbeddedResource Include="Reports\ReportViewers\rentalBookingsReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\vehiclesReport.rdlc" />
     <EmbeddedResource Include="Returns\FrmListVehicleReturns.resx">
       <DependentUpon>FrmListVehicleReturns.cs</DependentUpon>
@@ -496,6 +502,17 @@
     </None>
     <None Include="Reports\DataSets\customersDataSet.xss">
       <DependentUpon>customersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\rentalBookingsDataSet.xsc">
+      <DependentUpon>rentalBookingsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\rentalBookingsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>rentalBookingsDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DataSets\rentalBookingsDataSet.xss">
+      <DependentUpon>rentalBookingsDataSet.xsd</DependentUpon>
     </None>
     <None Include="Reports\DataSets\vehiclesDataSet.xsc">
       <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
@@ -692,6 +709,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\diagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

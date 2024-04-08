@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet3" targetNamespace="http://tempuri.org/rentalBookingsDataSet.xsd" xmlns:mstns="http://tempuri.org/rentalBookingsDataSet.xsd" xmlns="http://tempuri.org/rentalBookingsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet3" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet3">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rentalBookingsDataTable" msprop:Generator_RowClassName="rentalBookingsDataTableRow" msprop:Generator_RowEvHandlerName="rentalBookingsDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="rentalBookingsDataTableRowDeleted" msprop:Generator_RowDeletingName="rentalBookingsDataTableRowDeleting" msprop:Generator_RowEvArgName="rentalBookingsDataTableRowChangeEvent" msprop:Generator_TablePropName="rentalBookingsDataTable" msprop:Generator_RowChangedName="rentalBookingsDataTableRowChanged" msprop:Generator_UserTableName="rentalBookingsDataTable" msprop:Generator_RowChangingName="rentalBookingsDataTableRowChanging" msprop:Generator_TableClassName="rentalBookingsDataTableDataTable" msprop:Generator_TableVarName="tablerentalBookingsDataTable">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Booking_ID" msprop:Generator_ColumnPropNameInRow="Booking_ID" msprop:Generator_ColumnPropNameInTable="Booking_IDColumn" msprop:Generator_ColumnVarNameInTable="columnBooking_ID" msprop:Generator_UserColumnName="Booking_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Customer_ID" msprop:Generator_ColumnPropNameInRow="Customer_ID" msprop:Generator_ColumnPropNameInTable="Customer_IDColumn" msprop:Generator_ColumnVarNameInTable="columnCustomer_ID" msprop:Generator_UserColumnName="Customer_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Customer_Name" msprop:Generator_ColumnPropNameInRow="Customer_Name" msprop:Generator_ColumnPropNameInTable="Customer_NameColumn" msprop:Generator_ColumnVarNameInTable="columnCustomer_Name" msprop:Generator_UserColumnName="Customer_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Vehicle_ID" msprop:Generator_ColumnPropNameInRow="Vehicle_ID" msprop:Generator_ColumnPropNameInTable="Vehicle_IDColumn" msprop:Generator_ColumnVarNameInTable="columnVehicle_ID" msprop:Generator_UserColumnName="Vehicle_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Start_Date" msprop:Generator_ColumnPropNameInRow="Start_Date" msprop:Generator_ColumnPropNameInTable="Start_DateColumn" msprop:Generator_ColumnVarNameInTable="columnStart_Date" msprop:Generator_UserColumnName="Start_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Rental_End_Date" msprop:Generator_ColumnPropNameInRow="Rental_End_Date" msprop:Generator_ColumnPropNameInTable="Rental_End_DateColumn" msprop:Generator_ColumnVarNameInTable="columnRental_End_Date" msprop:Generator_UserColumnName="Rental_End_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Pickup_Location" msprop:Generator_ColumnPropNameInRow="Pickup_Location" msprop:Generator_ColumnPropNameInTable="Pickup_LocationColumn" msprop:Generator_ColumnVarNameInTable="columnPickup_Location" msprop:Generator_UserColumnName="Pickup_Location" type="xs:string" minOccurs="0" />
+              <xs:element name="Drop_Off_Location" msprop:Generator_ColumnPropNameInRow="Drop_Off_Location" msprop:Generator_ColumnPropNameInTable="Drop_Off_LocationColumn" msprop:Generator_ColumnVarNameInTable="columnDrop_Off_Location" msprop:Generator_UserColumnName="Drop_Off_Location" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
