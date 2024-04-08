@@ -18,7 +18,7 @@ namespace CarRentalManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FrmGenerateReports());
+            Application.Run(new FrmLogin());
         }
  
         [System.Runtime.InteropServices.DllImport("user32.dll")]

@@ -155,6 +155,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rentalBookingsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSets\rentalTransactionsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rentalTransactionsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DataSets\vehiclesDataSet.cs">
       <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
     </Compile>
@@ -162,12 +167,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\FrmReport.cs">
       <SubType>Form</SubType>
@@ -372,9 +371,6 @@
     <EmbeddedResource Include="Customers\UserControls\UcCustomerCardWithFilter.resx">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\FrmList.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -411,6 +407,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportViewers\customersReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\rentalBookingsReport.rdlc" />
+    <EmbeddedResource Include="Reports\ReportViewers\rentalTransactiosReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\vehiclesReport.rdlc" />
     <EmbeddedResource Include="Returns\FrmListVehicleReturns.resx">
       <DependentUpon>FrmListVehicleReturns.cs</DependentUpon>
@@ -513,6 +510,17 @@
     </None>
     <None Include="Reports\DataSets\rentalBookingsDataSet.xss">
       <DependentUpon>rentalBookingsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\rentalTransactionsDataSet.xsc">
+      <DependentUpon>rentalTransactionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\rentalTransactionsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>rentalTransactionsDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DataSets\rentalTransactionsDataSet.xss">
+      <DependentUpon>rentalTransactionsDataSet.xsd</DependentUpon>
     </None>
     <None Include="Reports\DataSets\vehiclesDataSet.xsc">
       <DependentUpon>vehiclesDataSet.xsd</DependentUpon>

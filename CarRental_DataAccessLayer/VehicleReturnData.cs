@@ -226,6 +226,39 @@ namespace CarRental_DataAccessLayer
             return vehicleReturnsDatatable;
         }
 
+        public static DataTable GetAllVehicleReturnsByDateRange(DateTime startDate , DateTime endDate)
+        {
+            DataTable vehicleReturnsDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetAllVehicleReturnsByDateRange", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@StartDate", startDate);
+                        command.Parameters.AddWithValue("@EndDate", endDate);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                vehicleReturnsDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return vehicleReturnsDatatable;
+        }
+
         public static int GetTotalVehicleReturnsCount()
         {
             int totalvehicleReturnsCount = 0;

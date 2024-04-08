@@ -124,6 +124,11 @@ namespace CarRental_BusinessLayer
             return RentalTransactionData.GetAllRentalTransactions();
         }
 
+        public static DataTable GetAllRentalTransactionsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return RentalTransactionData.GetAllRentalTransactionsByDateRange(startDate,endDate);
+        }
+
         public static int GetTransactionIDByBookingID(int? bookingID)
         {
             return RentalTransactionData.GetTransactionIDByBookingID(bookingID);

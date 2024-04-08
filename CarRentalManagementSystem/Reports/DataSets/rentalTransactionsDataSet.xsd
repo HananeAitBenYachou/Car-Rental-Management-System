@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet4" targetNamespace="http://tempuri.org/rentalTransactionsxsd.xsd" xmlns:mstns="http://tempuri.org/rentalTransactionsxsd.xsd" xmlns="http://tempuri.org/rentalTransactionsxsd.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet4" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet4" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet4">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rentalTransactionsDataTable" msprop:Generator_RowEvHandlerName="rentalTransactionsDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="rentalTransactionsDataTableRowDeleted" msprop:Generator_RowDeletingName="rentalTransactionsDataTableRowDeleting" msprop:Generator_RowEvArgName="rentalTransactionsDataTableRowChangeEvent" msprop:Generator_TablePropName="rentalTransactionsDataTable" msprop:Generator_RowChangedName="rentalTransactionsDataTableRowChanged" msprop:Generator_UserTableName="rentalTransactionsDataTable" msprop:Generator_RowChangingName="rentalTransactionsDataTableRowChanging" msprop:Generator_RowClassName="rentalTransactionsDataTableRow" msprop:Generator_TableClassName="rentalTransactionsDataTableDataTable" msprop:Generator_TableVarName="tablerentalTransactionsDataTable">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Transaction_ID" msprop:Generator_ColumnPropNameInTable="Transaction_IDColumn" msprop:Generator_ColumnPropNameInRow="Transaction_ID" msprop:Generator_UserColumnName="Transaction_ID" msprop:Generator_ColumnVarNameInTable="columnTransaction_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Booking_ID" msprop:Generator_ColumnPropNameInTable="Booking_IDColumn" msprop:Generator_ColumnPropNameInRow="Booking_ID" msprop:Generator_UserColumnName="Booking_ID" msprop:Generator_ColumnVarNameInTable="columnBooking_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Customer_ID" msprop:Generator_ColumnPropNameInTable="Customer_IDColumn" msprop:Generator_ColumnPropNameInRow="Customer_ID" msprop:Generator_UserColumnName="Customer_ID" msprop:Generator_ColumnVarNameInTable="columnCustomer_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Customer_Name" msprop:Generator_ColumnPropNameInTable="Customer_NameColumn" msprop:Generator_ColumnPropNameInRow="Customer_Name" msprop:Generator_UserColumnName="Customer_Name" msprop:Generator_ColumnVarNameInTable="columnCustomer_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Return_ID" msprop:Generator_ColumnPropNameInTable="Return_IDColumn" msprop:Generator_ColumnPropNameInRow="Return_ID" msprop:Generator_UserColumnName="Return_ID" msprop:Generator_ColumnVarNameInTable="columnReturn_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Paid_Initial_Total_Due_Amount" msprop:Generator_ColumnPropNameInTable="Paid_Initial_Total_Due_AmountColumn" msprop:Generator_ColumnPropNameInRow="Paid_Initial_Total_Due_Amount" msprop:Generator_UserColumnName="Paid_Initial_Total_Due_Amount" msprop:Generator_ColumnVarNameInTable="columnPaid_Initial_Total_Due_Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="Actual_Total_Due_Amount" msprop:Generator_ColumnPropNameInTable="Actual_Total_Due_AmountColumn" msprop:Generator_ColumnPropNameInRow="Actual_Total_Due_Amount" msprop:Generator_UserColumnName="Actual_Total_Due_Amount" msprop:Generator_ColumnVarNameInTable="columnActual_Total_Due_Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_Remaining" msprop:Generator_ColumnPropNameInTable="Total_RemainingColumn" msprop:Generator_ColumnPropNameInRow="Total_Remaining" msprop:Generator_UserColumnName="Total_Remaining" msprop:Generator_ColumnVarNameInTable="columnTotal_Remaining" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_Refunded_Amount" msprop:Generator_ColumnPropNameInTable="Total_Refunded_AmountColumn" msprop:Generator_ColumnPropNameInRow="Total_Refunded_Amount" msprop:Generator_UserColumnName="Total_Refunded_Amount" msprop:Generator_ColumnVarNameInTable="columnTotal_Refunded_Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="Transaction_Date" msprop:Generator_ColumnPropNameInTable="Transaction_DateColumn" msprop:Generator_ColumnPropNameInRow="Transaction_Date" msprop:Generator_UserColumnName="Transaction_Date" msprop:Generator_ColumnVarNameInTable="columnTransaction_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Updated_Transaction_Date" msprop:Generator_ColumnPropNameInTable="Updated_Transaction_DateColumn" msprop:Generator_ColumnPropNameInRow="Updated_Transaction_Date" msprop:Generator_UserColumnName="Updated_Transaction_Date" msprop:Generator_ColumnVarNameInTable="columnUpdated_Transaction_Date" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

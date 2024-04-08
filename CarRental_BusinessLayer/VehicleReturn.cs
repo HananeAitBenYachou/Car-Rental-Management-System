@@ -117,6 +117,11 @@ namespace CarRental_BusinessLayer
             return VehicleReturnData.GetAllVehicleReturns();
         }
 
+        public static DataTable GetAllVehicleReturnsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return VehicleReturnData.GetAllVehicleReturnsByDateRange(startDate,endDate);
+        }
+
         public static int GetTotalVehicleReturnsCount()
         {
             return VehicleReturnData.GetTotalVehicleReturnsCount();

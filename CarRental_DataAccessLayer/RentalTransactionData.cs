@@ -259,6 +259,40 @@ namespace CarRental_DataAccessLayer
             return rentalTransactionsDatatable;
         }
 
+        public static DataTable GetAllRentalTransactionsByDateRange(DateTime startDate , DateTime endDate)
+        {
+            DataTable rentalTransactionsDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetAllRentalTransactionsByDateRange", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@StartDate", startDate);
+                        command.Parameters.AddWithValue("@EndDate", endDate);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                rentalTransactionsDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return rentalTransactionsDatatable;
+        }
+
         public static int GetTotalRentalTransactionsCount()
         {
             int totallRentalTransactionsCount = 0;
@@ -294,7 +328,6 @@ namespace CarRental_DataAccessLayer
             }
             return totallRentalTransactionsCount;
         }
-
 
     }
 }
