@@ -62,7 +62,9 @@ namespace CarRentalManagementSystem.Reports
                 case EnReportType.Transactions:
                     _dataTable = RentalTransaction.GetAllRentalTransactionsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
-                case EnReportType.VehicleReturns: break;
+                case EnReportType.VehicleReturns:
+                    _dataTable = VehicleReturn.GetAllVehicleReturnsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    break;
                 case EnReportType.Maintenances: break;
             }
 
@@ -106,9 +108,10 @@ namespace CarRentalManagementSystem.Reports
         }
 
         private void BtnVehicleReturnsReport_Click(object sender, EventArgs e)
-        {
+        {   
             pnlContainer.Visible = true;
             _currentReportType = EnReportType.VehicleReturns;
+            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehicleReturnsReport.rdlc";
         }
 
         private void BtnMaintenancesReport_Click(object sender, EventArgs e)

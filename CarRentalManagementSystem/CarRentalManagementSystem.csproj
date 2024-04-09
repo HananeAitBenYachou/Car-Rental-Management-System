@@ -160,6 +160,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rentalTransactionsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSets\vehicleReturnsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vehicleReturnsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DataSets\vehiclesDataSet.cs">
       <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
     </Compile>
@@ -408,6 +413,7 @@
     <EmbeddedResource Include="Reports\ReportViewers\customersReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\rentalBookingsReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\rentalTransactiosReport.rdlc" />
+    <EmbeddedResource Include="Reports\ReportViewers\vehicleReturnsReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\vehiclesReport.rdlc" />
     <EmbeddedResource Include="Returns\FrmListVehicleReturns.resx">
       <DependentUpon>FrmListVehicleReturns.cs</DependentUpon>
@@ -521,6 +527,17 @@
     </None>
     <None Include="Reports\DataSets\rentalTransactionsDataSet.xss">
       <DependentUpon>rentalTransactionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\vehicleReturnsDataSet.xsc">
+      <DependentUpon>vehicleReturnsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\vehicleReturnsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vehicleReturnsDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DataSets\vehicleReturnsDataSet.xss">
+      <DependentUpon>vehicleReturnsDataSet.xsd</DependentUpon>
     </None>
     <None Include="Reports\DataSets\vehiclesDataSet.xsc">
       <DependentUpon>vehiclesDataSet.xsd</DependentUpon>
