@@ -173,33 +173,6 @@ namespace CarRental_DataAccessLayer
             return rowsAffected != 0;
         }
 
-        public static bool DeleteMaintenance(int? maintenanceID)
-        {
-            int rowsAffected = 0;
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("SP_DeleteMaintenance", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@MaintenanceID", (object)maintenanceID ?? DBNull.Value);
-
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.LogError(ex);
-            }
-            return rowsAffected != 0;
-        }
-
         public static DataTable GetAllMaintenances()
         {
             DataTable maintenancesDatatable = new DataTable();
@@ -213,6 +186,39 @@ namespace CarRental_DataAccessLayer
                     using (SqlCommand command = new SqlCommand("SP_GetAllMaintenances", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                maintenancesDatatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return maintenancesDatatable;
+        }
+
+        public static DataTable GetAllMaintenancesByDateRange(DateTime startDate , DateTime endDate)
+        {
+            DataTable maintenancesDatatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetAllMaintenances", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@StartDate", startDate);
+                        command.Parameters.AddWithValue("@EndDate", endDate);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {

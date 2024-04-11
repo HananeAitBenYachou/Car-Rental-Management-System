@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet6" targetNamespace="http://tempuri.org/maintenances.xsd" xmlns:mstns="http://tempuri.org/maintenances.xsd" xmlns="http://tempuri.org/maintenances.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet6" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DataSet6" msprop:Generator_DataSetName="DataSet6">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="maintenancesDataTable" msprop:Generator_RowEvHandlerName="maintenancesDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="maintenancesDataTableRowDeleted" msprop:Generator_RowDeletingName="maintenancesDataTableRowDeleting" msprop:Generator_RowEvArgName="maintenancesDataTableRowChangeEvent" msprop:Generator_TablePropName="maintenancesDataTable" msprop:Generator_RowChangedName="maintenancesDataTableRowChanged" msprop:Generator_RowChangingName="maintenancesDataTableRowChanging" msprop:Generator_TableClassName="maintenancesDataTableDataTable" msprop:Generator_RowClassName="maintenancesDataTableRow" msprop:Generator_TableVarName="tablemaintenancesDataTable" msprop:Generator_UserTableName="maintenancesDataTable">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Maintenance_ID" msprop:Generator_ColumnPropNameInRow="Maintenance_ID" msprop:Generator_ColumnPropNameInTable="Maintenance_IDColumn" msprop:Generator_ColumnVarNameInTable="columnMaintenance_ID" msprop:Generator_UserColumnName="Maintenance_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Vehicle_ID" msprop:Generator_ColumnPropNameInRow="Vehicle_ID" msprop:Generator_ColumnPropNameInTable="Vehicle_IDColumn" msprop:Generator_ColumnVarNameInTable="columnVehicle_ID" msprop:Generator_UserColumnName="Vehicle_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Vehicle_Name" msprop:Generator_ColumnPropNameInRow="Vehicle_Name" msprop:Generator_ColumnPropNameInTable="Vehicle_NameColumn" msprop:Generator_ColumnVarNameInTable="columnVehicle_Name" msprop:Generator_UserColumnName="Vehicle_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Maintenance_Date" msprop:Generator_ColumnPropNameInRow="Maintenance_Date" msprop:Generator_ColumnPropNameInTable="Maintenance_DateColumn" msprop:Generator_ColumnVarNameInTable="columnMaintenance_Date" msprop:Generator_UserColumnName="Maintenance_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Cost" msprop:Generator_ColumnPropNameInRow="Cost" msprop:Generator_ColumnPropNameInTable="CostColumn" msprop:Generator_ColumnVarNameInTable="columnCost" msprop:Generator_UserColumnName="Cost" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

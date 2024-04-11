@@ -83,14 +83,14 @@ namespace CarRental_BusinessLayer
             return false;
         }
 
-        public static bool DeleteMaintenance(int? maintenanceID)
-        {
-            return MaintenanceData.DeleteMaintenance(maintenanceID);
-        }
-
         public static DataTable GetAllMaintenances()
         {
             return MaintenanceData.GetAllMaintenances();
+        }
+
+        public static DataTable GetAllMaintenancesByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return MaintenanceData.GetAllMaintenancesByDateRange(startDate,endDate);
         }
 
     }

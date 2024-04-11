@@ -65,7 +65,9 @@ namespace CarRentalManagementSystem.Reports
                 case EnReportType.VehicleReturns:
                     _dataTable = VehicleReturn.GetAllVehicleReturnsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
-                case EnReportType.Maintenances: break;
+                case EnReportType.Maintenances:
+                    _dataTable = Maintenance.GetAllMaintenancesByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    break;
             }
 
             _reportTitle = $"{_currentReportType} Report \nFrom {dtpStartDate.Value.ToShortDateString()}  To {dtpEndDate.Value.ToShortDateString()}";
@@ -118,6 +120,7 @@ namespace CarRentalManagementSystem.Reports
         {
             pnlContainer.Visible = true;
             _currentReportType = EnReportType.Maintenances;
+            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\maintenancesReport.rdlc";
         }
 
         private void BtnGenerateReport_Click(object sender, EventArgs e)
@@ -125,5 +128,6 @@ namespace CarRentalManagementSystem.Reports
             UpdateReportData();
             ShowReport();
         }
+
     }
 }

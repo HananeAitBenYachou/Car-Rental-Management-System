@@ -138,5 +138,7 @@ namespace CarRental_BusinessLayer
         {
             return RentalTransactionData.GetTotalRentalTransactionsCount();
         }
+
+
     }
 }

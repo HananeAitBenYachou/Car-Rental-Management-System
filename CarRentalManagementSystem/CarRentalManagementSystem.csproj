@@ -150,6 +150,11 @@
     <Compile Include="Customers\UserControls\UcCustomerCardWithFilter.Designer.cs">
       <DependentUpon>UcCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSets\maintenancesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>maintenancesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DataSets\rentalBookingsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -411,6 +416,7 @@
       <DependentUpon>FrmGenerateReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportViewers\customersReport.rdlc" />
+    <EmbeddedResource Include="Reports\ReportViewers\maintenancesReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\rentalBookingsReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\rentalTransactiosReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewers\vehicleReturnsReport.rdlc" />
@@ -505,6 +511,17 @@
     </None>
     <None Include="Reports\DataSets\customersDataSet.xss">
       <DependentUpon>customersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\maintenancesDataSet.xsc">
+      <DependentUpon>maintenancesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSets\maintenancesDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>maintenancesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DataSets\maintenancesDataSet.xss">
+      <DependentUpon>maintenancesDataSet.xsd</DependentUpon>
     </None>
     <None Include="Reports\DataSets\rentalBookingsDataSet.xsc">
       <DependentUpon>rentalBookingsDataSet.xsd</DependentUpon>
