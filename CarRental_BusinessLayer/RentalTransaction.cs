@@ -139,6 +139,10 @@ namespace CarRental_BusinessLayer
             return RentalTransactionData.GetTotalRentalTransactionsCount();
         }
 
+        public static DataTable GetTotalProfitByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return RentalTransactionData.GetTotalProfitByDateRange(startDate, endDate);
+        }
 
     }
 }

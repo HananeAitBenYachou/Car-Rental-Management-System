@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet7" targetNamespace="http://tempuri.org/profitDataSet.xsd" xmlns:mstns="http://tempuri.org/profitDataSet.xsd" xmlns="http://tempuri.org/profitDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet7" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DataSet7" msprop:Generator_DataSetName="DataSet7">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="profitDataTable" msprop:Generator_RowEvHandlerName="profitDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="profitDataTableRowDeleted" msprop:Generator_RowDeletingName="profitDataTableRowDeleting" msprop:Generator_RowEvArgName="profitDataTableRowChangeEvent" msprop:Generator_TablePropName="profitDataTable" msprop:Generator_RowChangedName="profitDataTableRowChanged" msprop:Generator_RowChangingName="profitDataTableRowChanging" msprop:Generator_TableClassName="profitDataTableDataTable" msprop:Generator_RowClassName="profitDataTableRow" msprop:Generator_TableVarName="tableprofitDataTable" msprop:Generator_UserTableName="profitDataTable">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Revenue" msprop:Generator_ColumnPropNameInRow="Revenue" msprop:Generator_ColumnPropNameInTable="RevenueColumn" msprop:Generator_ColumnVarNameInTable="columnRevenue" msprop:Generator_UserColumnName="Revenue" type="xs:string" minOccurs="0" />
+              <xs:element name="Loss" msprop:Generator_ColumnPropNameInRow="Loss" msprop:Generator_ColumnPropNameInTable="LossColumn" msprop:Generator_ColumnVarNameInTable="columnLoss" msprop:Generator_UserColumnName="Loss" type="xs:string" minOccurs="0" />
+              <xs:element name="Profit" msprop:Generator_ColumnPropNameInRow="Profit" msprop:Generator_ColumnPropNameInTable="ProfitColumn" msprop:Generator_ColumnVarNameInTable="columnProfit" msprop:Generator_UserColumnName="Profit" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

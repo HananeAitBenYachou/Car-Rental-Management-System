@@ -290,6 +290,7 @@
             this.btnProfitReport.Size = new System.Drawing.Size(165, 62);
             this.btnProfitReport.TabIndex = 182;
             this.btnProfitReport.Text = "Profit Report";
+            this.btnProfitReport.Click += new System.EventHandler(this.BtnProfitReport_Click);
             // 
             // FrmGenerateReports
             // 

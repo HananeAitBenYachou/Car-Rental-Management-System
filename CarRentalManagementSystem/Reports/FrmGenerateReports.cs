@@ -22,7 +22,8 @@ namespace CarRentalManagementSystem.Reports
             RentalBookings,
             Transactions,
             VehicleReturns,
-            Maintenances
+            Maintenances,
+            Profit
         }
 
         private EnReportType _currentReportType;
@@ -67,6 +68,9 @@ namespace CarRentalManagementSystem.Reports
                     break;
                 case EnReportType.Maintenances:
                     _dataTable = Maintenance.GetAllMaintenancesByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    break;
+                case EnReportType.Profit:
+                    _dataTable = RentalTransaction.GetTotalProfitByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
             }
 
@@ -123,11 +127,18 @@ namespace CarRentalManagementSystem.Reports
             _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\maintenancesReport.rdlc";
         }
 
+        private void BtnProfitReport_Click(object sender, EventArgs e)
+        {
+            pnlContainer.Visible = true;
+            _currentReportType = EnReportType.Profit;
+            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\profitReport.rdlc";
+        }
+
         private void BtnGenerateReport_Click(object sender, EventArgs e)
         {
             UpdateReportData();
             ShowReport();
         }
-
+       
     }
 }
