@@ -8,7 +8,6 @@ namespace CarRental_BusinessLayer
         public int? SubModelID { get; private set; }
         public int ModelID { get; set; }
         public string SubModelName { get; set; }
-
         public Model ModelInfo { get; }
 
         private SubModel(int? subModelID, int modelID, string subModelName)

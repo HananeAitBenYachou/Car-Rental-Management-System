@@ -24,7 +24,6 @@ namespace CarRentalManagementSystem.Bookings
                 MessageBox.Show($"No booking with bookingID = {_bookingID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnClose.PerformClick();
                 return;
-
             }
 
             ucCustomerCard1.LoadCustomerData(_booking.CustomerID);

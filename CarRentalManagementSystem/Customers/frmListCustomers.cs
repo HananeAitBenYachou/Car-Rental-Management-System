@@ -1,4 +1,6 @@
 ﻿using CarRental_BusinessLayer;
+using CarRentalManagementSystem.Bookings;
+using CarRentalManagementSystem.Transactions;
 using System;
 using System.Data;
 using System.Threading.Tasks;
@@ -177,9 +179,22 @@ namespace CarRentalManagementSystem.Customers
             cbCustomers.Enabled = dgvCustomersList.SelectedRows.Count > 0;
         }
 
-        private void DgvCustomersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvCustomersList_CellDoubleContentClick(object sender, DataGridViewCellEventArgs e)
         {
             showCustomerInformationToolStripMenuItem.PerformClick();
         }
+
+        private void ShowCustomerBookingHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShowCustomerBookingHistory form = new FrmShowCustomerBookingHistory((int)dgvCustomersList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
+        }
+
+        private void ShowCustomerTransactionHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShowCustomerTransactionHistory form = new FrmShowCustomerTransactionHistory((int)dgvCustomersList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
+        }
+
     }
 }

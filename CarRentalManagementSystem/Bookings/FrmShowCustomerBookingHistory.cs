@@ -39,7 +39,7 @@ namespace CarRentalManagementSystem.Bookings
 
         private void RefreshCustomerBookingsList()
         {
-            dgvBookingsList.DataSource = RentalBooking.GetAllRentalBookings();
+            dgvBookingsList.DataSource = Customer.GetCustomerRentalBookings(_customerID);
         }
 
         private void CbRentalBookings_Opening(object sender, CancelEventArgs e)
@@ -59,7 +59,7 @@ namespace CarRentalManagementSystem.Bookings
             form.ShowDialog();
         }
 
-        private void DgvBookingsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvBookingsList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             showBookingInformationToolStripMenuItem.PerformClick();
         }

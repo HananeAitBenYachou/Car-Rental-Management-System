@@ -15,14 +15,14 @@ namespace CarRentalManagementSystem
 {
     public partial class FrmHome : Form
     {
-        private Guna2Button _currentActiveButton = new Guna2Button();
-
+        private Guna2Button _currentActiveButton;
         private readonly FrmLogin _loginForm;
 
         public FrmHome(FrmLogin loginForm)
         {
             InitializeComponent();
             _loginForm = loginForm;
+            _currentActiveButton = new Guna2Button();
         }
 
         private void ShowForm(Guna2Button activeBtn, Form frm)
@@ -128,7 +128,7 @@ namespace CarRentalManagementSystem
 
         private void BtnReports_Click(object sender, System.EventArgs e)
         {
-            ShowForm((Guna2Button)sender, new FrmGenerateReports());
+            ShowForm((Guna2Button)sender, new FrmGenerateReport());
         }
     }
 }

@@ -84,7 +84,7 @@ namespace CarRentalManagementSystem.Bookings
             cbRentalBookings.Enabled = dgvBookingsList.SelectedRows.Count > 0;
         }
 
-        private void DgvBookingsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvBookingsList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             showBookingInformationToolStripMenuItem.PerformClick();
         }

@@ -1,9 +1,11 @@
 ﻿using CarRental_BusinessLayer;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +13,11 @@ using System.Windows.Forms;
 
 namespace CarRentalManagementSystem.Reports
 {
-    public partial class FrmGenerateReports : Form
+    public partial class FrmGenerateReport : Form
     {
-        private DataTable _dataTable;
-        private string _reportTitle;
-        private string _reportPath;
+        private DataTable _reportData;
+        private string _reportHeader;
+        private string _reportFilePath;
 
         private enum EnReportType
         {            
@@ -28,12 +30,13 @@ namespace CarRentalManagementSystem.Reports
 
         private EnReportType _currentReportType;
 
-        public FrmGenerateReports()
+        public FrmGenerateReport()
         {
             InitializeComponent();
 
+            pnlContainer.Visible = false;
+
             SetReportDefaultDates();
-            pnlContainer.Visible = false;          
         }
 
         private void SetReportDefaultDates()
@@ -49,7 +52,7 @@ namespace CarRentalManagementSystem.Reports
 
         private void ShowReport()
         {
-            FrmReport form = new FrmReport(_dataTable, _reportTitle, _reportPath);
+            FrmReport form = new FrmReport(_reportData, _reportHeader, _reportFilePath);
             form.ShowDialog();
         }
 
@@ -58,87 +61,95 @@ namespace CarRentalManagementSystem.Reports
             switch(_currentReportType)
             {
                 case EnReportType.RentalBookings:
-                    _dataTable = RentalBooking.GetAllRentalBookingsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    _reportData = RentalBooking.GetAllRentalBookingsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
                 case EnReportType.Transactions:
-                    _dataTable = RentalTransaction.GetAllRentalTransactionsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    _reportData = RentalTransaction.GetAllRentalTransactionsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
                 case EnReportType.VehicleReturns:
-                    _dataTable = VehicleReturn.GetAllVehicleReturnsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    _reportData = VehicleReturn.GetAllVehicleReturnsByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
                 case EnReportType.Maintenances:
-                    _dataTable = Maintenance.GetAllMaintenancesByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    _reportData = Maintenance.GetAllMaintenancesByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
                 case EnReportType.Profit:
-                    _dataTable = RentalTransaction.GetTotalProfitByDateRange(dtpStartDate.Value, dtpEndDate.Value);
+                    _reportData = RentalTransaction.GetTotalProfitByDateRange(dtpStartDate.Value, dtpEndDate.Value);
                     break;
             }
 
-            _reportTitle = $"{_currentReportType} Report \nFrom {dtpStartDate.Value.ToShortDateString()}  To {dtpEndDate.Value.ToShortDateString()}";
+            _reportHeader = $"{_currentReportType} Report \nFrom {dtpStartDate.Value.ToShortDateString()}  To {dtpEndDate.Value.ToShortDateString()}";
         }
 
+        private void GenerateReport(string reportFilePath, DataTable reportData = null, string reportHeader = null, bool clickGenerateButton = false , bool showPanel = true)
+        {
+            pnlContainer.Visible = showPanel;
+
+            _reportData = reportData;
+            _reportHeader = reportHeader;
+            _reportFilePath = reportFilePath;
+
+            if(clickGenerateButton)
+                ShowReport();
+        }
+        
         private void BtnCustomersListReport_Click(object sender, EventArgs e)
         {
-            pnlContainer.Visible = false;
-
-            _dataTable = Customer.GetAllCustomers();
-            _reportTitle = "Customers List";
-            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\customersReport.rdlc";
-
-            ShowReport();
+            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\customersReport.rdlc";
+           
+            GenerateReport(_reportFilePath,Customer.GetAllCustomers(), "Customers List", true, false);
         }
 
         private void BtnVehiclesListReport_Click(object sender, EventArgs e)
         {
-            pnlContainer.Visible = false;
+            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehiclesReport.rdlc";
 
-            _dataTable = Vehicle.GetVehiclesPaginated(1,Vehicle.GetTotalVehiclesCount());
-            _reportTitle = "Vehicles List";
-            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehiclesReport.rdlc";
-
-            ShowReport();
+            GenerateReport(_reportFilePath, Vehicle.GetVehiclesPaginated(1, Vehicle.GetTotalVehiclesCount()), "Vehicles List", true, false);
         }
 
         private void BtnRentalBookingsReport_Click(object sender, EventArgs e)
         {
-            pnlContainer.Visible = true;
             _currentReportType = EnReportType.RentalBookings;
-            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\rentalBookingsReport.rdlc";
+            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\rentalBookingsReport.rdlc";
+            
+            GenerateReport(_reportFilePath);
         }
 
         private void BtnTransactionsReport_Click(object sender, EventArgs e)
         {
-            pnlContainer.Visible = true;
             _currentReportType = EnReportType.Transactions;
-            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\rentalTransactiosReport.rdlc";
+            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\rentalTransactiosReport.rdlc";
+
+            GenerateReport(_reportFilePath);
         }
 
         private void BtnVehicleReturnsReport_Click(object sender, EventArgs e)
         {   
-            pnlContainer.Visible = true;
             _currentReportType = EnReportType.VehicleReturns;
-            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehicleReturnsReport.rdlc";
+            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehicleReturnsReport.rdlc";
+
+            GenerateReport(_reportFilePath);
         }
 
         private void BtnMaintenancesReport_Click(object sender, EventArgs e)
         {
-            pnlContainer.Visible = true;
             _currentReportType = EnReportType.Maintenances;
-            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\maintenancesReport.rdlc";
+            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\maintenancesReport.rdlc";
+
+            GenerateReport(_reportFilePath);
         }
 
         private void BtnProfitReport_Click(object sender, EventArgs e)
         {
-            pnlContainer.Visible = true;
             _currentReportType = EnReportType.Profit;
-            _reportPath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\profitReport.rdlc";
+            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\profitReport.rdlc";
+
+            GenerateReport(_reportFilePath);
         }
 
         private void BtnGenerateReport_Click(object sender, EventArgs e)
         {
             UpdateReportData();
             ShowReport();
-        }
-       
+        }   
     }
 }

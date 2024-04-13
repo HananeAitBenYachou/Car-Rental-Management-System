@@ -117,7 +117,7 @@
             this.dgvBookingsList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvBookingsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvBookingsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvBookingsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookingsList_CellContentClick);
+            this.dgvBookingsList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBookingsList_CellContentDoubleClick);
             this.dgvBookingsList.SelectionChanged += new System.EventHandler(this.DgvBookingsList_SelectionChanged);
             // 
             // cbRentalBookings

@@ -10,35 +10,36 @@ namespace CarRentalManagementSystem
 {
     public partial class FrmReport : Form
     {
-        private readonly DataTable _dataTable;
-        private readonly string _reportTitle;
-        private readonly string _reportPath;
+        private readonly DataTable _reportData;
+        private readonly string _reportHeader;
+        private readonly string _reportFilePath;
 
-        public FrmReport(DataTable dataTable , string reportTitle , string reportPath)
+        public FrmReport(DataTable reportData , string reportHeader , string reportfilePath)
         {
             InitializeComponent();
-            _dataTable = dataTable; 
-            _reportTitle = reportTitle;
-            _reportPath = reportPath;
+            _reportData = reportData; 
+            _reportHeader = reportHeader;
+            _reportFilePath = reportfilePath;
 
-            _dataTable.Columns.Cast<DataColumn>().ToList().ForEach(c => c.ColumnName = c.ColumnName.Replace(" ", "_"));
+            _reportData.Columns.Cast<DataColumn>().ToList().ForEach(c => c.ColumnName = c.ColumnName.Replace(" ", "_"));
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!File.Exists(_reportPath)) 
+            if (!File.Exists(_reportFilePath)) 
             {
                 MessageBox.Show("Failed to load specified report file", "Failed", 
                     MessageBoxButtons.OK,MessageBoxIcon.Error);
                 this.Close();
+                return;
             }
 
-            this.Text = _reportTitle;
+            this.Text = _reportHeader;
 
-            ReportDataSource reportDataSource = new ReportDataSource("DataSet", _dataTable);
-            ReportParameter reportParameter = new ReportParameter("Title", _reportTitle);
+            ReportDataSource reportDataSource = new ReportDataSource("DataSet", _reportData);
+            ReportParameter reportParameter = new ReportParameter("Title", _reportHeader);
 
-            reportViewer1.LocalReport.ReportPath = _reportPath;
+            reportViewer1.LocalReport.ReportPath = _reportFilePath;
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.LocalReport.DataSources.Add(reportDataSource);
             reportViewer1.LocalReport.SetParameters(reportParameter);

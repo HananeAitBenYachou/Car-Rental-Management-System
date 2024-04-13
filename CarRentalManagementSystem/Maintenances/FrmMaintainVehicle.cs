@@ -47,17 +47,15 @@ namespace CarRentalManagementSystem.Maintenances
         {
             if (!vehicleInfo.IsAvailableForRent)
             {
-                MessageBox.Show($"You can't maintain this car , it is available now !", "Not Valid !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"You can't maintain this car , it is not available now !", "Not Valid !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnNext.Enabled = false;
                 return;
             }
 
             _vehicleID = vehicleInfo.VehicleID;
-
-            btnNext.Enabled = true;
-
             txtVehicleID.Text = _vehicleID.ToString();
 
+            btnNext.Enabled = true;
             btnSave.Enabled = true;
         }
 
@@ -96,6 +94,7 @@ namespace CarRentalManagementSystem.Maintenances
             else
             {
                 MessageBox.Show("Data was saved successfully !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 _maintenanceID = _maintenance.MaintenanceID;
                 txtMaintenanceID.Text = _maintenanceID.ToString();
 
@@ -124,6 +123,5 @@ namespace CarRentalManagementSystem.Maintenances
         {
             e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '-';
         }
-
     }
 }

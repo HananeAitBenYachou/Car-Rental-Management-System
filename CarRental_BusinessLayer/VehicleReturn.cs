@@ -7,7 +7,7 @@ namespace CarRental_BusinessLayer
     public class VehicleReturn
     {
         private enum EnMode : byte { AddNew = 0, Update = 1 };
-        private EnMode _Mode;
+        private EnMode _mode;
         public int? ReturnID { get; private set; }
         public DateTime ActualReturnDate { get; set; }
         public byte ActualRentalDays { get; set; }
@@ -22,7 +22,7 @@ namespace CarRental_BusinessLayer
 
         public VehicleReturn()
         {
-            _Mode = EnMode.AddNew;
+            _mode = EnMode.AddNew;
             ReturnID = null;
             ActualReturnDate = default;
             ActualRentalDays = default;
@@ -37,7 +37,7 @@ namespace CarRental_BusinessLayer
                               short consumedMileage, string finalCheckNotes, float additionalCharges,
                               float actualTotalDueAmount, int transactionID)
         {
-            _Mode = EnMode.Update;
+            _mode = EnMode.Update;
             ReturnID = returnID;
             ActualReturnDate = actualReturnDate;
             ActualRentalDays = actualRentalDays;
@@ -95,12 +95,12 @@ namespace CarRental_BusinessLayer
 
         public bool Save()
         {
-            switch (_Mode)
+            switch (_mode)
             {
                 case EnMode.AddNew:
                     if (AddNewVehicleReturn())
                     {
-                        _Mode = EnMode.Update;
+                        _mode = EnMode.Update;
                         return true;
                     }
                     return false;

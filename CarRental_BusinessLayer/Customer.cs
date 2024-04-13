@@ -26,8 +26,8 @@ namespace CarRental_BusinessLayer
                          string lastName, DateTime birthDate, EnGender gender, string address, string phone,
                          string email, int nationalityCountryID, string imagePath)
 
-           : base(personID, nationalNo, firstName, lastName, birthDate, gender, address, phone, email,
-                  nationalityCountryID, imagePath)
+                  : base(personID, nationalNo, firstName, lastName, birthDate, gender, address, phone, email,
+                         nationalityCountryID, imagePath)
         {
             _mode = EnMode.Update;
 

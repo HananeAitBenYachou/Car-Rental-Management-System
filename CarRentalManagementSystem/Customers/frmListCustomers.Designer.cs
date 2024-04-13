@@ -48,6 +48,9 @@
             this.btnAddNewCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.showCustomerBookingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showCustomerTransactionHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomersList)).BeginInit();
             this.cbCustomers.SuspendLayout();
             this.SuspendLayout();
@@ -121,7 +124,7 @@
             this.dgvCustomersList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvCustomersList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvCustomersList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvCustomersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCustomersList_CellContentClick);
+            this.dgvCustomersList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCustomersList_CellDoubleContentClick);
             this.dgvCustomersList.SelectionChanged += new System.EventHandler(this.DgvCustomersList_SelectionChanged);
             // 
             // cbCustomers
@@ -132,9 +135,12 @@
             this.addNewCustomerToolStripMenuItem,
             this.editCustomerInformationToolStripMenuItem,
             this.showCustomerInformationToolStripMenuItem,
-            this.deleteCustomerToolStripMenuItem});
+            this.deleteCustomerToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.showCustomerBookingHistoryToolStripMenuItem,
+            this.showCustomerTransactionHistoryToolStripMenuItem});
             this.cbCustomers.Name = "cbUsers";
-            this.cbCustomers.Size = new System.Drawing.Size(295, 148);
+            this.cbCustomers.Size = new System.Drawing.Size(363, 254);
             // 
             // addNewCustomerToolStripMenuItem
             // 
@@ -143,7 +149,7 @@
             this.addNewCustomerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.addNewCustomerToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.folder1;
             this.addNewCustomerToolStripMenuItem.Name = "addNewCustomerToolStripMenuItem";
-            this.addNewCustomerToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
+            this.addNewCustomerToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
             this.addNewCustomerToolStripMenuItem.Text = "Add New Customer";
             this.addNewCustomerToolStripMenuItem.Click += new System.EventHandler(this.AddNewCustomerToolStripMenuItem_Click);
             // 
@@ -154,7 +160,7 @@
             this.editCustomerInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.editCustomerInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.edit;
             this.editCustomerInformationToolStripMenuItem.Name = "editCustomerInformationToolStripMenuItem";
-            this.editCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
+            this.editCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
             this.editCustomerInformationToolStripMenuItem.Text = "Edit Customer Information";
             this.editCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.EditCustomerInformationToolStripMenuItem_Click);
             // 
@@ -165,7 +171,7 @@
             this.showCustomerInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.showCustomerInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
             this.showCustomerInformationToolStripMenuItem.Name = "showCustomerInformationToolStripMenuItem";
-            this.showCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
+            this.showCustomerInformationToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
             this.showCustomerInformationToolStripMenuItem.Text = "Show Customer Information";
             this.showCustomerInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerInformationToolStripMenuItem_Click);
             // 
@@ -176,7 +182,7 @@
             this.deleteCustomerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteCustomerToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.trash_bin;
             this.deleteCustomerToolStripMenuItem.Name = "deleteCustomerToolStripMenuItem";
-            this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(294, 36);
+            this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
             this.deleteCustomerToolStripMenuItem.Text = "Delete Customer";
             this.deleteCustomerToolStripMenuItem.Click += new System.EventHandler(this.DeleteCustomerToolStripMenuItem_Click);
             // 
@@ -320,6 +326,31 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.TabIndex = 10;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(359, 6);
+            // 
+            // showCustomerBookingHistoryToolStripMenuItem
+            // 
+            this.showCustomerBookingHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showCustomerBookingHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showCustomerBookingHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.rental_car;
+            this.showCustomerBookingHistoryToolStripMenuItem.Name = "showCustomerBookingHistoryToolStripMenuItem";
+            this.showCustomerBookingHistoryToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
+            this.showCustomerBookingHistoryToolStripMenuItem.Text = "Show Customer Booking History";
+            this.showCustomerBookingHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerBookingHistoryToolStripMenuItem_Click);
+            // 
+            // showCustomerTransactionHistoryToolStripMenuItem
+            // 
+            this.showCustomerTransactionHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showCustomerTransactionHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showCustomerTransactionHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.transaction1;
+            this.showCustomerTransactionHistoryToolStripMenuItem.Name = "showCustomerTransactionHistoryToolStripMenuItem";
+            this.showCustomerTransactionHistoryToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
+            this.showCustomerTransactionHistoryToolStripMenuItem.Text = "Show Customer Transaction History";
+            this.showCustomerTransactionHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerTransactionHistoryToolStripMenuItem_Click);
+            // 
             // FrmListCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -363,5 +394,8 @@
         private System.Windows.Forms.ToolStripMenuItem editCustomerInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showCustomerInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteCustomerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem showCustomerBookingHistoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showCustomerTransactionHistoryToolStripMenuItem;
     }
 }

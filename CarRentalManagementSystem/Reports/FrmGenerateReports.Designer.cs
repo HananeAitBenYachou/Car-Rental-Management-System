@@ -1,6 +1,6 @@
 ﻿namespace CarRentalManagementSystem.Reports
 {
-    partial class FrmGenerateReports
+    partial class FrmGenerateReport
     {
         /// <summary>
         /// Required designer variable.

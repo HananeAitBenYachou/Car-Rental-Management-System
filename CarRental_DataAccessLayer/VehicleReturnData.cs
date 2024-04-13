@@ -295,6 +295,5 @@ namespace CarRental_DataAccessLayer
             return totalvehicleReturnsCount;
         }
 
-
     }
 }
