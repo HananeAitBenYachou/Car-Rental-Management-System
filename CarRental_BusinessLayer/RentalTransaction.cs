@@ -48,7 +48,7 @@ namespace CarRental_BusinessLayer
             TransactionDate = transactionDate;
             UpdatedTransactionDate = updatedTransactionDate;
 
-            RentalBookingInfo = RentalBooking.Find(bookingID);
+            RentalBookingInfo = RentalBooking.Find(TransactionID, RentalBooking.EnFindBookingBy.TransactionID);
             ReturnInfo = VehicleReturn.Find(returnID);
         }
 
@@ -57,15 +57,14 @@ namespace CarRental_BusinessLayer
             switch (findTransactionBy)
             {
                 case EnFindTransactionBy.TransactionID:
-                    FindByTransactionID(Convert.ToInt16(searchValue));
-                    break;
+                    return FindByTransactionID(Convert.ToInt16(searchValue));
 
                 case EnFindTransactionBy.BookingID:
-                    FindByBookingID(Convert.ToInt16(searchValue));
-                    break;
-            }
+                    return FindByBookingID(Convert.ToInt16(searchValue));
 
-            return null;
+                default:
+                    return null;
+            }
         }
 
         private static RentalTransaction FindByTransactionID(int? TransactionID)
@@ -142,6 +141,11 @@ namespace CarRental_BusinessLayer
         public static DataTable GetTotalProfitByDateRange(DateTime startDate, DateTime endDate)
         {
             return RentalTransactionData.GetTotalProfitByDateRange(startDate, endDate);
+        }
+
+        public static DataTable GetMonthlyRevenue()
+        {
+            return RentalTransactionData.GetMonthlyRevenue();
         }
 
     }

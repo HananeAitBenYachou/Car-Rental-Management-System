@@ -155,7 +155,6 @@
             this.dgvBookingsList.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(196)))));
             this.dgvBookingsList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvBookingsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvBookingsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvBookingsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

@@ -16,8 +16,8 @@ namespace CarRentalManagementSystem.Bookings
         }
 
         private void LoadRentalBookingData()
-        {
-            _booking = RentalBooking.Find(_bookingID);
+        {       
+            _booking = RentalBooking.Find(_bookingID, RentalBooking.EnFindBookingBy.BookingID);
 
             if (_booking == null)
             {

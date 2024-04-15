@@ -8,6 +8,9 @@ namespace CarRental_BusinessLayer
     {
         private enum EnMode : byte { AddNew = 0, Update = 1 };
         private EnMode _mode;
+
+        public enum EnFindBookingBy : byte { BookingID , TransactionID }
+
         public int? BookingID { get; private set; }
         public int CustomerID { get; set; }
         public int VehicleID { get; set; }
@@ -68,7 +71,22 @@ namespace CarRental_BusinessLayer
             IsBookingActive = IsRentalBookingActive();
         }
 
-        public static RentalBooking Find(int? bookingID)
+        public static RentalBooking Find<T>(T searchValue, EnFindBookingBy findBookingBy)
+        {
+            switch (findBookingBy)
+            {
+                case EnFindBookingBy.TransactionID:
+                    return FindByTransactionID(Convert.ToInt16(searchValue));
+
+                case EnFindBookingBy.BookingID:
+                    return FindByBookingID(Convert.ToInt16(searchValue));
+
+                default:
+                    return null;
+            }
+        }
+
+        private static RentalBooking FindByBookingID(int? bookingID)
         {
             int customerID = default;
             int vehicleID = default;
@@ -82,6 +100,34 @@ namespace CarRental_BusinessLayer
             string initialCheckNotes = default;
 
             bool isFound = RentalBookingData.GetRentalBookingInfoByID(bookingID, ref customerID, ref vehicleID,
+                                                                      ref rentalStartDate, ref rentalEndDate,
+                                                                      ref pickupLocation, ref dropoffLocation,
+                                                                      ref initialRentalDays, ref rentalPricePerDay,
+                                                                      ref initialTotalDueAmount, ref initialCheckNotes);
+
+            if (isFound)
+                return new RentalBooking(bookingID, customerID, vehicleID, rentalStartDate, rentalEndDate,
+                                         pickupLocation, dropoffLocation, initialRentalDays, rentalPricePerDay,
+                                         initialTotalDueAmount, initialCheckNotes);
+            else
+                return null;
+        }
+
+        private static RentalBooking FindByTransactionID(int? transactionID)
+        {
+            int? bookingID = default;
+            int customerID = default;
+            int vehicleID = default;
+            DateTime rentalStartDate = default;
+            DateTime rentalEndDate = default;
+            string pickupLocation = default;
+            string dropoffLocation = default;
+            int initialRentalDays = default;
+            float rentalPricePerDay = default;
+            float initialTotalDueAmount = default;
+            string initialCheckNotes = default;
+
+            bool isFound = RentalBookingData.GetRentalBookingInfoByTransactionID(transactionID , ref bookingID, ref customerID, ref vehicleID,
                                                                       ref rentalStartDate, ref rentalEndDate,
                                                                       ref pickupLocation, ref dropoffLocation,
                                                                       ref initialRentalDays, ref rentalPricePerDay,

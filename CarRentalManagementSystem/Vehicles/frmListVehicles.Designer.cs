@@ -39,8 +39,10 @@
             this.editVehicleInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showVehicleInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.maintainVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.showVehicleBookingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showVehicleMaintenanceHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -127,7 +129,7 @@
             this.dgvVehiclesList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvVehiclesList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvVehiclesList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvVehiclesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVehiclesList_CellContentClick);
+            this.dgvVehiclesList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVehiclesList_CellContentDoubleClick);
             this.dgvVehiclesList.SelectionChanged += new System.EventHandler(this.DgvVehiclesList_SelectionChanged);
             // 
             // cbVehicles
@@ -139,10 +141,12 @@
             this.editVehicleInformationToolStripMenuItem,
             this.showVehicleInformationToolStripMenuItem,
             this.deleteVehicleToolStripMenuItem,
+            this.maintainVehicleToolStripMenuItem,
             this.toolStripSeparator1,
-            this.maintainVehicleToolStripMenuItem});
+            this.showVehicleBookingHistoryToolStripMenuItem,
+            this.showVehicleMaintenanceHistoryToolStripMenuItem});
             this.cbVehicles.Name = "cbUsers";
-            this.cbVehicles.Size = new System.Drawing.Size(282, 220);
+            this.cbVehicles.Size = new System.Drawing.Size(346, 304);
             this.cbVehicles.Opening += new System.ComponentModel.CancelEventHandler(this.CbVehicles_Opening);
             // 
             // addNewVehicleToolStripMenuItem
@@ -151,7 +155,7 @@
             this.addNewVehicleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.addNewVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources._3d_car__1_;
             this.addNewVehicleToolStripMenuItem.Name = "addNewVehicleToolStripMenuItem";
-            this.addNewVehicleToolStripMenuItem.Size = new System.Drawing.Size(281, 42);
+            this.addNewVehicleToolStripMenuItem.Size = new System.Drawing.Size(345, 42);
             this.addNewVehicleToolStripMenuItem.Text = "Add New Vehicle";
             this.addNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.AddNewVehicleToolStripMenuItem_Click);
             // 
@@ -161,7 +165,7 @@
             this.editVehicleInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.editVehicleInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.edit;
             this.editVehicleInformationToolStripMenuItem.Name = "editVehicleInformationToolStripMenuItem";
-            this.editVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(281, 42);
+            this.editVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(345, 42);
             this.editVehicleInformationToolStripMenuItem.Text = "Edit Vehicle Information";
             this.editVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.EditVehiclesInformationToolStripMenuItem_Click);
             // 
@@ -171,7 +175,7 @@
             this.showVehicleInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.showVehicleInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
             this.showVehicleInformationToolStripMenuItem.Name = "showVehicleInformationToolStripMenuItem";
-            this.showVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(281, 42);
+            this.showVehicleInformationToolStripMenuItem.Size = new System.Drawing.Size(345, 42);
             this.showVehicleInformationToolStripMenuItem.Text = "Show Vehicle Information";
             this.showVehicleInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowVehiclesInformationToolStripMenuItem_Click);
             // 
@@ -181,16 +185,9 @@
             this.deleteVehicleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.trash_bin;
             this.deleteVehicleToolStripMenuItem.Name = "deleteVehicleToolStripMenuItem";
-            this.deleteVehicleToolStripMenuItem.Size = new System.Drawing.Size(281, 42);
+            this.deleteVehicleToolStripMenuItem.Size = new System.Drawing.Size(345, 42);
             this.deleteVehicleToolStripMenuItem.Text = "Delete Vehicle";
             this.deleteVehicleToolStripMenuItem.Click += new System.EventHandler(this.DeleteVehiclesToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.BurlyWood;
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.BurlyWood;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(278, 6);
             // 
             // maintainVehicleToolStripMenuItem
             // 
@@ -198,9 +195,34 @@
             this.maintainVehicleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.maintainVehicleToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.gear;
             this.maintainVehicleToolStripMenuItem.Name = "maintainVehicleToolStripMenuItem";
-            this.maintainVehicleToolStripMenuItem.Size = new System.Drawing.Size(281, 42);
+            this.maintainVehicleToolStripMenuItem.Size = new System.Drawing.Size(345, 42);
             this.maintainVehicleToolStripMenuItem.Text = "Maintain Vehicle";
             this.maintainVehicleToolStripMenuItem.Click += new System.EventHandler(this.MaintainVehicleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(342, 6);
+            // 
+            // showVehicleBookingHistoryToolStripMenuItem
+            // 
+            this.showVehicleBookingHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showVehicleBookingHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showVehicleBookingHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.rental_car;
+            this.showVehicleBookingHistoryToolStripMenuItem.Name = "showVehicleBookingHistoryToolStripMenuItem";
+            this.showVehicleBookingHistoryToolStripMenuItem.Size = new System.Drawing.Size(345, 42);
+            this.showVehicleBookingHistoryToolStripMenuItem.Text = "Show Vehicle Booking History";
+            this.showVehicleBookingHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowVehicleBookingHistoryToolStripMenuItem_Click);
+            // 
+            // showVehicleMaintenanceHistoryToolStripMenuItem
+            // 
+            this.showVehicleMaintenanceHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showVehicleMaintenanceHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showVehicleMaintenanceHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.gear;
+            this.showVehicleMaintenanceHistoryToolStripMenuItem.Name = "showVehicleMaintenanceHistoryToolStripMenuItem";
+            this.showVehicleMaintenanceHistoryToolStripMenuItem.Size = new System.Drawing.Size(345, 42);
+            this.showVehicleMaintenanceHistoryToolStripMenuItem.Text = "Show Vehicle Maintenance History";
+            this.showVehicleMaintenanceHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowVehicleMaintenanceHistoryToolStripMenuItem_Click);
             // 
             // cbFilterByOptions
             // 
@@ -525,7 +547,9 @@
         private Guna.UI2.WinForms.Guna2Button btnNextPage;
         private Guna.UI2.WinForms.Guna2ComboBox cbPageSizes;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem maintainVehicleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem showVehicleBookingHistoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showVehicleMaintenanceHistoryToolStripMenuItem;
     }
 }

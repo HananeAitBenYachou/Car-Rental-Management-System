@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnVehiclesListReport = new Guna.UI2.WinForms.Guna2Button();
@@ -44,7 +47,9 @@
             this.btnGenerateReport = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnProfitReport = new Guna.UI2.WinForms.Guna2Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnlContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Separator1
@@ -79,7 +84,7 @@
             this.btnVehiclesListReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnVehiclesListReport.Font = new System.Drawing.Font("Calibri", 9.6F, System.Drawing.FontStyle.Bold);
             this.btnVehiclesListReport.ForeColor = System.Drawing.Color.White;
-            this.btnVehiclesListReport.Location = new System.Drawing.Point(30, 123);
+            this.btnVehiclesListReport.Location = new System.Drawing.Point(30, 107);
             this.btnVehiclesListReport.Name = "btnVehiclesListReport";
             this.btnVehiclesListReport.Size = new System.Drawing.Size(165, 62);
             this.btnVehiclesListReport.TabIndex = 6;
@@ -96,7 +101,7 @@
             this.btnCustomersListReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnCustomersListReport.Font = new System.Drawing.Font("Calibri", 9.6F, System.Drawing.FontStyle.Bold);
             this.btnCustomersListReport.ForeColor = System.Drawing.Color.White;
-            this.btnCustomersListReport.Location = new System.Drawing.Point(201, 123);
+            this.btnCustomersListReport.Location = new System.Drawing.Point(201, 107);
             this.btnCustomersListReport.Name = "btnCustomersListReport";
             this.btnCustomersListReport.Size = new System.Drawing.Size(165, 62);
             this.btnCustomersListReport.TabIndex = 7;
@@ -112,7 +117,7 @@
             this.btnRentalBookingsReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnRentalBookingsReport.Font = new System.Drawing.Font("Calibri", 9.6F, System.Drawing.FontStyle.Bold);
             this.btnRentalBookingsReport.ForeColor = System.Drawing.Color.White;
-            this.btnRentalBookingsReport.Location = new System.Drawing.Point(372, 123);
+            this.btnRentalBookingsReport.Location = new System.Drawing.Point(372, 107);
             this.btnRentalBookingsReport.Name = "btnRentalBookingsReport";
             this.btnRentalBookingsReport.Size = new System.Drawing.Size(165, 62);
             this.btnRentalBookingsReport.TabIndex = 8;
@@ -128,7 +133,7 @@
             this.btnTransactionsReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnTransactionsReport.Font = new System.Drawing.Font("Calibri", 9.6F, System.Drawing.FontStyle.Bold);
             this.btnTransactionsReport.ForeColor = System.Drawing.Color.White;
-            this.btnTransactionsReport.Location = new System.Drawing.Point(543, 123);
+            this.btnTransactionsReport.Location = new System.Drawing.Point(543, 107);
             this.btnTransactionsReport.Name = "btnTransactionsReport";
             this.btnTransactionsReport.Size = new System.Drawing.Size(165, 62);
             this.btnTransactionsReport.TabIndex = 9;
@@ -144,7 +149,7 @@
             this.btnVehicleReturnsReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnVehicleReturnsReport.Font = new System.Drawing.Font("Calibri", 9.6F, System.Drawing.FontStyle.Bold);
             this.btnVehicleReturnsReport.ForeColor = System.Drawing.Color.White;
-            this.btnVehicleReturnsReport.Location = new System.Drawing.Point(714, 123);
+            this.btnVehicleReturnsReport.Location = new System.Drawing.Point(714, 107);
             this.btnVehicleReturnsReport.Name = "btnVehicleReturnsReport";
             this.btnVehicleReturnsReport.Size = new System.Drawing.Size(165, 62);
             this.btnVehicleReturnsReport.TabIndex = 10;
@@ -165,7 +170,7 @@
             this.btnMaintenancesReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnMaintenancesReport.Font = new System.Drawing.Font("Calibri", 9.6F, System.Drawing.FontStyle.Bold);
             this.btnMaintenancesReport.ForeColor = System.Drawing.Color.White;
-            this.btnMaintenancesReport.Location = new System.Drawing.Point(885, 123);
+            this.btnMaintenancesReport.Location = new System.Drawing.Point(885, 107);
             this.btnMaintenancesReport.Name = "btnMaintenancesReport";
             this.btnMaintenancesReport.Size = new System.Drawing.Size(165, 62);
             this.btnMaintenancesReport.TabIndex = 11;
@@ -180,7 +185,7 @@
             this.dtpStartDate.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpStartDate.ForeColor = System.Drawing.Color.White;
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpStartDate.Location = new System.Drawing.Point(188, 53);
+            this.dtpStartDate.Location = new System.Drawing.Point(230, 22);
             this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpStartDate.Name = "dtpStartDate";
@@ -196,7 +201,7 @@
             this.dtpEndDate.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEndDate.ForeColor = System.Drawing.Color.White;
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpEndDate.Location = new System.Drawing.Point(188, 145);
+            this.dtpEndDate.Location = new System.Drawing.Point(230, 114);
             this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpEndDate.Name = "dtpEndDate";
@@ -209,7 +214,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.label1.Location = new System.Drawing.Point(67, 72);
+            this.label1.Location = new System.Drawing.Point(109, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 22);
             this.label1.TabIndex = 179;
@@ -220,7 +225,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.label2.Location = new System.Drawing.Point(67, 164);
+            this.label2.Location = new System.Drawing.Point(109, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 22);
             this.label2.TabIndex = 180;
@@ -233,9 +238,9 @@
             this.pnlContainer.Controls.Add(this.dtpStartDate);
             this.pnlContainer.Controls.Add(this.label1);
             this.pnlContainer.Controls.Add(this.dtpEndDate);
-            this.pnlContainer.Location = new System.Drawing.Point(273, 284);
+            this.pnlContainer.Location = new System.Drawing.Point(197, 533);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(746, 260);
+            this.pnlContainer.Size = new System.Drawing.Size(869, 214);
             this.pnlContainer.TabIndex = 181;
             this.pnlContainer.Visible = false;
             // 
@@ -251,9 +256,9 @@
             this.btnGenerateReport.ForeColor = System.Drawing.Color.White;
             this.btnGenerateReport.Image = global::CarRentalManagementSystem.Properties.Resources.report;
             this.btnGenerateReport.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnGenerateReport.Location = new System.Drawing.Point(494, 102);
+            this.btnGenerateReport.Location = new System.Drawing.Point(517, 71);
             this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(171, 62);
+            this.btnGenerateReport.Size = new System.Drawing.Size(259, 62);
             this.btnGenerateReport.TabIndex = 178;
             this.btnGenerateReport.Text = "Report";
             this.btnGenerateReport.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -285,14 +290,75 @@
             this.btnProfitReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(205)))), ((int)(((byte)(8)))));
             this.btnProfitReport.Font = new System.Drawing.Font("Calibri", 9.6F, System.Drawing.FontStyle.Bold);
             this.btnProfitReport.ForeColor = System.Drawing.Color.White;
-            this.btnProfitReport.Location = new System.Drawing.Point(1056, 123);
+            this.btnProfitReport.Location = new System.Drawing.Point(1056, 107);
             this.btnProfitReport.Name = "btnProfitReport";
             this.btnProfitReport.Size = new System.Drawing.Size(165, 62);
             this.btnProfitReport.TabIndex = 182;
             this.btnProfitReport.Text = "Profit Report";
             this.btnProfitReport.Click += new System.EventHandler(this.BtnProfitReport_Click);
             // 
-            // FrmGenerateReports
+            // chart1
+            // 
+            this.chart1.BorderlineWidth = 0;
+            this.chart1.BorderSkin.BackColor = System.Drawing.Color.White;
+            this.chart1.BorderSkin.BorderColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineWidth = 0;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisX.Maximum = 12D;
+            chartArea1.AxisX.Minimum = 1D;
+            chartArea1.AxisX.Title = "Month";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineWidth = 0;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisY.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisY.Title = "Revenue";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            chartArea1.AxisY.ToolTip = "Revenue";
+            chartArea1.BorderColor = System.Drawing.Color.White;
+            chartArea1.BorderWidth = 0;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.White;
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            legend1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(33, 188);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
+            series1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Percent05;
+            series1.BorderWidth = 0;
+            series1.ChartArea = "ChartArea1";
+            series1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            series1.Legend = "Legend1";
+            series1.MarkerBorderWidth = 0;
+            series1.Name = "Monthly Revenue";
+            series1.ShadowColor = System.Drawing.Color.White;
+            series1.XValueMember = "Month";
+            series1.YValueMembers = "Revenue";
+            series1.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1188, 353);
+            this.chart1.TabIndex = 183;
+            this.chart1.Text = "chart1";
+            // 
+            // FrmGenerateReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -309,12 +375,15 @@
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.guna2ImageButton1);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.chart1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmGenerateReports";
+            this.Name = "FrmGenerateReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmGenerateReports";
+            this.Load += new System.EventHandler(this.FrmGenerateReport_Load);
             this.pnlContainer.ResumeLayout(false);
             this.pnlContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,5 +407,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlContainer;
         private Guna.UI2.WinForms.Guna2Button btnProfitReport;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

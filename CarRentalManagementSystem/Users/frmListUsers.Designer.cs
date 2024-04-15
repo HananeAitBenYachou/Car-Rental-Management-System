@@ -176,7 +176,7 @@
             this.dgvUsersList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvUsersList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvUsersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsersList_CellContentClick);
+            this.dgvUsersList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsersList_CellContentDoubleClick);
             this.dgvUsersList.SelectionChanged += new System.EventHandler(this.DgvUsersList_SelectionChanged);
             // 
             // cbUsers

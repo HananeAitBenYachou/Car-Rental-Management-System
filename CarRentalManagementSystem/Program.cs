@@ -1,6 +1,4 @@
-﻿using CarRentalManagementSystem.Bookings;
-using CarRentalManagementSystem.Customers;
-using CarRentalManagementSystem.Reports;
+﻿using CarRentalManagementSystem.Returns;
 using System;
 using System.Windows.Forms;
 
@@ -20,7 +18,7 @@ namespace CarRentalManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FrmGenerateReport());
+            Application.Run(new FrmListVehicleReturns());
         }
  
         [System.Runtime.InteropServices.DllImport("user32.dll")]

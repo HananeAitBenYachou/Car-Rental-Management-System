@@ -1,4 +1,5 @@
 ﻿using CarRental_BusinessLayer;
+using CarRentalManagementSystem.Bookings;
 using CarRentalManagementSystem.Maintenances;
 using System;
 using System.Data;
@@ -283,7 +284,7 @@ namespace CarRentalManagementSystem.Vehicles
             cbVehicles.Enabled = dgvVehiclesList.SelectedRows.Count > 0;
         }
 
-        private void DgvVehiclesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvVehiclesList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             showVehicleInformationToolStripMenuItem.PerformClick();
         }
@@ -338,6 +339,18 @@ namespace CarRentalManagementSystem.Vehicles
 
             maintainVehicleToolStripMenuItem.Enabled = vehicle.IsAvailableForRent;
             deleteVehicleToolStripMenuItem.Enabled = vehicle.IsAvailableForRent;
+        }
+
+        private void ShowVehicleBookingHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShowVehicleBookingHistory form = new FrmShowVehicleBookingHistory((int)dgvVehiclesList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
+        }
+
+        private void ShowVehicleMaintenanceHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShowVehicleMaintenanceHistory form = new FrmShowVehicleMaintenanceHistory((int)dgvVehiclesList.CurrentRow.Cells[0].Value);
+            form.ShowDialog();
         }
     }
 }

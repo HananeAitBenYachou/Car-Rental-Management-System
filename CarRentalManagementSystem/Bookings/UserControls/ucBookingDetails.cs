@@ -15,7 +15,7 @@ namespace CarRentalManagementSystem.Bookings.UserControls
 
         public bool LoadBookingData(int? bookingID)
         {
-            Booking = RentalBooking.Find(bookingID);
+            Booking = RentalBooking.Find(bookingID, RentalBooking.EnFindBookingBy.BookingID);
 
             if (Booking == null)
             {

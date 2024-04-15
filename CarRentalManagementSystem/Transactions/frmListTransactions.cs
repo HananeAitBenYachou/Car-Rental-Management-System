@@ -96,7 +96,7 @@ namespace CarRentalManagementSystem.Transactions
             cbRentalTransactions.Enabled = dgvTransactionsList.SelectedRows.Count > 0;
         }
 
-        private void DgvTransactionsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvTransactionsList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             showTransactionInformationToolStripMenuItem.PerformClick();
         }
@@ -118,7 +118,7 @@ namespace CarRentalManagementSystem.Transactions
 
         private void ShowBookingInforamtionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmShowBookingDetails form = new FrmShowBookingDetails((int)dgvTransactionsList.CurrentRow.Cells["Vehicle ID"].Value);
+            FrmShowBookingDetails form = new FrmShowBookingDetails((int)dgvTransactionsList.CurrentRow.Cells["Booking ID"].Value);
             form.ShowDialog();
         }
 
@@ -126,6 +126,14 @@ namespace CarRentalManagementSystem.Transactions
         {
             FrmShowVehicleReturnDetails form = new FrmShowVehicleReturnDetails((int)dgvTransactionsList.CurrentRow.Cells["Return ID"].Value);
             form.ShowDialog();
+        }
+
+        private void CbRentalTransactions_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            RentalTransaction transaction = RentalTransaction.Find((int)dgvTransactionsList.CurrentRow.Cells[0].Value
+                , RentalTransaction.EnFindTransactionBy.TransactionID);
+
+            showReturnInformationToolStripMenuItem.Enabled = !transaction.RentalBookingInfo.IsBookingActive;
         }
 
     }

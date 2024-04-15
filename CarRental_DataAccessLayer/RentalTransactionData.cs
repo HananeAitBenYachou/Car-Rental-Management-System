@@ -37,13 +37,34 @@ namespace CarRental_DataAccessLayer
 
                                 returnID = (reader["ReturnID"] != DBNull.Value) ? (int?)reader["ReturnID"] : null;
 
-                                paidInitialTotalDueAmount = (float)reader["PaidInitialTotalDueAmount"];
+                                paidInitialTotalDueAmount = Convert.ToSingle(reader["PaidInitialTotalDueAmount"]);
 
-                                actualTotalDueAmount = (reader["ActualTotalDueAmount"] != DBNull.Value) ? (float?)reader["ActualTotalDueAmount"] : null;
+                                if ((reader["ActualTotalDueAmount"] != DBNull.Value))
+                                {
+                                    actualTotalDueAmount = Convert.ToSingle(reader["ActualTotalDueAmount"]);
+                                }
+                                else
+                                {
+                                    actualTotalDueAmount = null;
+                                }
 
-                                totalRemaining = (reader["TotalRemaining"] != DBNull.Value) ? (float?)reader["TotalRemaining"] : null;
+                                if ((reader["TotalRemaining"] != DBNull.Value))
+                                {
+                                    totalRemaining = Convert.ToSingle(reader["TotalRemaining"]);
+                                }
+                                else
+                                {
+                                    totalRemaining = null;
+                                }
 
-                                totalRefundedAmount = (reader["TotalRefundedAmount"] != DBNull.Value) ? (float?)reader["TotalRefundedAmount"] : null;
+                                if (reader["TotalRefundedAmount"] == DBNull.Value)
+                                {
+                                    totalRefundedAmount = null;
+                                }
+                                else
+                                {
+                                    totalRefundedAmount = Convert.ToSingle(reader["TotalRefundedAmount"]);
+                                }
 
                                 transactionDate = (DateTime)reader["TransactionDate"];
 
@@ -345,6 +366,37 @@ namespace CarRental_DataAccessLayer
 
                         command.Parameters.AddWithValue("@StartDate", startDate);
                         command.Parameters.AddWithValue("@EndDate", endDate);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dataTable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+            }
+            return dataTable;
+        }
+
+        public static DataTable GetMonthlyRevenue()
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetMonthlyRevenue", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {

@@ -74,6 +74,75 @@ namespace CarRental_DataAccessLayer
             return isFound;
         }
 
+        public static bool GetRentalBookingInfoByTransactionID(int? transactionID , ref int? bookingID, ref int customerID, ref int vehicleID,
+                                            ref DateTime rentalStartDate, ref DateTime rentalEndDate,
+                                            ref string pickupLocation, ref string dropoffLocation,
+                                            ref int initialRentalDays, ref float rentalPricePerDay,
+                                            ref float initialTotalDueAmount, ref string initialCheckNotes)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("SP_GetRentalBookingInfoByTransactionID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@TransactionID", (object)transactionID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                isFound = true;
+
+                                bookingID = (reader["BookingID"] != DBNull.Value) ? (int?)reader["BookingID"] : null;
+
+                                customerID = (int)reader["CustomerID"];
+
+                                vehicleID = (int)reader["VehicleID"];
+
+                                rentalStartDate = (DateTime)reader["RentalStartDate"];
+
+                                rentalEndDate = (DateTime)reader["RentalEndDate"];
+
+                                pickupLocation = (string)reader["PickupLocation"];
+
+                                dropoffLocation = (string)reader["DropoffLocation"];
+
+                                initialRentalDays = (int)reader["InitialRentalDays"];
+
+                                rentalPricePerDay = Convert.ToSingle(reader["RentalPricePerDay"]);
+
+                                initialTotalDueAmount = Convert.ToSingle(reader["InitialTotalDueAmount"]);
+
+                                initialCheckNotes = (reader["InitialCheckNotes"] != DBNull.Value) ? (string)reader["InitialCheckNotes"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                isFound = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex);
+
+                isFound = false;
+            }
+            return isFound;
+        }
+
         public static bool DoesRentalBookingExist(int? bookingID)
         {
             bool isFound = false;

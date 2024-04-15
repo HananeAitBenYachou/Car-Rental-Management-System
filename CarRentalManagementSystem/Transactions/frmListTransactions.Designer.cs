@@ -121,7 +121,7 @@
             this.dgvTransactionsList.ThemeStyle.RowsStyle.Height = 50;
             this.dgvTransactionsList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(213)))), ((int)(((byte)(89)))));
             this.dgvTransactionsList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.dgvTransactionsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTransactionsList_CellContentClick);
+            this.dgvTransactionsList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTransactionsList_CellContentDoubleClick);
             this.dgvTransactionsList.SelectionChanged += new System.EventHandler(this.DgvTransactionsList_SelectionChanged);
             // 
             // cbRentalTransactions
@@ -137,6 +137,7 @@
             this.showReturnInformationToolStripMenuItem});
             this.cbRentalTransactions.Name = "cbUsers";
             this.cbRentalTransactions.Size = new System.Drawing.Size(311, 248);
+            this.cbRentalTransactions.Opening += new System.ComponentModel.CancelEventHandler(this.CbRentalTransactions_Opening);
             // 
             // showTransactionInformationToolStripMenuItem
             // 

@@ -40,6 +40,9 @@
             this.editCustomerInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCustomerInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.showCustomerBookingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showCustomerTransactionHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -48,9 +51,6 @@
             this.btnAddNewCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.showCustomerBookingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showCustomerTransactionHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomersList)).BeginInit();
             this.cbCustomers.SuspendLayout();
             this.SuspendLayout();
@@ -185,6 +185,31 @@
             this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
             this.deleteCustomerToolStripMenuItem.Text = "Delete Customer";
             this.deleteCustomerToolStripMenuItem.Click += new System.EventHandler(this.DeleteCustomerToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(359, 6);
+            // 
+            // showCustomerBookingHistoryToolStripMenuItem
+            // 
+            this.showCustomerBookingHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showCustomerBookingHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showCustomerBookingHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.rental_car;
+            this.showCustomerBookingHistoryToolStripMenuItem.Name = "showCustomerBookingHistoryToolStripMenuItem";
+            this.showCustomerBookingHistoryToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
+            this.showCustomerBookingHistoryToolStripMenuItem.Text = "Show Customer Booking History";
+            this.showCustomerBookingHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerBookingHistoryToolStripMenuItem_Click);
+            // 
+            // showCustomerTransactionHistoryToolStripMenuItem
+            // 
+            this.showCustomerTransactionHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showCustomerTransactionHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showCustomerTransactionHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.transaction1;
+            this.showCustomerTransactionHistoryToolStripMenuItem.Name = "showCustomerTransactionHistoryToolStripMenuItem";
+            this.showCustomerTransactionHistoryToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
+            this.showCustomerTransactionHistoryToolStripMenuItem.Text = "Show Customer Transaction History";
+            this.showCustomerTransactionHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerTransactionHistoryToolStripMenuItem_Click);
             // 
             // cbFilterByOptions
             // 
@@ -325,31 +350,6 @@
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.Size = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.TabIndex = 10;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(359, 6);
-            // 
-            // showCustomerBookingHistoryToolStripMenuItem
-            // 
-            this.showCustomerBookingHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.showCustomerBookingHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.showCustomerBookingHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.rental_car;
-            this.showCustomerBookingHistoryToolStripMenuItem.Name = "showCustomerBookingHistoryToolStripMenuItem";
-            this.showCustomerBookingHistoryToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
-            this.showCustomerBookingHistoryToolStripMenuItem.Text = "Show Customer Booking History";
-            this.showCustomerBookingHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerBookingHistoryToolStripMenuItem_Click);
-            // 
-            // showCustomerTransactionHistoryToolStripMenuItem
-            // 
-            this.showCustomerTransactionHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.showCustomerTransactionHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.showCustomerTransactionHistoryToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.transaction1;
-            this.showCustomerTransactionHistoryToolStripMenuItem.Name = "showCustomerTransactionHistoryToolStripMenuItem";
-            this.showCustomerTransactionHistoryToolStripMenuItem.Size = new System.Drawing.Size(362, 36);
-            this.showCustomerTransactionHistoryToolStripMenuItem.Text = "Show Customer Transaction History";
-            this.showCustomerTransactionHistoryToolStripMenuItem.Click += new System.EventHandler(this.ShowCustomerTransactionHistoryToolStripMenuItem_Click);
             // 
             // FrmListCustomers
             // 

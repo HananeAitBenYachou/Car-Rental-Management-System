@@ -44,7 +44,7 @@ namespace CarRentalManagementSystem.Bookings
 
         private void CbRentalBookings_Opening(object sender, CancelEventArgs e)
         {
-            RentalBooking rentalBooking = RentalBooking.Find((int)dgvBookingsList.CurrentRow.Cells[0].Value);
+            RentalBooking rentalBooking = RentalBooking.Find((int)dgvBookingsList.CurrentRow.Cells[0].Value, RentalBooking.EnFindBookingBy.BookingID);
             returnVehicleToolStripMenuItem.Enabled = rentalBooking.IsBookingActive;
         }
 

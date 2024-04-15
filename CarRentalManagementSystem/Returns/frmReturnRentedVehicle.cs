@@ -51,7 +51,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void UcBookingDetailsWithFilter1_BookingFound(object sender, int? bookingID)
         {
-            _booking = RentalBooking.Find(bookingID);
+            _booking = RentalBooking.Find(bookingID, RentalBooking.EnFindBookingBy.BookingID);
 
             if (!_booking.IsBookingActive)
             {

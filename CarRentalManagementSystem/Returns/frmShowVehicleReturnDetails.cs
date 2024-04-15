@@ -1,4 +1,5 @@
 ﻿using CarRental_BusinessLayer;
+using CarRentalManagementSystem.Customers.UserControls;
 using System;
 using System.Windows.Forms;
 
@@ -26,8 +27,9 @@ namespace CarRentalManagementSystem.Returns
                 return;
             }
 
-            ucCustomerCard1.LoadCustomerData(_vehicleReturn.TransactionInfo.RentalBookingInfo.CustomerID);
-            ucVehicleCard1.LoadVehicleData(_vehicleReturn.TransactionInfo.RentalBookingInfo.VehicleID);
+         
+            ucCustomerCard1.LoadCustomerData(_vehicleReturn.RentalBookingInfo.CustomerID);
+            ucVehicleCard1.LoadVehicleData(_vehicleReturn.RentalBookingInfo.VehicleID);
             ucVehicleReturnDetails1.LoadVehicleReturnData(_vehicleReturn.ReturnID);
         }
 

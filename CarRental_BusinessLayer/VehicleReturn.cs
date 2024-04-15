@@ -1,6 +1,7 @@
 using CarRental_DataAccessLayer;
 using System;
 using System.Data;
+using static CarRental_BusinessLayer.RentalBooking;
 
 namespace CarRental_BusinessLayer
 {
@@ -18,7 +19,7 @@ namespace CarRental_BusinessLayer
         public float ActualTotalDueAmount { get; set; }
         public int TransactionID { get; set; }
 
-        public RentalTransaction TransactionInfo { get; }
+        public RentalBooking RentalBookingInfo { get; }
 
         public VehicleReturn()
         {
@@ -48,7 +49,7 @@ namespace CarRental_BusinessLayer
             ActualTotalDueAmount = actualTotalDueAmount;
             TransactionID = transactionID;
 
-            TransactionInfo = RentalTransaction.Find<int?>(transactionID, RentalTransaction.EnFindTransactionBy.TransactionID);
+            RentalBookingInfo = RentalBooking.Find(TransactionID, EnFindBookingBy.TransactionID);
         }
 
         public static VehicleReturn Find(int? returnID)

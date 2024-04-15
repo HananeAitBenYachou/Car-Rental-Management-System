@@ -208,7 +208,7 @@ namespace CarRentalManagementSystem.Users
             cbUsers.Enabled = dgvUsersList.SelectedRows.Count > 0;
         }
 
-        private void DgvUsersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvUsersList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             showUserInformationToolStripMenuItem.PerformClick();
         }

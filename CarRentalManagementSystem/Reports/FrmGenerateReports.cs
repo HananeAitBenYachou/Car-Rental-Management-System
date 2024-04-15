@@ -150,6 +150,17 @@ namespace CarRentalManagementSystem.Reports
         {
             UpdateReportData();
             ShowReport();
-        }   
+        }
+
+        private void PopulateMonthlyRevenueChart()
+        {
+            chart1.Series[0].Points.DataBind(RentalTransaction.GetMonthlyRevenue().AsEnumerable(), "Month", "Revenue", "");
+        }
+
+        private void FrmGenerateReport_Load(object sender, EventArgs e)
+        {
+            PopulateMonthlyRevenueChart();
+        }
+
     }
 }
