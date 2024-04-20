@@ -3,6 +3,8 @@ using System;
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static CarRentalManagementSystem.Global.Global;
+
 
 namespace CarRentalManagementSystem.Users
 {
@@ -211,6 +213,11 @@ namespace CarRentalManagementSystem.Users
         private void DgvUsersList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             showUserInformationToolStripMenuItem.PerformClick();
+        }
+
+        private void CbUsers_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            deleteUserToolStripMenuItem.Enabled = (int)dgvUsersList.CurrentRow.Cells[0].Value != CurrentUser.UserID;
         }
     }
 }

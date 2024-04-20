@@ -64,6 +64,5 @@ namespace CarRentalManagementSystem
             FrmAddRentalBooking form = new FrmAddRentalBooking();
             form.ShowDialog();
         }
-
     }
 }

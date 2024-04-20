@@ -1,4 +1,4 @@
-﻿using CarRentalManagementSystem.Returns;
+﻿using CarRentalManagementSystem.Reports;
 using System;
 using System.Windows.Forms;
 
@@ -18,7 +18,7 @@ namespace CarRentalManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FrmListVehicleReturns());
+            Application.Run(new FrmLogin());
         }
  
         [System.Runtime.InteropServices.DllImport("user32.dll")]

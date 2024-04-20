@@ -17,18 +17,22 @@ namespace CarRentalManagementSystem.Reports
     {
         private DataTable _reportData;
         private string _reportHeader;
-        private string _reportFilePath;
-
+        private string _reportFile;
+        private const string ReportsPath = @"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\";
+        
         private enum EnReportType
-        {            
+        {    
+            Customers,
+            Vehicles,
             RentalBookings,
             Transactions,
             VehicleReturns,
             Maintenances,
             Profit
         }
-
         private EnReportType _currentReportType;
+
+        private readonly Dictionary<EnReportType, string> _reportFiles;
 
         public FrmGenerateReport()
         {
@@ -37,6 +41,17 @@ namespace CarRentalManagementSystem.Reports
             pnlContainer.Visible = false;
 
             SetReportDefaultDates();
+
+            _reportFiles = new Dictionary<EnReportType, string>
+            {
+                { EnReportType.Customers, "customersReport.rdlc" },
+                { EnReportType.Vehicles, "vehiclesReport.rdlc" },
+                { EnReportType.RentalBookings, "rentalBookingsReport.rdlc" },
+                { EnReportType.Transactions, "rentalTransactiosReport.rdlc" },
+                { EnReportType.VehicleReturns, "vehicleReturnsReport.rdlc" },
+                { EnReportType.Maintenances, "maintenancesReport.rdlc" },
+                { EnReportType.Profit, "profitReport.rdlc" }
+            };
         }
 
         private void SetReportDefaultDates()
@@ -52,7 +67,7 @@ namespace CarRentalManagementSystem.Reports
 
         private void ShowReport()
         {
-            FrmReport form = new FrmReport(_reportData, _reportHeader, _reportFilePath);
+            FrmReport form = new FrmReport(_reportData, _reportHeader, _reportFile);
             form.ShowDialog();
         }
 
@@ -80,70 +95,58 @@ namespace CarRentalManagementSystem.Reports
             _reportHeader = $"{_currentReportType} Report \nFrom {dtpStartDate.Value.ToShortDateString()}  To {dtpEndDate.Value.ToShortDateString()}";
         }
 
-        private void GenerateReport(string reportFilePath, DataTable reportData = null, string reportHeader = null, bool clickGenerateButton = false , bool showPanel = true)
+        private void GenerateReport(DataTable reportData = null, string reportHeader = null, bool clickGenerateButton = false , bool showPanel = true)
         {
             pnlContainer.Visible = showPanel;
 
             _reportData = reportData;
             _reportHeader = reportHeader;
-            _reportFilePath = reportFilePath;
+            _reportFile = Path.Combine(ReportsPath, _reportFiles[_currentReportType]);
 
-            if(clickGenerateButton)
+            if (clickGenerateButton)
                 ShowReport();
         }
         
         private void BtnCustomersListReport_Click(object sender, EventArgs e)
         {
-            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\customersReport.rdlc";
-           
-            GenerateReport(_reportFilePath,Customer.GetAllCustomers(), "Customers List", true, false);
+            _currentReportType = EnReportType.Customers;
+            GenerateReport(Customer.GetAllCustomers(), "Customers List", true, false);
         }
 
         private void BtnVehiclesListReport_Click(object sender, EventArgs e)
         {
-            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehiclesReport.rdlc";
-
-            GenerateReport(_reportFilePath, Vehicle.GetVehiclesPaginated(1, Vehicle.GetTotalVehiclesCount()), "Vehicles List", true, false);
+            _currentReportType = EnReportType.Vehicles;
+            GenerateReport(Vehicle.GetVehiclesPaginated(1, Vehicle.GetTotalVehiclesCount()), "Vehicles List", true, false);
         }
 
         private void BtnRentalBookingsReport_Click(object sender, EventArgs e)
         {
             _currentReportType = EnReportType.RentalBookings;
-            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\rentalBookingsReport.rdlc";
-            
-            GenerateReport(_reportFilePath);
+            GenerateReport();
         }
 
         private void BtnTransactionsReport_Click(object sender, EventArgs e)
         {
             _currentReportType = EnReportType.Transactions;
-            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\rentalTransactiosReport.rdlc";
-
-            GenerateReport(_reportFilePath);
+            GenerateReport();
         }
 
         private void BtnVehicleReturnsReport_Click(object sender, EventArgs e)
         {   
             _currentReportType = EnReportType.VehicleReturns;
-            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\vehicleReturnsReport.rdlc";
-
-            GenerateReport(_reportFilePath);
+            GenerateReport();
         }
 
         private void BtnMaintenancesReport_Click(object sender, EventArgs e)
         {
             _currentReportType = EnReportType.Maintenances;
-            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\maintenancesReport.rdlc";
-
-            GenerateReport(_reportFilePath);
+            GenerateReport();
         }
 
         private void BtnProfitReport_Click(object sender, EventArgs e)
         {
             _currentReportType = EnReportType.Profit;
-            _reportFilePath = $@"C:\Users\hanan\source\repos\Car-Rental-Management-System\CarRentalManagementSystem\Reports\ReportViewers\profitReport.rdlc";
-
-            GenerateReport(_reportFilePath);
+            GenerateReport();
         }
 
         private void BtnGenerateReport_Click(object sender, EventArgs e)

@@ -137,7 +137,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::CarRentalManagementSystem.Properties.Resources.Car_rental_bro;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 633);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 651);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(287, 287);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -387,7 +387,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1595, 980);
+            this.ClientSize = new System.Drawing.Size(1595, 950);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnShowUserProfile);
             this.Controls.Add(this.guna2VSeparator1);

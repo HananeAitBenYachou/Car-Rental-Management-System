@@ -190,7 +190,8 @@
             this.deleteUserToolStripMenuItem,
             this.changePasswordToolStripMenuItem});
             this.cbUsers.Name = "cbUsers";
-            this.cbUsers.Size = new System.Drawing.Size(259, 184);
+            this.cbUsers.Size = new System.Drawing.Size(259, 212);
+            this.cbUsers.Opening += new System.ComponentModel.CancelEventHandler(this.CbUsers_Opening);
             // 
             // addNewUserToolStripMenuItem
             // 

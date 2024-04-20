@@ -24,9 +24,6 @@ namespace CarRentalManagementSystem
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            txtUsername.Validating -= TxtUsername_Validating;
-            txtPassword.Validating -= TxtPassword_Validating;
-
             Application.Exit();
         }
 
