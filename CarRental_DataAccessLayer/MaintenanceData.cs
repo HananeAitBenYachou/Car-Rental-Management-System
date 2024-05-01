@@ -214,7 +214,7 @@ namespace CarRental_DataAccessLayer
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SP_GetAllMaintenances", connection))
+                    using (SqlCommand command = new SqlCommand("SP_GetAllMaintenancesByDateRange", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@StartDate", startDate);

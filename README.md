@@ -11,7 +11,7 @@ Developed using C#.NET Framework, this system leverages a SQL Server database an
 - Store and manage detailed customer information: name, contact details, and driver's license number.
 - Allow staff to access customer profiles and rental history , as well as transaction history for efficient service.
 
-### Vehicles Information:
+### Vehicles Management:
 - Maintain up-to-date information of available vehicles, including make, model, year, mileage, rental rates, fuel type (gasoline, diesel, electric, hybrid), plate number, and vehicle category (4x4, sedan, etc.).
 - Implement detailed search and filtering by make, model, fuel type, category, and more for quick and efficient vehicle selection.
 - Tracks the maintenance history for each vehicle, including service records, repair details, and costs.

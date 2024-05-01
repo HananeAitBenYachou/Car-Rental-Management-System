@@ -70,7 +70,7 @@
             this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(997, 73);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(1018, 73);
             this.guna2GradientPanel1.TabIndex = 179;
             // 
             // guna2ImageButton1
@@ -126,7 +126,7 @@
             this.ucCustomerCard1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ucCustomerCard1.Location = new System.Drawing.Point(0, 73);
             this.ucCustomerCard1.Name = "ucCustomerCard1";
-            this.ucCustomerCard1.Size = new System.Drawing.Size(997, 617);
+            this.ucCustomerCard1.Size = new System.Drawing.Size(1018, 617);
             this.ucCustomerCard1.TabIndex = 213;
             // 
             // tcBookingHistory

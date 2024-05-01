@@ -42,7 +42,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void CbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterByOptions.Text == "Actual Rental Days")
+            if (cbFilterByOptions.Text == "Actual Return Date")
             {
                 txtFilterValue.Visible = false;
                 dtpActualReturnDate.Visible = true;
@@ -82,7 +82,7 @@ namespace CarRentalManagementSystem.Returns
 
         private void DtpVehicleReturns_ValueChanged(object sender, EventArgs e)
         {
-            _vehicleReturnsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpActualReturnDate.Value.Date.ToString("dd-MM-yyyy"));
+             _vehicleReturnsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpActualReturnDate.Value.Date.ToString("yyyy/MM/dd"));
         }
 
         private void ShowReturnInformationToolStripMenuItem_Click(object sender, EventArgs e)

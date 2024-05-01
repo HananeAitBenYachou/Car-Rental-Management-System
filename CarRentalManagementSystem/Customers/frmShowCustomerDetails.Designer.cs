@@ -74,9 +74,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(481, 21);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(128, 28);
+            this.lblTitle.Size = new System.Drawing.Size(176, 28);
             this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "User Details";
+            this.lblTitle.Text = "Customer Details";
             // 
             // guna2ImageButton1
             // 
@@ -115,7 +115,7 @@
             this.ucCustomerCard1.Size = new System.Drawing.Size(1058, 617);
             this.ucCustomerCard1.TabIndex = 174;
             // 
-            // frmShowCustomerDetails
+            // FrmShowCustomerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmShowCustomerDetails";
+            this.Name = "FrmShowCustomerDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmShowCustomerDetails";
             this.guna2GradientPanel1.ResumeLayout(false);

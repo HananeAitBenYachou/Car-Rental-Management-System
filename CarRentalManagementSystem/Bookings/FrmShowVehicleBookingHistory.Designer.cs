@@ -166,6 +166,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvBookingsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBookingsList.ColumnHeadersHeight = 45;
+            this.dgvBookingsList.ContextMenuStrip = this.cbRentalBookings;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(215)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);

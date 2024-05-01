@@ -221,10 +221,19 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
+                                  <Value>- </Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
                                   <Value>=Fields!Loss.Value</Value>
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Color>Red</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -256,10 +265,19 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
+                                  <Value>+ </Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>Green</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
                                   <Value>=Fields!Profit.Value</Value>
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Color>Green</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>

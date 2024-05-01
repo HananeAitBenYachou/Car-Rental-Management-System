@@ -82,7 +82,7 @@ namespace CarRentalManagementSystem.Transactions
 
         private void DtpTemp_ValueChanged(object sender, EventArgs e)
         {
-            _transactionsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpTemp.Value.Date.ToString("dd-MM-yyyy"));
+            _transactionsDataView.RowFilter = string.Format("[{0}] = '{1}'", cbFilterByOptions.Text, dtpTemp.Value.Date.ToString("yyyy/MM/dd"));
         }
 
         private void ShowTransactionInformationToolStripMenuItem_Click(object sender, EventArgs e)

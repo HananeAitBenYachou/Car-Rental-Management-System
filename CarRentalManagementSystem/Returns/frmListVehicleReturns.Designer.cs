@@ -34,13 +34,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReturnsList = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.cbVehicleReturns = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showReturnInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dtpActualReturnDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.cbVehicleReturns = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showReturnInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnsList)).BeginInit();
@@ -119,6 +119,27 @@
             this.dgvReturnsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVehicleReturnsList_CellContentClick);
             this.dgvReturnsList.SelectionChanged += new System.EventHandler(this.DgvVehicleReturnsList_SelectionChanged);
             // 
+            // cbVehicleReturns
+            // 
+            this.cbVehicleReturns.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.cbVehicleReturns.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cbVehicleReturns.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showReturnInformationToolStripMenuItem});
+            this.cbVehicleReturns.Name = "cbUsers";
+            this.cbVehicleReturns.Size = new System.Drawing.Size(275, 40);
+            this.cbVehicleReturns.Text = "Show Booking Information";
+            // 
+            // showReturnInformationToolStripMenuItem
+            // 
+            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
+            this.showReturnInformationToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.showReturnInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.showReturnInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
+            this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
+            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
+            this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
+            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
+            // 
             // dtpActualReturnDate
             // 
             this.dtpActualReturnDate.BorderRadius = 22;
@@ -161,7 +182,6 @@
             this.cbFilterByOptions.Size = new System.Drawing.Size(192, 41);
             this.cbFilterByOptions.TabIndex = 30;
             this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.CbFilterByOptions_SelectedIndexChanged);
-            this.cbFilterByOptions.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
             this.cbFilterByOptions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFilterValue_KeyPress);
             // 
             // label2
@@ -195,27 +215,6 @@
             this.lblTitle.TabIndex = 25;
             this.lblTitle.Text = "Manage Vehicle Returns";
             // 
-            // cbVehicleReturns
-            // 
-            this.cbVehicleReturns.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.cbVehicleReturns.ImageScalingSize = new System.Drawing.Size(30, 30);
-            this.cbVehicleReturns.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showReturnInformationToolStripMenuItem});
-            this.cbVehicleReturns.Name = "cbUsers";
-            this.cbVehicleReturns.Size = new System.Drawing.Size(275, 40);
-            this.cbVehicleReturns.Text = "Show Booking Information";
-            // 
-            // showReturnInformationToolStripMenuItem
-            // 
-            this.showReturnInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(46)))), ((int)(((byte)(24)))));
-            this.showReturnInformationToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.showReturnInformationToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.showReturnInformationToolStripMenuItem.Image = global::CarRentalManagementSystem.Properties.Resources.eye;
-            this.showReturnInformationToolStripMenuItem.Name = "showReturnInformationToolStripMenuItem";
-            this.showReturnInformationToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
-            this.showReturnInformationToolStripMenuItem.Text = "Show Return Information";
-            this.showReturnInformationToolStripMenuItem.Click += new System.EventHandler(this.ShowReturnInformationToolStripMenuItem_Click);
-            // 
             // txtFilterValue
             // 
             this.txtFilterValue.BorderRadius = 22;
@@ -239,6 +238,7 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(229, 43);
             this.txtFilterValue.TabIndex = 29;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.TxtFilterValue_TextChanged);
             // 
             // guna2ImageButton1
             // 
